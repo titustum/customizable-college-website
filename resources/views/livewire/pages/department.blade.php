@@ -1,6 +1,6 @@
 <?php
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\{Description, Title};
 use Livewire\Volt\Component;
 use App\Models\Department;
 use App\Models\SuccessStory;
@@ -8,7 +8,7 @@ use App\Models\SuccessStory;
 
 new
 #[Title('Department')]
-#[Layout('layouts.guest')]
+#[Description('Explore the various departments at Tetu Technical & Vocational College.')]
 class extends Component
 {
     public $department;

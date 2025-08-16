@@ -1,11 +1,11 @@
 <?php
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\{Title, Description};
 use Livewire\Volt\Component;
 
 new
 #[Title('About Us | Tetu Technical & Vocational College')]
-#[Layout('layouts.guest')]
+#[Description('Learn more about Tetu Technical & Vocational College, our mission, vision, and values.')]
 class extends Component
 {
     //

@@ -1,14 +1,13 @@
 <?php
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 use App\Models\TeamMember;
 use App\Models\Role;
 use App\Models\Department;
 
 new
-#Title('Team Members')
-#[Layout('layouts.guest')]
+#Title('Team Members') 
 class extends Component
 {
     public $search = '';
@@ -65,46 +64,47 @@ class extends Component
         <div class="flex flex-col mb-8 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
             <div class="flex-grow">
                 <input wire:model.debounce.300ms="search" type="text" placeholder="Search team members..."
-                       class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-orange-500">
+                    class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-orange-500">
             </div>
             <div>
                 <select wire:model="department"
-                        class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-orange-500">
+                    class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-orange-500">
                     <option value="">All Departments</option>
                     @foreach($this->departments() as $dept)
-                        <option value="{{ $dept }}">{{ $dept }}</option>
+                    <option value="{{ $dept }}">{{ $dept }}</option>
                     @endforeach
                 </select>
             </div>
         </div>
 
         @foreach($roleOrder as $role)
-            @if(isset($this->teamMembers()[$role]))
-                <div class="mb-12">
-                    <h2 class="mb-6 text-2xl font-semibold text-orange-600">
-                        {{ $role }}@if($role != 'Others')s@endif
-                    </h2>
-                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                        @foreach($this->teamMembers()[$role] as $member)
-                            <div class="overflow-hidden bg-white rounded-lg shadow-xl">
-                                @if($member->photo)
-                                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}" class="object-cover w-full h-48">
-                                @else
-                                    <div class="flex items-center justify-center w-full h-48 bg-gray-200">
-                                        <span class="text-gray-500">No image available</span>
-                                    </div>
-                                @endif
-                                <div class="p-6">
-                                    <h3 class="mb-2 text-xl font-semibold text-orange-600">{{ $member->name }}</h3>
-                                    <p class="mb-2 text-gray-600"><strong>Department:</strong> {{ $member->department->name }}</p>
-                                    <p class="mb-2 text-gray-600"><strong>Qualification:</strong> {{ $member->qualification }}</p>
-                                    <p class="text-gray-600"><strong>Experience:</strong> {{ $member->experience }}</p>
-                                </div>
-                            </div>
-                        @endforeach
+        @if(isset($this->teamMembers()[$role]))
+        <div class="mb-12">
+            <h2 class="mb-6 text-2xl font-semibold text-orange-600">
+                {{ $role }}@if($role != 'Others')s@endif
+            </h2>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                @foreach($this->teamMembers()[$role] as $member)
+                <div class="overflow-hidden bg-white rounded-lg shadow-xl">
+                    @if($member->photo)
+                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}"
+                        class="object-cover w-full h-48">
+                    @else
+                    <div class="flex items-center justify-center w-full h-48 bg-gray-200">
+                        <span class="text-gray-500">No image available</span>
+                    </div>
+                    @endif
+                    <div class="p-6">
+                        <h3 class="mb-2 text-xl font-semibold text-orange-600">{{ $member->name }}</h3>
+                        <p class="mb-2 text-gray-600"><strong>Department:</strong> {{ $member->department->name }}</p>
+                        <p class="mb-2 text-gray-600"><strong>Qualification:</strong> {{ $member->qualification }}</p>
+                        <p class="text-gray-600"><strong>Experience:</strong> {{ $member->experience }}</p>
                     </div>
                 </div>
-            @endif
+                @endforeach
+            </div>
+        </div>
+        @endif
         @endforeach
     </div>
 </section>

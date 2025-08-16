@@ -1,6 +1,6 @@
 <?php
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\{Description, Title};
 use Livewire\Volt\Component;
 use App\Models\Course;
 use App\Models\Department;
@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 new
 #[Title('Apply Now')]
-#[Layout('layouts.guest')]
+#[Description('Apply for admission to Tetu Technical & Vocational College.')]
 class extends Component
 { 
     public $courses = [];

@@ -1,13 +1,12 @@
 <?php
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\{Description, Title};
 use Livewire\Volt\Component;
 use App\Models\TeamMember;
 use App\Models\Role;
 
 new
 #[Title('Our Leadership Team')]
-#[Layout('layouts.guest')]
 class extends Component
 {
     public $principals;

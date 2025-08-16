@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\{Description, Title};
 use Livewire\Volt\Component;
 use App\Models\TeamMember;
 use App\Models\Role;
@@ -10,7 +10,7 @@ use Illuminate\View\View;
 
 new
 #[Title('Administrative Staff')]
-#[Layout('layouts.guest')] // Assuming you have an 'admin' layout
+#[Description('View the administrative staff members at Tetu Technical & Vocational College.')]
 class extends Component
 {
     public $administrativeStaff;

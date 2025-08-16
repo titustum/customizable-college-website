@@ -1,12 +1,12 @@
 <?php
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\{Description, Title};
 use Livewire\Volt\Component;
 use App\Models\Contact;
 
 new
 #[Title('Contact Us')]
-#[Layout('layouts.guest')]
+#[Description('Get in touch with us for any inquiries or support.')]
 class extends Component
 {
     public $name = '';

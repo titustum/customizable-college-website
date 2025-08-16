@@ -1,13 +1,13 @@
 <?php
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\{Description, Title};
 use Livewire\Volt\Component;
 use App\Models\Course;
 use App\Models\Department;
 
 new
 #[Title('Courses')]
-#[Layout('layouts.guest')]
+#[Description('Explore the various courses offered at Tetu Technical & Vocational College.')]
 class extends Component
 {
     public $search = '';

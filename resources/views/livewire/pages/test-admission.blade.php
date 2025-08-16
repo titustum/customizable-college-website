@@ -1,14 +1,13 @@
 <?php
 
-use Livewire\Attributes\{Layout, Title};
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 use App\Models\Course;
 use App\Models\Application;
 use Carbon\Carbon;
 
 new
-#[Title('Admissions')]
-#[Layout('layouts.guest')]
+#[Title('Admissions')] 
 class extends Component
 {
     public $courses = [];
@@ -161,9 +160,9 @@ class extends Component
             <h2 class="mb-8 text-2xl font-bold text-center text-gray-800 lg:text-3xl">Student Application Form</h2>
 
             @if (session()->has('message'))
-                <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
-                    {{ session('message') }}
-                </div>
+            <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
+                {{ session('message') }}
+            </div>
             @endif
 
             <form wire:submit.prevent="submitApplication" class="space-y-6" data-aos="fade-up">
@@ -171,22 +170,27 @@ class extends Component
                 <div class="grid gap-6 md:grid-cols-2">
                     <div>
                         <label for="fullName" class="block mb-2 font-medium text-gray-700">Full Name</label>
-                        <input type="text" id="fullName" wire:model="fullName" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <input type="text" id="fullName" wire:model="fullName" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                     <div>
                         <label for="phone" class="block mb-2 font-medium text-gray-700">Phone Number</label>
-                        <input type="tel" id="phone" wire:model="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <input type="tel" id="phone" wire:model="phone" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                 </div>
 
                 <div class="grid gap-6 md:grid-cols-2">
                     <div>
-                        <label for="alternativePhone" class="block mb-2 font-medium text-gray-700">Alternative Phone Number</label>
-                        <input type="tel" id="alternativePhone" wire:model="alternativePhone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <label for="alternativePhone" class="block mb-2 font-medium text-gray-700">Alternative Phone
+                            Number</label>
+                        <input type="tel" id="alternativePhone" wire:model="alternativePhone"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                     <div>
                         <label for="gender" class="block mb-2 font-medium text-gray-700">Gender</label>
-                        <select id="gender" wire:model="gender" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <select id="gender" wire:model="gender" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                             <option value="">Select your gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -198,34 +202,44 @@ class extends Component
                 <div class="grid gap-6 md:grid-cols-2">
                     <div>
                         <label for="idNumber" class="block mb-2 font-medium text-gray-700">ID No./Birth Cert.</label>
-                        <input type="text" id="idNumber" wire:model="idNumber" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <input type="text" id="idNumber" wire:model="idNumber" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                     <div>
-                        <label for="kcseIndexNumber" class="block mb-2 font-medium text-gray-700">KCSE Index Number</label>
-                        <input type="text" id="kcseIndexNumber" wire:model="kcseIndexNumber" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <label for="kcseIndexNumber" class="block mb-2 font-medium text-gray-700">KCSE Index
+                            Number</label>
+                        <input type="text" id="kcseIndexNumber" wire:model="kcseIndexNumber" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                 </div>
 
                 <div class="grid gap-6 md:grid-cols-2">
                     <div>
                         <label for="kcseYear" class="block mb-2 font-medium text-gray-700">KCSE Year</label>
-                        <input type="text" id="kcseYear" wire:model="kcseYear" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <input type="text" id="kcseYear" wire:model="kcseYear" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                     <div>
-                        <label for="nemisUpiNumber" class="block mb-2 font-medium text-gray-700">NEMIS/UPI Number (optional)</label>
-                        <input type="text" id="nemisUpiNumber" wire:model="nemisUpiNumber" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                        <label for="nemisUpiNumber" class="block mb-2 font-medium text-gray-700">NEMIS/UPI Number
+                            (optional)</label>
+                        <input type="text" id="nemisUpiNumber" wire:model="nemisUpiNumber"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                     </div>
                 </div>
 
                 <!-- Academic Information -->
                 <div>
-                    <label for="highSchool" class="block mb-2 font-medium text-gray-700">Previous School/College Name</label>
-                    <input type="text" id="highSchool" wire:model="highSchool" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    <label for="highSchool" class="block mb-2 font-medium text-gray-700">Previous School/College
+                        Name</label>
+                    <input type="text" id="highSchool" wire:model="highSchool" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                 </div>
 
                 <div>
-                    <label for="highSchoolGrade" class="block mb-2 font-medium text-gray-700">KCSE Grade/College Cert.</label>
-                    <select id="highSchoolGrade" wire:model="highSchoolGrade" wire:change="updateCourses" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    <label for="highSchoolGrade" class="block mb-2 font-medium text-gray-700">KCSE Grade/College
+                        Cert.</label>
+                    <select id="highSchoolGrade" wire:model="highSchoolGrade" wire:change="updateCourses" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                         <option value="">Select a grade</option>
                         <option value="c++">C+ & Above</option>
                         <option value="c">C (Plain)</option>
@@ -242,32 +256,38 @@ class extends Component
 
                 <div>
                     <label for="courseId" class="block mb-2 font-medium text-gray-700">Desired Course of Study</label>
-                    <select id="courseId" wire:model="courseId" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    <select id="courseId" wire:model="courseId" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                         <option value="">Select a course</option>
                         @foreach ($courses as $course)
-                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                        <option value="{{ $course->id }}">{{ $course->name }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <div>
                     <label for="startTerm" class="block mb-2 font-medium text-gray-700">Intended Start Term</label>
-                    <select id="startTerm" wire:model="startTerm" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    <select id="startTerm" wire:model="startTerm" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                         <option value="">Select a term</option>
                         @foreach($startTermOptions as $value => $label)
-                            <option value="{{ $value }}">{{ $label }}</option>
+                        <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 <!-- Additional Information -->
                 <div>
-                    <label for="parent_name" required class="block mb-2 font-medium text-gray-700">Parent/Guardian Name</label>
-                    <input type="text" id="parent_name" wire:model="parent_name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    <label for="parent_name" required class="block mb-2 font-medium text-gray-700">Parent/Guardian
+                        Name</label>
+                    <input type="text" id="parent_name" wire:model="parent_name"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                 </div>
                 <div>
-                    <label for="parent_phone" class="block mb-2 font-medium text-gray-700">Parent/Guardian Phone Number</label>
-                    <input type="tel" id="parent_phone" wire:model="parent_phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
+                    <label for="parent_phone" class="block mb-2 font-medium text-gray-700">Parent/Guardian Phone
+                        Number</label>
+                    <input type="tel" id="parent_phone" wire:model="parent_phone" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-600">
                 </div>
 
                 <!-- Submission -->
@@ -276,7 +296,9 @@ class extends Component
                     <label for="terms" class="text-gray-700">I agree to the terms and conditions</label>
                 </div>
 
-                <button type="submit" class="w-full px-6 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-md hover:bg-orange-700">Submit Application</button>
+                <button type="submit"
+                    class="w-full px-6 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-md hover:bg-orange-700">Submit
+                    Application</button>
             </form>
         </div>
     </section>

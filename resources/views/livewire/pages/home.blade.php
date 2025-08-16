@@ -33,10 +33,10 @@ class extends Component {
         <div class="h-full swiper heroSwiper">
             <div class="swiper-wrapper">
 
-                @foreach ($heroSlides as $index => $content)
-                <!-- Slides -->
+                @forelse ($heroSlides as $index => $content)
+                <!-- Slide -->
                 <div class="relative h-full bg-center bg-no-repeat bg-cover swiper-slide"
-                    style="background-image: url('{{  asset('storage/'. $content->image)  }}');">
+                    style="background-image: url('{{ asset('storage/' . $content->image) }}');">
                     <div class="absolute inset-0 bg-black/60"></div>
                     <div class="container relative flex flex-col items-start justify-center h-full px-4 mx-auto">
                         <div class="max-w-3xl py-24">
@@ -60,7 +60,30 @@ class extends Component {
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <!-- Default fallback slide -->
+                <div class="relative h-full bg-center bg-no-repeat bg-cover swiper-slide"
+                    style="background-image: url('{{ asset('images/default-hero.webp') }}');">
+                    <div class="absolute inset-0 bg-black/60"></div>
+                    <div class="container relative flex flex-col items-start justify-center h-full px-4 mx-auto">
+                        <div class="max-w-3xl py-24">
+                            <h1 class="mb-4 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+                                Welcome to Tetu TVC
+                            </h1>
+                            <h2 class="hidden text-xl lg:block md:text-2xl lg:text-3xl text-cyan-300">
+                                Empowering students with skills for the future
+                            </h2>
+                            <p class="mb-8 text-lg font-semibold text-green-300">
+                                Join our vibrant community of learners today.
+                            </p>
+                            <a href="{{ route('admissions') }}"
+                                class="px-6 py-3 mt-6 text-lg font-semibold text-white transition-colors bg-orange-600 rounded-full hover:bg-orange-500">
+                                Apply Now <i class="ml-2 fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforelse
 
             </div>
 
@@ -70,6 +93,7 @@ class extends Component {
             <div class="hidden md:block swiper-button-next"></div>
         </div>
     </section>
+
 
     <section class="w-full px-4 py-16 bg-white">
         <div class="w-full mx-auto max-w-7xl">
@@ -86,9 +110,9 @@ class extends Component {
                             <div class="my-6 text-center">
                                 <div
                                     class="inline-block p-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600">
-                                    <img src="{{ asset('images/principal-pic.jpg') }}"
+                                    <img src="{{ asset('images/principal-tetu-tvc-2025-12345.jpg') }}"
                                         class="object-cover w-48 h-48 border-4 border-white rounded-full shadow-inner"
-                                        alt="Md. Catherine Gikoyo">
+                                        alt="Principal Image">
                                 </div>
                             </div>
                             <div class="px-4 my-4 text-gray-700">
@@ -105,7 +129,7 @@ class extends Component {
                             </div>
                         </div>
                         <div class="mt-6 text-center">
-                            <a href="{{ route('administration') }}"
+                            <a href="{{ route('staff.members') }}"
                                 class="inline-block px-6 py-3 text-white transition duration-300 bg-orange-600 rounded-full shadow-md hover:bg-orange-700 hover:shadow-lg">
                                 Meet Our Team <i class="ml-2 fas fa-arrow-right"></i>
                             </a>

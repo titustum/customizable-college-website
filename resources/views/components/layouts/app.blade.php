@@ -1,12 +1,53 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $title ?? 'Default Title' }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description"
+        content="Tetu Technical and Vocational College offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <link rel="canonical" href="https://www.tetutvc.ac.ke" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="shortcut icon" href="{{ asset('images/logo.jpeg') }}" type="image/jpeg">
 
-    <title>{{ $title ?? 'Page Title' }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tetutvc.ac.ke/">
+    <meta property="og:title" content="Tetu Technical and Vocational College | Quality Education in Kenya">
+    <meta property="og:description"
+        content="Tetu TVC offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <meta property="og:image" content="{{ asset('images/logo.jpeg') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.tetutvc.ac.ke/">
+    <meta property="twitter:title" content="Tetu Technical and Vocational College | Quality Education in Kenya">
+    <meta property="twitter:description"
+        content="Tetu TVC offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <meta property="twitter:image" content="{{ asset('images/logo.jpeg') }}">
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" defer></script>
+
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
 </head>
 
 <body>
