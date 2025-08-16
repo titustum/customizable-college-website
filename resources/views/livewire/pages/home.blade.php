@@ -1,16 +1,14 @@
 <?php
 
 use Livewire\Volt\Component;
-use Livewire\Volt\Attributes\Title;
-use Livewire\Volt\Attributes\Description;
+use Livewire\Attributes\Title;
 use App\Models\Department; 
 use App\Models\SuccessStory;
 use App\Models\Partner;
 use App\Models\HeroSlide;
 
 new  
-#[Title('Welcome to Our College')]
-#[Description('Empowering education through modern web solutions.')] 
+#[Title('Welcome to Our College')] 
 class extends Component {
 
     public function with()

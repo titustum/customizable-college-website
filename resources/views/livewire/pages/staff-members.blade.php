@@ -1,6 +1,6 @@
 <?php
 
-use Livewire\Attributes\{Description, Title};
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 use App\Models\TeamMember;
 use App\Models\Role;

@@ -1,12 +1,11 @@
 <?php
 
 use App\Models\Department;
-use Livewire\Attributes\{Description, Title};
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 
 new
-#[Title('Departments')]
-#[Description('Explore the various departments at Tetu Technical & Vocational College.')]
+#[Title('Departments')] 
 class extends Component
 {
 

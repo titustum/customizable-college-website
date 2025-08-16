@@ -2,15 +2,14 @@
 
 namespace App\Livewire;
 
-use Livewire\Attributes\{Description, Title};
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 use App\Models\TeamMember;
 use App\Models\Role;
 use Illuminate\View\View;
 
 new
-#[Title('Administrative Staff')]
-#[Description('View the administrative staff members at Tetu Technical & Vocational College.')]
+#[Title('Administrative Staff')] 
 class extends Component
 {
     public $administrativeStaff;

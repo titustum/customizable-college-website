@@ -1,12 +1,11 @@
 <?php
 
-use Livewire\Attributes\{Description, Title};
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 use App\Models\Download;
 
 new
-#[Title('Downloads')]
-#[Description('Explore the various downloads available at Tetu Technical & Vocational College.')]
+#[Title('Downloads')] 
 class extends Component
 {
     public array $downloads = [];

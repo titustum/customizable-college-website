@@ -1,13 +1,12 @@
 <?php
 
-use Livewire\Attributes\{Description, Title};
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 use App\Models\TeamMember;
 use App\Models\Department;
 
 new
-#[Title('Principal\'s Office')]
-#[Description('Principal Office description')]
+#[Title('Principal\'s Office')] 
 class extends Component
 {
     public $principal;
@@ -30,9 +29,10 @@ class extends Component
                 $query->where('name', 'Principal');
             })
             ->first();
+        
 
 
-        $this->principal->email = "info@tetutvc.ac.ke";
+        // $this->principal->email = "info@tetutvc.ac.ke";
     
 
          
@@ -259,8 +259,7 @@ class extends Component
         <div class="container px-4 mx-auto">
             <div class="flex flex-col items-center justify-between md:flex-row">
                 <div class="mb-8 text-center md:mb-0 md:text-left" data-aos="fade-right">
-                    <h2 class="mb-4 text-3xl font-bold">Ready to Start Your Career in {{ $department->name
-                        }}?</h2>
+                    <h2 class="mb-4 text-3xl font-bold">Ready to Start Your Career in Tetu TVC?</h2>
                     <p class="max-w-xl text-white/90">Take the first step toward your future career. Apply
                         now for
                         our upcoming intake and join our community of successful graduates.</p>
