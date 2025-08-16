@@ -59,7 +59,30 @@ class extends Component {
                     </div>
                 </div>
                 @empty
-                <!-- Default fallback slide -->
+                <!-- Default fallback slide 1 -->
+                <div class="relative h-full bg-center bg-no-repeat bg-cover swiper-slide"
+                    style="background-image: url('{{ asset('images/default-hero.webp') }}');">
+                    <div class="absolute inset-0 bg-black/60"></div>
+                    <div class="container relative flex flex-col items-start justify-center h-full px-4 mx-auto">
+                        <div class="max-w-3xl py-24">
+                            <h1 class="mb-4 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+                                Welcome to Tetu TVC
+                            </h1>
+                            <h2 class="hidden text-xl lg:block md:text-2xl lg:text-3xl text-cyan-300">
+                                Empowering students with skills for the future
+                            </h2>
+                            <p class="mb-8 text-lg font-semibold text-green-300">
+                                Join our vibrant community of learners today.
+                            </p>
+                            <a href="{{ route('admissions') }}"
+                                class="px-6 py-3 mt-6 text-lg font-semibold text-white transition-colors bg-orange-600 rounded-full hover:bg-orange-500">
+                                Apply Now <i class="ml-2 fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Default fallback slide 2 -->
                 <div class="relative h-full bg-center bg-no-repeat bg-cover swiper-slide"
                     style="background-image: url('{{ asset('images/default-hero.webp') }}');">
                     <div class="absolute inset-0 bg-black/60"></div>

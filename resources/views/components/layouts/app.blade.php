@@ -448,6 +448,69 @@
 
 
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.heroSwiper', {
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                on: {
+                    init: function() {
+                        animateSlideElements(this.slides[this.activeIndex]);
+                    },
+                    slideChangeTransitionEnd: function() {
+                        animateSlideElements(this.slides[this.activeIndex]);
+                    },
+                },
+            });
+        
+            function animateSlideElements(slide) {
+                // Reset all animations
+                const elements = slide.querySelectorAll('[data-swiper-animation]');
+                elements.forEach(el => {
+                    el.classList.remove('animate__fadeInLeft', 'animate__fadeInUp', 'animate__zoomIn');
+                    el.style.opacity = '0';
+                });
+        
+                // Animate elements with delay
+                elements.forEach(el => {
+                    const animation = el.dataset.swiperAnimation;
+                    const delay = el.dataset.animationDelay || '0';
+                    
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.classList.add(animation);
+                    }, delay * 1000);
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            AOS.init({
+                duration: 1000, // Animation duration in milliseconds
+                once: true, // Whether animation should happen only once
+                easing: 'ease-in-out', // Easing function for the animation
+            });
+
+            });
+            
+    </script>
+
+
+
 </body>
 
 </html>
