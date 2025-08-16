@@ -6,7 +6,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Schema;
+use Filament\Schemas\Schema; 
 use Illuminate\Support\Str;
 
 class DepartmentForm
@@ -34,6 +34,7 @@ class DepartmentForm
                         TextInput::make('short_desc')
                             ->label('Short Description')
                             ->required()
+                            ->columnSpan(2)
                             ->maxLength(255),
                     ]),
 
