@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Department;
+use App\Models\Course;
+use App\Models\TeamMember;
+use App\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +16,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Create a default user
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Web Admin',
+            'email' => 'admin@mail.com',
         ]);
+
+        // Seed roles
+        $this->call([
+            RoleSeeder::class,
+        ]);
+
+        // Seed departments
+        $departments = Department::factory(5)->create();
+
+        // Seed courses and team members under each department
+        $roles = Role::all();
+
+        $departments->each(function ($department) use ($roles) {
+            // Courses
+            Course::factory(3)->create([
+                'department_id' => $department->id,
+            ]);
+
+            // Team Members
+            TeamMember::factory(4)->create([
+                'department_id' => $department->id,
+                'role_id' => $roles->random()->id,
+            ]);
+        });
     }
 }

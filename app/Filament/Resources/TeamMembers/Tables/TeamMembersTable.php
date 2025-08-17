@@ -16,15 +16,46 @@ class TeamMembersTable
         return $table
             ->columns([
                 ImageColumn::make('photo')
-                    ->label('Staff Photo'),
+                    ->label('Staff Photo')
+                    ->circular(), // Optional: makes photo round
+
                 TextColumn::make('name')
-                    ->label('Staff Name'),
-                TextColumn::make('course.name')
+                    ->label('Full Name')
+                    ->searchable()
+                    ->sortable(),
+
+                // TextColumn::make('email')
+                //     ->label('Email')
+                //     ->sortable()
+                //     ->searchable(),
+
+                TextColumn::make('department.name')
                     ->label('Department')
-                    ->formatStateUsing(fn ($state, $record) => $record->department?->name),
+                    ->sortable()
+                    ->searchable(),
+
+                TextColumn::make('role.name')
+                    ->label('Role')
+                    ->sortable()
+                    ->searchable(),
+
+                // TextColumn::make('section_assigned')
+                //     ->label('Section Assigned')
+                //     ->searchable()
+                //     ->sortable()
+                //     ->placeholder('-'),
+
+                TextColumn::make('qualification')
+                    ->label('Qualification')
+                    ->sortable()
+                    ->searchable(),
+
+                // TextColumn::make('graduation_year')
+                //     ->label('Graduation Year')
+                //     ->sortable(),
             ])
             ->filters([
-                //
+                // Add any filters here if needed
             ])
             ->recordActions([
                 EditAction::make(),

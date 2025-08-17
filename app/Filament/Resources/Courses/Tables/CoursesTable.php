@@ -19,6 +19,8 @@ class CoursesTable
                     ->label('Photo')
                     ->circular(),
                 TextColumn::make('name')->label('Course Name')->searchable(), 
+                TextColumn::make('department.name')
+                    ->label('Department'),
                 TextColumn::make('created_at')->label('Date Applied')->dateTime('M d, Y'),
             ])
             ->filters([
