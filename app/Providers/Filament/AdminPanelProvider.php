@@ -29,8 +29,13 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Orange,
             ])
+            ->font('Inter')
+            ->favicon(asset('images/logo.jpeg')) 
+            // ->brandLogo(asset('images/logo.jpeg')) 
+            ->brandName('Web Admin')
+            ->globalSearchKeyBindings([ 'ctrl+k', 'cmd+k', ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([
@@ -38,8 +43,15 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+
+                \App\Filament\Widgets\StatsOverview::class,
+                \App\Filament\Widgets\RecentApplications::class,
+
+                // \App\Filament\Widgets\LatestNewsWidget::class,
+                // \App\Filament\Widgets\QuickLinksWidget::class,
+
+                // AccountWidget::class,
+                // FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

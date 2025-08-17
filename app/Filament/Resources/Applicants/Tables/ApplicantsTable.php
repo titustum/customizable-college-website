@@ -1,27 +1,29 @@
 <?php
 
-namespace App\Filament\Resources\TeamMembers\Tables;
+namespace App\Filament\Resources\Applicants\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn; 
 
-class TeamMembersTable
+class ApplicantsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                ImageColumn::make('photo')
-                    ->label('Staff Photo'),
                 TextColumn::make('name')
-                    ->label('Staff Name'),
+                    ->label('Applicant Name'),
                 TextColumn::make('course.name')
-                    ->label('Department')
-                    ->formatStateUsing(fn ($state, $record) => $record->department?->name),
+                    ->label('Course Name')
+                    ->formatStateUsing(fn ($state, $record) => $record->course?->name),
+                TextColumn::make('name')
+                    ->label('Applicant Name'),
+                TextColumn::make('created_at')
+                    ->label('Applied On'),
+
             ])
             ->filters([
                 //
