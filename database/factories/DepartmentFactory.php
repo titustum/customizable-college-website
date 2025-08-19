@@ -19,7 +19,7 @@ class DepartmentFactory extends Factory
     {
         $faker = \Faker\Factory::create('en_KE');
 
-        $name = $faker->unique()->word . ' Department';
+        $name = $faker->unique()->word.' Department';
 
         return [
             'name' => $name,

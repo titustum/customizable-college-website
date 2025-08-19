@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SuccessStory extends Model
 {
     protected $fillable = [
-        'name', 'photo', 'course', 'year', 'occupation', 'company', 'statement'
+        'name', 'photo', 'course', 'year', 'occupation', 'company', 'statement',
     ];
 
     public function department()
@@ -17,6 +17,6 @@ class SuccessStory extends Model
 
     public function getPhotoUrlAttribute()
     {
-        return asset('storage/' . $this->photo);
+        return asset('storage/'.$this->photo);
     }
 }

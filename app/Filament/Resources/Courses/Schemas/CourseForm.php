@@ -2,12 +2,10 @@
 
 namespace App\Filament\Resources\Courses\Schemas;
 
-use App\Models\Department;
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Schema;
 
 class CourseForm
 {
@@ -17,7 +15,7 @@ class CourseForm
             Select::make('department_id')
                 ->label('Department')
                 ->relationship('department', 'name')
-                ->searchable() 
+                ->searchable()
                 ->preload()
                 ->required(),
 

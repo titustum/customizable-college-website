@@ -22,7 +22,6 @@ class ApplicantResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-
     protected static ?int $navigationSort = 3;
 
     public static function form(Schema $schema): Schema
@@ -49,5 +48,5 @@ class ApplicantResource extends Resource
             'create' => CreateApplicant::route('/create'),
             'edit' => EditApplicant::route('/{record}/edit'),
         ];
-    } 
+    }
 }

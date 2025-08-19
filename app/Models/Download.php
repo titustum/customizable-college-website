@@ -12,8 +12,9 @@ class Download extends Model
         'type',
         'category',
         'size',
-        'description'
+        'description',
     ];
+
     protected $casts = [
         'size' => 'integer',
     ];

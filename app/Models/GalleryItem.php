@@ -11,7 +11,7 @@ class GalleryItem extends Model
         'category', // Category of the gallery item
         'description',
         'image',
-        'gallery_id'
+        'gallery_id',
     ];
 
     public function gallery()

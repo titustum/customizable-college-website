@@ -16,21 +16,21 @@ class CourseFactory extends Factory
         return [
             'department_id' => $department->id,
             'name' => $faker->randomElement([
-                'Diploma in '. $department->name,
-                'Certificate in '. $department->name,
-                'Artisan in '. $department->name, 
+                'Diploma in '.$department->name,
+                'Certificate in '.$department->name,
+                'Artisan in '.$department->name,
             ]),
             'photo' => 'courses/placeholder.png',
             'requirement' => $faker->randomElement([
                 'KCSE C+ and above',
                 'KCSE D+ or relevant Certificate',
-                'KCSE D (plain) and Artisan Certificate'
+                'KCSE D (plain) and Artisan Certificate',
             ]),
             'duration' => $faker->randomElement([
-                '2 years', '3 years', '1 year', '6 months'
+                '2 years', '3 years', '1 year', '6 months',
             ]),
             'exam_body' => $faker->randomElement([
-                'KNEC', 'TVETA', 'CDACC', 'NITA'
+                'KNEC', 'TVETA', 'CDACC', 'NITA',
             ]),
         ];
     }

@@ -10,11 +10,9 @@ use Illuminate\Database\Eloquent\Builder;
 
 class RecentApplications extends TableWidget
 {
-
-    protected static ?int $sort = 2; 
+    protected static ?int $sort = 2;
 
     protected int|string|array $columnSpan = 'full'; // Ensure it's full width and first
-
 
     public function table(Table $table): Table
     {

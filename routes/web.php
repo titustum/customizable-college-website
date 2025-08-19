@@ -1,32 +1,31 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Volt::route('/', 'pages.home')->name('home');
 
 Volt::route('/about', 'pages.about')
-        ->name('about');
+    ->name('about');
 Volt::route('/contact', 'pages.contact')
-        ->name('contact');
+    ->name('contact');
 Volt::route('/admissions', 'pages.admissions')
-        ->name('admissions');
+    ->name('admissions');
 Volt::route('/departments', 'pages.departments')
-        ->name('departments');
+    ->name('departments');
 Volt::route('/staff-members', 'pages.staff-members')
-        ->name('staff.members');
+    ->name('staff.members');
 Volt::route('/principal-office', 'pages.principal-office')
-        ->name('principal.office');
+    ->name('principal.office');
 Volt::route('/downloads', 'pages.downloads')
-        ->name('downloads');
+    ->name('downloads');
 Volt::route('/courses', 'pages.courses')
-        ->name('courses');
+    ->name('courses');
 Volt::route('/administration', 'pages.administration')
-        ->name('administration');
+    ->name('administration');
 Volt::route('/team', 'pages.team-members')
-        ->name('team');
+    ->name('team');
 Volt::route('/departments/{slug}', 'pages.department')
-        ->name('department');
-        ///
+    ->name('department');
+// /
 Volt::route('/test-application', 'pages.test-admission')
-        ->name('test.application');
+    ->name('test.application');

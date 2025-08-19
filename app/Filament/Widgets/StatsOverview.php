@@ -3,21 +3,19 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Applicant;
+use App\Models\Course;
 use App\Models\Department;
-use App\Models\Course; 
-use App\Models\TeamMember;  
+use App\Models\TeamMember;
 // use App\Models\NewsPost;
+use Filament\Support\Icons\Heroicon;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Filament\Support\Icons\Heroicon;
 
 class StatsOverview extends StatsOverviewWidget
 {
-
-    protected static ?int $sort = 1; 
+    protected static ?int $sort = 1;
 
     protected int|string|array $columnSpan = 'full'; // Ensure it's full width and first
-
 
     protected function getStats(): array
     {

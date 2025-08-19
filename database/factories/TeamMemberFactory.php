@@ -16,14 +16,14 @@ class TeamMemberFactory extends Factory
             'department_id' => Department::inRandomOrder()->first()?->id ?? Department::factory(),
             'role_id' => Role::inRandomOrder()->first()?->id ?? Role::factory(),
             'section_assigned' => $faker->optional()->randomElement([
-                'Games', 'Clubs', 'Research', 'Library', 'Guidance & Counseling', null
+                'Games', 'Clubs', 'Research', 'Library', 'Guidance & Counseling', null,
             ]),
             'email' => $faker->unique()->optional()->safeEmail(),
             'name' => $faker->name(),
             'photo' => 'team/placeholder.png',
             'qualification' => $faker->randomElement([
                 'BSc. Computer Science', 'Diploma in Agriculture', 'M.Ed in Educational Admin',
-                'B.Ed in Science', 'Diploma in Cosmetology'
+                'B.Ed in Science', 'Diploma in Cosmetology',
             ]),
             'graduation_year' => $faker->year(),
         ];
