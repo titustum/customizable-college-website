@@ -20,7 +20,7 @@ class CourseFactory extends Factory
                 'Certificate in '.$department->name,
                 'Artisan in '.$department->name,
             ]),
-            'photo' => 'courses/placeholder.png',
+            'photo' => 'image-placeholder.webp',
             'requirement' => $faker->randomElement([
                 'KCSE C+ and above',
                 'KCSE D+ or relevant Certificate',

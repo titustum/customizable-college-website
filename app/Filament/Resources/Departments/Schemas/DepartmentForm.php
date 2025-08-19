@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\Departments\Schemas;
 
+use Faker\Core\File;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
 
 class DepartmentForm
@@ -16,14 +18,16 @@ class DepartmentForm
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
-                TextInput::make('photo')
+                FileUpload::make('photo')
+                    ->disk('public')
                     ->required(),
                 TextInput::make('short_desc')
                     ->required(),
                 Textarea::make('full_desc')
                     ->required()
                     ->columnSpanFull(),
-                TextInput::make('banner_pic')
+                FileUpload::make('banner_pic')
+                    ->disk('public')
                     ->required(),
             ]);
     }

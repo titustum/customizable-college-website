@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class DepartmentsTable
@@ -15,24 +16,15 @@ class DepartmentsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('photo')
+                    ->disk('public'),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('slug')
                     ->searchable(),
-                TextColumn::make('photo')
-                    ->searchable(),
-                TextColumn::make('short_desc')
-                    ->searchable(),
-                TextColumn::make('banner_pic')
-                    ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->dateTime() 
+                    ->toggleable(isToggledHiddenByDefault: true)
             ])
             ->filters([
                 //
