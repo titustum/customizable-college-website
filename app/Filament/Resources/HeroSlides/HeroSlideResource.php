@@ -24,6 +24,8 @@ class HeroSlideResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    protected static ?int $navigationSort = 8;
+
     public static function form(Schema $schema): Schema
     {
         return HeroSlideForm::configure($schema);

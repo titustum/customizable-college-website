@@ -24,6 +24,8 @@ class ApplicantResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'full_name';
 
+    protected static ?int $navigationSort = 1;
+
     public static function form(Schema $schema): Schema
     {
         return ApplicantForm::configure($schema);
