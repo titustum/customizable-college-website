@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('upload_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // e.g. "Tenders", "Vacancies"
-            $table->string('file_path'); //path
+            $table->string('file_path'); // path
             $table->string('description')->nullable(); // optional description
             $table->string('slug')->unique()->nullable(); // optional, for routes
             $table->timestamps();

@@ -24,7 +24,7 @@ class UploadForm
                             ->required(),
                         Select::make('upload_category')
                             ->required()
-                            ->options(fn () => \App\Models\UploadCategory::pluck('name', 'id')), 
+                            ->options(fn () => \App\Models\UploadCategory::pluck('name', 'id')),
                         FileUpload::make('file_path')
                             ->disk('public')
                             ->required(),
