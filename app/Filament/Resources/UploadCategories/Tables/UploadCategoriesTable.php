@@ -16,7 +16,7 @@ class UploadCategoriesTable
         return $table
             ->columns([
                 TextColumn::make('name'),
-                TextColumn::make('slug')
+                TextColumn::make('slug'),
             ])
             ->filters([
                 //

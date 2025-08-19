@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\FileUpload;
-use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 
 class TeamMemberForm
 {

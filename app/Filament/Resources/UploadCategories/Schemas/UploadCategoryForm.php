@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\UploadCategories\Schemas;
 
-use Filament\Forms\Components\TextInput; 
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class UploadCategoryForm

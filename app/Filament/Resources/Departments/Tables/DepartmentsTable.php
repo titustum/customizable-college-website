@@ -6,8 +6,8 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class DepartmentsTable
@@ -23,8 +23,8 @@ class DepartmentsTable
                 TextColumn::make('slug')
                     ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime() 
-                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->dateTime()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

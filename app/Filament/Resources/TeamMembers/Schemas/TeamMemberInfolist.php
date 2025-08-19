@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
-use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\ImageEntry;
-use Filament\Schemas\Schema;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 
 class TeamMemberInfolist
 {

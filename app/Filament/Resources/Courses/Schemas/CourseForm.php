@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\Courses\Schemas;
 
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
-use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 
 class CourseForm
 {
@@ -14,26 +14,25 @@ class CourseForm
         return $schema
             ->components([
 
-                 Section::make('Course Details')
-                ->columns(2)
-                ->columnSpan('full')
-                ->schema([
+                Section::make('Course Details')
+                    ->columns(2)
+                    ->columnSpan('full')
+                    ->schema([
 
+                        Select::make('department_id')
+                            ->required()
+                            ->options(fn () => \App\Models\Department::pluck('name', 'id')),
+                        TextInput::make('name')
+                            ->required(),
+                        TextInput::make('photo'),
+                        TextInput::make('requirement')
+                            ->required(),
+                        TextInput::make('duration')
+                            ->required(),
+                        TextInput::make('exam_body')
+                            ->required(),
 
-                Select::make('department_id')
-                    ->required()
-                    ->options(fn () => \App\Models\Department::pluck('name', 'id')),
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('photo'),
-                TextInput::make('requirement')
-                    ->required(),
-                TextInput::make('duration')
-                    ->required(),
-                TextInput::make('exam_body')
-                    ->required(),
-
-                ])
+                    ]),
             ]);
     }
 }

@@ -6,8 +6,8 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class TeamMembersTable
@@ -28,17 +28,17 @@ class TeamMembersTable
                     ->sortable(),
                 TextColumn::make('section_assigned')
                     ->searchable()
-                     ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable()
-                     ->toggleable(isToggledHiddenByDefault: true), 
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('qualification')
                     ->searchable()
-                     ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('graduation_year')
                     ->searchable()
-                     ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

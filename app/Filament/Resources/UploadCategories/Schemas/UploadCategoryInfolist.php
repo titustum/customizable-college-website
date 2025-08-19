@@ -12,7 +12,7 @@ class UploadCategoryInfolist
         return $schema
             ->components([
                 TextEntry::make('name'),
-                TextEntry::make('slug')
+                TextEntry::make('slug'),
             ]);
     }
 }

@@ -6,8 +6,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Schema;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 
 class SuccessStoryForm
 {
@@ -16,34 +16,34 @@ class SuccessStoryForm
         return $schema
             ->components([
 
-                 Section::make('Success Story Details')
-                ->columns(2)
-                ->columnSpan('full')
-                ->schema([
+                Section::make('Success Story Details')
+                    ->columns(2)
+                    ->columnSpan('full')
+                    ->schema([
 
-                Select::make('department_id')
-                    ->required()
-                    ->options(fn () => \App\Models\Department::pluck('name', 'id')),
+                        Select::make('department_id')
+                            ->required()
+                            ->options(fn () => \App\Models\Department::pluck('name', 'id')),
 
-                TextInput::make('name')
-                    ->required(),
-                FileUpload::make('photo')
-                    ->disk('public')
-                    ->image()
-                    ->required(),
-                TextInput::make('course')
-                    ->required(),
-                TextInput::make('year')
-                    ->required(),
-                TextInput::make('occupation')
-                    ->required(),
-                TextInput::make('company')
-                    ->required(),
-                Textarea::make('statement')
-                    ->required()
-                    ->columnSpanFull(),
+                        TextInput::make('name')
+                            ->required(),
+                        FileUpload::make('photo')
+                            ->disk('public')
+                            ->image()
+                            ->required(),
+                        TextInput::make('course')
+                            ->required(),
+                        TextInput::make('year')
+                            ->required(),
+                        TextInput::make('occupation')
+                            ->required(),
+                        TextInput::make('company')
+                            ->required(),
+                        Textarea::make('statement')
+                            ->required()
+                            ->columnSpanFull(),
 
-                ])
+                    ]),
             ]);
     }
 }
