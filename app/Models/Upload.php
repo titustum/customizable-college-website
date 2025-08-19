@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Upload extends Model
 {
-    protected $fillable = ['name', 'slug', 'upload_category_id'];
+    protected $fillable = ['name', 'file_path', 'slug', 'upload_category_id'];
 
     public function category()
     {
