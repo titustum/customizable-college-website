@@ -20,7 +20,7 @@ class UploadResource extends Resource
 {
     protected static ?string $model = Upload::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocument;
 
     protected static ?string $recordTitleAttribute = 'name';
 

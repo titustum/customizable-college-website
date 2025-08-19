@@ -5,6 +5,7 @@ namespace App\Filament\Resources\HeroSlides\Schemas;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class HeroSlideInfolist
 {
@@ -12,6 +13,12 @@ class HeroSlideInfolist
     {
         return $schema
             ->components([
+
+                 Section::make('Hero Slide Details')
+                ->columns(2)
+                ->columnSpan('full')
+                ->schema([
+
                 ImageEntry::make('image')
                     ->disk('public'),
                 TextEntry::make('title'),
@@ -23,6 +30,8 @@ class HeroSlideInfolist
                     ->dateTime(),
                 TextEntry::make('updated_at')
                     ->dateTime(),
+
+                ])
             ]);
     }
 }

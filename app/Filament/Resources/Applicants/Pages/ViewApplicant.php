@@ -3,19 +3,17 @@
 namespace App\Filament\Resources\Applicants\Pages;
 
 use App\Filament\Resources\Applicants\ApplicantResource;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\ViewAction;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Actions\EditAction;
+use Filament\Resources\Pages\ViewRecord;
 
-class EditApplicant extends EditRecord
+class ViewApplicant extends ViewRecord
 {
     protected static string $resource = ApplicantResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            ViewAction::make(),
-            DeleteAction::make(),
+            EditAction::make(),
         ];
     }
 }

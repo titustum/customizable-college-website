@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\UploadCategories\Schemas;
 
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
 class UploadCategoryInfolist
@@ -10,7 +11,8 @@ class UploadCategoryInfolist
     {
         return $schema
             ->components([
-                //
+                TextEntry::make('name'),
+                TextEntry::make('slug')
             ]);
     }
 }

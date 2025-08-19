@@ -5,7 +5,9 @@ namespace App\Filament\Resources\Applicants;
 use App\Filament\Resources\Applicants\Pages\CreateApplicant;
 use App\Filament\Resources\Applicants\Pages\EditApplicant;
 use App\Filament\Resources\Applicants\Pages\ListApplicants;
+use App\Filament\Resources\Applicants\Pages\ViewApplicant;
 use App\Filament\Resources\Applicants\Schemas\ApplicantForm;
+use App\Filament\Resources\Applicants\Schemas\ApplicantInfolist;
 use App\Filament\Resources\Applicants\Tables\ApplicantsTable;
 use App\Models\Applicant;
 use BackedEnum;
@@ -18,15 +20,18 @@ class ApplicantResource extends Resource
 {
     protected static ?string $model = Applicant::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocument;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUser;
 
-    protected static ?string $recordTitleAttribute = 'name';
-
-    protected static ?int $navigationSort = 3;
+    protected static ?string $recordTitleAttribute = 'full_name';
 
     public static function form(Schema $schema): Schema
     {
         return ApplicantForm::configure($schema);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return ApplicantInfolist::configure($schema);
     }
 
     public static function table(Table $table): Table
@@ -46,6 +51,7 @@ class ApplicantResource extends Resource
         return [
             'index' => ListApplicants::route('/'),
             'create' => CreateApplicant::route('/create'),
+            'view' => ViewApplicant::route('/{record}'),
             'edit' => EditApplicant::route('/{record}/edit'),
         ];
     }

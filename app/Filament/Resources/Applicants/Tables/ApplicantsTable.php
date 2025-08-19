@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Applicants\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -14,21 +15,50 @@ class ApplicantsTable
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->label('Applicant Name'),
-                TextColumn::make('course.name')
-                    ->label('Course Name')
-                    ->formatStateUsing(fn ($state, $record) => $record->course?->name),
-                TextColumn::make('name')
-                    ->label('Applicant Name'),
+                TextColumn::make('full_name')
+                    ->searchable(),
+                TextColumn::make('phone')
+                    ->searchable(),
+                TextColumn::make('alternative_phone')
+                    ->searchable(),
+                TextColumn::make('gender')
+                    ->searchable(),
+                TextColumn::make('id_number')
+                    ->searchable(),
+                TextColumn::make('course_id')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('start_term')
+                    ->searchable(),
+                TextColumn::make('high_school')
+                    ->searchable(),
+                TextColumn::make('high_school_grade')
+                    ->searchable(),
+                TextColumn::make('kcse_index_number')
+                    ->searchable(),
+                TextColumn::make('kcse_year')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('nemis_upi_number')
+                    ->searchable(),
+                TextColumn::make('parent_name')
+                    ->searchable(),
+                TextColumn::make('parent_phone')
+                    ->searchable(),
                 TextColumn::make('created_at')
-                    ->label('Applied On'),
-
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([

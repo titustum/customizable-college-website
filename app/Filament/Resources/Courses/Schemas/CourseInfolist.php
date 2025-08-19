@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Courses\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class CourseInfolist
 {
@@ -11,7 +12,13 @@ class CourseInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('department_id')
+
+                 Section::make('Course Details')
+                ->columns(2)
+                ->columnSpan('full')
+                ->schema([
+
+                TextEntry::make('department.name')
                     ->numeric(),
                 TextEntry::make('name'),
                 TextEntry::make('photo'),
@@ -22,6 +29,8 @@ class CourseInfolist
                     ->dateTime(),
                 TextEntry::make('updated_at')
                     ->dateTime(),
+
+                ])
             ]);
     }
 }

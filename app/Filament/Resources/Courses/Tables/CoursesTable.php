@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class CoursesTable
@@ -15,15 +16,16 @@ class CoursesTable
     {
         return $table
             ->columns([
-                TextColumn::make('department_id')
-                    ->numeric()
-                    ->sortable(),
+                ImageColumn::make('photo')
+                    ->disk('public'),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('photo')
-                    ->searchable(),
+                TextColumn::make('department.name')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('requirement')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('duration')
                     ->searchable(),
                 TextColumn::make('exam_body')

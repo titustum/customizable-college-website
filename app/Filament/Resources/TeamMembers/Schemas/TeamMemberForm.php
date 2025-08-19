@@ -3,32 +3,62 @@
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class TeamMemberForm
 {
     public static function configure(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                TextInput::make('department_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('role_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('section_assigned'),
-                TextInput::make('email')
-                    ->label('Email address')
-                    ->email(),
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('photo'),
-                TextInput::make('qualification')
-                    ->required(),
-                TextInput::make('graduation_year')
-                    ->required()
-                    ->default('2022'),
-            ]);
+        return $schema->components([
+            Section::make('Personal Information')
+                ->columns(2)
+                ->columnSpan('full')
+                ->schema([
+                    TextInput::make('name')
+                        ->label('Full Name')
+                        ->required(),
+
+                    TextInput::make('email')
+                        ->label('Email Address')
+                        ->email()
+                        ->required(),
+
+                    FileUpload::make('photo')
+                        ->label('Profile Photo')
+                        ->disk('public')
+                        ->image()
+                        ->imageEditor()
+                        ->required(),
+
+                    Select::make('department_id')
+                        ->label('Department')
+                        ->options(fn () => \App\Models\Department::pluck('name', 'id'))
+                        ->searchable()
+                        ->required(),
+
+                    Select::make('role_id')
+                        ->label('Role')
+                        ->options(fn () => \App\Models\Role::pluck('name', 'id'))
+                        ->searchable()
+                        ->required(),
+
+                    TextInput::make('section_assigned')
+                        ->label('Section Assigned')
+                        ->nullable(),
+
+                    TextInput::make('qualification')
+                        ->label('Qualification')
+                        ->required(),
+
+                    TextInput::make('graduation_year')
+                        ->label('Graduation Year')
+                        ->numeric()
+                        ->default(now()->year)
+                        ->required(),
+                ]),
+        ]);
     }
 }

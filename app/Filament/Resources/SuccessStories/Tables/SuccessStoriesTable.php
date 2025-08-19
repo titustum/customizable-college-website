@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class SuccessStoriesTable
@@ -20,8 +21,8 @@ class SuccessStoriesTable
                     ->sortable(),
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('photo')
-                    ->searchable(),
+                ImageColumn::make('photo')
+                    ->disk('public'),
                 TextColumn::make('course')
                     ->searchable(),
                 TextColumn::make('year')

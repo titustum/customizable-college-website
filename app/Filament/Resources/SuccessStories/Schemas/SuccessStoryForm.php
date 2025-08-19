@@ -2,9 +2,12 @@
 
 namespace App\Filament\Resources\SuccessStories\Schemas;
 
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class SuccessStoryForm
 {
@@ -12,12 +15,21 @@ class SuccessStoryForm
     {
         return $schema
             ->components([
-                TextInput::make('department_id')
+
+                 Section::make('Success Story Details')
+                ->columns(2)
+                ->columnSpan('full')
+                ->schema([
+
+                Select::make('department_id')
                     ->required()
-                    ->numeric(),
+                    ->options(fn () => \App\Models\Department::pluck('name', 'id')),
+
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('photo')
+                FileUpload::make('photo')
+                    ->disk('public')
+                    ->image()
                     ->required(),
                 TextInput::make('course')
                     ->required(),
@@ -30,6 +42,8 @@ class SuccessStoryForm
                 Textarea::make('statement')
                     ->required()
                     ->columnSpanFull(),
+
+                ])
             ]);
     }
 }

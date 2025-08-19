@@ -7,6 +7,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class DepartmentForm
 {
@@ -14,6 +15,13 @@ class DepartmentForm
     {
         return $schema
             ->components([
+
+                 Section::make('Department Details')
+                ->columns(2)
+                ->columnSpan('full')
+                ->schema([
+
+
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('slug')
@@ -29,6 +37,8 @@ class DepartmentForm
                 FileUpload::make('banner_pic')
                     ->disk('public')
                     ->required(),
+
+                ])
             ]);
     }
 }

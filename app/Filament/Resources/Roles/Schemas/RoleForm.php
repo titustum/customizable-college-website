@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Roles\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class RoleForm
 {
@@ -11,8 +12,12 @@ class RoleForm
     {
         return $schema
             ->components([
+
+                 Section::make('Role Details') 
+                ->schema([
                 TextInput::make('name')
                     ->required(),
+                ])
             ]);
     }
 }

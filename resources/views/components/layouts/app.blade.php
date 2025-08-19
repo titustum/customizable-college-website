@@ -353,7 +353,7 @@
                     <p class="mb-4 text-gray-400">Subscribe to our newsletter for updates and news.</p>
                     <form class="flex">
                         <input type="email" placeholder="Enter your email"
-                            class="w-full px-3 py-2 text-gray-800 rounded-l-md focus:outline-none focus:ring-2 focus:ring-orange-400">
+                            class="w-full px-3 py-2 bg-white text-gray-800 rounded-l-md focus:outline-none focus:ring-2 focus:ring-orange-400">
                         <button type="submit"
                             class="px-4 py-2 transition duration-300 bg-orange-600 hover:bg-orange-700 rounded-r-md">
                             Subscribe

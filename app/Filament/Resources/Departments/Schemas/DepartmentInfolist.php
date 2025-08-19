@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Departments\Schemas;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
 
 class DepartmentInfolist
 {
@@ -12,6 +13,12 @@ class DepartmentInfolist
     {
         return $schema
             ->components([
+
+                Section::make('Department Details')
+                ->columns(2)
+                ->columnSpan('full')
+                ->schema([
+
                 TextEntry::make('name'),
                 TextEntry::make('slug'),
                 ImageEntry::make('photo')->disk('public'),
@@ -21,6 +28,8 @@ class DepartmentInfolist
                     ->dateTime(),
                 TextEntry::make('updated_at')
                     ->dateTime(),
+
+                ])
             ]);
     }
 }
