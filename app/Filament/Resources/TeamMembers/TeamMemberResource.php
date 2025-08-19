@@ -5,7 +5,9 @@ namespace App\Filament\Resources\TeamMembers;
 use App\Filament\Resources\TeamMembers\Pages\CreateTeamMember;
 use App\Filament\Resources\TeamMembers\Pages\EditTeamMember;
 use App\Filament\Resources\TeamMembers\Pages\ListTeamMembers;
+use App\Filament\Resources\TeamMembers\Pages\ViewTeamMember;
 use App\Filament\Resources\TeamMembers\Schemas\TeamMemberForm;
+use App\Filament\Resources\TeamMembers\Schemas\TeamMemberInfolist;
 use App\Filament\Resources\TeamMembers\Tables\TeamMembersTable;
 use App\Models\TeamMember;
 use BackedEnum;
@@ -18,17 +20,18 @@ class TeamMemberResource extends Resource
 {
     protected static ?string $model = TeamMember::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'name';
-
-    protected static ?string $navigationLabel = 'Staff Members';
-
-    protected static ?int $navigationSort = 4;
 
     public static function form(Schema $schema): Schema
     {
         return TeamMemberForm::configure($schema);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return TeamMemberInfolist::configure($schema);
     }
 
     public static function table(Table $table): Table
@@ -48,6 +51,7 @@ class TeamMemberResource extends Resource
         return [
             'index' => ListTeamMembers::route('/'),
             'create' => CreateTeamMember::route('/create'),
+            'view' => ViewTeamMember::route('/{record}'),
             'edit' => EditTeamMember::route('/{record}/edit'),
         ];
     }

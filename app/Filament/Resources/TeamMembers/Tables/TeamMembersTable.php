@@ -5,7 +5,7 @@ namespace App\Filament\Resources\TeamMembers\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\ImageColumn;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,49 +15,39 @@ class TeamMembersTable
     {
         return $table
             ->columns([
-                ImageColumn::make('photo')
-                    ->label('Staff Photo')
-                    ->circular(), // Optional: makes photo round
-
-                TextColumn::make('name')
-                    ->label('Full Name')
-                    ->searchable()
+                TextColumn::make('department_id')
+                    ->numeric()
                     ->sortable(),
-
-                // TextColumn::make('email')
-                //     ->label('Email')
-                //     ->sortable()
-                //     ->searchable(),
-
-                TextColumn::make('department.name')
-                    ->label('Department')
-                    ->sortable()
+                TextColumn::make('role_id')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('section_assigned')
                     ->searchable(),
-
-                TextColumn::make('role.name')
-                    ->label('Role')
-                    ->sortable()
+                TextColumn::make('email')
+                    ->label('Email address')
                     ->searchable(),
-
-                // TextColumn::make('section_assigned')
-                //     ->label('Section Assigned')
-                //     ->searchable()
-                //     ->sortable()
-                //     ->placeholder('-'),
-
+                TextColumn::make('name')
+                    ->searchable(),
+                TextColumn::make('photo')
+                    ->searchable(),
                 TextColumn::make('qualification')
-                    ->label('Qualification')
-                    ->sortable()
                     ->searchable(),
-
-                // TextColumn::make('graduation_year')
-                //     ->label('Graduation Year')
-                //     ->sortable(),
+                TextColumn::make('graduation_year')
+                    ->searchable(),
+                TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                // Add any filters here if needed
+                //
             ])
             ->recordActions([
+                ViewAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([

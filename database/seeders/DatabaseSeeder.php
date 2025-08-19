@@ -25,10 +25,12 @@ class DatabaseSeeder extends Seeder
         // Seed roles
         $this->call([
             RoleSeeder::class,
+            UploadCategorySeeder::class,
+            DepartmentSeeder::class,
         ]);
 
         // Seed departments
-        $departments = Department::factory(5)->create();
+        $departments = Department::all();
 
         // Seed courses and team members under each department
         $roles = Role::all();

@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Filament\Resources\Uploads\Schemas;
+
+use Filament\Schemas\Schema;
+
+class UploadInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                //
+            ]);
+    }
+}

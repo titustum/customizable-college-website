@@ -5,7 +5,9 @@ namespace App\Filament\Resources\Departments;
 use App\Filament\Resources\Departments\Pages\CreateDepartment;
 use App\Filament\Resources\Departments\Pages\EditDepartment;
 use App\Filament\Resources\Departments\Pages\ListDepartments;
+use App\Filament\Resources\Departments\Pages\ViewDepartment;
 use App\Filament\Resources\Departments\Schemas\DepartmentForm;
+use App\Filament\Resources\Departments\Schemas\DepartmentInfolist;
 use App\Filament\Resources\Departments\Tables\DepartmentsTable;
 use App\Models\Department;
 use BackedEnum;
@@ -18,15 +20,18 @@ class DepartmentResource extends Resource
 {
     protected static ?string $model = Department::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingLibrary;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'name';
-
-    protected static ?int $navigationSort = 1;
 
     public static function form(Schema $schema): Schema
     {
         return DepartmentForm::configure($schema);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return DepartmentInfolist::configure($schema);
     }
 
     public static function table(Table $table): Table
@@ -46,6 +51,7 @@ class DepartmentResource extends Resource
         return [
             'index' => ListDepartments::route('/'),
             'create' => CreateDepartment::route('/create'),
+            'view' => ViewDepartment::route('/{record}'),
             'edit' => EditDepartment::route('/{record}/edit'),
         ];
     }
