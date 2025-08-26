@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Applicants\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -18,8 +19,13 @@ class ApplicantForm
                     ->required(),
                 TextInput::make('alternative_phone')
                     ->tel(),
-                TextInput::make('gender')
-                    ->required(),
+                Select::make('gender') 
+                    ->required()
+                    ->options([
+                        'male' => 'Male',
+                        'female' => 'Female',
+                        'other' => 'Other',
+                    ]),
                 TextInput::make('id_number')
                     ->required(),
                 TextInput::make('course_id')

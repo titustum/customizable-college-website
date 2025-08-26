@@ -18,33 +18,17 @@ class ApplicantsTable
                 TextColumn::make('full_name')
                     ->searchable(),
                 TextColumn::make('phone')
-                    ->searchable(),
-                TextColumn::make('alternative_phone')
-                    ->searchable(),
+                    ->searchable(), 
                 TextColumn::make('gender')
-                    ->searchable(),
-                TextColumn::make('id_number')
-                    ->searchable(),
-                TextColumn::make('course_id')
-                    ->numeric()
+                    ->searchable(), 
+                TextColumn::make('course.name')
                     ->sortable(),
                 TextColumn::make('start_term')
                     ->searchable(),
                 TextColumn::make('high_school')
                     ->searchable(),
                 TextColumn::make('high_school_grade')
-                    ->searchable(),
-                TextColumn::make('kcse_index_number')
-                    ->searchable(),
-                TextColumn::make('kcse_year')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('nemis_upi_number')
-                    ->searchable(),
-                TextColumn::make('parent_name')
-                    ->searchable(),
-                TextColumn::make('parent_phone')
-                    ->searchable(),
+                    ->searchable(), 
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
