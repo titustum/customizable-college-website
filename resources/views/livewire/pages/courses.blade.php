@@ -86,7 +86,7 @@ class extends Component
                         </thead>
                         <tbody>
                             @foreach($department->courses as $course)
-                            <tr class="border-b">
+                            <tr class="border-b border-gray-200">
                                 <td class="px-2 py-2 sm:px-4 sm:py-3">
                                     <div class="font-medium">{{$course->name}}</div>
                                     <div class="text-sm text-gray-500 sm:hidden">{{$course->requirement}}</div>

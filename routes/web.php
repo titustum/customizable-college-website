@@ -14,6 +14,8 @@ Volt::route('/departments', 'pages.departments')
     ->name('departments');
 Volt::route('/staff-members', 'pages.staff-members')
     ->name('staff.members');
+Volt::route('/sucess-stories', 'pages.success-stories')
+    ->name('success.stories');
 Volt::route('/principal-office', 'pages.principal-office')
     ->name('principal.office');
 Volt::route('/downloads', 'pages.downloads')

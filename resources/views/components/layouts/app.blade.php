@@ -33,7 +33,7 @@
 
 
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -55,45 +55,20 @@
     <header class="text-white bg-gray-900">
         <div class="container flex items-center justify-between px-4 py-2 mx-auto text-sm lg:px-8">
             <nav class="items-center hidden space-x-4 md:flex">
-                <!-- Facebook -->
                 <a href="https://facebook.com/TetuTechnicalVocationalCollege" aria-label="Facebook"
-                    class="transition-colors hover:text-orange-400" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 24 24"
-                        aria-hidden="true">
-                        <path
-                            d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 5 3.66 9.13 8.44 9.88v-6.99h-2.54v-2.89h2.54V9.83c0-2.51 1.5-3.9 3.79-3.9 1.1 0 2.25.2 2.25.2v2.47h-1.27c-1.25 0-1.64.78-1.64 1.57v1.88h2.79l-.45 2.89h-2.34v6.99C18.34 21.2 22 17.07 22 12.07z" />
-                    </svg>
+                    class="transition-colors hover:text-orange-400">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
-
-                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@tetutvc019" aria-label="TikTok"
-                    class="transition-colors hover:text-orange-400" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-6 w-6" viewBox="0 0 24 24"
-                        aria-hidden="true">
-                        <path
-                            d="M12.75 2h3.25c.1 1.38.91 2.53 2.25 3.1a6.23 6.23 0 0 0 3.75 0v3.25a9.5 9.5 0 0 1-3.75-.75v7.66c0 4.25-3.5 7.74-7.75 7.74a7.75 7.75 0 0 1 0-15.5c.15 0 .3 0 .45.02v3.35h-.45a4.4 4.4 0 1 0 0 8.8 4.4 4.4 0 0 0 4.4-4.4V2z" />
-                    </svg>
+                    class="transition-colors hover:text-orange-400">
+                    <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
-
-                <!-- X (Twitter) -->
-                <a href="#" aria-label="X (formerly Twitter)" class="transition-colors hover:text-orange-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
-                        aria-hidden="true">
-                        <path
-                            d="M22.89 2H18.1L12.72 9.18 7.49 2H1.11l7.75 10.77L1 22h4.89l5.8-7.55 5.64 7.55h6.56l-8.17-10.9L22.89 2z" />
-                    </svg>
+                <a href="#" aria-label="Twitter" class="transition-colors hover:text-orange-400 text-orange-600 active">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
-
-
-                <!-- YouTube -->
-                <a href="#" aria-label="YouTube" class="transition-colors hover:text-orange-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 576 512" fill="currentColor"
-                        aria-hidden="true">
-                        <path
-                            d="M549.7 124.1c-6.3-23.8-24.9-42.5-48.6-48.9C456.6 64 288 64 288 64s-168.6 0-213.1 11.2c-23.7 6.4-42.3 25.1-48.6 48.9C16 168.6 16 256 16 256s0 87.4 10.3 131.9c6.3 23.8 24.9 42.5 48.6 48.9C119.4 448 288 448 288 448s168.6 0 213.1-11.2c23.7-6.4 42.3-25.1 48.6-48.9 10.3-44.5 10.3-131.9 10.3-131.9s0-87.4-10.3-131.9zM232 338.5V173.5l142 82.5-142 82.5z" />
-                    </svg>
+                <a href="#" aria-label="YouTube" class="transition-colors hover:text-orange-400 text-orange-600 active">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
                 </a>
-
             </nav>
 
             <div class="flex items-center justify-between w-full md:w-auto">
@@ -121,7 +96,8 @@
     </header>
 
 
-    <nav id="mainNav" class="sticky top-0 z-30 w-full h-20 bg-white border-b shadow">
+    <nav id="mainNav"
+        class="sticky top-0 z-30 flex flex-col items-center w-full h-20 bg-white border-b border-gray-200 shadow">
         <div class="container flex items-center justify-between px-4 py-2 mx-auto lg:px-8">
 
             <div class="inline xl:hidden">

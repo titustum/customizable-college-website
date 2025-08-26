@@ -123,7 +123,7 @@ class extends Component {
                 <!-- Principal's Welcome Card -->
                 <div data-aos="fade-up" data-aos-duration="800" class="w-full md:col-span-2 lg:col-span-1">
                     <div
-                        class="flex flex-col justify-between h-full p-6 transition-shadow duration-300 bg-white border rounded-lg shadow-lg hover:shadow-xl">
+                        class="flex flex-col justify-between h-full p-6 transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
                         <div>
                             <h3 class="mb-6 text-2xl font-bold text-center text-orange-600">
                                 Welcome to Tetu TVC
@@ -313,7 +313,8 @@ class extends Component {
                 <div class="w-24 h-1 mx-auto bg-orange-500 rounded"></div>
                 <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-600">Meet our graduates who have transformed their
                     education
-                    into successful careers</p>
+                    into successful careers
+                </p>
             </div>
 
             <div class="testimonial-slider" data-aos="fade-up">
@@ -378,7 +379,7 @@ class extends Component {
 
             <!-- View All Stories Button -->
             <div class="mt-16 text-center">
-                <a href="#"
+                <a href="{{ route('success.stories') }}"
                     class="inline-block px-8 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-full shadow-md hover:bg-orange-700 hover:shadow-lg">
                     View All Success Stories
                     <i class="ml-2 fas fa-arrow-right"></i>
