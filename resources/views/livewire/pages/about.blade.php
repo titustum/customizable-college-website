@@ -14,7 +14,8 @@ class extends Component
     <!-- Hero Section with Parallax Effect -->
     <section class="relative py-20 overflow-hidden bg-gray-900">
         <div class="absolute inset-0 z-0">
-            <img src="./images/gate.jpg" alt="Tetu TVC Campus" class="object-cover w-full h-full opacity-30">
+            <img src="{{ asset('images/gate.jpg') }}" alt="Tetu TVC Campus"
+                class="object-cover w-full h-full opacity-30">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90"></div>
         </div>
         <div class="container relative z-10 px-4 mx-auto text-center">
@@ -45,7 +46,7 @@ class extends Component
                     <div
                         class="absolute inset-0 transform translate-x-4 translate-y-4 border-2 border-orange-600 rounded-lg">
                     </div>
-                    <img src="./images/gate.jpg" alt="Tetu TVC Campus"
+                    <img src="{{ asset('images/gate.jpg') }}" alt="Tetu TVC Campus"
                         class="relative z-10 object-cover w-full h-full rounded-lg shadow-lg">
                 </div>
             </div>

@@ -8,26 +8,32 @@ use App\Models\Applicant;
 use Carbon\Carbon;
 
 new
-#[Title('Apply Now | Tetu Technical & Vocational College')] 
+#[Title('Apply Now | Tetu Technical & Vocational College')]
 class extends Component
-{ 
+{
+    public $department_id = null;
     public $departments = [];
     public $courses = [];
+
     public $full_name;
     public $phone;
     public $alternative_phone;
     public $gender;
     public $id_number;
+
     public $course_id;
     public $start_term;
+
     public $high_school;
     public $high_school_grade;
     public $kcse_index_number;
     public $kcse_year;
     public $nemis_upi_number;
+
     public $parent_name;
     public $parent_phone;
     public $terms = false;
+
     public $startTermOptions = [];
     public $currentStep = 1;
     public $totalSteps = 4;
@@ -35,9 +41,18 @@ class extends Component
     public function mount()
     {
         $this->departments = Department::all();
-        $this->courses = Course::all();
         $this->startTermOptions = $this->getStartTermOptions();
     }
+
+    public function updatedDepartmentId($value)
+    {
+        $this->courses = Course::where('department_id', $value)->get();
+
+        // dd($this->courses);
+        
+        $this->course_id = null; // Reset course selection
+    } 
+  
 
 
     public function getStartTermOptions(): array
@@ -52,18 +67,18 @@ class extends Component
 
         $termEntries = [];
 
-        // Add current term and upcoming terms in current year
+        // Current & upcoming terms
         foreach ($terms as $label => $month) {
             $year = ($currentDate->month <= $month) ? $currentDate->year : $currentDate->year + 1;
             $termDate = Carbon::create($year, $month, 1);
 
-            if ($currentDate->gte(Carbon::create($currentDate->year, $month, 1)) || $currentDate->lte($termDate)) {
+            if ($currentDate->lte($termDate)) {
                 $key = strtolower(substr($label, 0, 3)) . "_{$year}";
                 $termEntries[$termDate->timestamp] = [$key, "$label $year"];
             }
         }
 
-        // Add terms for the next two years
+        // Next two years
         for ($i = 1; $i <= 2; $i++) {
             foreach ($terms as $label => $month) {
                 $year = $currentDate->year + $i;
@@ -73,10 +88,8 @@ class extends Component
             }
         }
 
-        // Sort by timestamp key to ensure chronological order
-        ksort($termEntries);
+        ksort($termEntries); // Sort by timestamp
 
-        // Build final associative array
         foreach ($termEntries as [$key, $label]) {
             $options[$key] = $label;
         }
@@ -84,10 +97,10 @@ class extends Component
         return $options;
     }
 
-
     public function nextStep()
     {
         $this->validateCurrentStep();
+
         if ($this->currentStep < $this->totalSteps) {
             $this->currentStep++;
         }
@@ -103,7 +116,7 @@ class extends Component
     public function validateCurrentStep()
     {
         $rules = [];
-        
+
         switch ($this->currentStep) {
             case 1:
                 $rules = [
@@ -113,6 +126,7 @@ class extends Component
                     'id_number' => 'required|string|max:255',
                 ];
                 break;
+
             case 2:
                 $rules = [
                     'high_school' => 'required|string|max:255',
@@ -121,16 +135,28 @@ class extends Component
                     'kcse_year' => 'required|digits:4|integer|min:1990|max:' . date('Y'),
                 ];
                 break;
+
             case 3:
                 $rules = [
+                    'department_id' => 'required|exists:departments,id',
                     'course_id' => 'required|exists:courses,id',
                     'start_term' => 'required|in:' . implode(',', array_keys($this->startTermOptions)),
                 ];
+
+                // Validate course belongs to department
+                if ($this->course_id) {
+                    $course = Course::find($this->course_id);
+                    if (!$course || $course->department_id != $this->department_id) {
+                        $this->addError('course_id', 'Selected course does not belong to the selected department.');
+                    }
+                }
                 break;
+
             case 4:
                 $rules = [
                     'parent_name' => 'required|string|max:255',
                     'parent_phone' => 'required|string|max:20',
+                    'terms' => 'accepted',
                 ];
                 break;
         }
@@ -140,12 +166,14 @@ class extends Component
 
     public function submitApplication()
     {
+        // Full validation before submission
         $this->validate([
             'full_name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
             'alternative_phone' => 'nullable|string|max:20',
             'gender' => 'required|in:male,female,other',
             'id_number' => 'required|string|max:255',
+            'department_id' => 'required|exists:departments,id',
             'course_id' => 'required|exists:courses,id',
             'start_term' => 'required|in:' . implode(',', array_keys($this->startTermOptions)),
             'high_school' => 'required|string|max:255',
@@ -157,6 +185,13 @@ class extends Component
             'parent_phone' => 'required|string|max:20',
             'terms' => 'accepted',
         ]);
+
+        // Extra validation: course must belong to department
+        $course = Course::find($this->course_id);
+        if (!$course || $course->department_id != $this->department_id) {
+            $this->addError('course_id', 'Selected course does not belong to the selected department.');
+            return;
+        }
 
         Applicant::create([
             'full_name' => $this->full_name,
@@ -176,13 +211,24 @@ class extends Component
         ]);
 
         session()->flash('message', 'Application submitted successfully! You will receive a confirmation SMS shortly.');
-        $this->reset();
+
+        // Reset only inputs (keep departments loaded)
+        $this->reset([
+            'department_id', 'courses', 'full_name', 'phone', 'alternative_phone', 'gender', 'id_number',
+            'course_id', 'start_term', 'high_school', 'high_school_grade', 'kcse_index_number',
+            'kcse_year', 'nemis_upi_number', 'parent_name', 'parent_phone', 'terms',
+        ]);
+
         $this->currentStep = 1;
+        $this->departments = Department::all();
         $this->startTermOptions = $this->getStartTermOptions();
     }
 }
 
 ?>
+
+
+
 
 <main class="bg-gray-50 min-h-screen">
     <!-- Hero Section -->
@@ -326,8 +372,8 @@ class extends Component
                             <div class="space-y-6">
                                 <div class="text-center mb-8">
                                     <div
-                                        class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-graduation-cap text-blue-600 text-2xl"></i>
+                                        class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-graduation-cap text-orange-600 text-2xl"></i>
                                     </div>
                                     <h2 class="text-2xl font-bold text-gray-800">Academic Background</h2>
                                     <p class="text-gray-600">Your educational history</p>
@@ -335,11 +381,11 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="high_school" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-school mr-2 text-blue-500"></i>High School Name *
+                                        <i class="fas fa-school mr-2 text-orange-500"></i>High School Name *
                                     </label>
                                     <input type="text" id="high_school" wire:model.lazy="high_school" required
                                         placeholder="Enter your high school name"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                     @error('high_school') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
@@ -347,11 +393,11 @@ class extends Component
                                 <div class="form-group">
                                     <label for="high_school_grade"
                                         class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-award mr-2 text-blue-500"></i>High School Grade *
+                                        <i class="fas fa-award mr-2 text-orange-500"></i>High School Grade *
                                     </label>
                                     <input type="text" id="high_school_grade" wire:model.lazy="high_school_grade"
                                         required placeholder="e.g., C+, B-, A"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                     @error('high_school_grade') <span class="text-red-500 text-sm mt-1 block">{{
                                         $message }}</span> @enderror
                                 </div>
@@ -360,22 +406,22 @@ class extends Component
                                     <div class="form-group">
                                         <label for="kcse_index_number"
                                             class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-hashtag mr-2 text-blue-500"></i>KCSE Index Number *
+                                            <i class="fas fa-hashtag mr-2 text-orange-500"></i>KCSE Index Number *
                                         </label>
                                         <input type="text" id="kcse_index_number" wire:model.lazy="kcse_index_number"
                                             required placeholder="Enter KCSE index number"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                         @error('kcse_index_number') <span class="text-red-500 text-sm mt-1 block">{{
                                             $message }}</span> @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label for="kcse_year" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-calendar mr-2 text-blue-500"></i>KCSE Year *
+                                            <i class="fas fa-calendar mr-2 text-orange-500"></i>KCSE Year *
                                         </label>
                                         <input type="number" id="kcse_year" wire:model.lazy="kcse_year" required
                                             placeholder="{{ date('Y') }}" min="1990" max="{{ date('Y') }}"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                         @error('kcse_year') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                             }}</span> @enderror
                                     </div>
@@ -388,7 +434,7 @@ class extends Component
                                     </label>
                                     <input type="text" id="nemis_upi_number" wire:model.lazy="nemis_upi_number"
                                         placeholder="Optional - if available"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                     @error('nemis_upi_number') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
@@ -398,38 +444,48 @@ class extends Component
                             <!-- Step 3: Course Selection -->
                             @if ($currentStep == 3)
                             <div class="space-y-6">
-                                <div class="text-center mb-8">
-                                    <div
-                                        class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-book mr-2 text-green-600 text-2xl"></i>
-                                    </div>
-                                    <h2 class="text-2xl font-bold text-gray-800">Course Selection</h2>
-                                    <p class="text-gray-600">Choose your desired program</p>
+                                <!-- Department Selection -->
+                                <div class="form-group">
+                                    <label for="departmentId" class="block text-sm font-semibold text-gray-700 mb-2">
+                                        <i class="fas fa-building mr-2 text-orange-500"></i>Department *
+                                    </label>
+
+                                    <select wire:model.live="department_id"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        <option value="">Select a department</option>
+                                        @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('department_id') <span class="text-red-500 text-sm mt-1 block">{{ $message
+                                        }}</span> @enderror
                                 </div>
 
+                                <!-- Course Selection -->
                                 <div class="form-group">
                                     <label for="courseId" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-book-open mr-2 text-green-500"></i>Desired Course of Study *
+                                        <i class="fas fa-book-open mr-2 text-orange-500"></i>Desired Course of Study *
                                     </label>
-                                    <select id="courseId" wire:model="course_id" required
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
-                                        @if(count($courses)==0) disabled @endif>
+                                    <select id="courseId" wire:model="course_id" @if(is_null($department_id)) disabled
+                                        @endif required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                         <option value="">Select a course</option>
                                         @foreach ($courses as $course)
-                                        <option value="{{ $course->id }}">{{ $course->department->name }} - {{
-                                            $course->name }}</option>
+                                        <option value="{{ $course->id }}">{{ $course->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('course_id') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
 
+
                                 <div class="form-group">
                                     <label for="start_term" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-calendar-alt mr-2 text-green-500"></i>Intended Start Term *
+                                        <i class="fas fa-calendar-alt mr-2 text-orange-500"></i>Intended Start Term *
                                     </label>
                                     <select id="start_term" wire:model="start_term" required
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                         <option value="">Select a term</option>
                                         @foreach($startTermOptions as $value => $label)
                                         <option value="{{ $value }}">{{ $label }}</option>
@@ -439,26 +495,18 @@ class extends Component
                                         }}</span> @enderror
                                 </div>
 
-                                <!-- Course Information Card -->
-                                @if($course_id)
-                                <div class="bg-green-50 border border-green-200 rounded-xl p-6">
-                                    <h3 class="font-semibold text-green-800 mb-2">Selected Course Information</h3>
-                                    <p class="text-green-700 text-sm">
-                                        Duration, fees, and other course details will be provided upon admission.
-                                        Our admissions team will contact you with complete information.
-                                    </p>
-                                </div>
-                                @endif
+
                             </div>
                             @endif
+
 
                             <!-- Step 4: Parent/Guardian Information -->
                             @if ($currentStep == 4)
                             <div class="space-y-6">
                                 <div class="text-center mb-8">
                                     <div
-                                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-users mr-2 text-purple-600 text-2xl"></i>
+                                        class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <i class="fas fa-users mr-2 text-orange-600 text-2xl"></i>
                                     </div>
                                     <h2 class="text-2xl font-bold text-gray-800">Parent/Guardian Information</h2>
                                     <p class="text-gray-600">Emergency contact details</p>
@@ -466,22 +514,22 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="parent_name" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-user-tie mr-2 text-purple-500"></i>Parent/Guardian Name *
+                                        <i class="fas fa-user-tie mr-2 text-orange-500"></i>Parent/Guardian Name *
                                     </label>
                                     <input type="text" id="parent_name" wire:model.lazy="parent_name" required
                                         placeholder="Enter parent/guardian full name"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                     @error('parent_name') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="parent_phone" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-phone mr-2 text-purple-500"></i>Parent/Guardian Phone Number *
+                                        <i class="fas fa-phone mr-2 text-orange-500"></i>Parent/Guardian Phone Number *
                                     </label>
                                     <input type="tel" id="parent_phone" wire:model.lazy="parent_phone" required
                                         placeholder="0712345678"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
                                     @error('parent_phone') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
@@ -490,17 +538,18 @@ class extends Component
                                 <div class="bg-gray-50 rounded-xl p-6">
                                     <div class="flex items-start">
                                         <input type="checkbox" id="terms" wire:model="terms" required
-                                            class="mt-1 mr-3 w-5 h-5 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500">
+                                            class="mt-1 mr-3 w-5 h-5 text-orange-600 bg-gray-600 border-gray-300 rounded focus:ring-orange-500">
                                         <label for="terms" class="text-sm text-gray-700 leading-relaxed">
-                                            I agree to the <a href="#" class="text-orange-600 hover:underline">terms and
+                                            I agree to the <a href="{{ route('terms.conditions') }}"
+                                                class="text-orange-600 hover:underline">terms and
                                                 conditions</a>
                                             and confirm that all information provided is accurate and complete. I
                                             understand that
                                             false information may result in application rejection.
                                         </label>
                                     </div>
-                                    @error('terms') <span class="text-red-500 text-sm mt-2 block ml-8">{{ $message
-                                        }}</span> @enderror
+                                    @error('terms') <span class="text-red-500 text-sm mt-2 block ml-8">
+                                        {{ $message }}</span> @enderror
                                 </div>
                             </div>
                             @endif
@@ -522,7 +571,7 @@ class extends Component
                                     </button>
                                     @else
                                     <button type="submit"
-                                        class="flex items-center px-8 py-3 text-white bg-green-600 rounded-xl hover:bg-green-700 transition-colors font-semibold">
+                                        class="flex items-center px-8 py-3 text-white bg-orange-600 rounded-xl hover:bg-orange-700 transition-colors font-semibold">
                                         <i class="fas fa-paper-plane mr-2"></i>Submit Application
                                     </button>
                                     @endif
@@ -532,7 +581,7 @@ class extends Component
                 </div>
 
                 <!-- Help Section -->
-                <div class="mt-12 text-center" data-aos="fade-up">
+                <div class="mt-12 text-center">
                     <div class="bg-white rounded-xl shadow-lg p-8">
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Need Help?</h3>
                         <div class="grid md:grid-cols-3 gap-6">
