@@ -48,6 +48,45 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
+    <style>
+        /* Mobile menu transition */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu-open {
+            transform: translateX(0);
+        }
+
+        /* Overlay when menu is open */
+        .menu-overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .menu-overlay-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Animation delays */
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -102,7 +141,7 @@
 
             <div class="inline xl:hidden">
                 <!-- Mobile menu toggle button -->
-                <button id="mobileMenuButton" aria-label="Toggle mobile menu"
+                <button id="mobile-menu-button" aria-label="Toggle mobile menu"
                     class="pr-4  transition-colors hover:text-orange-600 rounded">
                     <!-- Hamburger icon (3 lines) -->
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
@@ -118,30 +157,48 @@
                 <h1 class="font-['Righteous'] text-3xl hidden lg:inline ml-2">TETU TVC</h1>
             </a>
 
+
+
             <div class="items-center hidden font-semibold xl:flex">
+                <!-- Home -->
                 <a href="{{ route('home') }}"
-                    class="px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600">HOME</a>
+                    @class([ 'px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
+                    , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('home'),
+                    ])>
+                    HOME
+                </a>
+
+                <!-- About Us -->
                 <a href="{{ route('about') }}"
-                    class="px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600">ABOUT
-                    US</a>
+                    @class([ 'px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
+                    , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('about'),
+                    ])>
+                    ABOUT US
+                </a>
 
                 <!-- Administration Dropdown -->
                 <div class="relative group">
                     <button
-                        class="flex items-center px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600">
+                        @class([ 'flex items-center px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
+                        , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('principal.office') ||
+                        request()->routeIs('staff.members'),
+                        ])>
                         ADMINISTRATION
                         <i class="ml-1 text-xs fas fa-chevron-down"></i>
                     </button>
                     <div
                         class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
                         <a href="{{ route('principal.office') }}"
-                            class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">Principal's
-                            Office</a>
-                        {{-- <a href="{{ route('administration') }}"
-                            class="block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-orange-600">Administrative
-                            Staff</a> --}}
+                            @class([ 'block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600'
+                            , 'text-orange-600 bg-orange-100'=> request()->routeIs('principal.office'),
+                            ])>
+                            Principal's Office
+                        </a>
+                        {{-- <a href="{{ route('administration') }}" class="...">Administrative Staff</a> --}}
                         <a href="{{ route('staff.members') }}"
-                            class="block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-orange-600">
+                            @class([ 'block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-orange-600'
+                            , 'text-orange-600 bg-orange-100'=> request()->routeIs('staff.members'),
+                            ])>
                             Our Staff Members
                         </a>
                     </div>
@@ -150,28 +207,44 @@
                 <!-- Departments Dropdown -->
                 <div class="relative group">
                     <a href="{{ route('departments') }}"
-                        class="flex items-center px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600">
+                        @class([ 'flex items-center px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
+                        , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('departments') ||
+                        request()->routeIs('department'),
+                        ])>
                         DEPARTMENTS
                         <i class="ml-1 text-xs fas fa-chevron-down"></i>
                     </a>
                     <div
                         class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
-
                         @foreach ($departments as $department)
                         <a href="{{ route('department', $department->slug) }}"
-                            class="block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600">
+                            @class([ 'block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600'
+                            , 'text-orange-600 bg-orange-100'=> request()->is('departments/' . $department->slug),
+                            ])>
                             {{ $department->name }}
                         </a>
                         @endforeach
                     </div>
                 </div>
 
+                <!-- Courses -->
                 <a href="{{ route('courses') }}"
-                    class="px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600">COURSES</a>
+                    @class([ 'px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
+                    , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('courses'),
+                    ])>
+                    COURSES
+                </a>
+
+                <!-- Contact -->
                 <a href="{{ route('contact') }}"
-                    class="px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600">CONTACT
-                    US</a>
+                    @class([ 'px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
+                    , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('contact'),
+                    ])>
+                    CONTACT US
+                </a>
             </div>
+
+
 
             <div class="flex items-center font-semibold">
                 <a href="{{ route('admissions') }}"
@@ -189,12 +262,11 @@
 
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu"
-        class="fixed top-0 left-0 z-40 h-full overflow-y-auto transition-transform duration-300 ease-in-out transform -translate-x-full bg-white shadow-lg w-72 xl:hidden">
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 z-50 bg-white w-80 shadow-xl h-screen overflow-y-auto">
         <div class="p-6">
             <div class="flex items-center justify-between mb-8">
                 <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" class="h-10">
-                <button id="closeMobileMenu" aria-label="Close mobile menu"
+                <button id="close-mobile-menu" aria-label="Close mobile menu"
                     class="hover:text-orange-600 text-2xl transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">
                     <!-- Close icon (X) -->
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
@@ -202,31 +274,47 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-
             </div>
+
             <div class="space-y-1">
+                <!-- Home -->
                 <a href="{{ route('home') }}"
-                    class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">HOME</a>
-                <a href="#"
-                    class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">ABOUT
-                    US</a>
+                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                    , 'text-orange-600 bg-orange-100'=> request()->routeIs('home'),
+                    ])>
+                    HOME
+                </a>
+
+                <!-- About -->
+                <a href="{{ route('about') }}"
+                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                    , 'text-orange-600 bg-orange-100'=> request()->routeIs('about'),
+                    ])>
+                    ABOUT US
+                </a>
 
                 <!-- Mobile Administration Dropdown -->
                 <div class="mobile-dropdown">
                     <button
-                        class="flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                        @class([ 'flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                        , 'text-orange-600 bg-orange-100'=> request()->routeIs('principal.office') ||
+                        request()->routeIs('staff.members'),
+                        ])>
                         ADMINISTRATION
                         <i class="text-xs fas fa-chevron-down"></i>
                     </button>
                     <div class="hidden pl-4 mt-1 space-y-1">
                         <a href="{{ route('principal.office') }}"
-                            class="block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600">Principal's
-                            Office</a>
-                        {{-- <a href="{{ route('administration') }}"
-                            class="block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600">Administrative
-                            Staff</a> --}}
+                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                            , 'text-orange-600 bg-orange-100'=> request()->routeIs('principal.office'),
+                            ])>
+                            Principal's Office
+                        </a>
+                        {{-- <a href="{{ route('administration') }}" class="...">Administrative Staff</a> --}}
                         <a href="{{ route('staff.members') }}"
-                            class="block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                            , 'text-orange-600 bg-orange-100'=> request()->routeIs('staff.members'),
+                            ])>
                             Our Staff Members
                         </a>
                     </div>
@@ -235,42 +323,74 @@
                 <!-- Mobile Departments Dropdown -->
                 <div class="mobile-dropdown">
                     <button
-                        class="flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                        @class([ 'flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                        , 'text-orange-600 bg-orange-100'=> request()->routeIs('departments') ||
+                        request()->routeIs('department'),
+                        ])>
                         DEPARTMENTS
                         <i class="text-xs fas fa-chevron-down"></i>
                     </button>
                     <div class="hidden pl-4 mt-1 space-y-1">
-
                         @foreach ($departments as $department)
                         <a href="{{ route('department', $department->slug) }}"
-                            class="block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                            , 'text-orange-600 bg-orange-100'=> request()->is('departments/' . $department->slug),
+                            ])>
                             {{ $department->name }}
                         </a>
                         @endforeach
                     </div>
                 </div>
 
+                <!-- Courses -->
                 <a href="{{ route('courses') }}"
-                    class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">COURSES</a>
+                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                    , 'text-orange-600 bg-orange-100'=> request()->routeIs('courses'),
+                    ])>
+                    COURSES
+                </a>
+
+                <!-- Contact -->
                 <a href="{{ route('contact') }}"
-                    class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">CONTACT
-                    US</a>
+                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                    , 'text-orange-600 bg-orange-100'=> request()->routeIs('contact'),
+                    ])>
+                    CONTACT US
+                </a>
+
+                <!-- Other Links -->
                 <div class="pt-4 mt-4 border-t border-gray-200">
                     <a href="{{ route('downloads') }}"
-                        class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">DOWNLOADS</a>
+                        @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                        , 'text-orange-600 bg-orange-100'=> request()->routeIs('downloads'),
+                        ])>
+                        DOWNLOADS
+                    </a>
                     <a href="#"
-                        class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">TENDERS</a>
+                        class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                        TENDERS
+                    </a>
                     <a href="{{ route('filament.admin.auth.login') }}"
-                        class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">ADMIN
-                        PORTAL</a>
+                        @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
+                        , 'text-orange-600 bg-orange-100'=> request()->routeIs('filament.admin.auth.login'),
+                        ])>
+                        ADMIN PORTAL
+                    </a>
                     <a href="{{ route('admissions') }}"
-                        class="block px-2 py-3 mt-4 text-center text-white transition-all bg-orange-600 rounded hover:bg-orange-700">APPLY
-                        NOW</a>
+                        @class([ 'block px-2 py-3 mt-4 text-center text-white transition-all bg-orange-600 rounded hover:bg-orange-700'
+                        , 'ring-2 ring-orange-400'=> request()->routeIs('admissions'),
+                        ])>
+                        APPLY NOW
+                    </a>
                 </div>
             </div>
-
         </div>
     </div>
+
+
+    <!-- Overlay when mobile menu is open -->
+    <div id="menu-overlay" class="menu-overlay max-h-screen fixed inset-0 z-40 bg-black/50"></div>
+
 
 
     {{ $slot }}
@@ -358,70 +478,76 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Desktop navigation hover effects
-            const navItems = document.querySelectorAll('#mainNav .xl\\:flex a');
-            navItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.classList.add('text-orange-600');
-                });
-                item.addEventListener('mouseleave', function() {
-                    if (!this.classList.contains('active')) {
-                        this.classList.remove('text-orange-600');
-                    }
-                });
+        document.addEventListener('DOMContentLoaded', function () {
+        // Desktop navigation hover effects
+        const navItems = document.querySelectorAll('#mainNav .xl\\:flex a');
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.classList.add('text-orange-600');
             });
-        
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobileMenuButton');
-            const closeMobileMenu = document.getElementById('closeMobileMenu');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.remove('-translate-x-full');
-                document.body.style.overflow = 'hidden';
-            });
-            
-            closeMobileMenu.addEventListener('click', function() {
-                mobileMenu.classList.add('-translate-x-full');
-                document.body.style.overflow = 'auto';
-            });
-            
-            // Mobile dropdowns
-            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown button');
-            mobileDropdowns.forEach(dropdown => {
-                dropdown.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const icon = this.querySelector('i');
-                    
-                    if (content.classList.contains('hidden')) {
-                        content.classList.remove('hidden');
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    } else {
-                        content.classList.add('hidden');
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    }
-                });
-            });
-            
-            // Highlight current page in navigation
-            const currentPath = window.location.pathname;
-            const navLinks = document.querySelectorAll('nav a');
-            
-            navLinks.forEach(link => {
-                const linkPath = new URL(link.href, window.location.origin).pathname;
-                if (currentPath === linkPath || currentPath.startsWith(linkPath) && linkPath !== '/') {
-                    link.classList.add('text-orange-600', 'active');
-                    if (link.classList.contains('hover:border-b-2')) {
-                        link.classList.add('border-b-2', 'border-orange-600');
-                    }
+            item.addEventListener('mouseleave', function () {
+                if (!this.classList.contains('active')) {
+                    this.classList.remove('text-orange-600');
                 }
             });
         });
-    </script>
 
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('mobile-menu-open');
+            menuOverlay.classList.add('menu-overlay-open');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('mobile-menu-open');
+            menuOverlay.classList.remove('menu-overlay-open');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        }
+
+        mobileMenuButton?.addEventListener('click', openMenu);
+        closeMobileMenu?.addEventListener('click', closeMenu);
+        menuOverlay?.addEventListener('click', closeMenu);
+
+        // Close menu when clicking on non-dropdown links
+        const menuLinks = document.querySelectorAll('#mobile-menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // If this is NOT inside a dropdown, close menu
+                if (!link.closest('.mobile-dropdown')) {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Toggle dropdowns in mobile menu
+        const mobileDropdowns = document.querySelectorAll('#mobile-menu .mobile-dropdown');
+        mobileDropdowns.forEach(dropdownContainer => {
+            const toggleButton = dropdownContainer.querySelector('button');
+            const dropdownContent = dropdownContainer.querySelector('div');
+            const icon = toggleButton.querySelector('i');
+
+            toggleButton.addEventListener('click', function () {
+                const isHidden = dropdownContent.classList.contains('hidden');
+                dropdownContent.classList.toggle('hidden');
+
+                // Toggle icon
+                if (isHidden) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+    });
+    </script>
 
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
