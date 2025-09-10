@@ -28,7 +28,7 @@ class HeroSlideContentInfolist
                             ->dateTime(),
                         TextEntry::make('updated_at')
                             ->dateTime(),
-                    ]), 
+                    ]),
             ]);
     }
 }

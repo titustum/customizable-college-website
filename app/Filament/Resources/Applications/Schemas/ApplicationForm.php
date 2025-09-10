@@ -18,37 +18,37 @@ class ApplicationForm
                     ->columns(2)
                     ->columnSpanFull()
                     ->schema([
-                            TextInput::make('full_name')
-                                ->required(),
-                            TextInput::make('phone')
-                                ->tel()
-                                ->required(),
-                            TextInput::make('alternative_phone')
-                                ->tel(),
-                            Textarea::make('gender')
-                                ->required()
-                                ->columnSpanFull(),
-                            TextInput::make('id_number')
-                                ->required(),
-                            TextInput::make('course_id')
-                                ->required()
-                                ->numeric(),
-                            TextInput::make('start_term')
-                                ->required(),
-                            TextInput::make('high_school')
-                                ->required(),
-                            TextInput::make('high_school_grade')
-                                ->required(),
-                            TextInput::make('kcse_index_number')
-                                ->required(),
-                            TextInput::make('kcse_year')
-                                ->required(),
-                            TextInput::make('nemis_upi_number'),
-                            TextInput::make('parent_name')
-                                ->required(),
-                            TextInput::make('parent_phone')
-                                ->tel()
-                                ->required(),
+                        TextInput::make('full_name')
+                            ->required(),
+                        TextInput::make('phone')
+                            ->tel()
+                            ->required(),
+                        TextInput::make('alternative_phone')
+                            ->tel(),
+                        Textarea::make('gender')
+                            ->required()
+                            ->columnSpanFull(),
+                        TextInput::make('id_number')
+                            ->required(),
+                        TextInput::make('course_id')
+                            ->required()
+                            ->numeric(),
+                        TextInput::make('start_term')
+                            ->required(),
+                        TextInput::make('high_school')
+                            ->required(),
+                        TextInput::make('high_school_grade')
+                            ->required(),
+                        TextInput::make('kcse_index_number')
+                            ->required(),
+                        TextInput::make('kcse_year')
+                            ->required(),
+                        TextInput::make('nemis_upi_number'),
+                        TextInput::make('parent_name')
+                            ->required(),
+                        TextInput::make('parent_phone')
+                            ->tel()
+                            ->required(),
                     ]),
             ]);
     }

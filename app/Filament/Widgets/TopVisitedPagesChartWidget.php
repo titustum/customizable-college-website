@@ -13,7 +13,7 @@ class TopVisitedPagesChartWidget extends ChartWidget
 
     protected function getData(): array
     {
-         $visits = DB::table('page_visits')
+        $visits = DB::table('page_visits')
             ->select('url', DB::raw('COUNT(*) as count'))
             ->where('url', 'not like', '/storage/%') // exclude image/media hits
             ->groupBy('url')
@@ -21,8 +21,7 @@ class TopVisitedPagesChartWidget extends ChartWidget
             ->limit(10)
             ->get();
 
-
-            // dd($visits->toArray());
+        // dd($visits->toArray());
 
         $labels = $visits->pluck('url')->toArray();
         $data = $visits->pluck('count')->toArray();

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model; 
+use Illuminate\Database\Eloquent\Model;
 
 class Download extends Model
 {
@@ -14,4 +14,3 @@ class Download extends Model
         'is_public',
     ];
 }
-
