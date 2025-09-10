@@ -2,7 +2,7 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Applicant;
+use App\Models\Application;
 use Filament\Actions\BulkActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -23,7 +23,7 @@ class RecentApplications extends TableWidget
     public function table(Table $table): Table
     {
         return $table
-            ->query(fn (): Builder => Applicant::query())
+            ->query(fn (): Builder => Application::query())
             ->columns([
                 TextColumn::make('full_name')
                     ->searchable(),

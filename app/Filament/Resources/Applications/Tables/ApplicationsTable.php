@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Applicants\Tables;
+namespace App\Filament\Resources\Applications\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -9,7 +9,7 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class ApplicantsTable
+class ApplicationsTable
 {
     public static function configure(Table $table): Table
     {
@@ -18,17 +18,29 @@ class ApplicantsTable
                 TextColumn::make('full_name')
                     ->searchable(),
                 TextColumn::make('phone')
-                    ->searchable(), 
-                TextColumn::make('gender')
-                    ->searchable(), 
-                TextColumn::make('course.name')
+                    ->searchable(),
+                TextColumn::make('alternative_phone')
+                    ->searchable(),
+                TextColumn::make('id_number')
+                    ->searchable(),
+                TextColumn::make('course_id')
+                    ->numeric()
                     ->sortable(),
                 TextColumn::make('start_term')
                     ->searchable(),
                 TextColumn::make('high_school')
                     ->searchable(),
                 TextColumn::make('high_school_grade')
-                    ->searchable(), 
+                    ->searchable(),
+                TextColumn::make('kcse_index_number')
+                    ->searchable(),
+                TextColumn::make('kcse_year'),
+                TextColumn::make('nemis_upi_number')
+                    ->searchable(),
+                TextColumn::make('parent_name')
+                    ->searchable(),
+                TextColumn::make('parent_phone')
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

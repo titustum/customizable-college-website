@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Filament\Widgets;
-
-use App\Models\Applicant;
+ 
+use App\Models\Application;
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\TeamMember;
@@ -38,10 +38,10 @@ class StatsOverview extends StatsOverviewWidget
                 ->url(route('filament.admin.resources.team-members.index'))
                 ->icon(Heroicon::OutlinedUserGroup, 'Admin link'),
 
-            Stat::make('Applications', Applicant::count())
+            Stat::make('Applications', Application::count())
                 ->description('Submitted admission forms')
                 ->color('warning')
-                ->url(route('filament.admin.resources.applicants.index'))
+                ->url(route('filament.admin.resources.applications.index'))
                 ->icon(Heroicon::OutlinedDocument, 'Admin link'),
 
             // Stat::make('News Posts', NewsPost::count())

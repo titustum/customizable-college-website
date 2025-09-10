@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Applicants\Schemas;
+namespace App\Filament\Resources\Applications\Schemas;
 
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
-class ApplicantForm
+class ApplicationForm
 {
     public static function configure(Schema $schema): Schema
     {
@@ -19,13 +19,9 @@ class ApplicantForm
                     ->required(),
                 TextInput::make('alternative_phone')
                     ->tel(),
-                Select::make('gender') 
+                Textarea::make('gender')
                     ->required()
-                    ->options([
-                        'male' => 'Male',
-                        'female' => 'Female',
-                        'other' => 'Other',
-                    ]),
+                    ->columnSpanFull(),
                 TextInput::make('id_number')
                     ->required(),
                 TextInput::make('course_id')
@@ -40,8 +36,7 @@ class ApplicantForm
                 TextInput::make('kcse_index_number')
                     ->required(),
                 TextInput::make('kcse_year')
-                    ->required()
-                    ->numeric(),
+                    ->required(),
                 TextInput::make('nemis_upi_number'),
                 TextInput::make('parent_name')
                     ->required(),
