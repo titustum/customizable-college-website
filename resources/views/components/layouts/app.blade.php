@@ -127,9 +127,12 @@
                     <a href="{{ route('downloads') }}" class="transition-colors hover:text-orange-400">Downloads</a>
                 </div>
                 <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="{{ route('filament.admin.auth.login') }}"
-                        class="transition-colors hover:text-orange-400">Admin Portal</a>
+                    <a href="{{ route('vacancies') }}" class="transition-colors hover:text-orange-400">Vacancies</a>
                 </div>
+                <div class="hidden px-2 border-l border-white md:inline">
+                    <a href="{{ route('past.papers') }}" class="transition-colors hover:text-orange-400">Past Papers</a>
+                </div>
+
             </div>
         </div>
     </header>

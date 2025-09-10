@@ -30,6 +30,7 @@ Volt::route('/team', 'pages.team-members')
     ->name('team');
 Volt::route('/departments/{slug}', 'pages.department')
     ->name('department');
-// /
-Volt::route('/test-application', 'pages.test-admission')
-    ->name('test.application');
+Volt::route('/vacancies', 'pages.vacancies')
+    ->name('vacancies');
+Volt::route('/past-papers', 'pages.past-papers')
+    ->name('past.papers');
