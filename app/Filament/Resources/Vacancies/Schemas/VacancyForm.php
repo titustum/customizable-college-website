@@ -27,9 +27,12 @@ class VacancyForm
                 DatePicker::make('application_deadline')
                     ->required(),
                 TextInput::make('attachment_path'),
-                TextInput::make('status')
-                    ->required()
-                    ->default('open'),
+                Select::make('status')
+                ->options([
+                    'open' => 'Open',
+                    'closed' => 'Closed',
+                ]) 
+                ->default('open'),
             ]);
     }
 }

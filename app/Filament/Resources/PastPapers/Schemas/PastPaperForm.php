@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\PastPapers\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -13,14 +14,17 @@ class PastPaperForm
             ->components([
                 TextInput::make('title')
                     ->required(),
-                TextInput::make('course_id')
+                Select::make('course_id')
                     ->required()
-                    ->numeric(),
+                    ->relationship('course', 'name'),
                 TextInput::make('unit_name')
                     ->required(),
-                TextInput::make('exam_type')
+                Select::make('exam_type')
                     ->required()
-                    ->default('final'),
+                    ->options([
+                        'final' => 'Final Exam',
+                        'midterm' => 'Midterm Exam',
+                    ]),
                 TextInput::make('exam_year')
                     ->required()
                     ->numeric(),

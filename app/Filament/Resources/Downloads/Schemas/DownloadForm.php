@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Downloads\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -17,7 +18,8 @@ class DownloadForm
                     ->required(),
                 Textarea::make('description')
                     ->columnSpanFull(),
-                TextInput::make('file_path')
+                FileUpload::make('file_path')
+                    ->disk('public')
                     ->required(),
                 TextInput::make('category'),
                 Toggle::make('is_public')

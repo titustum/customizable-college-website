@@ -29,6 +29,7 @@ class SuccessStoryForm
                             ->required(),
                         FileUpload::make('photo')
                             ->disk('public')
+                            ->directory('success_stories')
                             ->image()
                             ->required(),
                         TextInput::make('course')

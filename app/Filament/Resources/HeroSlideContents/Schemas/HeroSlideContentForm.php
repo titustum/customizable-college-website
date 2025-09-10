@@ -20,6 +20,8 @@ class HeroSlideContentForm
                     ->schema([
                         FileUpload::make('image')
                             ->image()
+                            ->disk('public')
+                            ->directory('hero_slide_images')
                             ->required(),
                         TextInput::make('title')
                             ->required(),

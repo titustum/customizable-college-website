@@ -77,7 +77,7 @@ class extends Component
                         {{ Str::limit(strip_tags($vacancy->description), 150, '...') }}
                     </p>
 
-                    <a href="{{ route('vacancies.show', $vacancy) }}" class="text-orange-500 hover:underline">
+                    <a href="#" class="text-orange-500 hover:underline">
                         📄 Read More & Apply
                     </a>
                 </div>

@@ -23,6 +23,7 @@ class PartnerForm
                         FileUpload::make('logo')
                             ->image()
                             ->disk('public')
+                            ->directory('partners')
                             ->required(),
                         TextInput::make('website'),
 

@@ -26,6 +26,8 @@ class DepartmentForm
                             ->required(),
                         FileUpload::make('photo')
                             ->disk('public')
+                            ->directory('departments')
+                            ->image()
                             ->required(),
                         TextInput::make('short_desc')
                             ->required(),
@@ -34,6 +36,8 @@ class DepartmentForm
                             ->columnSpanFull(),
                         FileUpload::make('banner_pic')
                             ->disk('public')
+                            ->directory('departments')
+                            ->image()
                             ->required(),
 
                     ]),

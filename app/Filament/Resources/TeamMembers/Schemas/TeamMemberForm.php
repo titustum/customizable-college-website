@@ -29,6 +29,7 @@ class TeamMemberForm
                     FileUpload::make('photo')
                         ->label('Profile Photo')
                         ->disk('public')
+                        ->directory('team_members')
                         ->image()
                         ->imageEditor()
                         ->required(),
