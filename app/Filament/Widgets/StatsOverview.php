@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Filament\Widgets;
- 
+
 use App\Models\Application;
 use App\Models\Course;
 use App\Models\Department;

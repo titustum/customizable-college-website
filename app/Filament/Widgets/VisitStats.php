@@ -5,7 +5,6 @@ namespace App\Filament\Widgets;
 use App\Models\PageVisit;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Illuminate\Support\Carbon;
 
 class VisitStats extends BaseWidget
 {

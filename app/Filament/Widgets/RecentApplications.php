@@ -4,15 +4,15 @@ namespace App\Filament\Widgets;
 
 use App\Models\Application;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
-use Filament\Actions\ViewAction;
-use Filament\Actions\EditAction;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Infolists\Components\TextEntry;
-use Filament\Schemas\Components\Section;
 
 class RecentApplications extends TableWidget
 {
@@ -47,7 +47,7 @@ class RecentApplications extends TableWidget
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                    
+
             ])
             ->filters([
                 //
@@ -55,7 +55,7 @@ class RecentApplications extends TableWidget
             ->headerActions([
                 //
             ])
-            ->recordActions([ 
+            ->recordActions([
                 ViewAction::make('View')
                     ->label('View')
                     ->slideOver()
@@ -99,8 +99,8 @@ class RecentApplications extends TableWidget
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                  DeleteBulkAction::make(),  
-                ]), 
+                    DeleteBulkAction::make(),
+                ]),
             ]);
     }
 }

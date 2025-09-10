@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
- 
+
+use App\Models\PageVisit;
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\PageVisit;
 use Symfony\Component\HttpFoundation\Response;
 
 class TrackPageVisits
@@ -24,7 +24,7 @@ class TrackPageVisits
 
         // Log the page visit
         PageVisit::create([
-            'url' => '/' . ltrim($request->path(), '/'), // ensure leading slash
+            'url' => '/'.ltrim($request->path(), '/'), // ensure leading slash
             'full_url' => $request->fullUrl(),
             'referer' => $request->header('referer'),
             'ip' => substr(hash('sha256', $request->ip()), 0, 16), // anonymized IP

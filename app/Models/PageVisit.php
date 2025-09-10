@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class PageVisit extends Model
-{ 
+{
     public $timestamps = false; // We’re using `visited_at` instead of created_at
 
     protected $fillable = [
