@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\HeroSlides\Pages;
+namespace App\Filament\Resources\HeroSlideContents\Pages;
 
-use App\Filament\Resources\HeroSlides\HeroSlideResource;
+use App\Filament\Resources\HeroSlideContents\HeroSlideContentResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditHeroSlide extends EditRecord
+class EditHeroSlideContent extends EditRecord
 {
-    protected static string $resource = HeroSlideResource::class;
+    protected static string $resource = HeroSlideContentResource::class;
 
     protected function getHeaderActions(): array
     {

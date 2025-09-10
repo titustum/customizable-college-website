@@ -23,9 +23,8 @@ class ApplicationsTable
                     ->searchable(),
                 TextColumn::make('id_number')
                     ->searchable(),
-                TextColumn::make('course_id')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('course.name')
+                    ->searchable(),
                 TextColumn::make('start_term')
                     ->searchable(),
                 TextColumn::make('high_school')

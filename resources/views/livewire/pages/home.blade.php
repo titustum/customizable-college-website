@@ -5,7 +5,7 @@ use Livewire\Attributes\Title;
 use App\Models\Department; 
 use App\Models\SuccessStory;
 use App\Models\Partner;
-use App\Models\HeroSlide;
+use App\Models\HeroSlideContent;
 
 new  
 #[Title('Welcome to Our College')] 
@@ -17,7 +17,7 @@ class extends Component {
             'departments' => Department::all(),
             'successStories'=> SuccessStory::all(),
             'partners'=> Partner::all(),
-            'heroSlides'=> HeroSlide::all(),
+            'heroSlides'=> HeroSlideContent::all(),
         ];
     }
 };

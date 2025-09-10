@@ -1,26 +1,24 @@
 <?php
 
-namespace App\Filament\Resources\HeroSlides\Schemas;
+namespace App\Filament\Resources\HeroSlideContents\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
-class HeroSlideForm
+class HeroSlideContentForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
             ->components([
 
-                Section::make('Hero Slide Details')
+                Section::make('Hero Slide Content')
                     ->columns(2)
-                    ->columnSpan('full')
+                    ->columnSpanFull()
                     ->schema([
-
                         FileUpload::make('image')
-                            ->disk('public')
                             ->image()
                             ->required(),
                         TextInput::make('title')
@@ -34,7 +32,6 @@ class HeroSlideForm
                         TextInput::make('button_link')
                             ->required()
                             ->default('#'),
-
                     ]),
             ]);
     }
