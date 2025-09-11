@@ -24,7 +24,7 @@ class TeamMemberForm
                     TextInput::make('email')
                         ->label('Email Address')
                         ->email()
-                        ->required(),
+                        ->nullable(),
 
                     FileUpload::make('photo')
                         ->label('Profile Photo')

@@ -28,11 +28,11 @@ class VacancyForm
                     ->required(),
                 TextInput::make('attachment_path'),
                 Select::make('status')
-                ->options([
-                    'open' => 'Open',
-                    'closed' => 'Closed',
-                ]) 
-                ->default('open'),
+                    ->options([
+                        'open' => 'Open',
+                        'closed' => 'Closed',
+                    ])
+                    ->default('open'),
             ]);
     }
 }

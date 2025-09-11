@@ -15,22 +15,19 @@ class SuccessStoryForm
     {
         return $schema
             ->components([
-
                 Section::make('Success Story Details')
                     ->columns(2)
-                    ->columnSpan('full')
+                    ->columnSpanFull()
                     ->schema([
-
                         Select::make('department_id')
                             ->required()
-                            ->options(fn () => \App\Models\Department::pluck('name', 'id')),
-
+                            ->relationship('department', 'name'),
                         TextInput::make('name')
                             ->required(),
                         FileUpload::make('photo')
-                            ->disk('public')
-                            ->directory('success_stories')
                             ->image()
+                            ->disk('public')
+                            ->directory('success-stories')
                             ->required(),
                         TextInput::make('course')
                             ->required(),
@@ -43,7 +40,17 @@ class SuccessStoryForm
                         Textarea::make('statement')
                             ->required()
                             ->columnSpanFull(),
-
+                        TextInput::make('rating')
+                            ->required()
+                            ->numeric()
+                            ->default(5),
+                        Select::make('is_approved')
+                            ->required()
+                            ->options([
+                                1 => 'Approved',
+                                0 => 'Not Approved',
+                            ])
+                            ->default(0),
                     ]),
             ]);
     }
