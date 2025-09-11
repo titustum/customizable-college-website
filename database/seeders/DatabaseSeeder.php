@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Web Admin',
             'email' => 'admin@mail.com',
+            'role'=>'admin',
         ]);
 
         // Seed roles
         $this->call([
-            RoleSeeder::class,
-            UploadCategorySeeder::class,
+            RoleSeeder::class, 
             DepartmentSeeder::class,
         ]);
 
