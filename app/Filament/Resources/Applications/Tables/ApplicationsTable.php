@@ -15,14 +15,17 @@ class ApplicationsTable
 {
     public static function configure(Table $table): Table
     {
+        // decending
+        $table->defaultSort('created_at', 'desc');
+
         return $table
             ->columns([
                 TextColumn::make('full_name')
                     ->searchable(),
                 TextColumn::make('phone')
                     ->searchable(),
-                TextColumn::make('alternative_phone')
-                    ->searchable(),
+                // TextColumn::make('alternative_phone')
+                //     ->searchable(),
                 TextColumn::make('id_number')
                     ->searchable(),
                 TextColumn::make('course.name')
@@ -36,13 +39,14 @@ class ApplicationsTable
                 TextColumn::make('kcse_index_number')
                     ->searchable(),
                 TextColumn::make('kcse_year'),
-                TextColumn::make('nemis_upi_number')
-                    ->searchable(),
+                // TextColumn::make('nemis_upi_number')
+                //     ->searchable(),
                 TextColumn::make('parent_name')
                     ->searchable(),
                 TextColumn::make('parent_phone')
                     ->searchable(),
                 TextColumn::make('created_at')
+                    ->label('Applied On')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

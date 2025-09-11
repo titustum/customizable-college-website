@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\Applications\Schemas;
 
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -25,9 +25,13 @@ class ApplicationForm
                             ->required(),
                         TextInput::make('alternative_phone')
                             ->tel(),
-                        Textarea::make('gender')
+                        Select::make('gender')
                             ->required()
-                            ->columnSpanFull(),
+                            ->options([
+                                'male' => 'Male',
+                                'female' => 'Female',
+                                'other' => 'Other',
+                            ]),
                         TextInput::make('id_number')
                             ->required(),
                         TextInput::make('course_id')
