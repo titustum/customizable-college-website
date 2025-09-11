@@ -20,7 +20,8 @@ class SuccessStoryResource extends Resource
 {
     protected static ?string $model = SuccessStory::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedStar;
+    protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::Star;
 
     protected static ?string $recordTitleAttribute = 'name';
 

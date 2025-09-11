@@ -16,7 +16,10 @@ class HeroSlideContentsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->label('Image')
+                    ->disk('public')
+                    ->square(),
                 TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('subtitle')

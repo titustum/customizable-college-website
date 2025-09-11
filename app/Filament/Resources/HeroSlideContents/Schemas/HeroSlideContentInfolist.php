@@ -17,8 +17,9 @@ class HeroSlideContentInfolist
                     ->columns(2)
                     ->columnSpanFull()
                     ->schema([
-
-                        ImageEntry::make('image'),
+                        ImageEntry::make('image')
+                            ->label('Image')
+                            ->disk('public'),
                         TextEntry::make('title'),
                         TextEntry::make('subtitle'),
                         TextEntry::make('slogan'),
