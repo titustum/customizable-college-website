@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\Applications\Tables;
 
+use App\Filament\Exports\ApplicationExporter;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\ExportAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -48,6 +50,10 @@ class ApplicationsTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(ApplicationExporter::class),
             ])
             ->filters([
                 //
