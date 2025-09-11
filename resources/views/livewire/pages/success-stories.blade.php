@@ -19,7 +19,8 @@ class extends Component
     <!-- Hero Section with Parallax Effect -->
     <section class="relative py-20 overflow-hidden bg-gray-900">
         <div class="absolute inset-0 z-0">
-            <img src="./images/gate.jpg" alt="Tetu TVC Campus" class="object-cover w-full h-full opacity-30">
+            <img src="{{ asset('images/gate.jpg') }}" alt="Tetu TVC Campus"
+                class="object-cover w-full h-full opacity-30">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90"></div>
         </div>
         <div class="container relative z-10 px-4 mx-auto text-center">
@@ -41,8 +42,16 @@ class extends Component
                     education into successful careers</p>
             </div>
 
+            <div class="text-center mb-12">
+                <a href="{{ route('create.success.story') }}"
+                    class="inline-block px-6 py-3 text-white bg-orange-600 hover:bg-orange-700 font-semibold rounded-lg shadow-lg transition duration-300">
+                    <i class="fas fa-plus-circle mr-2"></i> Share Your Story
+                </a>
+            </div>
+
             <!-- Success Stories Grid -->
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" data-aos="fade-up">
+
                 @foreach ($successStories as $story)
                 <!-- Success Story Card -->
                 <div class="group">
@@ -75,8 +84,15 @@ class extends Component
 
                                 <!-- Rating Stars -->
                                 <div class="flex justify-center mt-3 mb-4 text-orange-400">
-                                    @for($i = 0; $i < 5; $i++) <i class="fas fa-star text-sm"></i>
+                                    {{-- Full stars --}}
+                                    @for ($i = 0; $i < $story->rating; $i++)
+                                        <i class="fas fa-star text-sm"></i>
                                         @endfor
+
+                                        {{-- Empty stars --}}
+                                        @for ($i = 0; $i < 5 - $story->rating; $i++)
+                                            <i class="far fa-star text-sm text-gray-300"></i>
+                                            @endfor
                                 </div>
                             </div>
 

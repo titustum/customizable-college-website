@@ -34,3 +34,5 @@ Volt::route('/vacancies', 'pages.vacancies')
     ->name('vacancies');
 Volt::route('/past-papers', 'pages.past-papers')
     ->name('past.papers');
+Volt::route('/create-success-story', 'pages.success-stories-create')
+    ->name('create.success.story');

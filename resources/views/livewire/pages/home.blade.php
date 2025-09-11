@@ -338,12 +338,17 @@ class extends Component {
                                     <h3 class="text-xl font-bold text-gray-800"> {{ $story->name }}</h3>
                                     <p class="text-orange-600"> {{ $story->course }}, Class of {{ $story->year }}</p>
                                     <div class="flex justify-center mt-2 mb-4 text-orange-500">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
+                                        {{-- Filled stars --}}
+                                        @for ($i = 0; $i < $story->rating; $i++)
+                                            <i class="fas fa-star"></i>
+                                            @endfor
+
+                                            {{-- Empty stars --}}
+                                            @for ($i = 0; $i < 5 - $story->rating; $i++)
+                                                <i class="far fa-star"></i>
+                                                @endfor
                                     </div>
+
                                     <div class="mt-4 mb-6">
                                         <svg class="w-8 h-8 mx-auto text-gray-300" fill="currentColor"
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
