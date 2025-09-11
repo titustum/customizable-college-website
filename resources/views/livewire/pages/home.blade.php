@@ -15,7 +15,11 @@ class extends Component {
     {
         return [
             'departments' => Department::all(),
-            'successStories'=> SuccessStory::all(),
+            'successStories'=> SuccessStory::where('is_approved', true)
+                                            ->latest()
+                                            ->take(3)
+                                            ->orderBy('created_at', 'desc')
+                                            ->get(),
             'partners'=> Partner::all(),
             'heroSlides'=> HeroSlideContent::all(),
         ];
@@ -317,129 +321,121 @@ class extends Component {
                 </p>
             </div>
 
-            <div class="testimonial-slider" data-aos="fade-up">
+            <div class="testimonial-grid" data-aos="fade-up">
 
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
+                <div class="grid gap-8 md:grid-cols-3 max-w-7xl mx-auto px-4">
 
-                        @foreach ($successStories as $story)
+                    @foreach ($successStories as $story)
 
-                        <!-- Success Story 1 -->
-                        <div class="swiper-slide">
-                            <div class="relative z-10 p-6 bg-white rounded-lg shadow-lg">
-                                <div class="absolute transform -translate-x-1/2 -top-10 left-1/2">
-                                    <div
-                                        class="w-20 h-20 p-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600">
-                                        <img src="{{ asset('storage/'. $story->photo) }}" alt="{{  $story->name }}"
-                                            class="object-cover w-full h-full rounded-full">
-                                    </div>
-                                </div>
-                                <div class="pt-10 text-center">
-                                    <h3 class="text-xl font-bold text-gray-800"> {{ $story->name }}</h3>
-                                    <p class="text-orange-600"> {{ $story->course }}, Class of {{ $story->year }}</p>
-                                    <div class="flex justify-center mt-2 mb-4 text-orange-500">
-                                        {{-- Filled stars --}}
-                                        @for ($i = 0; $i < $story->rating; $i++)
-                                            <i class="fas fa-star"></i>
-                                            @endfor
+                    <!-- Success Story Card -->
+                    <div class="relative z-10 p-6 bg-white rounded-lg shadow-lg flex flex-col h-full">
 
-                                            {{-- Empty stars --}}
-                                            @for ($i = 0; $i < 5 - $story->rating; $i++)
-                                                <i class="far fa-star"></i>
-                                                @endfor
-                                    </div>
-
-                                    <div class="mt-4 mb-6">
-                                        <svg class="w-8 h-8 mx-auto text-gray-300" fill="currentColor"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                            <path
-                                                d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
-                                        </svg>
-                                        <blockquote class="mt-4 text-gray-600">
-                                            {{ $story->statement }}
-                                        </blockquote>
-                                    </div>
-                                    <p class="font-semibold text-gray-700">Currently: <span class="text-green-600">{{
-                                            $story->occupation
-                                            }}
-                                            at
-                                            {{ $story->company }}</span></p>
-                                </div>
-                            </div>
-                            <div
-                                class="absolute inset-0 transform translate-x-2 translate-y-2 bg-orange-100 rounded-lg -z-10">
+                        <div class="absolute transform -translate-x-1/2 -top-10 left-1/2">
+                            <div class="w-20 h-20 p-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600">
+                                <img src="{{ $story->photo ? asset('storage/' . $story->photo) : asset('images/default-avatar.jpg') }}"
+                                    alt="{{ $story->name }}" class="object-cover w-full h-full rounded-full">
                             </div>
                         </div>
 
-                        @endforeach
+                        <div class="pt-10 text-center flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold text-gray-800">{{ $story->name }}</h3>
+                            <p class="text-orange-600 mb-2">{{ $story->course }}, Class of {{ $story->year }}</p>
+
+                            <div class="flex justify-center mb-4 text-orange-500">
+                                {{-- Filled stars --}}
+                                @for ($i = 0; $i < $story->rating; $i++)
+                                    <i class="fas fa-star"></i>
+                                    @endfor
+
+                                    {{-- Empty stars --}}
+                                    @for ($i = 0; $i < 5 - $story->rating; $i++)
+                                        <i class="far fa-star"></i>
+                                        @endfor
+                            </div>
+
+                            <div class="mt-4 mb-6 flex-grow">
+                                <svg class="w-8 h-8 mx-auto text-gray-300" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path
+                                        d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
+                                </svg>
+                                <blockquote class="mt-4 text-gray-600">
+                                    {{ $story->statement }}
+                                </blockquote>
+                            </div>
+
+                            <p class="font-semibold text-gray-700 mt-auto">
+                                Currently: <span class="text-green-600">{{ $story->occupation }} at {{ $story->company
+                                    }}</span>
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Slider controls -->
-                    <div class="mt-6 swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-
+                    @endforeach
                 </div>
+
+                <!-- View All Stories Button -->
+                <div class="mt-16 text-center">
+                    <a href="{{ route('success.stories') }}"
+                        class="inline-block px-8 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-full shadow-md hover:bg-orange-700 hover:shadow-lg">
+                        View All Success Stories
+                        <i class="ml-2 fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Success Metrics -->
+                <div class="grid gap-8 mt-20 md:grid-cols-2 lg:grid-cols-4">
+                    <div data-aos="fade-up" data-aos-duration="800" class="p-6 text-center rounded-lg bg-gray-50">
+                        <div class="flex justify-center">
+                            <div class="p-3 mb-4 text-white bg-orange-600 rounded-full">
+                                <i class="text-2xl fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="92">0</span>%
+                        </h3>
+                        <p class="text-gray-600">Graduation Rate</p>
+                    </div>
+
+                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"
+                        class="p-6 text-center rounded-lg bg-gray-50">
+                        <div class="flex justify-center">
+                            <div class="p-3 mb-4 text-white bg-orange-600 rounded-full">
+                                <i class="text-2xl fas fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="85">0</span>%
+                        </h3>
+                        <p class="text-gray-600">Job Placement</p>
+                    </div>
+
+                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
+                        class="p-6 text-center rounded-lg bg-gray-50">
+                        <div class="flex justify-center">
+                            <div class="p-3 mb-4 text-white bg-orange-600 rounded-full">
+                                <i class="text-2xl fas fa-user-tie"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="78">0</span>%
+                        </h3>
+                        <p class="text-gray-600">Industry Partners</p>
+                    </div>
+
+                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"
+                        class="p-6 text-center rounded-lg bg-gray-50">
+                        <div class="flex justify-center">
+                            <div class="p-3 mb-4 text-white bg-orange-600 rounded-full">
+                                <i class="text-2xl fas fa-award"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="120">0</span>+
+                        </h3>
+                        <p class="text-gray-600">Industry Certifications</p>
+                    </div>
+                </div>
+
+
+
             </div>
-
-            <!-- View All Stories Button -->
-            <div class="mt-16 text-center">
-                <a href="{{ route('success.stories') }}"
-                    class="inline-block px-8 py-3 font-semibold text-white transition duration-300 bg-orange-600 rounded-full shadow-md hover:bg-orange-700 hover:shadow-lg">
-                    View All Success Stories
-                    <i class="ml-2 fas fa-arrow-right"></i>
-                </a>
-            </div>
-
-            <!-- Success Metrics -->
-            <div class="grid gap-8 mt-20 md:grid-cols-2 lg:grid-cols-4">
-                <div data-aos="fade-up" data-aos-duration="800" class="p-6 text-center rounded-lg bg-gray-50">
-                    <div class="flex justify-center">
-                        <div class="p-3 mb-4 text-white bg-orange-600 rounded-full">
-                            <i class="text-2xl fas fa-graduation-cap"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="92">0</span>%</h3>
-                    <p class="text-gray-600">Graduation Rate</p>
-                </div>
-
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"
-                    class="p-6 text-center rounded-lg bg-gray-50">
-                    <div class="flex justify-center">
-                        <div class="p-3 mb-4 text-white bg-orange-600 rounded-full">
-                            <i class="text-2xl fas fa-briefcase"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="85">0</span>%</h3>
-                    <p class="text-gray-600">Job Placement</p>
-                </div>
-
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
-                    class="p-6 text-center rounded-lg bg-gray-50">
-                    <div class="flex justify-center">
-                        <div class="p-3 mb-4 text-white bg-orange-600 rounded-full">
-                            <i class="text-2xl fas fa-user-tie"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="78">0</span>%</h3>
-                    <p class="text-gray-600">Industry Partners</p>
-                </div>
-
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"
-                    class="p-6 text-center rounded-lg bg-gray-50">
-                    <div class="flex justify-center">
-                        <div class="p-3 mb-4 text-white bg-orange-600 rounded-full">
-                            <i class="text-2xl fas fa-award"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="120">0</span>+</h3>
-                    <p class="text-gray-600">Industry Certifications</p>
-                </div>
-            </div>
-
-
-
-        </div>
     </section>
 
 
@@ -474,7 +470,7 @@ class extends Component {
     <script>
         // Initialize testimonial slider
     document.addEventListener('DOMContentLoaded', function() {
-      new Swiper('.swiper-container', {
+      new Swiper('.swiper-container-x', {
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,

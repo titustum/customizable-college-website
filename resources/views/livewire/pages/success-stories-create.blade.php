@@ -41,18 +41,20 @@ class extends Component
             'occupation' => 'required|string|max:255',
             'company' => 'required|string|max:255',
             'statement' => 'required|string|max:2000',
-            'photo' => 'required|image|max:2048',
-            'rating' => 'nullable|integer|min:1|max:5',
+            'photo' => 'nullable|image|max:2048',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
         // Store the uploaded photo
-        $validated['photo'] = $this->photo->store('success_stories', 'public');
+        if ($this->photo) {
+            $validated['photo'] = $this->photo->store('success_stories', 'public');
+        }
 
         // Save to database
         SuccessStory::create($validated);
 
         // Optional: flash success message and reset
-        session()->flash('success', 'Success story submitted successfully!');
+        session()->flash('success', 'Your story has been submitted! Once approved, you’ll join the ranks of our amazing alumni who are shaping the future through skills learned at Tetu Technical & Vocational College.');
         $this->reset();
     }
 };
@@ -85,7 +87,7 @@ class extends Component
 
             <!-- Flash Success -->
             @if (session()->has('success'))
-            <div class="mb-6 text-green-700 bg-green-100 p-4 rounded">
+            <div class="max-w-3xl mx-auto mb-6 text-green-700 bg-green-100 p-4 rounded">
                 {{ session('success') }}
             </div>
             @endif

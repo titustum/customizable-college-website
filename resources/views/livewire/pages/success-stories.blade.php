@@ -10,7 +10,11 @@ class extends Component
 {
     public function with(){
         return [
-            'successStories'=>SuccessStory::all(),
+            'successStories'=> SuccessStory::where('is_approved', true)
+                                            ->latest()
+                                            ->take(8)
+                                            ->orderBy('created_at', 'desc')
+                                            ->get(),
         ];
     }
 }; ?>
@@ -63,8 +67,8 @@ class extends Component
                                 <div class="relative">
                                     <div
                                         class="w-24 h-24 p-1 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 shadow-lg">
-                                        <img src="{{ asset('storage/'. $story->photo) }}" alt="{{ $story->name }}"
-                                            class="object-cover w-full h-full rounded-full">
+                                        <img src="{{ $story->photo ? asset('storage/' . $story->photo) : asset('images/default-avatar.jpg') }}"
+                                            alt="{{ $story->name }}" class="object-cover w-full h-full rounded-full">
                                     </div>
                                     <!-- Achievement Badge -->
                                     <div
