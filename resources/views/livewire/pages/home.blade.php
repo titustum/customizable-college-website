@@ -148,7 +148,7 @@ class extends Component {
                                     and enrich your
                                     academic and professional journey.</p>
                                 <div class="pt-3 font-bold text-center border-t border-gray-200">
-                                    <p class="text-gray-800">Madam Catherine Gikonyo</p>
+                                    <p class="text-gray-800">David Mugambi Kariuki</p>
                                     <p class="text-orange-600">College Principal</p>
                                 </div>
                             </div>
@@ -466,39 +466,7 @@ class extends Component {
         </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-    <script>
-        // Initialize testimonial slider
-    document.addEventListener('DOMContentLoaded', function() {
-      new Swiper('.swiper-container-x', {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-          delay: 5000,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          }
-        }
-      });
-    });
-     
-    </script>
-
-
+    <!-- Counter Animation Script -->
 
     <script>
         const counters = document.querySelectorAll('.counter');

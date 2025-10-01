@@ -84,6 +84,13 @@
         html {
             scroll-behavior: smooth;
         }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 15px;
+                /* slightly smaller on mobile */
+            }
+        }
     </style>
 
 
