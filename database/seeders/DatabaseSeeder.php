@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         // Seed roles
         $this->call([
             RoleSeeder::class,
+            InstitutionSeeder::class,
             DepartmentSeeder::class,
         ]);
 

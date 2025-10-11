@@ -20,7 +20,7 @@ class TeamMemberFactory extends Factory
             ]),
             'email' => $faker->unique()->optional()->safeEmail(),
             'name' => $faker->name(),
-            'photo' => 'images/default-avatar.jpg',
+            'photo' => '',
             'qualification' => $faker->randomElement([
                 'BSc. Computer Science', 'Diploma in Agriculture', 'M.Ed in Educational Admin',
                 'B.Ed in Science', 'Diploma in Cosmetology',

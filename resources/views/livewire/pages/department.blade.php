@@ -187,8 +187,13 @@ class extends Component
                     <div class="text-center" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <div class="relative inline-block mb-4">
                             <div class="w-48 h-48 mx-auto overflow-hidden rounded-full shadow-md">
-                                <img src="{{ asset('storage/'.$trainer->photo) }}" alt="{{ $trainer->name }}"
-                                    class="object-cover w-full h-full">
+                                <img @if ($trainer->photo)
+                                src="{{ asset('storage/'.$trainer->photo) }}"
+                                @else
+                                src="{{ asset('images/default-avatar.jpg') }}"
+                                @endif
+                                alt="{{ $trainer->name }}"
+                                class="object-cover w-full h-full">
                             </div>
                         </div>
                         <h3 class="text-xl font-bold">{{ $trainer->name }}</h3>

@@ -76,9 +76,13 @@ class extends Component
                     <div class="flex flex-col items-center p-6 md:flex-row md:items-start">
                         <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
                             <div class="p-1 rounded-full bg-gradient-to-r from-orange-500 to-orange-700">
-                                <img src="{{ asset('storage/'.$principal->photo) }}"
-                                    alt="Photo of {{ $principal->name }}"
-                                    class="object-cover w-32 h-32 rounded-full md:w-40 md:h-40">
+                                <img @if ($principal->photo)
+                                src="{{ asset('storage/'.$principal->photo) }}"
+                                @else
+                                src="{{ asset('images/default-avatar.jpg') }}"
+                                @endif
+                                alt="Photo of {{ $principal->name }}"
+                                class="object-cover w-32 h-32 rounded-full md:w-40 md:h-40">
                             </div>
                         </div>
                         <div class="text-center md:text-left">
@@ -113,8 +117,13 @@ class extends Component
                     <div class="p-6 text-center">
                         <div
                             class="p-1 mx-auto mb-4 rounded-full bg-gradient-to-r from-orange-400 to-orange-600 w-28 h-28">
-                            <img src="{{ asset('storage/'.$deputy->photo) }}" alt="{{$deputy->name}}"
-                                class="object-cover w-full h-full rounded-full">
+                            <img @if ($deputy->photo)
+                            src="{{ asset('storage/'.$deputy->photo) }}"
+                            @else
+                            src="{{ asset('images/default-avatar.jpg') }}"
+                            @endif
+                            alt="{{$deputy->name}}"
+                            class="object-cover w-full h-full rounded-full">
                         </div>
                         <h3 class="mb-1 text-xl font-bold text-gray-800">{{$deputy->name}}</h3>
                         <p class="mb-1 font-medium text-orange-600">{{ $deputy->role->name }}</p>
@@ -143,8 +152,13 @@ class extends Component
                     <div class="text-center">
                         <div
                             class="w-24 h-24 p-1 mx-auto mb-3 rounded-full bg-gradient-to-r from-orange-300 to-orange-500">
-                            <img src="{{ asset('storage/'.$hod->photo) }}" alt="{{ $hod->name }}"
-                                class="object-cover w-full h-full rounded-full">
+                            <img @if ($hod->photo)
+                            src="{{ asset('storage/'.$hod->photo) }}"
+                            @else
+                            src="{{ asset('images/default-avatar.jpg') }}"
+                            @endif
+                            alt="{{ $hod->name }}"
+                            class="object-cover w-full h-full rounded-full">
                         </div>
                         <h3 class="mb-1 text-lg font-bold text-gray-800">{{ $hod->name }}</h3>
                         <p class="mb-1 font-medium text-orange-600">{{ $hod->role->name }}</p>
@@ -160,8 +174,14 @@ class extends Component
                     <div class="text-center">
                         <div
                             class="w-24 h-24 p-1 mx-auto mb-3 rounded-full bg-gradient-to-r from-orange-300 to-orange-500">
-                            <img src="{{ asset('storage/'.$hos->photo) }}" alt="{{ $hos->name }}"
-                                class="object-cover w-full h-full rounded-full">
+                            <img @if ($hos->photo)
+                            src="{{ asset('storage/'.$hos->photo) }}"
+                            @else
+                            src="{{ asset('images/default-avatar.jpg') }}"
+                            @endif
+
+                            alt="{{ $hos->name }}"
+                            class="object-cover w-full h-full rounded-full">
                         </div>
                         <h3 class="mb-1 text-lg font-bold text-gray-800">{{ $hos->name }}</h3>
                         <p class="mb-1 font-medium text-orange-600">{{ $hos->role->name }}</p>
@@ -187,8 +207,14 @@ class extends Component
                     <div class="text-center">
                         <div
                             class="w-20 h-20 p-1 mx-auto mb-2 rounded-full bg-gradient-to-r from-orange-300 to-orange-500">
-                            <img src="{{ asset('storage/'.$trainer->photo) }}" alt="{{$trainer->name}}"
-                                class="object-cover w-full h-full rounded-full">
+                            <img @if ($trainer->photo)
+                            src="{{ asset('storage/'.$trainer->photo) }}"
+                            @else
+                            src="{{ asset('images/default-avatar.jpg') }}"
+                            @endif
+
+                            alt="{{$trainer->name}}"
+                            class="object-cover w-full h-full rounded-full">
                         </div>
                         <h3 class="mb-1 font-semibold text-gray-800 text-md">{{$trainer->name}}</h3>
                         <p class="text-xs text-gray-600">{{$trainer->department->name}}</p>
@@ -211,8 +237,14 @@ class extends Component
                     class="p-3 transition-all duration-300 transform bg-white rounded-lg shadow hover:shadow-md hover:-translate-y-1">
                     <div class="text-center">
                         <div class="w-20 h-20 p-1 mx-auto mb-2 rounded-full bg-gradient-to-r from-gray-200 to-gray-300">
-                            <img src="{{ asset('storage/'.$staff->photo) }}" alt="{{$staff->name}}"
-                                class="object-cover w-full h-full rounded-full">
+                            <img @if ($staff->photo)
+                            src="{{ asset('storage/'.$staff->photo) }}"
+                            @else
+                            src="{{ asset('images/default-avatar.jpg') }}"
+                            @endif
+
+                            alt="{{$staff->name}}"
+                            class="object-cover w-full h-full rounded-full">
                         </div>
                         <h3 class="mb-1 font-semibold text-gray-800 text-md">{{$staff->name}}</h3>
                         <p class="text-xs text-gray-600">{{$staff->role->name}}</p>
@@ -226,7 +258,8 @@ class extends Component
 
     <!-- Footer Note -->
     <div class="py-6 text-center bg-orange-700">
-        <p class="text-sm text-orange-100">Want to join our team? <a href="#" class="font-medium underline">View career
+        <p class="text-sm text-orange-100">Want to join our team? <a href="{{ route('vacancies') }}"
+                class="font-medium underline">View career
                 opportunities</a></p>
     </div>
 </main>
