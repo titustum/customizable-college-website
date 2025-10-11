@@ -133,7 +133,7 @@ class extends Component {
                                 Welcome to {{ $institution->name }}
                             </h3>
                             <div class="my-6 text-center">
-                                <div class="inline-block p-1 rounded-full bg-gradient-to-r from-primary to-primary">
+                                <div class="inline-block p-1 rounded-full bg-primary">
                                     <img src="{{ asset('storage/'.$institution->principal_photo) }}"
                                         class="object-cover w-48 h-48 border-4 border-white rounded-full shadow-inner"
                                         alt="Principal Image">
@@ -240,8 +240,7 @@ class extends Component {
                 <h2 class="mb-4 text-3xl font-bold text-gray-800 lg:text-4xl">Our Departments</h2>
                 <div class="w-24 h-1 mx-auto bg-primary rounded"></div>
                 <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-600">Explore our outstanding academic departments
-                    designed to
-                    provide industry-relevant skills and knowledge.</p>
+                    designed to provide industry-relevant skills and knowledge.</p>
             </div>
 
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -291,8 +290,7 @@ class extends Component {
                         </div>
                         <h3 class="mb-4 text-2xl font-bold text-white">Explore Departments</h3>
                         <p class="mb-6 text-white text-opacity-90">Discover our full range of technical and vocational
-                            programs
-                            designed to equip you with job-ready skills.</p>
+                            programs designed to equip you with job-ready skills.</p>
                         <a href="{{ route('departments') }}"
                             class="inline-block px-6 py-3 font-semibold text-primary transition duration-300 bg-white rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg">
                             View All Departments
