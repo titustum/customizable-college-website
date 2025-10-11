@@ -151,7 +151,7 @@ class extends Component {
                         </div>
                         <div class="mt-6 text-center">
                             <a href="{{ route('staff.members') }}"
-                                class="inline-block px-6 py-3 text-white transition duration-300 bg-primary rounded-full shadow-md hover:bg-orange-700 hover:shadow-lg">
+                                class="inline-block px-6 py-3 text-white transition duration-300 bg-primary rounded-full shadow-md hover:opacity-80 hover:shadow-lg">
                                 Meet Our Team <i class="ml-2 fas fa-arrow-right"></i>
                             </a>
                         </div>
@@ -261,7 +261,7 @@ class extends Component {
                         <p class="mb-5 text-gray-600 line-clamp-3">{{ $department->short_desc }}</p>
                         <div class="pt-2 border-t border-gray-100">
                             <a href="{{ route('department', $department->slug) }}"
-                                class="inline-flex items-center font-semibold text-primary transition-colors duration-300 hover:text-orange-700">
+                                class="inline-flex items-center font-semibold text-primary transition-colors duration-300 hover:text-opacity-80">
                                 Explore Department
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="w-5 h-5 ml-1 transition-transform duration-300 group-hover:translate-x-1"

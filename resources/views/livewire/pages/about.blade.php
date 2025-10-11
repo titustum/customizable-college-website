@@ -4,7 +4,7 @@ use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 
 new
-#[Title('About Us | Tetu Technical & Vocational College')] 
+#[Title('About Us | {{ $institution->name }}')] 
 class extends Component
 {
     //
@@ -14,12 +14,12 @@ class extends Component
     <!-- Hero Section with Parallax Effect -->
     <section class="relative py-20 overflow-hidden bg-gray-900">
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('images/gate.jpg') }}" alt="Tetu TVC Campus"
+            <img src="{{ asset('images/gate.jpg') }}" alt="{{ $institution->name }} Campus"
                 class="object-cover w-full h-full opacity-30">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90"></div>
         </div>
         <div class="container relative z-10 px-4 mx-auto text-center">
-            <h1 class="mb-2 text-4xl font-bold text-white md:text-5xl lg:text-6xl">About Tetu TVC</h1>
+            <h1 class="mb-2 text-4xl font-bold text-white md:text-5xl lg:text-6xl">About {{ $institution->name }}</h1>
             <p class="max-w-2xl mx-auto text-lg text-gray-300 md:text-xl">Empowering futures through technical education
                 excellence since 2019</p>
         </div>
@@ -30,7 +30,7 @@ class extends Component
         <div class="container px-4 mx-auto">
             <div class="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
                 <div data-aos="fade-right" class="order-2 md:order-1">
-                    <div class="p-6 border-l-4 border-orange-600">
+                    <div class="p-6 border-l-4 border-primary">
                         <h3 class="mb-4 text-2xl font-semibold text-gray-800">Our Vision</h3>
                         <p class="mb-8 text-gray-700 text-md">
                             To be the leading institution in offering technical skills in Kenya and beyond.
@@ -44,9 +44,9 @@ class extends Component
                 </div>
                 <div data-aos="fade-left" class="relative order-1 md:order-2">
                     <div
-                        class="absolute inset-0 transform translate-x-4 translate-y-4 border-2 border-orange-600 rounded-lg">
+                        class="absolute inset-0 transform translate-x-4 translate-y-4 border-2 border-primary rounded-lg">
                     </div>
-                    <img src="{{ asset('images/gate.jpg') }}" alt="Tetu TVC Campus"
+                    <img src="{{ asset('images/gate.jpg') }}" alt="{{ $institution->name }} Campus"
                         class="relative z-10 object-cover w-full h-full rounded-lg shadow-lg">
                 </div>
             </div>
@@ -62,7 +62,7 @@ class extends Component
                 <div data-aos="fade-up" data-aos-delay="100"
                     class="p-6 text-center transition-transform duration-300 bg-white rounded-lg shadow-md hover:transform hover:-translate-y-2">
                     <div
-                        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white bg-orange-600 rounded-full">
+                        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white bg-primary rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -77,7 +77,7 @@ class extends Component
                 <div data-aos="fade-up" data-aos-delay="200"
                     class="p-6 text-center transition-transform duration-300 bg-white rounded-lg shadow-md hover:transform hover:-translate-y-2">
                     <div
-                        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white bg-orange-600 rounded-full">
+                        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white bg-primary rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -91,7 +91,7 @@ class extends Component
                 <div data-aos="fade-up" data-aos-delay="300"
                     class="p-6 text-center transition-transform duration-300 bg-white rounded-lg shadow-md hover:transform hover:-translate-y-2">
                     <div
-                        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white bg-orange-600 rounded-full">
+                        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white bg-primary rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -106,7 +106,7 @@ class extends Component
                 <div data-aos="fade-up" data-aos-delay="400"
                     class="p-6 text-center transition-transform duration-300 bg-white rounded-lg shadow-md hover:transform hover:-translate-y-2">
                     <div
-                        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white bg-orange-600 rounded-full">
+                        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 text-white bg-primary rounded-full">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -135,11 +135,11 @@ class extends Component
                     <!-- Item 1 -->
                     <div data-aos="fade-right" class="relative md:col-start-1 md:text-right">
                         <div
-                            class="absolute right-0 hidden w-4 h-4 transform translate-x-1/2 bg-orange-600 rounded-full md:block top-6 md:translate-x-10">
+                            class="absolute right-0 hidden w-4 h-4 transform translate-x-1/2 bg-primary rounded-full md:block top-6 md:translate-x-10">
                         </div>
                         <div class="p-6 bg-gray-100 rounded-lg shadow-md">
-                            <h3 class="mb-2 text-xl font-semibold text-orange-600">March 2019</h3>
-                            <p class="text-gray-700">Establishment of Tetu Technical & Vocational College through
+                            <h3 class="mb-2 text-xl font-semibold text-primary">March 2019</h3>
+                            <p class="text-gray-700">Establishment of {{ $institution->name }} through
                                 collaboration between the National Government and Tetu NG CDF.</p>
                         </div>
                     </div>
@@ -151,10 +151,10 @@ class extends Component
 
                     <div data-aos="fade-left" class="relative md:col-start-2">
                         <div
-                            class="absolute left-0 hidden w-4 h-4 transform -translate-x-1/2 bg-orange-600 rounded-full md:block top-6 md:-translate-x-9">
+                            class="absolute left-0 hidden w-4 h-4 transform -translate-x-1/2 bg-primary rounded-full md:block top-6 md:-translate-x-9">
                         </div>
                         <div class="p-6 bg-gray-100 rounded-lg shadow-md">
-                            <h3 class="mb-2 text-xl font-semibold text-orange-600">2019-2020</h3>
+                            <h3 class="mb-2 text-xl font-semibold text-primary">2019-2020</h3>
                             <p class="text-gray-700">Growth from initial enrollment of 89 students to become a
                                 recognized institution for technical education in the region.</p>
                         </div>
@@ -163,10 +163,10 @@ class extends Component
                     <!-- Item 3 -->
                     <div data-aos="fade-right" class="relative md:col-start-1 md:text-right">
                         <div
-                            class="absolute right-0 hidden w-4 h-4 transform translate-x-1/2 bg-orange-600 rounded-full md:block top-6 md:translate-x-10">
+                            class="absolute right-0 hidden w-4 h-4 transform translate-x-1/2 bg-primary rounded-full md:block top-6 md:translate-x-10">
                         </div>
                         <div class="p-6 bg-gray-100 rounded-lg shadow-md">
-                            <h3 class="mb-2 text-xl font-semibold text-orange-600">February 2022</h3>
+                            <h3 class="mb-2 text-xl font-semibold text-primary">February 2022</h3>
                             <p class="text-gray-700">Launch of our Strategic Plan (2020-2025) aligning with MoE and
                                 TVETA strategic objectives for institutional excellence.</p>
                         </div>
@@ -179,10 +179,10 @@ class extends Component
 
                     <div data-aos="fade-left" class="relative md:col-start-2">
                         <div
-                            class="absolute left-0 hidden w-4 h-4 transform -translate-x-1/2 bg-orange-600 rounded-full md:block top-6 md:-translate-x-9">
+                            class="absolute left-0 hidden w-4 h-4 transform -translate-x-1/2 bg-primary rounded-full md:block top-6 md:-translate-x-9">
                         </div>
                         <div class="p-6 bg-gray-100 rounded-lg shadow-md">
-                            <h3 class="mb-2 text-xl font-semibold text-orange-600">Present Day</h3>
+                            <h3 class="mb-2 text-xl font-semibold text-primary">Present Day</h3>
                             <p class="text-gray-700">Continuing our mission of community engagement, environmental
                                 initiatives, and developing industry-aligned technical education.</p>
                         </div>
@@ -200,7 +200,7 @@ class extends Component
             <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
                 <div data-aos="fade-up" data-aos-delay="100"
                     class="overflow-hidden transition-all duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                    <div class="p-1 bg-orange-600"></div>
+                    <div class="p-1 bg-primary"></div>
                     <div class="p-6">
                         <h3 class="mb-4 text-xl font-semibold text-gray-800">Economic Development</h3>
                         <p class="text-gray-600">
@@ -212,7 +212,7 @@ class extends Component
 
                 <div data-aos="fade-up" data-aos-delay="200"
                     class="overflow-hidden transition-all duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                    <div class="p-1 bg-orange-600"></div>
+                    <div class="p-1 bg-primary"></div>
                     <div class="p-6">
                         <h3 class="mb-4 text-xl font-semibold text-gray-800">Environmental Initiatives</h3>
                         <p class="text-gray-600">
@@ -224,7 +224,7 @@ class extends Component
 
                 <div data-aos="fade-up" data-aos-delay="300"
                     class="overflow-hidden transition-all duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                    <div class="p-1 bg-orange-600"></div>
+                    <div class="p-1 bg-primary"></div>
                     <div class="p-6">
                         <h3 class="mb-4 text-xl font-semibold text-gray-800">Agricultural Innovation</h3>
                         <p class="text-gray-600">
@@ -238,22 +238,23 @@ class extends Component
     </section>
 
     <!-- CTA Section with Parallax -->
-    <section class="relative py-20 bg-orange-600">
+    <section class="relative py-20 bg-primary">
         <div class="absolute inset-0 z-0 opacity-20 bg-pattern"></div>
         <div class="container relative z-10 px-4 mx-auto text-center">
             <h2 data-aos="fade-up" class="mb-6 text-3xl font-bold text-white">Join Our Technical Education Journey</h2>
             <p data-aos="fade-up" data-aos-delay="100" class="max-w-2xl mx-auto mb-8 text-xl text-orange-100">
-                Tetu TVC is dedicated to providing equitable access to technical education, fostering innovation, and
+                {{ $institution->name }} is dedicated to providing equitable access to technical education, fostering
+                innovation, and
                 producing socially responsible graduates with the skills and entrepreneurial spirit necessary for
                 Kenya's development and global competitiveness.
             </p>
             <div data-aos="fade-up" data-aos-delay="200" class="flex flex-wrap justify-center gap-4">
                 <a href="{{ route('admissions') }}"
-                    class="px-8 py-3 font-semibold text-orange-600 transition duration-300 bg-white rounded-full hover:bg-gray-200">
+                    class="px-8 py-3 font-semibold text-primary transition duration-300 bg-white rounded-full hover:bg-gray-200">
                     Apply Now
                 </a>
                 <a href="{{ route('contact') }}"
-                    class="px-8 py-3 font-semibold text-white transition duration-300 border-2 border-white rounded-full hover:bg-white hover:text-orange-600">
+                    class="px-8 py-3 font-semibold text-white transition duration-300 border-2 border-white rounded-full hover:bg-white hover:text-primary">
                     Contact Us
                 </a>
             </div>
@@ -265,22 +266,22 @@ class extends Component
         <div class="container px-4 mx-auto">
             <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 <div data-aos="fade-up" data-aos-delay="100" class="p-6 text-center">
-                    <div class="mb-4 text-4xl font-bold text-orange-600" data-count="500">500+</div>
+                    <div class="mb-4 text-4xl font-bold text-primary" data-count="500">500+</div>
                     <p class="text-gray-700">Students Enrolled</p>
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="200" class="p-6 text-center">
-                    <div class="mb-4 text-4xl font-bold text-orange-600" data-count="15">15+</div>
+                    <div class="mb-4 text-4xl font-bold text-primary" data-count="15">15+</div>
                     <p class="text-gray-700">Technical Programs</p>
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="300" class="p-6 text-center">
-                    <div class="mb-4 text-4xl font-bold text-orange-600" data-count="30">30+</div>
+                    <div class="mb-4 text-4xl font-bold text-primary" data-count="30">30+</div>
                     <p class="text-gray-700">Qualified Instructors</p>
                 </div>
 
                 <div data-aos="fade-up" data-aos-delay="400" class="p-6 text-center">
-                    <div class="mb-4 text-4xl font-bold text-orange-600" data-count="85">85%</div>
+                    <div class="mb-4 text-4xl font-bold text-primary" data-count="85">85%</div>
                     <p class="text-gray-700">Graduate Employment Rate</p>
                 </div>
             </div>
