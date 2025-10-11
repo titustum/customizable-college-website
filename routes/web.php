@@ -10,6 +10,8 @@ Volt::route('/contact', 'pages.contact')
     ->name('contact');
 Volt::route('/departments', 'pages.departments')
     ->name('departments');
+Volt::route('/department/{slug}', 'pages.department')
+    ->name('department');
 Volt::route('/staff-members', 'pages.staff-members')
     ->name('staff.members');
 Volt::route('/sucess-stories', 'pages.success-stories')
@@ -26,8 +28,6 @@ Volt::route('/administration', 'pages.administration')
     ->name('administration');
 Volt::route('/team', 'pages.team-members')
     ->name('team');
-Volt::route('/departments/{slug}', 'pages.department')
-    ->name('department');
 Volt::route('/vacancies', 'pages.vacancies')
     ->name('vacancies');
 Volt::route('/past-papers', 'pages.past-papers')
