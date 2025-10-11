@@ -190,15 +190,10 @@ class extends Component
                                 <img src="{{ asset('storage/'.$trainer->photo) }}" alt="{{ $trainer->name }}"
                                     class="object-cover w-full h-full">
                             </div>
-                            <div
-                                class="absolute px-3 py-1 text-xs font-semibold text-white transform -translate-x-1/2 bg-orange-500 rounded-full -bottom-2 left-1/2">
-                                {{ $trainer->years_of_experience }} Years Exp.
-                            </div>
                         </div>
                         <h3 class="text-xl font-bold">{{ $trainer->name }}</h3>
                         <p class="mb-2 text-orange-500">{{ $trainer->role->name }}</p>
                         <p class="text-sm text-gray-600 ">{{ $trainer->qualification }}</p>
-                        {{-- <p class="mb-3 text-sm text-blue-600">{{ $trainer->email }}</p> --}}
                     </div>
                     @endforeach
                 </div>
@@ -218,7 +213,7 @@ class extends Component
 
                 <div class="testimonial-slider" data-aos="fade-up">
                     <!-- Slider will be initialized with JavaScript -->
-                    <div class="swiper-container">
+                    <div class="swiper-container overflow-hidden">
                         <div class="swiper-wrapper">
                             <!-- Sample testimonials - in production, these would come from your database -->
 

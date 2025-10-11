@@ -193,7 +193,7 @@ class extends Component
             return;
         }
 
-        Applicant::create([
+        Application::create([
             'full_name' => $this->full_name,
             'phone' => $this->phone,
             'alternative_phone' => $this->alternative_phone,
@@ -211,6 +211,8 @@ class extends Component
         ]);
 
         session()->flash('message', 'Application submitted successfully! You will receive a confirmation SMS shortly.');
+        
+        return redirect()->route('admissions.complete', ['id' => $applicant->id]);
 
         // Reset only inputs (keep departments loaded)
         $this->reset([
@@ -588,12 +590,12 @@ class extends Component
                             <div class="text-center">
                                 <i class="fas fa-phone text-orange-500 text-2xl mb-2"></i>
                                 <h4 class="font-semibold text-gray-800">Call Us</h4>
-                                <p class="text-gray-600 text-sm">+254 712 345 678</p>
+                                <p class="text-gray-600 text-sm">+254 758 660 300</p>
                             </div>
                             <div class="text-center">
                                 <i class="fas fa-envelope text-orange-500 text-2xl mb-2"></i>
                                 <h4 class="font-semibold text-gray-800">Email Us</h4>
-                                <p class="text-gray-600 text-sm">admissions@tetutvc.ac.ke</p>
+                                <p class="text-gray-600 text-sm">info@tetutvc.ac.ke</p>
                             </div>
                             <div class="text-center">
                                 <i class="fas fa-map-marker-alt text-orange-500 text-2xl mb-2"></i>

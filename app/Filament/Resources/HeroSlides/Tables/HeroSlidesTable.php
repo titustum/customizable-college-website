@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\HeroSlideContents\Tables;
+namespace App\Filament\Resources\HeroSlides\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -10,16 +10,13 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class HeroSlideContentsTable
+class HeroSlidesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                ImageColumn::make('image')
-                    ->label('Image')
-                    ->disk('public')
-                    ->square(),
+                ImageColumn::make('image'),
                 TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('subtitle')

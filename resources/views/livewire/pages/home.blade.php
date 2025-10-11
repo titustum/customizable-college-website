@@ -5,7 +5,7 @@ use Livewire\Attributes\Title;
 use App\Models\Department; 
 use App\Models\SuccessStory;
 use App\Models\Partner;
-use App\Models\HeroSlideContent;
+use App\Models\HeroSlide;
 
 new  
 #[Title('Welcome to Our College')] 
@@ -21,7 +21,7 @@ class extends Component {
                                             ->orderBy('created_at', 'desc')
                                             ->get(),
             'partners'=> Partner::all(),
-            'heroSlides'=> HeroSlideContent::all(),
+            'heroSlides'=> HeroSlide::all(),
         ];
     }
 };

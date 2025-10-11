@@ -91,6 +91,24 @@
                 /* slightly smaller on mobile */
             }
         }
+
+        /* Hide navigation buttons on small screens */
+        @media (max-width: 767px) {
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                display: none !important;
+            }
+        }
+
+        /* Optional: Ensure they're visible again on larger screens */
+        @media (min-width: 768px) {
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                display: block;
+            }
+        }
     </style>
 
 

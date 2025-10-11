@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class HeroSlideContentSeeder extends Seeder
+class HeroSlideSeeder extends Seeder
 {
     /**
      * Run the database seeds.

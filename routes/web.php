@@ -8,8 +8,6 @@ Volt::route('/about', 'pages.about')
     ->name('about');
 Volt::route('/contact', 'pages.contact')
     ->name('contact');
-Volt::route('/admissions', 'pages.admissions')
-    ->name('admissions');
 Volt::route('/departments', 'pages.departments')
     ->name('departments');
 Volt::route('/staff-members', 'pages.staff-members')
@@ -36,3 +34,12 @@ Volt::route('/past-papers', 'pages.past-papers')
     ->name('past.papers');
 Volt::route('/create-success-story', 'pages.success-stories-create')
     ->name('create.success.story');
+
+Volt::route('/admissions', 'pages.admissions')
+    ->name('admissions');
+Volt::route('/admissions/complete/{id}', 'pages.admissions-complete')
+    ->name('admissions.complete');
+Volt::route('/admissions/download/{id}', 'pages.admissions-download')
+    ->name('admissions.download');
+Volt::route('/admissions/verify', 'pages.admissions-verify')
+    ->name('admissions.verify');
