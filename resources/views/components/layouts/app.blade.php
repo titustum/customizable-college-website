@@ -35,10 +35,6 @@
     <meta property="twitter:image" content="{{ asset('storage/'.$institution->logo) }}">
 
 
-
-    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
-
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Swiper CSS -->
@@ -54,7 +50,7 @@
     <style>
         :root {
             --primary-color: {{ $institution->primary_color ?? '#FF5722' }};
-            --primary-font: {{ $institution->primary_font ?? 'Inter, sans-serif' }};
+            --primary-font: '{{ $institution->primary_font }}', 'Inter, sans-serif';
         }
 
         body {
