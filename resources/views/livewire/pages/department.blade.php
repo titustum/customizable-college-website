@@ -37,7 +37,7 @@ class extends Component
         <!-- Department Title Overlay -->
         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
             <div class="container mx-auto">
-                <div class="inline-block px-4 py-1 mb-3 text-sm font-semibold text-white bg-orange-500 rounded-full">
+                <div class="inline-block px-4 py-1 mb-3 text-sm font-semibold text-white bg-primary rounded-full">
                     Department
                 </div>
                 <h1 class="mb-2 text-3xl font-bold text-white md:text-5xl">{{ $department->name }}</h1>
@@ -131,7 +131,7 @@ class extends Component
 
                         <div class="mb-12 overflow-x-auto">
                             <table class="w-full overflow-hidden bg-white rounded-lg shadow-md">
-                                <thead class="text-white bg-orange-600">
+                                <thead class="text-white bg-primary">
                                     <tr>
                                         <th class="px-2 py-2 text-left sm:px-4 sm:py-3">Course</th>
                                         <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 sm:table-cell">
@@ -175,7 +175,7 @@ class extends Component
             <div class="container px-4 mx-auto">
                 <div class="mb-12 text-center" data-aos="fade-up">
                     <h2 class="text-3xl font-bold">Meet Our Trainers</h2>
-                    <div class="w-24 h-1 mx-auto mt-4 bg-orange-500 rounded"></div>
+                    <div class="w-24 h-1 mx-auto mt-4 bg-primary rounded"></div>
                     <p class="max-w-3xl mx-auto mt-4 text-lg text-gray-600">
                         Learn from industry experts with extensive professional experience and a passion for
                         teaching.
@@ -197,7 +197,7 @@ class extends Component
                             </div>
                         </div>
                         <h3 class="text-xl font-bold">{{ $trainer->name }}</h3>
-                        <p class="mb-2 text-orange-500">{{ $trainer->role->name }}</p>
+                        <p class="mb-2 text-primary">{{ $trainer->role->name }}</p>
                         <p class="text-sm text-gray-600 ">{{ $trainer->qualification }}</p>
                     </div>
                     @endforeach
@@ -210,7 +210,7 @@ class extends Component
             <div class="container px-4 mx-auto">
                 <div class="mb-12 text-center" data-aos="fade-up">
                     <h2 class="text-3xl font-bold">Student Success Stories</h2>
-                    <div class="w-24 h-1 mx-auto mt-4 bg-orange-500 rounded"></div>
+                    <div class="w-24 h-1 mx-auto mt-4 bg-primary rounded"></div>
                     <p class="max-w-3xl mx-auto mt-4 text-lg text-gray-600">
                         See how our graduates have transformed their careers after completing our programs.
                     </p>
@@ -256,7 +256,7 @@ class extends Component
         </section>
 
         <!-- CTA Section -->
-        <section class="py-16 text-white bg-gradient-to-r from-orange-600 to-orange-500">
+        <section class="py-16 text-white bg-primary">
             <div class="container px-4 mx-auto">
                 <div class="flex flex-col items-center justify-between md:flex-row">
                     <div class="mb-8 text-center md:mb-0 md:text-left" data-aos="fade-right">

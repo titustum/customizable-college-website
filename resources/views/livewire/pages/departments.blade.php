@@ -25,7 +25,7 @@ class extends Component
         <div class="container px-4 mx-auto max-w-7xl">
             <div class="mb-16 text-center">
                 <h2 class="mb-4 text-3xl font-bold text-gray-800 lg:text-4xl">Our Departments</h2>
-                <div class="w-24 h-1 mx-auto bg-orange-500 rounded"></div>
+                <div class="w-24 h-1 mx-auto bg-primary rounded"></div>
                 <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-600">Explore our outstanding academic departments
                     designed to
                     provide industry-relevant skills and knowledge.</p>
@@ -44,12 +44,12 @@ class extends Component
                     </div>
                     <div class="p-6">
                         <h3
-                            class="mb-3 text-xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-orange-600">
+                            class="mb-3 text-xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-primary">
                             {{ $department->name }}</h3>
                         <p class="mb-5 text-gray-600 line-clamp-3">{{ $department->short_desc }}</p>
                         <div class="pt-2 border-t border-gray-100">
                             <a href="{{ route('department', $department->slug) }}"
-                                class="inline-flex items-center font-semibold text-orange-600 transition-colors duration-300 hover:text-orange-700">
+                                class="inline-flex items-center font-semibold text-primary transition-colors duration-300 hover:text-orange-700">
                                 Explore Department
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="w-5 h-5 ml-1 transition-transform duration-300 group-hover:translate-x-1"
@@ -69,18 +69,18 @@ class extends Component
 
 
     <!-- CTA Section -->
-    <section class="py-16 text-white bg-gradient-to-r from-orange-600 to-orange-500">
+    <section class="py-16 text-white bg-primary">
         <div class="container px-4 mx-auto">
             <div class="flex flex-col items-center justify-between md:flex-row">
                 <div class="mb-8 text-center md:mb-0 md:text-left" data-aos="fade-right">
-                    <h2 class="mb-4 text-3xl font-bold">Ready to Start Your Career in Tetu TVC?</h2>
+                    <h2 class="mb-4 text-3xl font-bold">Ready to Start Your Career in {{ $institution->name }}?</h2>
                     <p class="max-w-xl text-white/90">Take the first step toward your future career. Apply
                         now for
                         our upcoming intake and join our community of successful graduates.</p>
                 </div>
                 <div class="flex flex-col gap-4 sm:flex-row" data-aos="fade-left">
                     <a href="{{ route('admissions') }}"
-                        class="px-6 py-3 font-bold text-center text-orange-600 transition duration-300 bg-white rounded-lg hover:bg-gray-100">
+                        class="px-6 py-3 font-bold text-center text-primary transition duration-300 bg-white rounded-lg hover:bg-gray-100">
                         Apply Now
                     </a>
                     <a href="{{ route('contact') }}"

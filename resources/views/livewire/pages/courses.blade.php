@@ -46,16 +46,16 @@ class extends Component
 
 <section class="min-h-screen py-16 bg-gray-100 to-orange-200">
     <div class="container px-4 mx-auto">
-        <h1 class="mb-8 text-4xl font-bold text-orange-600">Explore Our Courses</h1>
+        <h1 class="mb-8 text-4xl font-bold text-primary">Explore Our Courses</h1>
 
         <div class="flex flex-col mb-8 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
             <div class="flex-grow">
                 <input wire:model.debounce.300ms="search" type="text" placeholder="Search courses..."
-                    class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-orange-500">
+                    class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-primary">
             </div>
             <div>
                 <select wire:model.live="department" wire:key="department-select"
-                    class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-orange-500 focus:ring-orange-500">
+                    class="w-full px-4 py-2 border-gray-300 rounded-lg focus:border-primary">
                     <option value="">All Departments</option>
                     @foreach($this->departments() as $dept)
                     <option value="{{ $dept->name }}">{{ $dept->name }}</option>
@@ -76,7 +76,7 @@ class extends Component
 
                 <div class="mb-6 overflow-x-auto">
                     <table class="w-full overflow-hidden bg-white rounded-lg shadow-md">
-                        <thead class="text-white bg-orange-600">
+                        <thead class="text-white bg-primary">
                             <tr>
                                 <th class="px-2 py-2 text-left sm:px-4 sm:py-3">Course</th>
                                 <th class="hidden px-2 py-2 text-left sm:px-4 sm:py-3 sm:table-cell">Requirements</th>

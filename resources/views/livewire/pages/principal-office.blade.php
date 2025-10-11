@@ -21,6 +21,10 @@ class extends Component
     public $totalCourses;
     public $yearEstablished;
 
+
+    // institution
+    public $institution;
+
     public function mount(): void
     {
         // No caching — fetch directly from the database
@@ -28,18 +32,12 @@ class extends Component
             ->whereHas('role', function ($query) {
                 $query->where('name', 'Principal');
             })
-            ->first();
-        
+            ->first(); 
 
-
-        // $this->principal->email = "info@tetutvc.ac.ke";
-    
-
-         
         $this->academicDepartmentsList = Department::all();
 
         // College stats and information
-        $this->collegeOverview = "Tetu Technical and Vocational College (Tetu TVC) is a leading institution committed to providing high-quality technical and vocational education and training. We equip our students with practical skills and knowledge that are highly relevant to the demands of the modern workforce and contribute to national development.";
+        $this->collegeOverview = "$this->institution->name is a leading institution committed to providing high-quality technical and vocational education and training. We equip our students with practical skills and knowledge that are highly relevant to the demands of the modern workforce and contribute to national development.";
         
         $this->ourValues = [
             'Excellence' => 'Striving for the highest standards in education and training',
@@ -58,8 +56,7 @@ class extends Component
             'National champions in 3 categories at the Kenya Music and Drama Festivals 2024', 
             'Attained National TVET Excellence Award for Best Technical College in 2024', 
         ];
-        
-        $this->principalMessage = "Welcome to Tetu Technical and Vocational College! We are dedicated to empowering our students with the technical competencies and entrepreneurial spirit needed to excel in their chosen careers. Our focus on practical, hands-on training ensures that our graduates are job-ready and can make a significant impact on the Kenyan economy. At Tetu TVC, we believe in learning by doing and providing real-world experiences that translate directly to workplace success. We invite you to explore the opportunities available at our institution and join our community of skilled professionals who are building Kenya's future.";
+         
     }
 }
 ?>
@@ -75,33 +72,33 @@ class extends Component
                 @if ($principal)
                 <div class="md:w-1/3 lg:w-1/4">
                     <div class="relative h-full">
-                        <img src="{{ asset('storage/'.$principal->photo) }}" alt="{{ $principal->name }}"
+                        <img src="{{ asset('storage/'.$institution->principal_photo) }}" alt="{{ $principal->name }}"
                             class="object-cover w-full h-full"
-                            onerror="this.src='{{ asset('images/placeholder-profile.jpg') }}'">
+                            onerror="this.src='{{ asset('storage/'. $institution->principal_photo) }}'">
                         <div
                             class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent md:hidden">
                             <h2 class="text-2xl font-bold text-white">{{ $principal->name }}</h2>
-                            <p class="text-lg text-gray-200">Principal, Tetu TVC</p>
+                            <p class="text-lg text-gray-200">Principal, {{ $institution->name }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="p-8 md:w-2/3 lg:w-3/4">
                     <div class="hidden md:block">
                         <h2 class="mb-2 text-3xl font-bold text-gray-800">{{ $principal->name }}</h2>
-                        <p class="mb-2 text-lg text-gray-600">Principal, Tetu TVC</p>
+                        <p class="mb-2 text-lg text-gray-600">Principal, {{ $institution->name }}</p>
                         @if ($principal->qualifications)
                         <p class="mb-4 italic text-gray-600">{{ $principal->qualifications }}</p>
                         @endif
                     </div>
 
-                    @if ($principal->biography)
+                    @if ($institution->welcome_message)
                     <div class="mb-6 prose text-gray-700 max-w-none">
-                        <p>{{ $principal->biography }}</p>
+                        <p>{{ $institution->welcome_message }}</p>
                     </div>
                     @endif
 
                     <div class="mt-6">
-                        <h3 class="pb-2 mb-4 text-xl font-semibold text-orange-600 border-b border-orange-200">A Message
+                        <h3 class="pb-2 mb-4 text-xl font-semibold text-primary border-b border-orange-200">A Message
                             from the Principal</h3>
                         <div class="prose text-gray-700 max-w-none">
                             <p>{{ $principalMessage }}</p>
@@ -113,7 +110,7 @@ class extends Component
                         <h4 class="mb-2 text-lg font-medium text-gray-800">Contact us</h4>
                         @if ($principal->email)
                         <p class="flex items-center mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-orange-500" fill="none"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-primary" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -123,7 +120,7 @@ class extends Component
                         @endif
                         @if ($principal->phone)
                         <p class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-orange-500" fill="none"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-primary" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -159,8 +156,8 @@ class extends Component
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($ourValues as $value => $description)
                     <div
-                        class="p-6 transition-transform duration-300 transform bg-white border-l-4 border-orange-500 rounded-md shadow-sm hover:-translate-y-1">
-                        <h4 class="mb-2 text-lg font-semibold text-orange-700">{{ $value }}</h4>
+                        class="p-6 transition-transform duration-300 transform bg-white border-l-4 border-primary rounded-md shadow-sm hover:-translate-y-1">
+                        <h4 class="mb-2 text-lg font-semibold text-primary">{{ $value }}</h4>
                         <p class="text-sm text-gray-600">{{ $description }}</p>
                     </div>
                     @endforeach
@@ -177,11 +174,11 @@ class extends Component
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($academicDepartmentsList as $department)
                     <div
-                        class="p-6 transition-all duration-300 bg-white border-t-4 border-orange-500 rounded-md shadow-sm hover:shadow-md group">
+                        class="p-6 transition-all duration-300 bg-white border-t-4 border-primary rounded-md shadow-sm hover:shadow-md group">
                         <div class="flex items-start">
                             <!-- Department icon would ideally come from DB, using placeholder here -->
                             <div
-                                class="flex items-center justify-center w-12 h-12 mr-4 text-white bg-orange-500 rounded-full">
+                                class="flex items-center justify-center w-12 h-12 mr-4 text-white bg-primary rounded-full">
                                 <!-- Default icon, ideally would be dynamic based on department type -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -197,14 +194,14 @@ class extends Component
                                 <!-- Program count badge - if you have this data -->
                                 @if(isset($department->programs_count))
                                 <span
-                                    class="inline-block px-2 py-1 mt-2 text-xs text-orange-700 bg-orange-100 rounded-full">
+                                    class="inline-block px-2 py-1 mt-2 text-xs text-primary bg-orange-100 rounded-full">
                                     {{ $department->programs_count }} Programs
                                 </span>
                                 @endif
 
                                 <div class="mt-3">
                                     <a href="{{ route('department', $department->slug) }}"
-                                        class="inline-flex items-center text-sm font-medium text-orange-600 transition-all duration-300 group-hover:text-orange-700">
+                                        class="inline-flex items-center text-sm font-medium text-primary transition-all duration-300 group-hover:text-primary">
                                         Learn More
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
@@ -233,7 +230,7 @@ class extends Component
                         @foreach ($keyAchievementsList as $achievement)
                         <li class="flex items-start">
                             <div
-                                class="flex items-center justify-center flex-shrink-0 w-6 h-6 mt-1 mr-3 text-white bg-orange-500 rounded-full">
+                                class="flex items-center justify-center flex-shrink-0 w-6 h-6 mt-1 mr-3 text-white bg-primary rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -255,18 +252,18 @@ class extends Component
 
 
     <!-- CTA Section -->
-    <section class="py-16 text-white bg-gradient-to-r from-orange-600 to-orange-500">
+    <section class="py-16 text-white bg-primary">
         <div class="container px-4 mx-auto">
             <div class="flex flex-col items-center justify-between md:flex-row">
                 <div class="mb-8 text-center md:mb-0 md:text-left" data-aos="fade-right">
-                    <h2 class="mb-4 text-3xl font-bold">Ready to Start Your Career in Tetu TVC?</h2>
+                    <h2 class="mb-4 text-3xl font-bold">Ready to Start Your Career in {{ $institution->name }} ?</h2>
                     <p class="max-w-xl text-white/90">Take the first step toward your future career. Apply
                         now for
                         our upcoming intake and join our community of successful graduates.</p>
                 </div>
                 <div class="flex flex-col gap-4 sm:flex-row" data-aos="fade-left">
                     <a href="{{ route('admissions') }}"
-                        class="px-6 py-3 font-bold text-center text-orange-600 transition duration-300 bg-white rounded-lg hover:bg-gray-100">
+                        class="px-6 py-3 font-bold text-center text-primary transition duration-300 bg-white rounded-lg hover:bg-gray-100">
                         Apply Now
                     </a>
                     <a href="{{ route('contact') }}"
