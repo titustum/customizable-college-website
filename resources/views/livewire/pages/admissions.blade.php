@@ -234,10 +234,10 @@ class extends Component
 
 <main class="bg-gray-50 min-h-screen">
     <!-- Hero Section -->
-    <section class="relative py-16 bg-gradient-to-r from-orange-600 to-orange-500 text-white">
+    <section class="relative py-16 bg-primary text-white">
         <div class="container mx-auto px-4 text-center">
             <div class="max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Apply to Tetu Technical College</h1>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Apply to {{ $institution->name }}</h1>
                 <p class="text-xl text-white/90 mb-8">Take the first step towards your future career. Complete your
                     application in just a few minutes.</p>
 
@@ -245,7 +245,7 @@ class extends Component
                 <div class="flex justify-center items-center space-x-4 mb-8">
                     @for ($i = 1; $i <= $totalSteps; $i++) <div class="flex items-center">
                         <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-                                {{ $i <= $currentStep ? 'bg-white text-orange-600' : 'bg-white/20 text-white/60' }}">
+                                {{ $i <= $currentStep ? 'bg-white text-primary' : 'bg-white/20 text-white/60' }}">
                             {{ $i }}
                         </div>
                         @if ($i < $totalSteps) <div class="w-8 h-1 mx-2 
@@ -296,7 +296,7 @@ class extends Component
                                 <div class="text-center mb-8">
                                     <div
                                         class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-user text-orange-600 text-2xl"></i>
+                                        <i class="fas fa-user text-primary text-2xl"></i>
                                     </div>
                                     <h2 class="text-2xl font-bold text-gray-800">Personal Information</h2>
                                     <p class="text-gray-600">Tell us about yourself</p>
@@ -305,22 +305,22 @@ class extends Component
                                 <div class="grid gap-6 md:grid-cols-2">
                                     <div class="form-group">
                                         <label for="full_name" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-user mr-2 text-orange-500"></i>Full Name *
+                                            <i class="fas fa-user mr-2 text-primary"></i>Full Name *
                                         </label>
                                         <input type="text" id="full_name" wire:model.lazy="full_name" required
                                             placeholder="Enter your full name"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         @error('full_name') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                             }}</span> @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-phone mr-2 text-orange-500"></i>Phone Number *
+                                            <i class="fas fa-phone mr-2 text-primary"></i>Phone Number *
                                         </label>
                                         <input type="tel" id="phone" wire:model.lazy="phone" required
                                             placeholder="0712345678"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         @error('phone') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                             }}</span> @enderror
                                     </div>
@@ -333,7 +333,7 @@ class extends Component
                                     </label>
                                     <input type="tel" id="alternative_phone" wire:model.lazy="alternative_phone"
                                         placeholder="Optional alternative number"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                     @error('alternative_phone') <span class="text-red-500 text-sm mt-1 block">{{
                                         $message }}</span> @enderror
                                 </div>
@@ -341,10 +341,10 @@ class extends Component
                                 <div class="grid gap-6 md:grid-cols-2">
                                     <div class="form-group">
                                         <label for="gender" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-venus-mars mr-2 text-orange-500"></i>Gender *
+                                            <i class="fas fa-venus-mars mr-2 text-primary"></i>Gender *
                                         </label>
                                         <select id="gender" wire:model="gender" required
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                             <option value="">Select your gender</option>
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
@@ -356,12 +356,12 @@ class extends Component
 
                                     <div class="form-group">
                                         <label for="id_number" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-id-card mr-2 text-orange-500"></i>ID Number/Birth
+                                            <i class="fas fa-id-card mr-2 text-primary"></i>ID Number/Birth
                                             Certificate *
                                         </label>
                                         <input type="text" id="id_number" wire:model.lazy="id_number" required
                                             placeholder="Enter ID or Birth Certificate number"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         @error('id_number') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                             }}</span> @enderror
                                     </div>
@@ -375,7 +375,7 @@ class extends Component
                                 <div class="text-center mb-8">
                                     <div
                                         class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-graduation-cap text-orange-600 text-2xl"></i>
+                                        <i class="fas fa-graduation-cap text-primary text-2xl"></i>
                                     </div>
                                     <h2 class="text-2xl font-bold text-gray-800">Academic Background</h2>
                                     <p class="text-gray-600">Your educational history</p>
@@ -383,11 +383,11 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="high_school" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-school mr-2 text-orange-500"></i>High School Name *
+                                        <i class="fas fa-school mr-2 text-primary"></i>High School Name *
                                     </label>
                                     <input type="text" id="high_school" wire:model.lazy="high_school" required
                                         placeholder="Enter your high school name"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                     @error('high_school') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
@@ -395,11 +395,11 @@ class extends Component
                                 <div class="form-group">
                                     <label for="high_school_grade"
                                         class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-award mr-2 text-orange-500"></i>High School Grade *
+                                        <i class="fas fa-award mr-2 text-primary"></i>High School Grade *
                                     </label>
                                     <input type="text" id="high_school_grade" wire:model.lazy="high_school_grade"
                                         required placeholder="e.g., C+, B-, A"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                     @error('high_school_grade') <span class="text-red-500 text-sm mt-1 block">{{
                                         $message }}</span> @enderror
                                 </div>
@@ -408,22 +408,22 @@ class extends Component
                                     <div class="form-group">
                                         <label for="kcse_index_number"
                                             class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-hashtag mr-2 text-orange-500"></i>KCSE Index Number *
+                                            <i class="fas fa-hashtag mr-2 text-primary"></i>KCSE Index Number *
                                         </label>
                                         <input type="text" id="kcse_index_number" wire:model.lazy="kcse_index_number"
                                             required placeholder="Enter KCSE index number"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         @error('kcse_index_number') <span class="text-red-500 text-sm mt-1 block">{{
                                             $message }}</span> @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label for="kcse_year" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-calendar mr-2 text-orange-500"></i>KCSE Year *
+                                            <i class="fas fa-calendar mr-2 text-primary"></i>KCSE Year *
                                         </label>
                                         <input type="number" id="kcse_year" wire:model.lazy="kcse_year" required
                                             placeholder="{{ date('Y') }}" min="1990" max="{{ date('Y') }}"
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         @error('kcse_year') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                             }}</span> @enderror
                                     </div>
@@ -436,7 +436,7 @@ class extends Component
                                     </label>
                                     <input type="text" id="nemis_upi_number" wire:model.lazy="nemis_upi_number"
                                         placeholder="Optional - if available"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                     @error('nemis_upi_number') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
@@ -449,11 +449,11 @@ class extends Component
                                 <!-- Department Selection -->
                                 <div class="form-group">
                                     <label for="departmentId" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-building mr-2 text-orange-500"></i>Department *
+                                        <i class="fas fa-building mr-2 text-primary"></i>Department *
                                     </label>
 
                                     <select wire:model.live="department_id"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         <option value="">Select a department</option>
                                         @foreach ($departments as $department)
                                         <option value="{{ $department->id }}">{{ $department->name }}</option>
@@ -467,11 +467,11 @@ class extends Component
                                 <!-- Course Selection -->
                                 <div class="form-group">
                                     <label for="courseId" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-book-open mr-2 text-orange-500"></i>Desired Course of Study *
+                                        <i class="fas fa-book-open mr-2 text-primary"></i>Desired Course of Study *
                                     </label>
                                     <select id="courseId" wire:model="course_id" @if(is_null($department_id)) disabled
                                         @endif required
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         <option value="">Select a course</option>
                                         @foreach ($courses as $course)
                                         <option value="{{ $course->id }}">{{ $course->name }}</option>
@@ -484,10 +484,10 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="start_term" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-calendar-alt mr-2 text-orange-500"></i>Intended Start Term *
+                                        <i class="fas fa-calendar-alt mr-2 text-primary"></i>Intended Start Term *
                                     </label>
                                     <select id="start_term" wire:model="start_term" required
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         <option value="">Select a term</option>
                                         @foreach($startTermOptions as $value => $label)
                                         <option value="{{ $value }}">{{ $label }}</option>
@@ -508,7 +508,7 @@ class extends Component
                                 <div class="text-center mb-8">
                                     <div
                                         class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-users mr-2 text-orange-600 text-2xl"></i>
+                                        <i class="fas fa-users mr-2 text-primary text-2xl"></i>
                                     </div>
                                     <h2 class="text-2xl font-bold text-gray-800">Parent/Guardian Information</h2>
                                     <p class="text-gray-600">Emergency contact details</p>
@@ -516,22 +516,22 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="parent_name" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-user-tie mr-2 text-orange-500"></i>Parent/Guardian Name *
+                                        <i class="fas fa-user-tie mr-2 text-primary"></i>Parent/Guardian Name *
                                     </label>
                                     <input type="text" id="parent_name" wire:model.lazy="parent_name" required
                                         placeholder="Enter parent/guardian full name"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                     @error('parent_name') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="parent_phone" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-phone mr-2 text-orange-500"></i>Parent/Guardian Phone Number *
+                                        <i class="fas fa-phone mr-2 text-primary"></i>Parent/Guardian Phone Number *
                                     </label>
                                     <input type="tel" id="parent_phone" wire:model.lazy="parent_phone" required
                                         placeholder="0712345678"
-                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all">
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                     @error('parent_phone') <span class="text-red-500 text-sm mt-1 block">{{ $message
                                         }}</span> @enderror
                                 </div>
@@ -540,10 +540,10 @@ class extends Component
                                 <div class="bg-gray-50 rounded-xl p-6">
                                     <div class="flex items-start">
                                         <input type="checkbox" id="terms" wire:model="terms" required
-                                            class="mt-1 mr-3 w-5 h-5 text-orange-600 bg-gray-600 border-gray-300 rounded focus:ring-orange-500">
+                                            class="mt-1 mr-3 w-5 h-5 text-primary bg-gray-600 border-gray-300 rounded focus:ring-primary">
                                         <label for="terms" class="text-sm text-gray-700 leading-relaxed">
                                             I agree to the <a href="{{ route('terms.conditions') }}"
-                                                class="text-orange-600 hover:underline">terms and
+                                                class="text-primary hover:underline">terms and
                                                 conditions</a>
                                             and confirm that all information provided is accurate and complete. I
                                             understand that
@@ -568,12 +568,12 @@ class extends Component
                                 @endif
 
                                 @if ($currentStep < $totalSteps) <button type="button" wire:click="nextStep"
-                                    class="flex items-center px-6 py-3 text-white bg-orange-600 rounded-xl hover:bg-orange-700 transition-colors">
+                                    class="flex items-center px-6 py-3 text-white bg-primary rounded-xl hover:opacity-80 transition-colors">
                                     Next<i class="fas fa-arrow-right ml-2"></i>
                                     </button>
                                     @else
                                     <button type="submit"
-                                        class="flex items-center px-8 py-3 text-white bg-orange-600 rounded-xl hover:bg-orange-700 transition-colors font-semibold">
+                                        class="flex items-center px-8 py-3 text-white bg-primary rounded-xl hover:opacity-80 transition-colors font-semibold">
                                         <i class="fas fa-paper-plane mr-2"></i>Submit Application
                                     </button>
                                     @endif
@@ -588,19 +588,19 @@ class extends Component
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Need Help?</h3>
                         <div class="grid md:grid-cols-3 gap-6">
                             <div class="text-center">
-                                <i class="fas fa-phone text-orange-500 text-2xl mb-2"></i>
+                                <i class="fas fa-phone text-primary text-2xl mb-2"></i>
                                 <h4 class="font-semibold text-gray-800">Call Us</h4>
-                                <p class="text-gray-600 text-sm">+254 758 660 300</p>
+                                <p class="text-gray-600 text-sm">{{ $institution->phone }}</p>
                             </div>
                             <div class="text-center">
-                                <i class="fas fa-envelope text-orange-500 text-2xl mb-2"></i>
+                                <i class="fas fa-envelope text-primary text-2xl mb-2"></i>
                                 <h4 class="font-semibold text-gray-800">Email Us</h4>
-                                <p class="text-gray-600 text-sm">info@tetutvc.ac.ke</p>
+                                <p class="text-gray-600 text-sm">{{ $institution->email }}</p>
                             </div>
                             <div class="text-center">
-                                <i class="fas fa-map-marker-alt text-orange-500 text-2xl mb-2"></i>
+                                <i class="fas fa-map-marker-alt text-primary text-2xl mb-2"></i>
                                 <h4 class="font-semibold text-gray-800">Visit Us</h4>
-                                <p class="text-gray-600 text-sm">Tetu Technical College</p>
+                                <p class="text-gray-600 text-sm">{{ $institution->name }}</p>
                             </div>
                         </div>
                     </div>
