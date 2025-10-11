@@ -22,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Share departments with all views using layouts.app
-        View::composer('components.layouts.app', function ($view) {
+        // Share institution and departments with all views using view composer
+        View::composer('*', function ($view) {
             $institution = Institution::first();
             $view->with('institution', $institution);
             $view->with('departments', Department::all());
