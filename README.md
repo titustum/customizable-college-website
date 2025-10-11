@@ -46,7 +46,7 @@ php artisan serve
 
 ## 🧩 Tech Stack
 
-* Laravel 11
+* Laravel 12
 * Filament 4 (Admin Panel)
 * Livewire + Volt (Frontend)
 * Tailwind CSS
