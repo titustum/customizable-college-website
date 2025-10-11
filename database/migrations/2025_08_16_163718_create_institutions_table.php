@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('institutions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('logo')->nullable();
             $table->string('principal_name')->nullable();
             $table->string('principal_photo')->nullable(); // image path
             $table->text('welcome_message')->nullable();
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('primary_font')->nullable(); // NEW
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->string('address')->nullable(); // Physical address
 
             // Socials
             $table->string('facebook')->nullable();
