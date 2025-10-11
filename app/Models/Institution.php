@@ -8,6 +8,7 @@ class Institution extends Model
 {
     protected $fillable = [
         'name',
+        'logo',
         'principal_name',
         'principal_photo',
         'welcome_message',

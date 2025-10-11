@@ -7,29 +7,29 @@
     <title>{{ $title ?? 'Default Title' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
-        content="Tetu Technical and Vocational College offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+        content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <link rel="canonical" href="https://www.tetutvc.ac.ke" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Righteous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="shortcut icon" href="{{ asset('images/logo.jpeg') }}" type="image/jpeg">
+    <link rel="shortcut icon" href="{{ asset('storage/'. $institution->logo ) }}" type="image/jpeg">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.tetutvc.ac.ke/">
-    <meta property="og:title" content="Tetu Technical and Vocational College | Quality Education in Kenya">
+    <meta property="og:title" content="{{ $institution->name }} | Quality Education in Kenya">
     <meta property="og:description"
-        content="Tetu TVC offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-    <meta property="og:image" content="{{ asset('images/logo.jpeg') }}">
+        content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <meta property="og:image" content="{{ asset('storage/'.$institution->logo) }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.tetutvc.ac.ke/">
-    <meta property="twitter:title" content="Tetu Technical and Vocational College | Quality Education in Kenya">
+    <meta property="twitter:title" content="{{ $institution->name }} | Quality Education in Kenya">
     <meta property="twitter:description"
-        content="Tetu TVC offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-    <meta property="twitter:image" content="{{ asset('images/logo.jpeg') }}">
+        content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <meta property="twitter:image" content="{{ asset('storage/'.$institution->logo) }}">
 
 
 
@@ -49,6 +49,28 @@
 
 
     <style>
+        :root {
+            --primary-color: {{ $institution->primary_color ?? '#FF5722' }};
+            --primary-font: {{ $institution->primary_font ?? 'Inter, sans-serif' }};
+        }
+
+        body {
+            font-family: var(--primary-font);
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .text-primary {
+            color: var(--primary-color);
+        }
+
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+        
+        
         /* Mobile menu transition */
         .mobile-menu {
             transform: translateX(-100%);
@@ -119,18 +141,18 @@
     <header class="text-white bg-gray-900">
         <div class="container flex items-center justify-between px-4 py-2 mx-auto text-sm lg:px-8">
             <nav class="items-center hidden space-x-4 md:flex">
-                <a href="https://facebook.com/TetuTechnicalVocationalCollege" aria-label="Facebook"
-                    class="transition-colors hover:text-orange-400">
+                <a href="{{  $institution->facebook }}" aria-label="Facebook"
+                    class="transition-colors hover:text-primary">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.tiktok.com/@tetutvc019" aria-label="TikTok"
-                    class="transition-colors hover:text-orange-400">
+                <a href="https://www.tiktok.com/@{{  $institution->tiktok }}" aria-label="TikTok"
+                    class="transition-colors hover:text-primary">
                     <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
-                <a href="#" aria-label="Twitter" class="transition-colors hover:text-orange-400 text-orange-600 active">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                <a href="mailto:{{  $institution->x }}" aria-label="Twitter" class="transition-colors hover:text-primary text-primary active">
+                    <i class="fab fa-x" aria-hidden="true"></i>
                 </a>
-                <a href="#" aria-label="YouTube" class="transition-colors hover:text-orange-400 text-orange-600 active">
+                <a href="{{  $institution->youtube }}" aria-label="YouTube" class="transition-colors hover:text-primary text-primary active">
                     <i class="fab fa-youtube" aria-hidden="true"></i>
                 </a>
             </nav>
@@ -138,24 +160,24 @@
             <div class="flex items-center justify-between w-full md:w-auto">
                 <div class="px-2">
                     <i class="mr-1 fas fa-phone-alt"></i>
-                    <span>+254 758 660 300</span>
+                    <span>{{ $institution->phone }}</span>
                 </div>
                 <div class="px-2 border-white md:border-l">
                     <i class="mr-1 fas fa-envelope"></i>
-                    <a href="mailto:info@tetutvc.ac.ke"
-                        class="transition-colors hover:text-orange-400">info@tetutvc.ac.ke</a>
+                    <a href="mailto:{{  $institution->email }}"
+                        class="transition-colors hover:text-primary">{{  $institution->email }}</a>
                 </div>
                 <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="#" class="transition-colors hover:text-orange-400">Tenders</a>
+                    <a href="#" class="transition-colors hover:text-primary">Tenders</a>
                 </div>
                 <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="{{ route('downloads') }}" class="transition-colors hover:text-orange-400">Downloads</a>
+                    <a href="{{ route('downloads') }}" class="transition-colors hover:text-primary">Downloads</a>
                 </div>
                 <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="{{ route('vacancies') }}" class="transition-colors hover:text-orange-400">Vacancies</a>
+                    <a href="{{ route('vacancies') }}" class="transition-colors hover:text-primary">Vacancies</a>
                 </div>
                 <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="{{ route('past.papers') }}" class="transition-colors hover:text-orange-400">Past Papers</a>
+                    <a href="{{ route('past.papers') }}" class="transition-colors hover:text-primary">Past Papers</a>
                 </div>
 
             </div>
@@ -170,7 +192,7 @@
             <div class="inline xl:hidden">
                 <!-- Mobile menu toggle button -->
                 <button id="mobile-menu-button" aria-label="Toggle mobile menu"
-                    class="pr-4  transition-colors hover:text-orange-600 rounded">
+                    class="pr-4  transition-colors hover:text-primary rounded">
                     <!-- Hamburger icon (3 lines) -->
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -180,9 +202,9 @@
             </div>
 
 
-            <a href="{{ route('home') }}" class="flex items-center text-orange-600 uppercase">
-                <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" class="h-12">
-                <h1 class="font-['Righteous'] text-3xl hidden lg:inline ml-2">TETU TVC</h1>
+            <a href="{{ route('home') }}" class="flex items-center text-primary uppercase">
+                <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-12">
+                <h1 class="font-['Righteous'] text-3xl hidden lg:inline ml-2">{{ $institution->name }}</h1>
             </a>
 
 
@@ -190,16 +212,16 @@
             <div class="items-center hidden font-semibold xl:flex">
                 <!-- Home -->
                 <a href="{{ route('home') }}"
-                    @class([ 'px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
-                    , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('home'),
+                    @class([ 'px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
+                    , 'text-primary border-b-2 border-primary'=> request()->routeIs('home'),
                     ])>
                     HOME
                 </a>
 
                 <!-- About Us -->
                 <a href="{{ route('about') }}"
-                    @class([ 'px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
-                    , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('about'),
+                    @class([ 'px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
+                    , 'text-primary border-b-2 border-primary'=> request()->routeIs('about'),
                     ])>
                     ABOUT US
                 </a>
@@ -207,8 +229,8 @@
                 <!-- Administration Dropdown -->
                 <div class="relative group">
                     <button
-                        @class([ 'flex items-center px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
-                        , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('principal.office') ||
+                        @class([ 'flex items-center px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
+                        , 'text-primary border-b-2 border-primary'=> request()->routeIs('principal.office') ||
                         request()->routeIs('staff.members'),
                         ])>
                         ADMINISTRATION
@@ -217,15 +239,15 @@
                     <div
                         class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
                         <a href="{{ route('principal.office') }}"
-                            @class([ 'block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600'
-                            , 'text-orange-600 bg-orange-100'=> request()->routeIs('principal.office'),
+                            @class([ 'block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-primary'
+                            , 'text-primary bg-orange-100'=> request()->routeIs('principal.office'),
                             ])>
                             Principal's Office
                         </a>
                         {{-- <a href="{{ route('administration') }}" class="...">Administrative Staff</a> --}}
                         <a href="{{ route('staff.members') }}"
-                            @class([ 'block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-orange-600'
-                            , 'text-orange-600 bg-orange-100'=> request()->routeIs('staff.members'),
+                            @class([ 'block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-primary'
+                            , 'text-primary bg-orange-100'=> request()->routeIs('staff.members'),
                             ])>
                             Our Staff Members
                         </a>
@@ -235,8 +257,8 @@
                 <!-- Departments Dropdown -->
                 <div class="relative group">
                     <a href="{{ route('departments') }}"
-                        @class([ 'flex items-center px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
-                        , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('departments') ||
+                        @class([ 'flex items-center px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
+                        , 'text-primary border-b-2 border-primary'=> request()->routeIs('departments') ||
                         request()->routeIs('department'),
                         ])>
                         DEPARTMENTS
@@ -246,8 +268,8 @@
                         class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
                         @foreach ($departments as $department)
                         <a href="{{ route('department', $department->slug) }}"
-                            @class([ 'block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-orange-600'
-                            , 'text-orange-600 bg-orange-100'=> request()->is('departments/' . $department->slug),
+                            @class([ 'block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-primary'
+                            , 'text-primary bg-orange-100'=> request()->is('departments/' . $department->slug),
                             ])>
                             {{ $department->name }}
                         </a>
@@ -257,16 +279,16 @@
 
                 <!-- Courses -->
                 <a href="{{ route('courses') }}"
-                    @class([ 'px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
-                    , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('courses'),
+                    @class([ 'px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
+                    , 'text-primary border-b-2 border-primary'=> request()->routeIs('courses'),
                     ])>
                     COURSES
                 </a>
 
                 <!-- Contact -->
                 <a href="{{ route('contact') }}"
-                    @class([ 'px-3 py-5 transition-all hover:text-orange-600 hover:border-b-2 hover:border-orange-600'
-                    , 'text-orange-600 border-b-2 border-orange-600'=> request()->routeIs('contact'),
+                    @class([ 'px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
+                    , 'text-primary border-b-2 border-primary'=> request()->routeIs('contact'),
                     ])>
                     CONTACT US
                 </a>
@@ -276,11 +298,11 @@
 
             <div class="flex items-center font-semibold">
                 <a href="{{ route('admissions') }}"
-                    class="hidden px-5 py-2 ml-4 text-white transition-all bg-orange-600 rounded-full shadow-md lg:inline hover:bg-orange-700">
+                    class="hidden px-5 py-2 ml-4 text-white transition-all bg-primary rounded-full shadow-md lg:inline hover:bg-orange-700">
                     APPLY NOW
                 </a>
                 <a href="{{ route('admissions') }}"
-                    class="px-4 py-3 transition-all md:ml-4 lg:hidden hover:text-orange-600">
+                    class="px-4 py-3 transition-all md:ml-4 lg:hidden hover:text-primary">
                     APPLY →
                 </a>
             </div>
@@ -293,9 +315,9 @@
     <div id="mobile-menu" class="mobile-menu fixed inset-0 z-50 bg-white w-80 shadow-xl h-screen overflow-y-auto">
         <div class="p-6">
             <div class="flex items-center justify-between mb-8">
-                <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" class="h-10">
+                <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-10">
                 <button id="close-mobile-menu" aria-label="Close mobile menu"
-                    class="hover:text-orange-600 text-2xl transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400 rounded">
+                    class="hover:text-primary text-2xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">
                     <!-- Close icon (X) -->
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
@@ -307,16 +329,16 @@
             <div class="space-y-1">
                 <!-- Home -->
                 <a href="{{ route('home') }}"
-                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                    , 'text-orange-600 bg-orange-100'=> request()->routeIs('home'),
+                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
+                    , 'text-primary bg-orange-100'=> request()->routeIs('home'),
                     ])>
                     HOME
                 </a>
 
                 <!-- About -->
                 <a href="{{ route('about') }}"
-                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                    , 'text-orange-600 bg-orange-100'=> request()->routeIs('about'),
+                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
+                    , 'text-primary bg-orange-100'=> request()->routeIs('about'),
                     ])>
                     ABOUT US
                 </a>
@@ -324,8 +346,8 @@
                 <!-- Mobile Administration Dropdown -->
                 <div class="mobile-dropdown">
                     <button
-                        @class([ 'flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                        , 'text-orange-600 bg-orange-100'=> request()->routeIs('principal.office') ||
+                        @class([ 'flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
+                        , 'text-primary bg-orange-100'=> request()->routeIs('principal.office') ||
                         request()->routeIs('staff.members'),
                         ])>
                         ADMINISTRATION
@@ -333,15 +355,15 @@
                     </button>
                     <div class="hidden pl-4 mt-1 space-y-1">
                         <a href="{{ route('principal.office') }}"
-                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                            , 'text-orange-600 bg-orange-100'=> request()->routeIs('principal.office'),
+                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-primary'
+                            , 'text-primary bg-orange-100'=> request()->routeIs('principal.office'),
                             ])>
                             Principal's Office
                         </a>
                         {{-- <a href="{{ route('administration') }}" class="...">Administrative Staff</a> --}}
                         <a href="{{ route('staff.members') }}"
-                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                            , 'text-orange-600 bg-orange-100'=> request()->routeIs('staff.members'),
+                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-primary'
+                            , 'text-primary bg-orange-100'=> request()->routeIs('staff.members'),
                             ])>
                             Our Staff Members
                         </a>
@@ -351,8 +373,8 @@
                 <!-- Mobile Departments Dropdown -->
                 <div class="mobile-dropdown">
                     <button
-                        @class([ 'flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                        , 'text-orange-600 bg-orange-100'=> request()->routeIs('departments') ||
+                        @class([ 'flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
+                        , 'text-primary bg-orange-100'=> request()->routeIs('departments') ||
                         request()->routeIs('department'),
                         ])>
                         DEPARTMENTS
@@ -361,8 +383,8 @@
                     <div class="hidden pl-4 mt-1 space-y-1">
                         @foreach ($departments as $department)
                         <a href="{{ route('department', $department->slug) }}"
-                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                            , 'text-orange-600 bg-orange-100'=> request()->is('departments/' . $department->slug),
+                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-primary'
+                            , 'text-primary bg-orange-100'=> request()->is('departments/' . $department->slug),
                             ])>
                             {{ $department->name }}
                         </a>
@@ -372,16 +394,16 @@
 
                 <!-- Courses -->
                 <a href="{{ route('courses') }}"
-                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                    , 'text-orange-600 bg-orange-100'=> request()->routeIs('courses'),
+                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
+                    , 'text-primary bg-orange-100'=> request()->routeIs('courses'),
                     ])>
                     COURSES
                 </a>
 
                 <!-- Contact -->
                 <a href="{{ route('contact') }}"
-                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                    , 'text-orange-600 bg-orange-100'=> request()->routeIs('contact'),
+                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
+                    , 'text-primary bg-orange-100'=> request()->routeIs('contact'),
                     ])>
                     CONTACT US
                 </a>
@@ -389,24 +411,24 @@
                 <!-- Other Links -->
                 <div class="pt-4 mt-4 border-t border-gray-200">
                     <a href="{{ route('downloads') }}"
-                        @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                        , 'text-orange-600 bg-orange-100'=> request()->routeIs('downloads'),
+                        @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
+                        , 'text-primary bg-orange-100'=> request()->routeIs('downloads'),
                         ])>
                         DOWNLOADS
                     </a>
                     <a href="#"
-                        class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600">
+                        class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary">
                         TENDERS
                     </a>
                     <a href="{{ route('filament.admin.auth.login') }}"
-                        @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-orange-600'
-                        , 'text-orange-600 bg-orange-100'=> request()->routeIs('filament.admin.auth.login'),
+                        @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
+                        , 'text-primary bg-orange-100'=> request()->routeIs('filament.admin.auth.login'),
                         ])>
                         ADMIN PORTAL
                     </a>
                     <a href="{{ route('admissions') }}"
-                        @class([ 'block px-2 py-3 mt-4 text-center text-white transition-all bg-orange-600 rounded hover:bg-orange-700'
-                        , 'ring-2 ring-orange-400'=> request()->routeIs('admissions'),
+                        @class([ 'block px-2 py-3 mt-4 text-center text-white transition-all bg-primary rounded hover:bg-orange-700'
+                        , 'ring-2 ring-primary'=> request()->routeIs('admissions'),
                         ])>
                         APPLY NOW
                     </a>
@@ -428,13 +450,12 @@
     <footer class="py-12 text-white bg-gray-800">
         <div class="container px-4 mx-auto">
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                <!-- About Tetu TVC -->
+                <!-- About {{ $institution->name }} -->
                 <div data-aos='fade-up'>
-                    <h3 class="mb-4 text-xl font-semibold">About Tetu TVC</h3>
-                    <p class="mb-4 text-gray-400">Tetu Technical and Vocational College is committed to providing
-                        quality
+                    <h3 class="mb-4 text-xl font-semibold">About {{ $institution->name }}</h3>
+                    <p class="mb-4 text-gray-400">{{ $institution->name }} is committed to providing quality
                         education and training to empower students for successful careers.</p>
-                    <a href="/about" class="text-orange-400 hover:text-orange-300">Learn More</a>
+                    <a href="/about" class="text-primary hover:text-orange-300">Learn More</a>
                 </div>
 
                 <!-- Quick Links -->
@@ -457,16 +478,16 @@
                     <h3 class="mb-4 text-xl font-semibold">Contact Us</h3>
                     <ul class="space-y-2 text-gray-400">
                         <li>
-                            <i class="mr-2 text-orange-400 fas fa-map-marker-alt"></i>
-                            P.O. Box 1716-10100, Nyeri, Kenya
+                            <i class="mr-2 text-primary fas fa-map-marker-alt"></i>
+                            {{ $institution->address }}
                         </li>
                         <li>
-                            <i class="mr-2 text-orange-400 fas fa-phone"></i>
-                            +254 758 660 300
+                            <i class="mr-2 text-primary fas fa-phone"></i>
+                            {{ $institution->phone }}
                         </li>
                         <li>
-                            <i class="mr-2 text-orange-400 fas fa-envelope"></i>
-                            info@tetutvc.ac.ke
+                            <i class="mr-2 text-primary fas fa-envelope"></i>
+                            {{ $institution->email }}
                         </li>
                     </ul>
                 </div>
@@ -477,9 +498,9 @@
                     <p class="mb-4 text-gray-400">Subscribe to our newsletter for updates and news.</p>
                     <form class="flex">
                         <input type="email" placeholder="Enter your email"
-                            class="w-full px-3 py-2 bg-white text-gray-800 rounded-l-md focus:outline-none focus:ring-2 focus:ring-orange-400">
+                            class="w-full px-3 py-2 bg-white text-gray-800 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary">
                         <button type="submit"
-                            class="px-4 py-2 transition duration-300 bg-orange-600 hover:bg-orange-700 rounded-r-md">
+                            class="px-4 py-2 transition duration-300 bg-primary hover:bg-orange-700 rounded-r-md">
                             Subscribe
                         </button>
                     </form>
@@ -495,7 +516,7 @@
                     <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div class="text-sm text-gray-400">
-                    © 2024 Tetu Technical and Vocational College. All rights reserved.
+                    © {{ date('Y') }} {{ $institution->name }}. All rights reserved.
                 </div>
             </div>
         </div>
@@ -511,11 +532,11 @@
         const navItems = document.querySelectorAll('#mainNav .xl\\:flex a');
         navItems.forEach(item => {
             item.addEventListener('mouseenter', function () {
-                this.classList.add('text-orange-600');
+                this.classList.add('text-primary');
             });
             item.addEventListener('mouseleave', function () {
                 if (!this.classList.contains('active')) {
-                    this.classList.remove('text-orange-600');
+                    this.classList.remove('text-primary');
                 }
             });
         });
