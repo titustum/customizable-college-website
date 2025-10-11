@@ -21,6 +21,7 @@ class VacancyResource extends Resource
     protected static ?string $model = Vacancy::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentMagnifyingGlass;
+
     protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::DocumentMagnifyingGlass;
 
     protected static ?string $recordTitleAttribute = 'title';

@@ -21,6 +21,7 @@ class DownloadResource extends Resource
     protected static ?string $model = Download::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArrowDownOnSquareStack;
+
     protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::ArrowDownOnSquareStack;
 
     protected static ?string $recordTitleAttribute = 'title';
