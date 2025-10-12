@@ -12,7 +12,7 @@ class HeroSlideInfolist
     {
         return $schema
             ->components([
-                ImageEntry::make('image'),
+                ImageEntry::make('image')->disk('public'),
                 TextEntry::make('title'),
                 TextEntry::make('subtitle'),
                 TextEntry::make('slogan'),

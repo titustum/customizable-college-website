@@ -48,7 +48,5 @@ Volt::route('/admissions/download/{id}', 'pages.admissions-download')
 Volt::route('/admissions/verify', 'pages.admissions-verify')
     ->name('admissions.verify');
 
-
 Route::get('/admissions/download/{id}', [ApplicationController::class, 'download'])
-     ->name('admissions.download');
-
+    ->name('admissions.download');

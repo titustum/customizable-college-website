@@ -28,7 +28,6 @@ class Institution extends Model
         'longitude',
     ];
 
-
     public function getPrimaryColorRgbAttribute()
     {
         return $this->hex2rgb($this->primary_color);
@@ -50,5 +49,4 @@ class Institution extends Model
 
         return "$r, $g, $b";
     }
-
 }

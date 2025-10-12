@@ -127,7 +127,7 @@ class InstitutionForm
                             TextInput::make('latitude')
                                 ->label('Latitude')
                                 ->placeholder('-1.2921'),
-                            
+
                             TextInput::make('longitude')
                                 ->label('Longitude')
                                 ->placeholder('36.8219'),

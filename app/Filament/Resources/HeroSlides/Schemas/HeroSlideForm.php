@@ -4,6 +4,7 @@ namespace App\Filament\Resources\HeroSlides\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class HeroSlideForm
@@ -12,20 +13,27 @@ class HeroSlideForm
     {
         return $schema
             ->components([
-                FileUpload::make('image')
-                    ->image()
-                    ->required(),
-                TextInput::make('title')
-                    ->required(),
-                TextInput::make('subtitle')
-                    ->required(),
-                TextInput::make('slogan'),
-                TextInput::make('button_text')
-                    ->required()
-                    ->default('Join Us Now'),
-                TextInput::make('button_link')
-                    ->required()
-                    ->default('#'),
+                Section::make('Hero Slide Details')
+                    ->columns(2)
+                    ->columnSpanFull()
+                    ->schema([
+                        FileUpload::make('image')
+                            ->image()
+                            ->disk('public')
+                            ->directory('hero-slides')
+                            ->required(),
+                        TextInput::make('title')
+                            ->required(),
+                        TextInput::make('subtitle')
+                            ->required(),
+                        TextInput::make('slogan'),
+                        TextInput::make('button_text')
+                            ->required()
+                            ->default('Join Us Now'),
+                        TextInput::make('button_link')
+                            ->required()
+                            ->default('#'),
+                    ]),
             ]);
     }
 }
