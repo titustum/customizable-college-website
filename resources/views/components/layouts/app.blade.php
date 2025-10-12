@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Inter&family=Nunito&family=Open+Sans&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="shortcut icon" href="{{ asset('storage/'. $institution->logo ) }}" type="image/jpeg">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -66,6 +66,18 @@
             background-color: rgba(var(--primary-color-rgb), 0.1); /* 50% opacity */
         }
 
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .hover\:bg-primary:hover {
+            background-color: var(--primary-color);
+        }
+
+        .focus\:bg-primary:focus {
+            background-color: var(--primary-color);
+        }
+
         .text-primary {
             color: var(--primary-color);
         }
@@ -73,7 +85,23 @@
         .border-primary {
             border-color: var(--primary-color);
         }
-        
+
+        .hover\:text-primary:hover {
+            color: var(--primary-color);
+        }
+
+        .focus\:text-primary:focus {
+            color: var(--primary-color);
+        }
+
+        .hover\:border-primary:hover {
+            border-color: var(--primary-color);
+        }
+
+        .focus\:border-primary:focus {
+            border-color: var(--primary-color);
+        }
+
         
         /* Mobile menu transition */
         .mobile-menu {
@@ -153,10 +181,10 @@
                     class="transition-colors hover:text-primary">
                     <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
-                <a href="mailto:{{  $institution->x }}" aria-label="Twitter" class="transition-colors hover:text-primary text-primary active">
-                    <i class="fab fa-x" aria-hidden="true"></i>
+                <a href="mailto:{{  $institution->x }}" aria-label="Twitter" class="transition-colors hover:text-primary">
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i>
                 </a>
-                <a href="{{  $institution->youtube }}" aria-label="YouTube" class="transition-colors hover:text-primary text-primary active">
+                <a href="{{  $institution->youtube }}" aria-label="YouTube" class="transition-colors hover:text-primary ">
                     <i class="fab fa-youtube" aria-hidden="true"></i>
                 </a>
             </nav>
@@ -516,7 +544,7 @@
                 <div class="mb-4 md:mb-0">
                     <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
-                    <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-x-twitter"></i></a>
                     <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div class="text-sm text-gray-400">

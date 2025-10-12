@@ -4,7 +4,7 @@ use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 
 new
-#[Title('About Us | {{ $institution->name }}')] 
+#[Title("About Us")]
 class extends Component
 {
     //
@@ -31,14 +31,17 @@ class extends Component
             <div class="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
                 <div data-aos="fade-right" class="order-2 md:order-1">
                     <div class="p-6 border-l-4 border-primary">
+                        <h3 class="mb-4 text-2xl font-semibold text-gray-800">Motto</h3>
+                        <p class="mb-8 text-gray-700 text-md">
+                            {{  $institution->motto }}
+                        </p>
                         <h3 class="mb-4 text-2xl font-semibold text-gray-800">Our Vision</h3>
                         <p class="mb-8 text-gray-700 text-md">
-                            To be the leading institution in offering technical skills in Kenya and beyond.
+                            {{  $institution->vision }}
                         </p>
                         <h3 class="mb-4 text-2xl font-semibold text-gray-800">Our Mission</h3>
                         <p class="text-gray-700 text-md">
-                            To provide TVET skills using the most appropriate technology to empower trainees for global
-                            competitiveness.
+                            {{  $institution->mission }}
                         </p>
                     </div>
                 </div>
@@ -242,7 +245,7 @@ class extends Component
         <div class="absolute inset-0 z-0 opacity-20 bg-pattern"></div>
         <div class="container relative z-10 px-4 mx-auto text-center">
             <h2 data-aos="fade-up" class="mb-6 text-3xl font-bold text-white">Join Our Technical Education Journey</h2>
-            <p data-aos="fade-up" data-aos-delay="100" class="max-w-2xl mx-auto mb-8 text-xl text-orange-100">
+            <p data-aos="fade-up" data-aos-delay="100" class="max-w-2xl mx-auto mb-8 text-xl text-white">
                 {{ $institution->name }} is dedicated to providing equitable access to technical education, fostering
                 innovation, and
                 producing socially responsible graduates with the skills and entrepreneurial spirit necessary for

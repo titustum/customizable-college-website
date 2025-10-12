@@ -24,6 +24,8 @@ class Institution extends Model
         'tiktok',
         'x',
         'youtube',
+        'latitude',
+        'longitude',
     ];
 
 

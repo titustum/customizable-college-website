@@ -121,6 +121,16 @@ class InstitutionForm
                                 ->label('Physical Address')
                                 ->columnSpanFull()
                                 ->placeholder('Enter address i.e. PO Box 123 - 10100, Nairobi'),
+
+                            // latitude and longitude
+                            TextInput::make('latitude')
+                                ->label('Latitude')
+                                ->placeholder('-1.2921'),
+                            
+                            TextInput::make('longitude')
+                                ->label('Longitude')
+                                ->placeholder('36.8219'),
+
                         ]),
 
                     Section::make('Social Media Links')

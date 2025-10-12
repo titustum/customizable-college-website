@@ -18,6 +18,8 @@ Volt::route('/sucess-stories', 'pages.success-stories')
     ->name('success.stories');
 Volt::route('/terms-and-conditions', 'pages.terms-and-conditions')
     ->name('terms.conditions');
+Volt::route('/privacy-policy', 'pages.privacy-policy')
+    ->name('privacy.policy');
 Volt::route('/principal-office', 'pages.principal-office')
     ->name('principal.office');
 Volt::route('/downloads', 'pages.downloads')

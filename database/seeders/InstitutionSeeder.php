@@ -27,6 +27,8 @@ class InstitutionSeeder extends Seeder
             'phone' => '+254 798765432',
             'email' => 'info@samplecollege.ac.ke',
             'address' => 'P.O. Box 1716-10100, Sample Town, Kenya',
+            'latitude' => '-0.4675303140845334',
+            'longitude' => '36.92292676763264',
             'facebook' => 'https://facebook.com/samplecollege',
             'tiktok' => 'https://tiktok.com/@samplecollege',
             'x' => 'https://x.com/samplecollege',

@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable(); // Physical address
+            $table->string('longitude')->nullable(); // Longitude
+            $table->string('latitude')->nullable(); // Latitude
 
             // Socials
             $table->string('facebook')->nullable();

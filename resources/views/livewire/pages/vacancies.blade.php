@@ -6,7 +6,7 @@ use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 
 new 
-#[Title('Vacancies | Tetu Technical & Vocational College')]
+#[Title("Job Vacancies")]
 class extends Component
 {
     use WithPagination;
@@ -37,12 +37,12 @@ class extends Component
     <!-- Hero Section -->
     <section class="relative py-20 overflow-hidden bg-gray-900">
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('images/gate.jpg') }}" alt="Tetu TVC Campus"
+            <img src="{{ asset('images/gate.jpg') }}" alt="{{ $institution->name }} Campus"
                 class="object-cover w-full h-full opacity-30">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90"></div>
         </div>
         <div class="container relative z-10 px-4 mx-auto text-center">
-            <h1 class="mb-2 text-4xl font-bold text-white md:text-5xl lg:text-6xl">Work at Tetu TVC</h1>
+            <h1 class="mb-2 text-4xl font-bold text-white md:text-5xl lg:text-6xl">Work at {{ $institution->name }}</h1>
             <p class="max-w-2xl mx-auto text-lg text-gray-300 md:text-xl">
                 Join our team and make a difference in the lives of our students.
             </p>
