@@ -15,15 +15,16 @@ class InstitutionSeeder extends Seeder
 
         Institution::create([
             'name' => 'Sample College',
-            'logo' => 'images/sample_logo.jpg',
+            'logo' => '',
             'principal_name' => 'Ms. Jane Doe',
-            'principal_photo' => 'images/sample_principal.jpg',
+            'principal_photo' => '',
             'welcome_message' => 'Welcome to Sample College, where education meets innovation.',
             'motto' => 'Learning for Tomorrow',
             'vision' => 'To be a beacon of knowledge and innovation.',
             'mission' => 'To provide quality education that fosters creativity and critical thinking.',
             'about_us' => 'Sample College is dedicated to nurturing future leaders...',
             'primary_color' => '#3b82f6',
+            'primary_font' => 'Inter',
             'phone' => '+254 798765432',
             'email' => 'info@samplecollege.ac.ke',
             'address' => 'P.O. Box 1716-10100, Sample Town, Kenya',

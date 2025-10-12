@@ -82,6 +82,7 @@ class InstitutionForm
                                 ->label('Primary Font')
                                 ->options([
                                     'Inter' => 'Inter',
+                                    'Instrument Sans' => 'Instrument Sans',
                                     'Poppins' => 'Poppins',
                                     'Nunito' => 'Nunito',
                                     'Open Sans' => 'Open Sans',

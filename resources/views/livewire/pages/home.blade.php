@@ -134,9 +134,15 @@ class extends Component {
                             </h3>
                             <div class="my-6 text-center">
                                 <div class="inline-block p-1 rounded-full bg-primary">
+                                    @if ($institution->principal_photo)
                                     <img src="{{ asset('storage/'.$institution->principal_photo) }}"
                                         class="object-cover w-48 h-48 border-4 border-white rounded-full shadow-inner"
                                         alt="Principal Image">
+                                    @else
+                                    <img src="{{ asset('images/default-avatar.jpg') }}"
+                                        class="object-cover w-48 h-48 border-4 border-white rounded-full shadow-inner"
+                                        alt="Principal Image">
+                                    @endif
                                 </div>
                             </div>
                             <div class="px-4 my-4 text-gray-700">

@@ -22,8 +22,8 @@ class DepartmentSeeder extends Seeder
                 'banner_pic' => '',
             ],
             [
-                'name' => 'Information and Communication Technology (ICT)',
-                'slug' => Str::slug('Information and Communication Technology'),
+                'name' => 'ICT',
+                'slug' => Str::slug('ICT'),
                 'photo' => $placeholderPhoto,
                 'short_desc' => 'Build the future with cutting-edge ICT skills and innovation-driven training.',
                 'full_desc' => 'Our ICT department offers comprehensive programs in software development, networking, and cybersecurity, designed to equip students with practical and theoretical knowledge for the digital era.',

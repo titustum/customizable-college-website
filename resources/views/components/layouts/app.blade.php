@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://www.tetutvc.ac.ke" /> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Inter&family=Nunito&family=Open+Sans&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Instrument+Sans&family=Inter&family=Nunito&family=Open+Sans&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="shortcut icon" href="{{ asset('storage/'. $institution->logo ) }}" type="image/jpeg">
@@ -235,7 +235,9 @@
 
 
             <a href="{{ route('home') }}" class="flex items-center text-primary uppercase">
-                <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-12">
+                @if ($institution->logo)
+                    <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-12">
+                @endif
                 <h1 class="font-['Righteous'] text-3xl hidden lg:inline ml-2">{{ $institution->name }}</h1>
             </a>
 
