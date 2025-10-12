@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
+use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Volt::route('/', 'pages.home')->name('home');
@@ -45,3 +47,8 @@ Volt::route('/admissions/download/{id}', 'pages.admissions-download')
     ->name('admissions.download');
 Volt::route('/admissions/verify', 'pages.admissions-verify')
     ->name('admissions.verify');
+
+
+Route::get('/admissions/download/{id}', [ApplicationController::class, 'download'])
+     ->name('admissions.download');
+

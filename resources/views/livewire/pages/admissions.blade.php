@@ -4,7 +4,7 @@ use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 use App\Models\Course;
 use App\Models\Department;
-use App\Models\Applicant;
+use App\Models\Application;
 use Carbon\Carbon;
 
 new
@@ -193,26 +193,28 @@ class extends Component
             return;
         }
 
-        Application::create([
-            'full_name' => $this->full_name,
-            'phone' => $this->phone,
-            'alternative_phone' => $this->alternative_phone,
-            'gender' => $this->gender,
-            'id_number' => $this->id_number,
-            'course_id' => $this->course_id,
-            'start_term' => $this->start_term,
-            'high_school' => $this->high_school,
-            'high_school_grade' => $this->high_school_grade,
-            'kcse_index_number' => $this->kcse_index_number,
-            'kcse_year' => $this->kcse_year,
-            'nemis_upi_number' => $this->nemis_upi_number,
-            'parent_name' => $this->parent_name,
-            'parent_phone' => $this->parent_phone,
-        ]);
+         $application = Application::updateOrCreate(
+            ['id_number' => $this->id_number],  // find existing by id_number
+            [
+                'full_name' => $this->full_name,
+                'phone' => $this->phone,
+                'alternative_phone' => $this->alternative_phone,
+                'gender' => $this->gender,
+                'course_id' => $this->course_id,
+                'start_term' => $this->start_term,
+                'high_school' => $this->high_school,
+                'high_school_grade' => $this->high_school_grade,
+                'kcse_index_number' => $this->kcse_index_number,
+                'kcse_year' => $this->kcse_year,
+                'nemis_upi_number' => $this->nemis_upi_number,
+                'parent_name' => $this->parent_name,
+                'parent_phone' => $this->parent_phone,
+            ]
+        );
 
-        session()->flash('message', 'Application submitted successfully! You will receive a confirmation SMS shortly.');
+        session()->flash('message', 'Application submitted successfully! Download your confirmation letter.');
         
-        return redirect()->route('admissions.complete', ['id' => $applicant->id]);
+        return redirect()->route('admissions.complete', ['id' => $application->id]);
 
         // Reset only inputs (keep departments loaded)
         $this->reset([
