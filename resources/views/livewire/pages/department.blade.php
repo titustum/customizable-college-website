@@ -60,8 +60,8 @@ class extends Component
                             <p class="mb-4 text-gray-600">{{ $department->full_desc }}</p>
 
                             <div class="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
-                                <div class="p-6 text-center rounded-lg bg-orange-50">
-                                    <span class="block mb-2 text-3xl font-bold text-orange-600">
+                                <div class="p-6 text-center rounded-lg bg-primary-50">
+                                    <span class="block mb-2 text-3xl font-bold text-primary">
                                         {{ count($department->courses) }}</span>
                                     <span class="text-gray-600">Courses Offered</span>
                                 </div>
@@ -107,8 +107,8 @@ class extends Component
                                 class="w-full mb-4 rounded-lg shadow-md">
                             @endif
 
-                            <div class="p-4 bg-orange-100 rounded-lg">
-                                <h3 class="mb-2 text-xl font-semibold text-orange-600">Quick Facts</h3>
+                            <div class="p-4 bg-primary-50 rounded-lg">
+                                <h3 class="mb-2 text-xl font-semibold text-primary">Quick Facts</h3>
                                 <p class="text-gray-700">{{ $department->short_desc }}</p>
                             </div>
                         </div>
@@ -268,7 +268,7 @@ class extends Component
                     </div>
                     <div class="flex flex-col gap-4 sm:flex-row" data-aos="fade-left">
                         <a href="{{ route('admissions') }}"
-                            class="px-6 py-3 font-bold text-center text-orange-600 transition duration-300 bg-white rounded-lg hover:bg-gray-100">
+                            class="px-6 py-3 font-bold text-center text-primary transition duration-300 bg-white rounded-lg hover:bg-gray-100">
                             Apply Now
                         </a>
                         <a href="{{ route('contact') }}"

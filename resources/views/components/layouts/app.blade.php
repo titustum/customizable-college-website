@@ -50,6 +50,7 @@
     <style>
         :root {
             --primary-color: {{ $institution->primary_color ?? '#FF5722' }};
+            --primary-color-rgb: {{ $institution->primary_color_rgb ?? '#FF5722' }};
             --primary-font: '{{ $institution->primary_font }}', 'Inter, sans-serif';
         }
 
@@ -59,6 +60,10 @@
 
         .bg-primary {
             background-color: var(--primary-color);
+        }
+
+        .bg-primary-50 {
+            background-color: rgba(var(--primary-color-rgb), 0.1); /* 50% opacity */
         }
 
         .text-primary {
