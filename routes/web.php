@@ -39,14 +39,21 @@ Volt::route('/past-papers', 'pages.past-papers')
 Volt::route('/create-success-story', 'pages.success-stories-create')
     ->name('create.success.story');
 
-Volt::route('/admissions', 'pages.admissions')
+//if you want students download admission letter and bring to school for verification
+Volt::route('/admissions', 'pages.download-admission-letter')
     ->name('admissions');
-Volt::route('/admissions/complete/{id}', 'pages.admissions-complete')
-    ->name('admissions.complete');
-Volt::route('/admissions/download/{id}', 'pages.admissions-download')
-    ->name('admissions.download');
-Volt::route('/admissions/verify', 'pages.admissions-verify')
-    ->name('admissions.verify');
+
+//or uncomment below for full online admission system
+
+// // For online admissions, the routes are handled in ApplicationController
+// Volt::route('/admissions', 'pages.admissions')
+//     ->name('admissions');
+// Volt::route('/admissions/complete/{id}', 'pages.admissions-complete')
+//     ->name('admissions.complete');
+// Volt::route('/admissions/download/{id}', 'pages.admissions-download')
+//     ->name('admissions.download');
+// Volt::route('/admissions/verify', 'pages.admissions-verify')
+//     ->name('admissions.verify');
 
 Route::get('/admissions/download/{id}', [ApplicationController::class, 'download'])
     ->name('admissions.download');
