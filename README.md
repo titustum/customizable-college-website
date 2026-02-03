@@ -1,12 +1,13 @@
-# 🎓 Customizable College Website (Laravel + Filament)
+# 🎓 Customizable College Website (Laravel + Filament v5)
 
-A modern, open-source Laravel starter kit designed for colleges, TVET institutions, and schools. Built with **Filament 4**, **Volt**, **Livewire**, and **TailwindCSS**, this platform offers a powerful admin dashboard and a customizable public-facing website — all self-hosted and developer-friendly.
+A modern, open-source Laravel starter kit designed for colleges, TVET institutions, and schools. Built with **Filament v5**,  **Livewire v4**, and **TailwindCSS**, this platform offers a powerful admin dashboard and a customizable public-facing website — all self-hosted and developer-friendly.
 
 ---
 
 ## ✨ Features
 
-### 🔒 Admin Panel (Filament 4)
+### 🔒 Admin Panel (Filament v5)
+
 - Manage Departments, Programs, Courses
 - Upload Tenders, Vacancies, Downloads
 - Staff Profiles & Principal Message
@@ -15,7 +16,8 @@ A modern, open-source Laravel starter kit designed for colleges, TVET institutio
 - Newsletter Subscriber management
 - Spatie Media Library support
 
-### 🌐 Public Website (Volt + TailwindCSS)
+### 🌐 Public Website (Livewire v4 + TailwindCSS)
+
 - Dynamic Home, About, Contact pages
 - Public display of programs, courses, staff, downloads
 - Student application form
@@ -36,22 +38,21 @@ php artisan migrate --seed
 php artisan storage:link
 npm install && npm run build
 php artisan serve
-````
 
-➡️ Visit `http://localhost:8000` for the frontend
-➡️ Visit `http://localhost:8000/admin` for the admin panel
+```
+
+➡️ Frontend: `http://localhost:8000`
+➡️ Admin Panel: `http://localhost:8000/admin`
 (default credentials may be in your seeder or `.env`)
 
 ---
 
 ## 🧩 Tech Stack
 
-* Laravel 12
-* Filament 4 (Admin Panel)
-* Livewire + Volt (Frontend)
-* Tailwind CSS
-* Spatie Media Library
-* Laravel Permissions (optional)
+* Laravel v12
+* Filament v5 (Admin Panel)
+* Livewire v4 (Frontend)
+* Tailwind CSS 
 
 ---
 
@@ -91,3 +92,17 @@ You can check out a live demo at:
 ## 🙌 Credits
 
 Built and maintained by [@titustum](https://github.com/titustum)
+
+---
+
+## 🌐 Live Sites Using This Project
+
+Here are some colleges, schools, and institutions currently using this platform:
+
+| Institution | Website | Notes |
+|------------|---------|-------|
+| Tetu TVC | [https://examplecollege.edu](https://tetutvc.ac.ke) | Fully customized branding |
+| Shamberere NP | [https://shamberere.ac.ke](https://shamberere.ac.ke) | Full Website |
+
+> If you are using this project for your institution and want to be featured here, feel free to [contact me](mailto:tituskiptanuitum@gmail.com)!
+
