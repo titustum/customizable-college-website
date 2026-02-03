@@ -1,13 +1,13 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\TeamMember;
 use App\Models\Role;
 use App\Models\Department;
 
 new
-#Title('Team Members') 
+#Title('Team Members')
 class extends Component
 {
     public $search = '';

@@ -1,7 +1,7 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\Course;
 use App\Models\Department;
 use App\Models\Application;
@@ -49,10 +49,10 @@ class extends Component
         $this->courses = Course::where('department_id', $value)->get();
 
         // dd($this->courses);
-        
+
         $this->course_id = null; // Reset course selection
-    } 
-  
+    }
+
 
 
     public function getStartTermOptions(): array
@@ -213,7 +213,7 @@ class extends Component
         );
 
         session()->flash('message', 'Application submitted successfully! Download your confirmation letter.');
-        
+
         return redirect()->route('admissions.complete', ['id' => $application->id]);
 
         // Reset only inputs (keep departments loaded)
@@ -250,7 +250,7 @@ class extends Component
                                 {{ $i <= $currentStep ? 'bg-white text-primary' : 'bg-white/20 text-white/60' }}">
                             {{ $i }}
                         </div>
-                        @if ($i < $totalSteps) <div class="w-8 h-1 mx-2 
+                        @if ($i < $totalSteps) <div class="w-8 h-1 mx-2
                                     {{ $i < $currentStep ? 'bg-white' : 'bg-white/20' }}">
                 </div>
                 @endif

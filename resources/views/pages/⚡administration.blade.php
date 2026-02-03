@@ -3,13 +3,13 @@
 namespace App\Livewire;
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\TeamMember;
 use App\Models\Role;
 use Illuminate\View\View;
 
 new
-#[Title('Administrative Staff')] 
+#[Title('Administrative Staff')]
 class extends Component
 {
     public $administrativeStaff;
@@ -17,9 +17,9 @@ class extends Component
     public function mount(): void
     {
         $adminRoles = [
-            'Dean of Students', 
-            'Registrar', 
-            'Principal', 
+            'Dean of Students',
+            'Registrar',
+            'Principal',
             'Finance Officer',
             'Secretary'
         ];
@@ -28,7 +28,7 @@ class extends Component
             $query->whereIn('name', $adminRoles);
         })->get();
     }
-     
+
 }
 
 ?>

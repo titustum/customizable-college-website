@@ -1,7 +1,7 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use App\Models\SuccessStory;
 use App\Models\Department;

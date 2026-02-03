@@ -1,11 +1,11 @@
 <?php
 
 use App\Models\Vacancy;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 
-new 
+new
 #[Title("Job Vacancies")]
 class extends Component
 {

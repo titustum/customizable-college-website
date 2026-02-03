@@ -1,19 +1,19 @@
 <?php
 
-use Livewire\Volt\Component;
+use Livewire\Component;
 use Livewire\Attributes\Title;
 
 
 new
 #[Title('Admissions Complete')]
  class extends Component {
-    
+
     public $id;
-    
+
     public function mount($id) {
         $this->id = $id;
     }
-    
+
 }; ?>
 
 

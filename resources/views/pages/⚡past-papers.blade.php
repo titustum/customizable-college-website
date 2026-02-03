@@ -1,12 +1,12 @@
 <?php
 
 use App\Models\PastPaper;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
 
-new 
-#[Title('Past Papers | Tetu Technical & Vocational College')] 
+new
+#[Title('Past Papers | Tetu Technical & Vocational College')]
 class extends Component
 {
     use WithPagination;

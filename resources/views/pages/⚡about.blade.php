@@ -1,7 +1,7 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 
 new
 #[Title("About Us")]
@@ -301,17 +301,17 @@ class extends Component
             once: true,
         });
     }
-    
+
     // Simple counter animation for statistics
     document.addEventListener('DOMContentLoaded', function() {
         const counterElements = document.querySelectorAll('[data-count]');
-        
+
         counterElements.forEach(element => {
             const target = parseInt(element.getAttribute('data-count'));
             const duration = 1500; // ms
             const increment = target / (duration / 16);
             let current = 0;
-            
+
             const updateCounter = () => {
                 if (current < target) {
                     current += increment;
@@ -321,7 +321,7 @@ class extends Component
                     element.textContent = target + (element.textContent.includes('+') ? '+' : '%');
                 }
             };
-            
+
             // Start animation when element is in viewport
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -331,7 +331,7 @@ class extends Component
                     }
                 });
             });
-            
+
             observer.observe(element);
         });
     });

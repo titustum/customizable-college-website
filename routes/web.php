@@ -2,58 +2,36 @@
 
 use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
 
-Volt::route('/', 'pages.home')->name('home');
+// Livewire 4 style routes
+Route::livewire('/', 'pages::home')->name('home');
 
-Volt::route('/about', 'pages.about')
-    ->name('about');
-Volt::route('/contact', 'pages.contact')
-    ->name('contact');
-Volt::route('/departments', 'pages.departments')
-    ->name('departments');
-Volt::route('/department/{slug}', 'pages.department')
-    ->name('department');
-Volt::route('/staff-members', 'pages.staff-members')
-    ->name('staff.members');
-Volt::route('/sucess-stories', 'pages.success-stories')
-    ->name('success.stories');
-Volt::route('/terms-and-conditions', 'pages.terms-and-conditions')
-    ->name('terms.conditions');
-Volt::route('/privacy-policy', 'pages.privacy-policy')
-    ->name('privacy.policy');
-Volt::route('/principal-office', 'pages.principal-office')
-    ->name('principal.office');
-Volt::route('/downloads', 'pages.downloads')
-    ->name('downloads');
-Volt::route('/courses', 'pages.courses')
-    ->name('courses');
-Volt::route('/administration', 'pages.administration')
-    ->name('administration');
-Volt::route('/team', 'pages.team-members')
-    ->name('team');
-Volt::route('/vacancies', 'pages.vacancies')
-    ->name('vacancies');
-Volt::route('/past-papers', 'pages.past-papers')
-    ->name('past.papers');
-Volt::route('/create-success-story', 'pages.success-stories-create')
-    ->name('create.success.story');
+Route::livewire('/about', 'pages::about')->name('about');
+Route::livewire('/contact', 'pages::contact')->name('contact');
+Route::livewire('/departments', 'pages::departments')->name('departments');
+Route::livewire('/department/{slug}', 'pages::department')->name('department');
+Route::livewire('/staff-members', 'pages::staff-members')->name('staff.members');
+Route::livewire('/success-stories', 'pages::success-stories')->name('success.stories');
+Route::livewire('/terms-and-conditions', 'pages::terms-and-conditions')->name('terms.conditions');
+Route::livewire('/privacy-policy', 'pages::privacy-policy')->name('privacy.policy');
+Route::livewire('/principal-office', 'pages::principal-office')->name('principal.office');
+Route::livewire('/downloads', 'pages::downloads')->name('downloads');
+Route::livewire('/courses', 'pages::courses')->name('courses');
+Route::livewire('/administration', 'pages::administration')->name('administration');
+Route::livewire('/team', 'pages::team-members')->name('team');
+Route::livewire('/vacancies', 'pages::vacancies')->name('vacancies');
+Route::livewire('/past-papers', 'pages::past-papers')->name('past.papers');
+Route::livewire('/create-success-story', 'pages::success-stories-create')->name('create.success.story');
 
-//if you want students download admission letter and bring to school for verification
-Volt::route('/admissions', 'pages.download-admission-letter')
-    ->name('admissions');
+// Admissions download (school verification)
+Route::livewire('/admissions', 'pages::download-admission-letter')->name('admissions');
 
-//or uncomment below for full online admission system
+// Full online admissions (uncomment if needed)
+// Route::livewire('/admissions', 'pages::admissions')->name('admissions');
+// Route::livewire('/admissions/complete/{id}', 'pages::admissions-complete')->name('admissions.complete');
+// Route::livewire('/admissions/download/{id}', 'pages::admissions-download')->name('admissions.download');
+// Route::livewire('/admissions/verify', 'pages::admissions-verify')->name('admissions.verify');
 
-// // For online admissions, the routes are handled in ApplicationController
-// Volt::route('/admissions', 'pages.admissions')
-//     ->name('admissions');
-// Volt::route('/admissions/complete/{id}', 'pages.admissions-complete')
-//     ->name('admissions.complete');
-// Volt::route('/admissions/download/{id}', 'pages.admissions-download')
-//     ->name('admissions.download');
-// Volt::route('/admissions/verify', 'pages.admissions-verify')
-//     ->name('admissions.verify');
-
+// Keep controller-based download route
 Route::get('/admissions/download/{id}', [ApplicationController::class, 'download'])
     ->name('admissions.download');

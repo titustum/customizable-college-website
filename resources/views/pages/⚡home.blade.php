@@ -1,14 +1,14 @@
 <?php
 
-use Livewire\Volt\Component;
+use Livewire\Component;
 use Livewire\Attributes\Title;
-use App\Models\Department; 
+use App\Models\Department;
 use App\Models\SuccessStory;
 use App\Models\Partner;
 use App\Models\HeroSlide;
 
-new  
-#[Title('Welcome to Our College')] 
+new
+#[Title('Welcome to Our College')]
 class extends Component {
 
     public function with()
@@ -470,13 +470,13 @@ class extends Component {
 
     <script>
         const counters = document.querySelectorAll('.counter');
-  
+
     counters.forEach(counter => {
       const updateCount = () => {
         const target = +counter.getAttribute('data-target');
         const current = +counter.innerText;
         const increment = target / 10000; // you can adjust speed here
-  
+
         if (current < target) {
           counter.innerText = Math.ceil(current + increment);
           requestAnimationFrame(updateCount);
@@ -484,7 +484,7 @@ class extends Component {
           counter.innerText = target;
         }
       };
-  
+
       // Optional: Wait until element is in view
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -494,7 +494,7 @@ class extends Component {
           }
         });
       }, { threshold: 0.5 });
-  
+
       observer.observe(counter);
     });
     </script>

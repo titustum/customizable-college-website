@@ -1,16 +1,16 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\TeamMember;
 use App\Models\Department;
 
 new
-#[Title('Principal\'s Office')] 
+#[Title('Principal\'s Office')]
 class extends Component
 {
     public $principal;
-    public $headsOfDepartments = []; 
+    public $headsOfDepartments = [];
     public $collegeOverview;
     public $ourValues = [];
     public $academicDepartmentsList = [];
@@ -32,13 +32,13 @@ class extends Component
             ->whereHas('role', function ($query) {
                 $query->where('name', 'Principal');
             })
-            ->first(); 
+            ->first();
 
         $this->academicDepartmentsList = Department::all();
 
         // College stats and information
         $this->collegeOverview = "$this->institution->name is a leading institution committed to providing high-quality technical and vocational education and training. We equip our students with practical skills and knowledge that are highly relevant to the demands of the modern workforce and contribute to national development.";
-        
+
         $this->ourValues = [
             'Excellence' => 'Striving for the highest standards in education and training',
             'Innovation' => 'Embracing new ideas and technologies to improve learning outcomes',
@@ -46,17 +46,17 @@ class extends Component
             'Collaboration' => 'Working with industry partners and stakeholders for mutual success',
             'Relevance' => 'Ensuring our programs meet current industry needs and standards'
         ];
-         
-        
+
+
         $this->keyAchievementsList = [
             'Student population increase to over 1800, with a diverse range of courses',
             'Successful accreditation by relevant TVET bodies for all our technical programs',
             'Strategic partnerships with over 25 industry leaders ensuring internship placements for all students',
             '92% graduate employability rate in technical fields within six months of graduation',
-            'National champions in 3 categories at the Kenya Music and Drama Festivals 2024', 
-            'Attained National TVET Excellence Award for Best Technical College in 2024', 
+            'National champions in 3 categories at the Kenya Music and Drama Festivals 2024',
+            'Attained National TVET Excellence Award for Best Technical College in 2024',
         ];
-         
+
     }
 }
 ?>

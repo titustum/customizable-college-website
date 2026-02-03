@@ -1,7 +1,7 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\TeamMember;
 use App\Models\Role;
 
@@ -36,7 +36,7 @@ class extends Component
                       $q->whereIn('name', ['Principal', 'Deputy Principal', 'HOD', 'Trainer', 'Others', 'Head of Section']);
                   });
         })->get();
- 
+
 
         $this->trainers = TeamMember::whereHas('role', function ($query) {
             $query->where('name', 'Trainer');

@@ -2,10 +2,10 @@
 
 use App\Models\Department;
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 
 new
-#[Title('Departments')] 
+#[Title('Departments')]
 class extends Component
 {
 

@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
         content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-    <link rel="canonical" href="https://www.tetutvc.ac.ke" /> 
+    <link rel="canonical" href="https://www.tetutvc.ac.ke" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Instrument+Sans&family=Inter&family=Nunito&family=Open+Sans&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
@@ -45,6 +45,8 @@
 
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @livewireStyles
 
 
     <style>
@@ -102,7 +104,7 @@
             border-color: var(--primary-color);
         }
 
-        
+
         /* Mobile menu transition */
         .mobile-menu {
             transform: translateX(-100%);
@@ -353,7 +355,7 @@
                     <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-10">
                     <h1 class="font-['Righteous'] text-2xl text-primary ml-2">{{ $institution->name }}</h1>
                 </div>
-                
+
                 <button id="close-mobile-menu" aria-label="Close mobile menu"
                     class="hover:text-primary text-2xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">
                     <!-- Close icon (X) -->
@@ -457,7 +459,7 @@
                     <a href="#"
                         class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary">
                         TENDERS
-                    </a> 
+                    </a>
                     <a href="{{ route('admissions') }}"
                         @class([ 'block px-2 py-3 mt-4 text-center text-white transition-all bg-primary rounded hover:bg-orange-700'
                         , 'ring-2 ring-primary'=> request()->routeIs('admissions'),
@@ -557,6 +559,7 @@
 
 
 
+    @livewireScripts
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -657,7 +660,7 @@
                     },
                 },
             });
-        
+
             function animateSlideElements(slide) {
                 // Reset all animations
                 const elements = slide.querySelectorAll('[data-swiper-animation]');
@@ -665,12 +668,12 @@
                     el.classList.remove('animate__fadeInLeft', 'animate__fadeInUp', 'animate__zoomIn');
                     el.style.opacity = '0';
                 });
-        
+
                 // Animate elements with delay
                 elements.forEach(el => {
                     const animation = el.dataset.swiperAnimation;
                     const delay = el.dataset.animationDelay || '0';
-                    
+
                     setTimeout(() => {
                         el.style.opacity = '1';
                         el.classList.add(animation);
@@ -689,7 +692,7 @@
             });
 
             });
-            
+
     </script>
 
 

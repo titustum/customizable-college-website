@@ -1,16 +1,16 @@
 <?php
 
-use Livewire\Volt\Component;
+use Livewire\Component;
 use Livewire\Attributes\Title;
 
 
 new
 #[Title('Download Admission Letter')]
- class extends Component { 
+ class extends Component {
     public $institution;
 
     public function mount()
-    { 
+    {
         $this->institution = \App\Models\Institution::first() // Assuming a single institution for simplicity
             ?? new \App\Models\Institution([
                     'name' => 'Institution Name',
@@ -18,7 +18,7 @@ new
                     'phone' => '000-000-0000',
                 ]);
     }
-    
+
 }; ?>
 
 

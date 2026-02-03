@@ -1,11 +1,11 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\SuccessStory;
 
 new
-#[Title('Success Stories | Tetu Technical & Vocational College')] 
+#[Title('Success Stories | Tetu Technical & Vocational College')]
 class extends Component
 {
     public function with(){

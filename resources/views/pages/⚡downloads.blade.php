@@ -1,11 +1,11 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\Download;
 
 new
-#[Title('Downloads')] 
+#[Title('Downloads')]
 class extends Component
 {
     public function with()

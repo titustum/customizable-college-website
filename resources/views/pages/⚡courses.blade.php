@@ -1,12 +1,12 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\Course;
 use App\Models\Department;
 
 new
-#[Title('Courses')] 
+#[Title('Courses')]
 class extends Component
 {
     public $search = '';

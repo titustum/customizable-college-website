@@ -1,11 +1,11 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\Contact;
 
 new
-#[Title('Contact Us')] 
+#[Title('Contact Us')]
 class extends Component
 {
     public $name = '';
@@ -18,7 +18,7 @@ class extends Component
     public function submitForm()
     {
         $this->loading = true;
-        
+
         $validatedData = $this->validate([
             'name' => 'required|min:3',
             'email' => 'required|email',

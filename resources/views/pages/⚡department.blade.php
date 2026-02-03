@@ -1,13 +1,13 @@
 <?php
 
 use Livewire\Attributes\Title;
-use Livewire\Volt\Component;
+use Livewire\Component;
 use App\Models\Department;
 use App\Models\SuccessStory;
 
 
 new
-#[Title('Department')] 
+#[Title('Department')]
 class extends Component
 {
     public $department;
@@ -18,8 +18,8 @@ class extends Component
     {
         $this->departments = Department::all();
         $this->department = Department::where('slug', $slug)->firstOrFail();
-        $this->successStories = SuccessStory::all();   
-    } 
+        $this->successStories = SuccessStory::all();
+    }
 
 };
 ?>
@@ -292,7 +292,7 @@ class extends Component
       duration: 800,
       offset: 100,
     });
-    
+
     // Initialize testimonial slider
     document.addEventListener('DOMContentLoaded', function() {
       new Swiper('.swiper-container', {
@@ -320,7 +320,7 @@ class extends Component
         }
       });
     });
-     
+
     </script>
 
 </section>
