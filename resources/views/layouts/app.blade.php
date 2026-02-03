@@ -550,7 +550,7 @@
                     <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
                 </div>
                 <div class="text-sm text-gray-400">
-                    © {{ date('Y') }} {{ $institution->name }}. All rights reserved.
+                    © {{ date('Y') }} {{ $institution->name }}. Created by <a class="text-blue-600 hover:underline" href="http://github.com/titustum">Titus Tum</a>.
                 </div>
             </div>
         </div>
