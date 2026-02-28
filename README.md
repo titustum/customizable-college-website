@@ -49,10 +49,10 @@ php artisan serve
 
 ## 🧩 Tech Stack
 
-* Laravel v12
-* Filament v5 (Admin Panel)
-* Livewire v4 (Frontend)
-* Tailwind CSS 
+- Laravel v12
+- Filament v5 (Admin Panel)
+- Livewire v4 (Frontend)
+- Tailwind CSS
 
 ---
 
@@ -60,10 +60,10 @@ php artisan serve
 
 I offer:
 
-* 🔧 Installation & setup for your college
-* 🎨 Custom branding (logo, colors, layout)
-* ☁️ Hosting & support packages
-* 🧩 Custom feature development
+- 🔧 Installation & setup for your college
+- 🎨 Custom branding (logo, colors, layout)
+- ☁️ Hosting & support packages
+- 🧩 Custom feature development
 
 📧 Contact: [tituskiptanuitum@gmail.com](mailto:tituskiptanuitum@gmail.com)
 
@@ -100,9 +100,8 @@ Built and maintained by [@titustum](https://github.com/titustum)
 Here are some colleges, schools, and institutions currently using this platform:
 
 | Institution | Website | Notes |
-|------------|---------|-------|
+\|------------|---------|-------|
 | Tetu TVC | [https://examplecollege.edu](https://tetutvc.ac.ke) | Fully customized branding |
 | Shamberere NP | [https://shamberere.ac.ke](https://shamberere.ac.ke) | Full Website |
 
 > If you are using this project for your institution and want to be featured here, feel free to [contact me](mailto:tituskiptanuitum@gmail.com)!
-
