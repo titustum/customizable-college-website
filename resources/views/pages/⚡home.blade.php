@@ -2,6 +2,7 @@
 
 use Livewire\Component;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
 use App\Models\Department;
 use App\Models\SuccessStory;
 use App\Models\Partner;
@@ -9,6 +10,7 @@ use App\Models\HeroSlide;
 
 new
 #[Title('Welcome to Our College')]
+#[Layout('layouts::app')]
 class extends Component {
 
     public function with()
@@ -18,7 +20,6 @@ class extends Component {
             'successStories'=> SuccessStory::where('is_approved', true)
                                             ->latest()
                                             ->take(3)
-                                            ->orderBy('created_at', 'desc')
                                             ->get(),
             'partners'=> Partner::all(),
             'heroSlides'=> HeroSlide::all(),
@@ -29,82 +30,131 @@ class extends Component {
 
 <main>
 
-    <!-- Hero Section -->
+    {{-- ═══════════════════════════════════════════
+    HERO SECTION — Full-screen cinematic slider
+    ═══════════════════════════════════════════ --}}
+    <section id="hero" class="relative w-full" style="height: calc(100vh - 77px); min-height: 520px;">
 
-    <section id="hero" class="relative lg:h-[calc(100vh-150px)]">
         <div class="h-full swiper heroSwiper">
             <div class="swiper-wrapper">
 
-                @forelse ($heroSlides as $index => $content)
-                <!-- Slide -->
-                <div class="relative h-full bg-center bg-no-repeat bg-cover swiper-slide"
-                    style="background-image: url('{{ asset('storage/' . $content->image) }}');">
-                    <div class="absolute inset-0 bg-black/60"></div>
-                    <div class="container relative flex flex-col items-start justify-center h-full px-4 mx-auto">
-                        <div class="max-w-3xl py-24">
-                            <h1 class="mb-4 text-4xl font-bold leading-tight text-white opacity-0 md:text-5xl lg:text-6xl animate__animated"
-                                data-swiper-animation="animate__fadeInLeft" data-animation-delay="0.3s">
-                                {{ $content->title }}
-                            </h1>
-                            <h2 class="hidden text-xl opacity-0 lg:block md:text-2xl lg:text-3xl text-cyan-300 animate__animated"
-                                data-swiper-animation="animate__fadeInUp" data-animation-delay="0.6s">
-                                {{ $content->subtitle }}
-                            </h2>
-                            <p class="mb-8 text-lg font-semibold text-green-300 opacity-0 animate__animated"
-                                data-swiper-animation="animate__fadeInUp" data-animation-delay="0.9s">
-                                {{ $content->slogan }}
-                            </p>
-                            <a href="{{ route('admissions') }}"
-                                class="px-6 py-3 mt-6 text-lg font-semibold text-white transition-colors bg-primary rounded-full opacity-0 hover:bg-primary animate__animated"
-                                data-swiper-animation="animate__zoomIn" data-animation-delay="1.2s">
-                                {{ $content->button_text }} <i class="ml-2 fas fa-arrow-right"></i>
-                            </a>
+                @forelse ($heroSlides as $slide)
+                <div class="relative h-full swiper-slide overflow-hidden"
+                    style="background-image: url('{{ asset('storage/' . $slide->image) }}'); background-size: cover; background-position: center;">
+
+                    {{-- Multi-layer overlay for depth --}}
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
+
+                    {{-- Decorative diagonal accent --}}
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-orange-400 to-transparent opacity-80">
+                    </div>
+
+                    {{-- Content --}}
+                    <div class="relative h-full flex items-center">
+                        <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+                            <div class="max-w-2xl">
+
+                                {{-- Tag / label --}}
+                                <div class="mb-5 opacity-0 animate__animated"
+                                    data-swiper-animation="animate__fadeInLeft" data-animation-delay="0.1">
+                                    <span
+                                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-orange-300 text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                                        {{ $institution->name }}
+                                    </span>
+                                </div>
+
+                                {{-- Heading --}}
+                                <h1 class="mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-white opacity-0 animate__animated"
+                                    data-swiper-animation="animate__fadeInLeft" data-animation-delay="0.3"
+                                    style="text-shadow: 0 2px 20px rgba(0,0,0,0.4);">
+                                    {{ $slide->title }}
+                                </h1>
+
+                                {{-- Subtitle --}}
+                                @if ($slide->subtitle)
+                                <h2 class="mb-3 text-xl md:text-2xl font-semibold text-cyan-300 opacity-0 animate__animated"
+                                    data-swiper-animation="animate__fadeInLeft" data-animation-delay="0.55">
+                                    {{ $slide->subtitle }}
+                                </h2>
+                                @endif
+
+                                {{-- Slogan --}}
+                                @if ($slide->slogan)
+                                <p class="mb-8 text-base md:text-lg text-white/70 leading-relaxed opacity-0 animate__animated"
+                                    data-swiper-animation="animate__fadeInUp" data-animation-delay="0.75">
+                                    {{ $slide->slogan }}
+                                </p>
+                                @endif
+
+                                {{-- CTAs --}}
+                                <div class="flex flex-wrap items-center gap-3 opacity-0 animate__animated"
+                                    data-swiper-animation="animate__fadeInUp" data-animation-delay="1.0">
+                                    <a href="{{ route('admissions') }}"
+                                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:brightness-110 text-white font-bold rounded-full shadow-lg shadow-primary/30 transition-all duration-300 text-sm">
+                                        {{ $slide->button_text ?? 'Apply Now' }}
+                                        <i class="fas fa-arrow-right text-xs"></i>
+                                    </a>
+                                    <a href="{{ route('courses') }}"
+                                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold rounded-full backdrop-blur-sm transition-all duration-300 text-sm">
+                                        <i class="fas fa-book-open text-xs"></i>
+                                        Our Courses
+                                    </a>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-                @empty
-                <!-- Default fallback slide 1 -->
-                <div class="relative h-full bg-center bg-no-repeat bg-cover swiper-slide"
-                    style="background-image: url('{{ asset('images/default-hero.webp') }}');">
-                    <div class="absolute inset-0 bg-black/60"></div>
-                    <div class="container relative flex flex-col items-start justify-center h-full px-4 mx-auto">
-                        <div class="max-w-3xl py-24">
-                            <h1 class="mb-4 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-                                Welcome to {{ $institution->name }}
-                            </h1>
-                            <h2 class="hidden text-xl lg:block md:text-2xl lg:text-3xl text-cyan-300">
-                                Empowering students with skills for the future
-                            </h2>
-                            <p class="mb-8 text-lg font-semibold text-green-300">
-                                Join our vibrant community of learners today.
-                            </p>
-                            <a href="{{ route('admissions') }}"
-                                class="px-6 py-3 mt-6 text-lg font-semibold text-white transition-colors bg-primary rounded-full hover:bg-primary">
-                                Apply Now <i class="ml-2 fas fa-arrow-right"></i>
-                            </a>
-                        </div>
+
+                    {{-- Slide number indicator --}}
+                    <div
+                        class="absolute bottom-6 right-6 lg:right-12 text-white/30 text-xs font-mono tracking-widest select-none">
+                        {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }} / {{ str_pad(count($heroSlides), 2, '0',
+                        STR_PAD_LEFT) }}
                     </div>
                 </div>
 
-                <!-- Default fallback slide 2 -->
-                <div class="relative h-full bg-center bg-no-repeat bg-cover swiper-slide"
-                    style="background-image: url('{{ asset('images/default-hero.webp') }}');">
-                    <div class="absolute inset-0 bg-black/60"></div>
-                    <div class="container relative flex flex-col items-start justify-center h-full px-4 mx-auto">
-                        <div class="max-w-3xl py-24">
-                            <h1 class="mb-4 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-                                Welcome to {{ $institution->name }}
-                            </h1>
-                            <h2 class="hidden text-xl lg:block md:text-2xl lg:text-3xl text-cyan-300">
-                                Empowering students with skills for the future
-                            </h2>
-                            <p class="mb-8 text-lg font-semibold text-green-300">
-                                Join our vibrant community of learners today.
-                            </p>
-                            <a href="{{ route('admissions') }}"
-                                class="px-6 py-3 mt-6 text-lg font-semibold text-white transition-colors bg-primary rounded-full hover:bg-primary">
-                                Apply Now <i class="ml-2 fas fa-arrow-right"></i>
-                            </a>
+                @empty
+                {{-- Fallback slide --}}
+                <div class="relative h-full swiper-slide overflow-hidden"
+                    style="background-image: url('{{ asset('images/default-hero.webp') }}'); background-size: cover; background-position: center;">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
+                    <div
+                        class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-orange-400 to-transparent opacity-80">
+                    </div>
+                    <div class="relative h-full flex items-center">
+                        <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+                            <div class="max-w-2xl">
+                                <div class="mb-5">
+                                    <span
+                                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-orange-300 text-xs font-bold tracking-widest uppercase">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                                        {{ $institution->name }}
+                                    </span>
+                                </div>
+                                <h1
+                                    class="mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-white">
+                                    Welcome to {{ $institution->name }}
+                                </h1>
+                                <h2 class="mb-3 text-xl md:text-2xl font-semibold text-cyan-300">
+                                    Empowering Students with Skills for the Future
+                                </h2>
+                                <p class="mb-8 text-base text-white/70">Join our vibrant community of learners today.
+                                </p>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <a href="{{ route('admissions') }}"
+                                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all text-sm">
+                                        Apply Now <i class="fas fa-arrow-right text-xs"></i>
+                                    </a>
+                                    <a href="{{ route('courses') }}"
+                                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 border border-white/30 text-white font-semibold rounded-full hover:bg-white/20 transition-all text-sm">
+                                        <i class="fas fa-book-open text-xs"></i> Our Courses
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,125 +162,182 @@ class extends Component {
 
             </div>
 
-            <!-- Navigation -->
-            <div class="swiper-pagination"></div>
-            <div class="hidden md:block swiper-button-prev"></div>
-            <div class="hidden md:block swiper-button-next"></div>
+            {{-- Custom pagination dots --}}
+            <div class="swiper-pagination !bottom-7 !left-6 lg:!left-12 !w-auto flex gap-1.5"></div>
+
+            {{-- Navigation arrows — styled --}}
+            <div
+                class="swiper-button-prev !hidden md:!flex !w-11 !h-11 !rounded-full !bg-white/10 !backdrop-blur-sm !border !border-white/20 after:!text-sm after:!font-black !text-white hover:!bg-white/25 !transition-all !top-1/2 !-translate-y-1/2 !left-5 lg:!left-10">
+            </div>
+            <div
+                class="swiper-button-next !hidden md:!flex !w-11 !h-11 !rounded-full !bg-white/10 !backdrop-blur-sm !border !border-white/20 after:!text-sm after:!font-black !text-white hover:!bg-white/25 !transition-all !top-1/2 !-translate-y-1/2 !right-5 lg:!right-10">
+            </div>
+        </div>
+
+        {{-- Scroll indicator --}}
+        <div
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1.5 text-white/40 animate-bounce">
+            <span class="text-[10px] tracking-widest uppercase font-semibold">Scroll</span>
+            <i class="fas fa-chevron-down text-xs"></i>
         </div>
     </section>
 
 
-    <section class="w-full px-4 py-16 bg-white">
-        <div class="w-full mx-auto max-w-7xl">
+    {{-- ═══════════════════════════════════════════
+    QUICK STATS BAR
+    ═══════════════════════════════════════════ --}}
+    <div class="bg-gray-950 text-white py-4 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+                @foreach([
+                ['value' => '92', 'suffix' => '%', 'label' => 'Graduation Rate', 'icon' => 'fa-graduation-cap'],
+                ['value' => '85', 'suffix' => '%', 'label' => 'Job Placement', 'icon' => 'fa-briefcase'],
+                ['value' => '20', 'suffix' => '+', 'label' => 'Programs Offered', 'icon' => 'fa-book-open'],
+                ['value' => '120', 'suffix' => '+', 'label' => 'Certifications', 'icon' => 'fa-award'],
+                ] as $stat)
+                <div class="flex items-center justify-center gap-3 px-4 py-2">
+                    <i class="fas {{ $stat['icon'] }} text-primary text-lg opacity-80"></i>
+                    <div>
+                        <div class="text-xl font-extrabold leading-none">
+                            <span class="counter" data-target="{{ $stat['value'] }}">0</span>{{ $stat['suffix'] }}
+                        </div>
+                        <div class="text-[11px] text-white/40 mt-0.5">{{ $stat['label'] }}</div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+
+    {{-- ═══════════════════════════════════════════
+    WELCOME + QUICK CARDS
+    ═══════════════════════════════════════════ --}}
+    <section class="w-full px-4 py-20 bg-white">
+        <div class="max-w-7xl mx-auto">
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
-                <!-- Principal's Welcome Card -->
-                <div data-aos="fade-up" data-aos-duration="800" class="w-full md:col-span-2 lg:col-span-1">
+                {{-- Principal Card --}}
+                <div data-aos="fade-up" class="lg:col-span-1">
                     <div
-                        class="flex flex-col justify-between h-full p-6 transition-shadow duration-300 bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl">
-                        <div>
-                            <h3 class="mb-6 text-2xl font-bold text-center text-primary">
-                                Welcome to {{ $institution->name }}
+                        class="flex flex-col h-full bg-white border border-gray-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+
+                        {{-- Top band --}}
+                        <div class="h-2 w-full bg-gradient-to-r from-primary to-orange-400"></div>
+
+                        <div class="flex flex-col flex-grow p-7">
+                            <h3 class="mb-6 text-xl font-bold text-center text-gray-800">
+                                A Word from the <span class="text-primary">Principal</span>
                             </h3>
-                            <div class="my-6 text-center">
-                                <div class="inline-block p-1 rounded-full bg-primary">
-                                    @if ($institution->principal_photo)
-                                    <img src="{{ asset('storage/'.$institution->principal_photo) }}"
-                                        class="object-cover w-48 h-48 border-4 border-white rounded-full shadow-inner"
-                                        alt="Principal Image">
-                                    @else
-                                    <img src="{{ asset('images/default-avatar.jpg') }}"
-                                        class="object-cover w-48 h-48 border-4 border-white rounded-full shadow-inner"
-                                        alt="Principal Image">
-                                    @endif
+
+                            {{-- Avatar --}}
+                            <div class="flex justify-center mb-5">
+                                <div class="relative">
+                                    <div
+                                        class="w-32 h-32 rounded-full ring-4 ring-primary/20 ring-offset-2 overflow-hidden">
+                                        <img src="{{ $institution->principal_photo ? asset('storage/'.$institution->principal_photo) : asset('images/default-avatar.jpg') }}"
+                                            class="object-cover w-full h-full" alt="Principal">
+                                    </div>
+                                    <div
+                                        class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow">
+                                        <i class="fas fa-quote-left text-white text-[10px]"></i>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="px-4 my-4 text-gray-700">
-                                <p class="mb-5 leading-relaxed">
-                                    {{ $institution->welcome_message }}
-                                </p>
-                                <div class="pt-3 font-bold text-center border-t border-gray-200">
-                                    <p class="text-gray-800">{{ $institution->principal_name }}</p>
-                                    <p class="text-primary">College Principal</p>
-                                </div>
+
+                            <blockquote class="text-gray-600 text-sm leading-relaxed text-center flex-grow italic mb-5">
+                                "{{ Str::limit($institution->welcome_message, 200) }}"
+                            </blockquote>
+
+                            <div class="text-center pt-4 border-t border-gray-100">
+                                <p class="font-bold text-gray-800 text-sm">{{ $institution->principal_name }}</p>
+                                <p class="text-primary text-xs font-semibold mt-0.5">College Principal</p>
                             </div>
-                        </div>
-                        <div class="mt-6 text-center">
-                            <a href="{{ route('staff.members') }}"
-                                class="inline-block px-6 py-3 text-white transition duration-300 bg-primary rounded-full shadow-md hover:opacity-80 hover:shadow-lg">
-                                Meet Our Team <i class="ml-2 fas fa-arrow-right"></i>
-                            </a>
+
+                            <div class="mt-5 text-center">
+                                <a href="{{ route('principal.office') }}"
+                                    class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full shadow hover:brightness-110 transition-all">
+                                    Meet Our Team <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Side Cards -->
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"
-                    class="w-full md:col-span-2 lg:col-span-2">
-                    <div class="grid h-full gap-6 md:grid-cols-2">
-                        <!-- Admissions Card -->
-                        <div
-                            class="flex flex-col justify-between text-white transition-shadow duration-300 rounded-lg shadow-lg bg-gradient-to-br from-blue-500 to-blue-700 hover:shadow-xl">
-                            <div class="p-6">
-                                <div class="flex justify-center mb-4">
-                                    <div class="p-3 bg-blue-400 rounded-full bg-opacity-30">
-                                        <img src="{{ asset('images/user-tick.svg') }}" class="w-12 h-12"
-                                            alt="Admissions Icon">
-                                    </div>
-                                </div>
-                                <h4 class="mb-3 text-xl font-bold text-center">Admissions Ongoing!</h4>
-                                <p class="px-3 mb-4 text-center">Apply now for Artisan, Certificate, and Diploma
-                                    programs in various
-                                    technical fields.</p>
+                {{-- Right 2-col grid --}}
+                <div data-aos="fade-up" data-aos-delay="100" class="lg:col-span-2">
+                    <div class="grid h-full gap-5 md:grid-cols-2">
+
+                        {{-- Admissions Card --}}
+                        <div class="relative flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800"></div>
+                            <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity"
+                                style="background-image: radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 24px 24px;">
                             </div>
-                            <div class="p-6 text-center">
+                            <div class="relative p-6">
+                                <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4">
+                                    <i class="fas fa-user-graduate text-white text-xl"></i>
+                                </div>
+                                <h4 class="text-lg font-bold text-white mb-2">Admissions Open!</h4>
+                                <p class="text-white/75 text-sm leading-relaxed">Apply now for Artisan, Certificate, and
+                                    Diploma programs in various technical fields.</p>
+                            </div>
+                            <div class="relative p-6 pt-0">
                                 <a href="{{ route('admissions') }}"
-                                    class="inline-block px-5 py-2 text-blue-600 transition duration-300 bg-white rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg">
-                                    Apply Now <i class="ml-2 fas fa-arrow-right"></i>
+                                    class="inline-flex items-center gap-2 px-5 py-2 text-sm font-bold text-blue-700 bg-white rounded-full shadow hover:bg-blue-50 transition-all">
+                                    Apply Now <i class="fas fa-arrow-right text-xs"></i>
                                 </a>
                             </div>
                         </div>
 
-                        <!-- Resources Card -->
-                        <div
-                            class="flex flex-col justify-between text-white transition-shadow duration-300 rounded-lg shadow-lg bg-gradient-to-br from-green-500 to-green-700 hover:shadow-xl">
-                            <div class="p-6">
-                                <div class="flex justify-center mb-4">
-                                    <div class="p-3 bg-green-400 rounded-full bg-opacity-30">
-                                        <img src="{{ asset('images/download-w-1.svg') }}" class="w-12 h-12"
-                                            alt="Resources Icon">
-                                    </div>
+                        {{-- Resources Card --}}
+                        <div class="relative flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-emerald-700"></div>
+                            <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity"
+                                style="background-image: radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 24px 24px;">
+                            </div>
+                            <div class="relative p-6">
+                                <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4">
+                                    <i class="fas fa-folder-open text-white text-xl"></i>
                                 </div>
-                                <h4 class="mb-3 text-xl font-bold text-center">Resources</h4>
-                                <p class="px-3 mb-4 text-center">Access important documents, course outlines, and
-                                    student handbooks in
-                                    our downloads section.</p>
+                                <h4 class="text-lg font-bold text-white mb-2">Resources</h4>
+                                <p class="text-white/75 text-sm leading-relaxed">Access course outlines, student
+                                    handbooks, and important documents.</p>
                             </div>
-                            <div class="p-6 text-center">
+                            <div class="relative p-6 pt-0">
                                 <a href="{{ route('downloads') }}"
-                                    class="inline-block px-5 py-2 text-green-600 transition duration-300 bg-white rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg">
-                                    Download <i class="ml-2 fas fa-download"></i>
+                                    class="inline-flex items-center gap-2 px-5 py-2 text-sm font-bold text-emerald-700 bg-white rounded-full shadow hover:bg-emerald-50 transition-all">
+                                    Download <i class="fas fa-download text-xs"></i>
                                 </a>
                             </div>
                         </div>
 
-                        <!-- Programs Card -->
-                        <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
-                            class="flex flex-col justify-center text-white transition-shadow duration-300 rounded-lg shadow-lg bg-gradient-to-br from-yellow-500 to-yellow-600 hover:shadow-xl md:col-span-2">
-                            <div class="p-8">
-                                <h4 class="mb-4 text-2xl font-bold text-center">Our Programs</h4>
-                                <p class="max-w-lg px-6 mx-auto mb-6 text-center">Discover our wide range of technical
-                                    and vocational
-                                    programs designed
-                                    to equip you with industry-relevant skills for today's job market.</p>
-                                <div class="text-center">
+                        {{-- Programs (wide) --}}
+                        <div
+                            class="relative flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg md:col-span-2 group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500"></div>
+                            <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity"
+                                style="background-image: radial-gradient(circle at 90% 50%, white 1px, transparent 1px); background-size: 28px 28px;">
+                            </div>
+                            <div class="relative p-7 flex flex-col md:flex-row items-center gap-6">
+                                <div class="flex-grow">
+                                    <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-3">
+                                        <i class="fas fa-book-open text-white text-xl"></i>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-white mb-2">Explore Our Programs</h4>
+                                    <p class="text-white/80 text-sm leading-relaxed max-w-md">Discover our wide range of
+                                        technical and vocational programs designed to equip you with industry-relevant
+                                        skills.</p>
+                                </div>
+                                <div class="shrink-0">
                                     <a href="{{ route('courses') }}"
-                                        class="inline-block px-6 py-3 text-yellow-600 transition duration-300 bg-white rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg">
-                                        Explore Programs <i class="ml-2 fas fa-book-open"></i>
+                                        class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-amber-600 bg-white rounded-full shadow-lg hover:bg-amber-50 transition-all whitespace-nowrap">
+                                        Explore Programs <i class="fas fa-arrow-right text-xs"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -238,69 +345,75 @@ class extends Component {
     </section>
 
 
-
-
+    {{-- ═══════════════════════════════════════════
+    DEPARTMENTS
+    ═══════════════════════════════════════════ --}}
     <section class="py-20 bg-gray-50">
-        <div class="container px-4 mx-auto max-w-7xl">
-            <div class="mb-16 text-center">
-                <h2 class="mb-4 text-3xl font-bold text-gray-800 lg:text-4xl">Our Departments</h2>
-                <div class="w-24 h-1 mx-auto bg-primary rounded"></div>
-                <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-600">Explore our outstanding academic departments
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+
+            {{-- Section header --}}
+            <div class="mb-14 text-center" data-aos="fade-up">
+                <span
+                    class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Departments</span>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">Our Academic Departments</h2>
+                <p class="max-w-xl mx-auto text-gray-500 text-base leading-relaxed">Explore our outstanding departments
                     designed to provide industry-relevant skills and knowledge.</p>
             </div>
 
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($departments as $department)
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="{{ $loop->index * 100 }}"
-                    class="overflow-hidden transition-all duration-300 bg-white rounded-lg shadow-lg group hover:shadow-xl">
-                    <div class="relative h-56 overflow-hidden">
-                        <img src="{{  asset('storage/'.$department->photo)  }}" alt="{{ $department->name }}"
-                            class="object-cover w-full h-full transition-transform duration-500 ease-in-out group-hover:scale-110">
+                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}"
+                    class="group bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition-all duration-300 flex flex-col">
+
+                    {{-- Image --}}
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="{{ asset('storage/'.$department->photo) }}" alt="{{ $department->name }}"
+                            class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105">
                         <div
-                            class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/70 to-transparent group-hover:opacity-100">
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
+                        {{-- Department type badge --}}
+                        @if($department->type === 'non-academic')
+                        <span
+                            class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-cyan-500/90 text-white text-[10px] font-bold tracking-wide uppercase backdrop-blur-sm">
+                            Non-Academic
+                        </span>
+                        @endif
                     </div>
-                    <div class="p-6">
+
+                    {{-- Content --}}
+                    <div class="p-5 flex flex-col flex-grow">
                         <h3
-                            class="mb-3 text-xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-primary">
-                            {{ $department->name }}</h3>
-                        <p class="mb-5 text-gray-600 line-clamp-3">{{ $department->short_desc }}</p>
-                        <div class="pt-2 border-t border-gray-100">
+                            class="text-lg font-bold text-gray-800 group-hover:text-primary transition-colors duration-300 mb-2">
+                            {{ $department->name }}
+                        </h3>
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-grow">
+                            {{ $department->short_desc }}
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-gray-100">
                             <a href="{{ route('department', $department->slug) }}"
-                                class="inline-flex items-center font-semibold text-primary transition-colors duration-300 hover:text-opacity-80">
+                                class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-300">
                                 Explore Department
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5 ml-1 transition-transform duration-300 group-hover:translate-x-1"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
+                                <i class="fas fa-arrow-right text-xs"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 @endforeach
 
-                <!-- General Programs Link -->
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="{{ count($departments) * 100 }}"
-                    class="flex items-center justify-center overflow-hidden transition-all duration-300 rounded-lg shadow-lg bg-primary hover:shadow-xl">
-                    <div class="p-8 text-center">
-                        <div class="flex justify-center mb-4">
-                            <div class="p-3 bg-white rounded-full bg-opacity-20">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-primary" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                                </svg>
-                            </div>
+                {{-- View All CTA tile --}}
+                <div data-aos="fade-up" data-aos-delay="{{ count($departments) * 80 }}"
+                    class="flex items-center justify-center rounded-2xl bg-primary p-8 text-center shadow hover:shadow-xl transition-shadow">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-building-columns text-white text-2xl"></i>
                         </div>
-                        <h3 class="mb-4 text-2xl font-bold text-white">Explore Departments</h3>
-                        <p class="mb-6 text-white text-opacity-90">Discover our full range of technical and vocational
-                            programs designed to equip you with job-ready skills.</p>
+                        <h3 class="text-xl font-bold text-white mb-3">All Departments</h3>
+                        <p class="text-white/80 text-sm leading-relaxed mb-6">Discover every technical and vocational
+                            program we offer.</p>
                         <a href="{{ route('departments') }}"
-                            class="inline-block px-6 py-3 font-semibold text-primary transition duration-300 bg-white rounded-full shadow-md hover:bg-gray-100 hover:shadow-lg">
-                            View All Departments
-                            <i class="ml-2 fas fa-arrow-right"></i>
+                            class="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-primary bg-white rounded-full shadow hover:bg-gray-50 transition-all">
+                            View All <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
                 </div>
@@ -309,194 +422,178 @@ class extends Component {
     </section>
 
 
-
+    {{-- ═══════════════════════════════════════════
+    SUCCESS STORIES
+    ═══════════════════════════════════════════ --}}
     <section class="py-20 bg-white">
-        <div class="container px-4 mx-auto max-w-7xl">
-            <div class="mb-16 text-center">
-                <h2 class="mb-4 text-3xl font-bold text-gray-800 lg:text-4xl">Student Success Stories</h2>
-                <div class="w-24 h-1 mx-auto bg-primary rounded"></div>
-                <p class="max-w-2xl mx-auto mt-4 text-lg text-gray-600">Meet our graduates who have transformed their
-                    education
-                    into successful careers
-                </p>
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+
+            <div class="mb-14 text-center" data-aos="fade-up">
+                <span
+                    class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Alumni</span>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">Student Success Stories</h2>
+                <p class="max-w-xl mx-auto text-gray-500 text-base leading-relaxed">Meet our graduates who have
+                    transformed their education into successful careers.</p>
             </div>
 
-            <div class="testimonial-grid" data-aos="fade-up">
+            <div class="grid gap-8 md:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
+                @foreach ($successStories as $story)
+                <div
+                    class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col pt-14 px-6 pb-6">
 
-                <div class="grid gap-8 md:grid-cols-3 max-w-7xl mx-auto px-4">
-
-                    @foreach ($successStories as $story)
-
-                    <!-- Success Story Card -->
-                    <div class="relative z-10 p-6 bg-white rounded-lg shadow-lg flex flex-col h-full">
-
-                        <div class="absolute transform -translate-x-1/2 -top-10 left-1/2">
-                            <div class="w-20 h-20 p-1 rounded-full bg-gradient-to-r from-primary to-primary">
-                                <img src="{{ $story->photo ? asset('storage/' . $story->photo) : asset('images/default-avatar.jpg') }}"
-                                    alt="{{ $story->name }}" class="object-cover w-full h-full rounded-full">
-                            </div>
-                        </div>
-
-                        <div class="pt-10 text-center flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold text-gray-800">{{ $story->name }}</h3>
-                            <p class="text-primary mb-2">{{ $story->course }}, Class of {{ $story->year }}</p>
-
-                            <div class="flex justify-center mb-4 text-primary">
-                                {{-- Filled stars --}}
-                                @for ($i = 0; $i < $story->rating; $i++)
-                                    <i class="fas fa-star"></i>
-                                    @endfor
-
-                                    {{-- Empty stars --}}
-                                    @for ($i = 0; $i < 5 - $story->rating; $i++)
-                                        <i class="far fa-star"></i>
-                                        @endfor
-                            </div>
-
-                            <div class="mt-4 mb-6 flex-grow">
-                                <svg class="w-8 h-8 mx-auto text-gray-300" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.039 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" />
-                                </svg>
-                                <blockquote class="mt-4 text-gray-600">
-                                    {{ $story->statement }}
-                                </blockquote>
-                            </div>
-
-                            <p class="font-semibold text-gray-700 mt-auto">
-                                Currently: <span class="text-green-600">{{ $story->occupation }} at {{ $story->company
-                                    }}</span>
-                            </p>
+                    {{-- Avatar (overlapping top) --}}
+                    <div class="absolute -top-8 left-1/2 -translate-x-1/2">
+                        <div class="w-16 h-16 rounded-full ring-4 ring-white shadow-lg overflow-hidden bg-gray-100">
+                            <img src="{{ $story->photo ? asset('storage/' . $story->photo) : asset('images/default-avatar.jpg') }}"
+                                alt="{{ $story->name }}" class="object-cover w-full h-full">
                         </div>
                     </div>
 
-                    @endforeach
-                </div>
-
-                <!-- View All Stories Button -->
-                <div class="mt-16 text-center">
-                    <a href="{{ route('success.stories') }}"
-                        class="inline-block px-8 py-3 font-semibold text-white transition duration-300 bg-primary rounded-full shadow-md hover:bg-orange-700 hover:shadow-lg">
-                        View All Success Stories
-                        <i class="ml-2 fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Success Metrics -->
-                <div class="grid gap-8 mt-20 md:grid-cols-2 lg:grid-cols-4">
-                    <div data-aos="fade-up" data-aos-duration="800" class="p-6 text-center rounded-lg bg-gray-50">
-                        <div class="flex justify-center">
-                            <div class="p-3 mb-4 text-white bg-primary rounded-full">
-                                <i class="text-2xl fas fa-graduation-cap"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="92">0</span>%
-                        </h3>
-                        <p class="text-gray-600">Graduation Rate</p>
+                    {{-- Stars --}}
+                    <div class="flex justify-center gap-0.5 mb-3 text-primary text-sm">
+                        @for ($i = 0; $i < $story->rating; $i++)
+                            <i class="fas fa-star"></i>
+                            @endfor
+                            @for ($i = 0; $i < 5 - $story->rating; $i++)
+                                <i class="far fa-star text-gray-200"></i>
+                                @endfor
                     </div>
 
-                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"
-                        class="p-6 text-center rounded-lg bg-gray-50">
-                        <div class="flex justify-center">
-                            <div class="p-3 mb-4 text-white bg-primary rounded-full">
-                                <i class="text-2xl fas fa-briefcase"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="85">0</span>%
-                        </h3>
-                        <p class="text-gray-600">Job Placement</p>
+                    {{-- Quote --}}
+                    <div class="flex-grow">
+                        <i class="fas fa-quote-left text-primary/20 text-3xl mb-2 block"></i>
+                        <p class="text-gray-600 text-sm leading-relaxed">{{ $story->statement }}</p>
                     </div>
 
-                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
-                        class="p-6 text-center rounded-lg bg-gray-50">
-                        <div class="flex justify-center">
-                            <div class="p-3 mb-4 text-white bg-primary rounded-full">
-                                <i class="text-2xl fas fa-user-tie"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="78">0</span>%
-                        </h3>
-                        <p class="text-gray-600">Industry Partners</p>
+                    {{-- Info --}}
+                    <div class="mt-5 pt-4 border-t border-gray-100 text-center">
+                        <p class="font-bold text-gray-800 text-sm">{{ $story->name }}</p>
+                        <p class="text-primary text-xs font-semibold mt-0.5">{{ $story->course }}, {{ $story->year }}
+                        </p>
+                        <p class="text-gray-500 text-xs mt-1">
+                            <span class="text-emerald-600 font-semibold">{{ $story->occupation }}</span>
+                            @if($story->company) · {{ $story->company }} @endif
+                        </p>
                     </div>
-
-                    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"
-                        class="p-6 text-center rounded-lg bg-gray-50">
-                        <div class="flex justify-center">
-                            <div class="p-3 mb-4 text-white bg-primary rounded-full">
-                                <i class="text-2xl fas fa-award"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-4xl font-bold text-gray-800"><span class="counter" data-target="120">0</span>+
-                        </h3>
-                        <p class="text-gray-600">Industry Certifications</p>
-                    </div>
-                </div>
-
-
-
-            </div>
-    </section>
-
-
-
-
-
-    <section class="py-16 bg-cyan-100">
-        <div class="container px-4 mx-auto">
-            <h2 data-aos='fade-up' class="text-3xl font-bold text-center text-gray-800">Our Partners</h2>
-            <p data-aos='fade-up' class="mt-6 mb-12 text-center text-gray-600">
-                Our partnerships with industry leaders and educational authorities ensure that our programs remain
-                cutting-edge
-                and our graduates are well-prepared for the workforce.
-            </p>
-
-            <div class="grid items-center grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
-
-                @foreach ($partners as $partner)
-                <div data-aos='fade-up' title="{{ $partner->name }}"
-                    class="flex items-center justify-center p-6 transition-shadow duration-300 bg-white rounded-lg shadow-md hover:shadow-lg">
-                    <img src="{{  asset('storage/'. $partner->logo)  }}" alt="{{ $partner->name }}"
-                        class="h-16 max-w-full">
                 </div>
                 @endforeach
-
             </div>
 
+            <div class="mt-10 text-center" data-aos="fade-up">
+                <a href="{{ route('success.stories') }}"
+                    class="inline-flex items-center gap-2 px-8 py-3 font-semibold text-white bg-primary rounded-full shadow-lg shadow-primary/20 hover:brightness-110 hover:shadow-xl transition-all">
+                    View All Success Stories <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            {{-- Stats strip --}}
+            <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                @foreach([
+                ['target' => 92, 'suffix' => '%', 'label' => 'Graduation Rate', 'icon' => 'fa-graduation-cap'],
+                ['target' => 85, 'suffix' => '%', 'label' => 'Job Placement', 'icon' => 'fa-briefcase'],
+                ['target' => 78, 'suffix' => '%', 'label' => 'Industry Partners', 'icon' => 'fa-handshake'],
+                ['target' => 120, 'suffix' => '+', 'label' => 'Certifications', 'icon' => 'fa-award'],
+                ] as $stat)
+                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}"
+                    class="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0">
+                        <i class="fas {{ $stat['icon'] }} text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-extrabold text-gray-900 leading-none">
+                            <span class="counter" data-target="{{ $stat['target'] }}">0</span>{{ $stat['suffix'] }}
+                        </div>
+                        <div class="text-gray-500 text-sm mt-0.5">{{ $stat['label'] }}</div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
     </section>
 
-    <!-- Counter Animation Script -->
 
+    {{-- ═══════════════════════════════════════════
+    PARTNERS
+    ═══════════════════════════════════════════ --}}
+    <section class="py-16 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+
+            <div class="mb-10 text-center" data-aos="fade-up">
+                <span
+                    class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Partners</span>
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-gray-900 mb-2">Our Trusted Partners</h2>
+                <p class="max-w-xl mx-auto text-gray-500 text-sm leading-relaxed">
+                    Our partnerships with industry leaders ensure our programs remain cutting-edge and graduates are
+                    workforce-ready.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6" data-aos="fade-up" data-aos-delay="100">
+                @foreach ($partners as $partner)
+                <div title="{{ $partner->name }}"
+                    class="flex items-center justify-center p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 hover:-translate-y-0.5 transition-all duration-300">
+                    <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}"
+                        class="h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+
+    {{-- ═══════════════════════════════════════════
+    CTA BANNER
+    ═══════════════════════════════════════════ --}}
+    <section class="relative py-16 overflow-hidden bg-gray-950" data-aos="fade-up">
+        {{-- background pattern --}}
+        <div class="absolute inset-0 opacity-5"
+            style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 30px 30px;">
+        </div>
+        <div class="absolute left-0 top-0 h-full w-1 bg-primary"></div>
+
+        <div class="relative max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-white mb-4">
+                Ready to Start Your <span class="text-primary">Journey?</span>
+            </h2>
+            <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto leading-relaxed">
+                Join thousands of students who have transformed their lives through quality education at {{
+                $institution->name }}.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="{{ route('admissions') }}"
+                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
+                    Apply Now <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+                <a href="{{ route('contact') }}"
+                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
+                    <i class="fas fa-envelope text-xs"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    {{-- Counter Script --}}
     <script>
-        const counters = document.querySelectorAll('.counter');
-
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const current = +counter.innerText;
-        const increment = target / 10000; // you can adjust speed here
-
-        if (current < target) {
-          counter.innerText = Math.ceil(current + increment);
-          requestAnimationFrame(updateCount);
-        } else {
-          counter.innerText = target;
-        }
-      };
-
-      // Optional: Wait until element is in view
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            updateCount();
-            observer.unobserve(entry.target); // Only run once
-          }
+        document.querySelectorAll('.counter').forEach(counter => {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 1800;
+                    const step = Math.ceil(target / (duration / 16));
+                    let current = 0;
+                    const tick = () => {
+                        current = Math.min(current + step, target);
+                        counter.textContent = current;
+                        if (current < target) requestAnimationFrame(tick);
+                    };
+                    requestAnimationFrame(tick);
+                    observer.unobserve(counter);
+                });
+            }, { threshold: 0.5 });
+            observer.observe(counter);
         });
-      }, { threshold: 0.5 });
-
-      observer.observe(counter);
-    });
     </script>
 
 </main>

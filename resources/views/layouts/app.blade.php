@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="
+    --primary-color: {{ $institution->primary_color ?? '#FF5722' }};
+    --primary-color-rgb: {{ $institution->primary_color_rgb ?? '255,87,34' }};
+    --primary-font: 'Plus Jakarta Sans', sans-serif, 'Inter', sans-serif;
+">
 
 <head>
     <meta charset="UTF-8">
@@ -9,13 +13,16 @@
     <meta name="description"
         content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <link rel="canonical" href="https://www.tetutvc.ac.ke" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Instrument+Sans&family=Inter&family=Nunito&family=Open+Sans&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Fonts -->
+    <!-- Fonts: Clash Display (editorial) + Plus Jakarta Sans (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="shortcut icon" href="{{ asset('storage/'. $institution->logo ) }}" type="image/jpeg">
-
+    <link rel="shortcut icon" href="{{ asset('storage/'. $institution->logo) }}" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <!-- Open Graph / Facebook -->
@@ -34,30 +41,16 @@
         content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <meta property="twitter:image" content="{{ asset('storage/'.$institution->logo) }}">
 
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-
-    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" defer></script>
 
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     @livewireStyles
 
-
     <style>
-        :root {
-            --primary-color: {{ $institution->primary_color ?? '#FF5722' }};
-            --primary-color-rgb: {{ $institution->primary_color_rgb ?? '#FF5722' }};
-            --primary-font: '{{ $institution->primary_font }}', 'Inter, sans-serif';
-        }
-
         body {
-            font-family: var(--primary-font);
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         .bg-primary {
@@ -65,18 +58,10 @@
         }
 
         .bg-primary-50 {
-            background-color: rgba(var(--primary-color-rgb), 0.1); /* 50% opacity */
-        }
-
-        .bg-primary {
-            background-color: var(--primary-color);
+            background-color: rgba(var(--primary-color-rgb), 0.08);
         }
 
         .hover\:bg-primary:hover {
-            background-color: var(--primary-color);
-        }
-
-        .focus\:bg-primary:focus {
             background-color: var(--primary-color);
         }
 
@@ -92,20 +77,55 @@
             color: var(--primary-color);
         }
 
-        .focus\:text-primary:focus {
-            color: var(--primary-color);
-        }
-
         .hover\:border-primary:hover {
             border-color: var(--primary-color);
         }
 
-        .focus\:border-primary:focus {
-            border-color: var(--primary-color);
+        .ring-primary {
+            --tw-ring-color: var(--primary-color);
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
 
-        /* Mobile menu transition */
+        @media (max-width: 480px) {
+            html {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                display: none !important;
+            }
+        }
+
+        /* Mega-menu column headers */
+        .mega-menu-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Smooth dropdown reveal */
+        .nav-dropdown {
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .group:hover .nav-dropdown {
+            pointer-events: auto;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile slide-in */
         .mobile-menu {
             transform: translateX(-100%);
             transition: transform 0.3s ease-in-out;
@@ -115,7 +135,6 @@
             transform: translateX(0);
         }
 
-        /* Overlay when menu is open */
         .menu-overlay {
             opacity: 0;
             visibility: hidden;
@@ -126,576 +145,737 @@
             opacity: 1;
             visibility: visible;
         }
-
-        /* Animation delays */
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @media (max-width: 480px) {
-            html {
-                font-size: 15px;
-                /* slightly smaller on mobile */
-            }
-        }
-
-        /* Hide navigation buttons on small screens */
-        @media (max-width: 767px) {
-
-            .swiper-button-prev,
-            .swiper-button-next {
-                display: none !important;
-            }
-        }
-
-        /* Optional: Ensure they're visible again on larger screens */
-        @media (min-width: 768px) {
-
-            .swiper-button-prev,
-            .swiper-button-next {
-                display: block;
-            }
-        }
     </style>
-
-
 </head>
 
-<body>
+<body class="antialiased text-gray-800 ">
 
-    <header class="text-white bg-gray-900">
-        <div class="container flex items-center justify-between px-4 py-2 mx-auto text-sm lg:px-8">
-            <nav class="items-center hidden space-x-4 md:flex">
-                <a href="{{  $institution->facebook }}" aria-label="Facebook"
-                    class="transition-colors hover:text-primary">
-                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.tiktok.com/@{{  $institution->tiktok }}" aria-label="TikTok"
-                    class="transition-colors hover:text-primary">
-                    <i class="fab fa-tiktok" aria-hidden="true"></i>
-                </a>
-                <a href="mailto:{{  $institution->x }}" aria-label="Twitter" class="transition-colors hover:text-primary">
-                    <i class="fab fa-x-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="{{  $institution->youtube }}" aria-label="YouTube" class="transition-colors hover:text-primary ">
-                    <i class="fab fa-youtube" aria-hidden="true"></i>
-                </a>
+    <!-- ═══════════════════════════════════════════
+        TOP BAR
+    ═══════════════════════════════════════════ -->
+    <header class="bg-gray-950 text-white h-9 flex items-center border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between w-full">
+
+            <!-- Social icons -->
+            <nav class="hidden md:flex items-center gap-0.5" aria-label="Social media">
+                <a href="{{ $institution->facebook ?? '#' }}" aria-label="Facebook"
+                    class="w-7 h-7 flex items-center justify-center rounded text-white/40 text-xs hover:text-white hover:bg-white/10 transition-all duration-200"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="{{ $institution->tiktok ?? '#' }}" aria-label="TikTok"
+                    class="w-7 h-7 flex items-center justify-center rounded text-white/40 text-xs hover:text-white hover:bg-white/10 transition-all duration-200"><i
+                        class="fab fa-tiktok"></i></a>
+                <a href="{{ $institution->twitter ?? '#' }}" aria-label="Twitter/X"
+                    class="w-7 h-7 flex items-center justify-center rounded text-white/40 text-xs hover:text-white hover:bg-white/10 transition-all duration-200"><i
+                        class="fab fa-x-twitter"></i></a>
+                <a href="{{ $institution->youtube ?? '#' }}" aria-label="YouTube"
+                    class="w-7 h-7 flex items-center justify-center rounded text-white/40 text-xs hover:text-white hover:bg-white/10 transition-all duration-200"><i
+                        class="fab fa-youtube"></i></a>
             </nav>
 
-            <div class="flex items-center justify-between w-full md:w-auto">
-                <div class="px-2">
-                    <i class="mr-1 fas fa-phone-alt"></i>
-                    <span>{{ $institution->phone }}</span>
-                </div>
-                <div class="px-2 border-white md:border-l">
-                    <i class="mr-1 fas fa-envelope"></i>
-                    <a href="mailto:{{  $institution->email }}"
-                        class="transition-colors hover:text-primary">{{  $institution->email }}</a>
-                </div>
-                <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="#" class="transition-colors hover:text-primary">Tenders</a>
-                </div>
-                <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="{{ route('downloads') }}" class="transition-colors hover:text-primary">Downloads</a>
-                </div>
-                <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="{{ route('vacancies') }}" class="transition-colors hover:text-primary">Vacancies</a>
-                </div>
-                <div class="hidden px-2 border-l border-white md:inline">
-                    <a href="{{ route('past.papers') }}" class="transition-colors hover:text-primary">Past Papers</a>
-                </div>
-
+            <!-- Contact + quick links -->
+            <div class="flex items-center text-[11px] text-white/50 divide-x divide-white/10 ml-auto">
+                <a href="tel:{{ $institution->phone }}"
+                    class="flex items-center gap-1.5 px-3 whitespace-nowrap hover:text-white transition-colors">
+                    <i class="fas fa-phone-alt text-[9px] opacity-60"></i>{{ $institution->phone ?? '+254 700 000 000'
+                    }}
+                </a>
+                <a href="mailto:{{ $institution->email }}"
+                    class="flex items-center gap-1.5 px-3 whitespace-nowrap hover:text-white transition-colors">
+                    <i class="fas fa-envelope text-[9px] opacity-60"></i>{{ $institution->email ?? 'info@tetutvc.ac.ke'
+                    }}
+                </a>
+                <a href="#" class="hidden md:flex px-3 hover:text-white transition-colors">Tenders</a>
+                <a href="{{ route('downloads') }}"
+                    class="hidden md:flex px-3 hover:text-white transition-colors">Downloads</a>
+                <a href="{{ route('vacancies') ?? '#' }}"
+                    class="hidden md:flex px-3 hover:text-white transition-colors">Vacancies</a>
+                <a href="{{ route('past.papers') ?? '#' }}"
+                    class="hidden md:flex px-3 hover:text-white transition-colors">Past Papers</a>
             </div>
         </div>
     </header>
 
 
+    <!-- ═══════════════════════════════════════════
+        MAIN NAVIGATION
+    ═══════════════════════════════════════════ -->
     <nav id="mainNav"
-        class="sticky top-0 z-30 flex flex-col items-center w-full h-20 bg-white border-b border-gray-200 shadow">
-        <div class="container flex items-center justify-between px-4 py-2 mx-auto lg:px-8">
+        class="sticky top-0 z-30 h-[68px] bg-white/98 backdrop-blur-lg border-b border-gray-100 shadow-sm flex items-center"
+        role="navigation" aria-label="Main navigation">
 
-            <div class="inline xl:hidden">
-                <!-- Mobile menu toggle button -->
-                <button id="mobile-menu-button" aria-label="Toggle mobile menu"
-                    class="pr-4  transition-colors hover:text-primary rounded">
-                    <!-- Hamburger icon (3 lines) -->
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </div>
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-8 w-full">
 
+            <!-- Hamburger (mobile) -->
+            <button id="mobile-menu-button" aria-label="Toggle mobile menu"
+                class="xl:hidden p-2 rounded-lg text-gray-600 hover:text-primary hover:bg-gray-100 transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
 
-            <a href="{{ route('home') }}" class="flex items-center text-primary uppercase">
+            <!-- Logo -->
+            <a href="{{ route('home') }}" class="flex items-center gap-2.5 text-primary">
                 @if ($institution->logo)
-                    <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-12">
+                <img src="{{ asset('storage/'.$institution->logo) }}" alt="{{ $institution->name }} logo"
+                    class="h-11 w-auto object-contain">
                 @endif
-                <h1 class="font-['Righteous'] text-3xl hidden lg:inline ml-2">{{ $institution->name }}</h1>
+                <span class="font-['Righteous'] text-2xl hidden lg:inline leading-none">{{ $institution->name }}</span>
             </a>
 
+            <!-- Desktop Nav -->
+            <div class="items-center hidden xl:flex text-[13px] font-semibold tracking-wide text-gray-700">
 
-
-            <div class="items-center hidden font-semibold xl:flex">
                 <!-- Home -->
-                <a href="{{ route('home') }}"
-                    @class([ 'px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
-                    , 'text-primary border-b-2 border-primary'=> request()->routeIs('home'),
-                    ])>
-                    HOME
+                <a href="{{ route('home') }}" @class(['px-3.5 py-5 border-b-2 transition-all
+                    hover:text-primary', 'text-primary border-primary'=> request()->routeIs('home'),
+                    'border-transparent' => !request()->routeIs('home')])>
+                    Home
                 </a>
 
-                <!-- About Us -->
-                <a href="{{ route('about') }}"
-                    @class([ 'px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
-                    , 'text-primary border-b-2 border-primary'=> request()->routeIs('about'),
-                    ])>
-                    ABOUT US
+                <!-- About -->
+                <a href="{{ route('about') }}" @class(['px-3.5 py-5 border-b-2 transition-all
+                    hover:text-primary', 'text-primary border-primary'=> request()->routeIs('about'),
+                    'border-transparent' => !request()->routeIs('about')])>
+                    About
                 </a>
 
-                <!-- Administration Dropdown -->
+                <!-- ── ADMINISTRATION Mega-dropdown ── -->
                 <div class="relative group">
-                    <button
-                        @class([ 'flex items-center px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
-                        , 'text-primary border-b-2 border-primary'=> request()->routeIs('principal.office') ||
-                        request()->routeIs('staff.members'),
-                        ])>
-                        ADMINISTRATION
-                        <i class="ml-1 text-xs fas fa-chevron-down"></i>
+                    <button @class(['flex items-center gap-1 px-3.5 py-5 border-b-2 transition-all
+                        hover:text-primary', 'text-primary border-primary'=>
+                        request()->routeIs('principal.office','staff.members','administration','dean.students','registry','teaching.staff','non.teaching.staff'),
+                        'border-transparent' =>
+                        !request()->routeIs('principal.office','staff.members','administration','dean.students','registry','teaching.staff','non.teaching.staff')])>
+                        Administration
+                        <i
+                            class="fas fa-chevron-down text-[9px] opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
                     </button>
+
+                    <!-- Mega menu -->
                     <div
-                        class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
-                        <a href="{{ route('principal.office') }}"
-                            @class([ 'block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-primary'
-                            , 'text-primary bg-orange-100'=> request()->routeIs('principal.office'),
-                            ])>
-                            Principal's Office
-                        </a>
-                        {{-- <a href="{{ route('administration') }}" class="...">Administrative Staff</a> --}}
-                        <a href="{{ route('staff.members') }}"
-                            @class([ 'block px-4 py-3 text-gray-800 hover:bg-orange-100 hover:text-primary'
-                            , 'text-primary bg-orange-100'=> request()->routeIs('staff.members'),
-                            ])>
-                            Our Staff Members
-                        </a>
+                        class="nav-dropdown absolute left-0 top-full z-50 w-[480px] bg-white rounded-xl shadow-2xl border border-gray-100 p-5">
+                        <div class="grid grid-cols-2 gap-x-6 gap-y-1">
+
+                            <!-- Column 1: Leadership -->
+                            <div>
+                                <p class="mega-menu-label text-gray-400 mb-2 pb-1.5 border-b border-gray-100">Leadership
+                                </p>
+                                <a href="{{ route('principal.office') }}" @class(['flex items-center gap-2.5 px-2 py-2
+                                    rounded-lg text-sm text-gray-700 hover:bg-primary-50 hover:text-primary
+                                    transition-all', 'text-primary bg-primary-50'=>
+                                    request()->routeIs('principal.office')])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-user-tie"></i></span>
+                                    Principal
+                                </a>
+                                <a href="{{ route('administration') }}" @class(['flex items-center gap-2.5 px-2 py-2
+                                    rounded-lg text-sm text-gray-700 hover:bg-primary-50 hover:text-primary
+                                    transition-all', 'text-primary bg-primary-50'=>
+                                    request()->routeIs('administration')])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-briefcase"></i></span>
+                                    DP – Administration
+                                </a>
+                                <a href="#" @class(['flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm
+                                    text-gray-700 hover:bg-primary-50 hover:text-primary
+                                    transition-all', 'text-primary bg-primary-50'=> request()->routeIs('academics')])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-graduation-cap"></i></span>
+                                    DP – Academics
+                                </a>
+                                <a href="#" @class(['flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm
+                                    text-gray-700 hover:bg-primary-50 hover:text-primary
+                                    transition-all', 'text-primary bg-primary-50'=>
+                                    request()->routeIs('dean.students')])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-users"></i></span>
+                                    Dean of Students
+                                </a>
+                                <a href="#" @class(['flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm
+                                    text-gray-700 hover:bg-primary-50 hover:text-primary
+                                    transition-all', 'text-primary bg-primary-50'=> request()->routeIs('registry')])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-folder-open"></i></span>
+                                    Registry Office
+                                </a>
+                            </div>
+
+                            <!-- Column 2: Staff -->
+                            <div>
+                                <p class="mega-menu-label text-gray-400 mb-2 pb-1.5 border-b border-gray-100">Staff
+                                    Directory</p>
+                                <a href="{{ route('staff.members') }}" @class(['flex items-center gap-2.5 px-2 py-2
+                                    rounded-lg text-sm text-gray-700 hover:bg-primary-50 hover:text-primary
+                                    transition-all', 'text-primary bg-primary-50'=>
+                                    request()->routeIs('staff.members')])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-chalkboard-teacher"></i></span>
+                                    All Teaching Staff
+                                </a>
+                                <a href="#" @class(['flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm
+                                    text-gray-700 hover:bg-primary-50 hover:text-primary
+                                    transition-all', 'text-primary bg-primary-50'=>
+                                    request()->routeIs('non.teaching.staff')])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-hard-hat"></i></span>
+                                    All Non-Teaching Staff
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Departments Dropdown -->
+                <!-- ── DEPARTMENTS Mega-dropdown ── -->
                 <div class="relative group">
-                    <a href="{{ route('departments') }}"
-                        @class([ 'flex items-center px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
-                        , 'text-primary border-b-2 border-primary'=> request()->routeIs('departments') ||
-                        request()->routeIs('department'),
-                        ])>
-                        DEPARTMENTS
-                        <i class="ml-1 text-xs fas fa-chevron-down"></i>
+                    <a href="{{ route('departments') }}" @class(['flex items-center gap-1 px-3.5 py-5 border-b-2
+                        transition-all hover:text-primary', 'text-primary border-primary'=>
+                        request()->routeIs('departments','department'),
+                        'border-transparent' => !request()->routeIs('departments','department')])>
+                        Departments
+                        <i
+                            class="fas fa-chevron-down text-[9px] opacity-60 group-hover:rotate-180 transition-transform duration-200"></i>
                     </a>
+
                     <div
-                        class="absolute left-0 z-10 invisible w-56 mt-0 uppercase transition-all duration-300 bg-white shadow-lg opacity-0 group-hover:opacity-100 group-hover:visible">
-                        @foreach ($departments as $department)
-                        <a href="{{ route('department', $department->slug) }}"
-                            @class([ 'block px-4 py-3 text-gray-800 border-b border-gray-100 hover:bg-orange-100 hover:text-primary'
-                            , 'text-primary bg-orange-100'=> request()->is('departments/' . $department->slug),
-                            ])>
-                            {{ $department->name }}
-                        </a>
-                        @endforeach
+                        class="nav-dropdown absolute left-0 top-full z-50 w-[520px] bg-white rounded-xl shadow-2xl border border-gray-100 p-5">
+                        <div class="grid grid-cols-2 gap-x-6 gap-y-1">
+
+                            <!-- Academic Departments -->
+                            <div>
+                                <p class="mega-menu-label text-gray-400 mb-2 pb-1.5 border-b border-gray-100">Academic
+                                    Departments</p>
+                                @foreach ($departments->where('type', 'academic') as $department)
+                                <a href="{{ route('department', $department->slug) }}" @class(['flex items-center
+                                    gap-2.5 px-2 py-2 rounded-lg text-sm text-gray-700 hover:bg-primary-50
+                                    hover:text-primary transition-all', 'text-primary bg-primary-50'=>
+                                    request()->is('departments/'.$department->slug)])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0">
+                                        <i class="fas fa-book-open"></i>
+                                    </span>
+                                    {{ $department->name }}
+                                </a>
+                                @endforeach
+
+                                {{-- Fallback if no type column: render all departments here --}}
+                                @if($departments->where('type', 'academic')->isEmpty())
+                                @foreach ($departments as $department)
+                                <a href="{{ route('department', $department->slug) }}" @class(['flex items-center
+                                    gap-2.5 px-2 py-2 rounded-lg text-sm text-gray-700 hover:bg-primary-50
+                                    hover:text-primary transition-all', 'text-primary bg-primary-50'=>
+                                    request()->is('departments/'.$department->slug)])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0">
+                                        <i class="fas fa-book-open"></i>
+                                    </span>
+                                    {{ $department->name }}
+                                </a>
+                                @endforeach
+                                @endif
+                            </div>
+
+                            <!-- Non-Academic Departments -->
+                            <div>
+                                <p class="mega-menu-label text-gray-400 mb-2 pb-1.5 border-b border-gray-100">
+                                    Non-Academic</p>
+                                @foreach ($departments->where('type', 'non-academic') as $department)
+                                <a href="{{ route('department', $department->slug) }}" @class(['flex items-center
+                                    gap-2.5 px-2 py-2 rounded-lg text-sm text-gray-700 hover:bg-primary-50
+                                    hover:text-primary transition-all', 'text-primary bg-primary-50'=>
+                                    request()->is('departments/'.$department->slug)])>
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0">
+                                        <i class="fas {{ $department->icon ?? 'fa-star' }}"></i>
+                                    </span>
+                                    {{ $department->name }}
+                                </a>
+                                @endforeach
+
+                                {{-- Static non-academic departments as fallback / supplement --}}
+                                @if($departments->where('type', 'non-academic')->isEmpty())
+                                <a href="#"
+                                    class="flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm text-gray-700 hover:bg-primary-50 hover:text-primary transition-all">
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-heart"></i></span>
+                                    Guidance &amp; Counselling
+                                </a>
+                                <a href="#"
+                                    class="flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm text-gray-700 hover:bg-primary-50 hover:text-primary transition-all">
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-running"></i></span>
+                                    Sports
+                                </a>
+                                <a href="#"
+                                    class="flex items-center gap-2.5 px-2 py-2 rounded-lg text-sm text-gray-700 hover:bg-primary-50 hover:text-primary transition-all">
+                                    <span
+                                        class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center text-primary text-xs shrink-0"><i
+                                            class="fas fa-music"></i></span>
+                                    Music &amp; Arts
+                                </a>
+                                @endif
+
+                                <div class="mt-3 pt-3 border-t border-gray-100">
+                                    <a href="{{ route('departments') }}"
+                                        class="flex items-center gap-1.5 text-xs text-primary font-semibold hover:underline">
+                                        View all departments <i class="fas fa-arrow-right text-[9px]"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Courses -->
-                <a href="{{ route('courses') }}"
-                    @class([ 'px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
-                    , 'text-primary border-b-2 border-primary'=> request()->routeIs('courses'),
-                    ])>
-                    COURSES
+                <a href="{{ route('courses') }}" @class(['px-3.5 py-5 border-b-2 transition-all
+                    hover:text-primary', 'text-primary border-primary'=> request()->routeIs('courses'),
+                    'border-transparent' => !request()->routeIs('courses')])>
+                    Courses
                 </a>
 
                 <!-- Contact -->
-                <a href="{{ route('contact') }}"
-                    @class([ 'px-3 py-5 transition-all hover:text-primary hover:border-b-2 hover:border-primary'
-                    , 'text-primary border-b-2 border-primary'=> request()->routeIs('contact'),
-                    ])>
-                    CONTACT US
+                <a href="{{ route('contact') }}" @class(['px-3.5 py-5 border-b-2 transition-all
+                    hover:text-primary', 'text-primary border-primary'=> request()->routeIs('contact'),
+                    'border-transparent' => !request()->routeIs('contact')])>
+                    Contact
                 </a>
             </div>
 
-
-
-            <div class="flex items-center font-semibold">
+            <!-- CTA -->
+            <div class="flex items-center gap-2">
                 <a href="{{ route('admissions') }}"
-                    class="hidden px-5 py-2 ml-4 text-white transition-all bg-primary rounded-full shadow-md lg:inline hover:bg-orange-700">
-                    APPLY NOW
+                    class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full shadow hover:shadow-md hover:brightness-110 transition-all duration-200">
+                    <i class="fas fa-pen-to-square text-xs"></i>
+                    Apply Now
                 </a>
                 <a href="{{ route('admissions') }}"
-                    class="px-4 py-3 transition-all md:ml-4 lg:hidden hover:text-primary">
-                    APPLY →
+                    class="lg:hidden inline-flex items-center gap-1 px-3.5 py-2 text-sm font-semibold text-primary border border-primary rounded-full hover:bg-primary hover:text-white transition-all duration-200">
+                    Apply →
                 </a>
             </div>
         </div>
     </nav>
 
 
+    <!-- ═══════════════════════════════════════════
+        MOBILE MENU (Slide-in drawer)
+    ═══════════════════════════════════════════ -->
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 left-0 z-50 bg-white w-80 shadow-2xl overflow-y-auto">
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu fixed inset-0 z-50 bg-white w-80 shadow-xl h-screen overflow-y-auto">
-        <div class="p-6">
-            <div class="flex items-center justify-between mb-8">
-                <div class="flex items-center">
-                    <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-10">
-                    <h1 class="font-['Righteous'] text-2xl text-primary ml-2">{{ $institution->name }}</h1>
-                </div>
+        <!-- Drawer header -->
+        <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
+            <a href="{{ route('home') }}" class="flex items-center gap-2">
+                <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-9 w-auto object-contain">
+                <span class="font-['Righteous'] text-xl text-primary leading-none">{{ $institution->name }}</span>
+            </a>
+            <button id="close-mobile-menu" aria-label="Close mobile menu"
+                class="w-9 h-9 flex items-center justify-center rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
 
-                <button id="close-mobile-menu" aria-label="Close mobile menu"
-                    class="hover:text-primary text-2xl transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">
-                    <!-- Close icon (X) -->
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
+        <!-- Quick badge: Apply Now -->
+        <div class="px-5 py-3 bg-primary-50 border-b border-orange-100">
+            <a href="{{ route('admissions') }}"
+                class="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold text-white bg-primary rounded-lg hover:brightness-110 transition-all">
+                <i class="fas fa-pen-to-square text-xs"></i> Apply Now
+            </a>
+        </div>
+
+        <div class="px-4 py-3 space-y-0.5">
+
+            <a href="{{ route('home') }}" @class(['flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+                transition-all hover:bg-primary-50 hover:text-primary', 'text-primary bg-primary-50'=>
+                request()->routeIs('home'),
+                'text-gray-700' => !request()->routeIs('home')])>
+                <i class="fas fa-house w-4 text-center opacity-60"></i> Home
+            </a>
+
+            <a href="{{ route('about') }}" @class(['flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+                transition-all hover:bg-primary-50 hover:text-primary', 'text-primary bg-primary-50'=>
+                request()->routeIs('about'),
+                'text-gray-700' => !request()->routeIs('about')])>
+                <i class="fas fa-circle-info w-4 text-center opacity-60"></i> About Us
+            </a>
+
+            <!-- Mobile: Administration accordion -->
+            <div class="mobile-dropdown">
+                <button @class(['flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm font-medium
+                    transition-all hover:bg-primary-50 hover:text-primary', 'text-primary bg-primary-50'=>
+                    request()->routeIs('principal.office','staff.members','administration','dean.students','registry','teaching.staff','non.teaching.staff'),
+                    'text-gray-700' => true])>
+                    <span class="flex items-center gap-3"><i class="fas fa-landmark w-4 text-center opacity-60"></i>
+                        Administration</span>
+                    <i class="fas fa-chevron-down text-[10px] opacity-50 transition-transform duration-200"></i>
                 </button>
+                <div class="hidden pl-7 mt-1 space-y-0.5 pb-1">
+                    <p class="text-[10px] font-bold tracking-widest uppercase text-gray-400 px-3 pt-2 pb-1">Leadership
+                    </p>
+                    <a href="{{ route('principal.office') }}"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-user-tie w-3.5 text-center text-xs opacity-60"></i> Principal</a>
+                    <a href="{{ route('administration') }}"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-briefcase w-3.5 text-center text-xs opacity-60"></i> DP – Administration</a>
+                    <a href="#"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-graduation-cap w-3.5 text-center text-xs opacity-60"></i> DP – Academics</a>
+                    <a href="#"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-users w-3.5 text-center text-xs opacity-60"></i> Dean of Students</a>
+                    <a href="#"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-folder-open w-3.5 text-center text-xs opacity-60"></i> Registry Office</a>
+                    <p class="text-[10px] font-bold tracking-widest uppercase text-gray-400 px-3 pt-2 pb-1">Staff</p>
+                    <a href="{{ route('staff.members') }}"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-chalkboard-teacher w-3.5 text-center text-xs opacity-60"></i> Teaching
+                        Staff</a>
+                    <a href="#"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-hard-hat w-3.5 text-center text-xs opacity-60"></i> Non-Teaching Staff</a>
+                </div>
             </div>
 
-            <div class="space-y-1">
-                <!-- Home -->
-                <a href="{{ route('home') }}"
-                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
-                    , 'text-primary bg-orange-100'=> request()->routeIs('home'),
-                    ])>
-                    HOME
-                </a>
-
-                <!-- About -->
-                <a href="{{ route('about') }}"
-                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
-                    , 'text-primary bg-orange-100'=> request()->routeIs('about'),
-                    ])>
-                    ABOUT US
-                </a>
-
-                <!-- Mobile Administration Dropdown -->
-                <div class="mobile-dropdown">
-                    <button
-                        @class([ 'flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
-                        , 'text-primary bg-orange-100'=> request()->routeIs('principal.office') ||
-                        request()->routeIs('staff.members'),
-                        ])>
-                        ADMINISTRATION
-                        <i class="text-xs fas fa-chevron-down"></i>
-                    </button>
-                    <div class="hidden pl-4 mt-1 space-y-1">
-                        <a href="{{ route('principal.office') }}"
-                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-primary'
-                            , 'text-primary bg-orange-100'=> request()->routeIs('principal.office'),
-                            ])>
-                            Principal's Office
-                        </a>
-                        {{-- <a href="{{ route('administration') }}" class="...">Administrative Staff</a> --}}
-                        <a href="{{ route('staff.members') }}"
-                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-primary'
-                            , 'text-primary bg-orange-100'=> request()->routeIs('staff.members'),
-                            ])>
-                            Our Staff Members
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Mobile Departments Dropdown -->
-                <div class="mobile-dropdown">
-                    <button
-                        @class([ 'flex items-center justify-between w-full px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
-                        , 'text-primary bg-orange-100'=> request()->routeIs('departments') ||
-                        request()->routeIs('department'),
-                        ])>
-                        DEPARTMENTS
-                        <i class="text-xs fas fa-chevron-down"></i>
-                    </button>
-                    <div class="hidden pl-4 mt-1 space-y-1">
-                        @foreach ($departments as $department)
-                        <a href="{{ route('department', $department->slug) }}"
-                            @class([ 'block px-2 py-2 uppercase transition-all rounded hover:bg-orange-100 hover:text-primary'
-                            , 'text-primary bg-orange-100'=> request()->is('departments/' . $department->slug),
-                            ])>
-                            {{ $department->name }}
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-
-                <!-- Courses -->
-                <a href="{{ route('courses') }}"
-                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
-                    , 'text-primary bg-orange-100'=> request()->routeIs('courses'),
-                    ])>
-                    COURSES
-                </a>
-
-                <!-- Contact -->
-                <a href="{{ route('contact') }}"
-                    @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
-                    , 'text-primary bg-orange-100'=> request()->routeIs('contact'),
-                    ])>
-                    CONTACT US
-                </a>
-
-                <!-- Other Links -->
-                <div class="pt-4 mt-4 border-t border-gray-200">
-                    <a href="{{ route('downloads') }}"
-                        @class([ 'block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary'
-                        , 'text-primary bg-orange-100'=> request()->routeIs('downloads'),
-                        ])>
-                        DOWNLOADS
+            <!-- Mobile: Departments accordion -->
+            <div class="mobile-dropdown">
+                <button @class(['flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm font-medium
+                    transition-all hover:bg-primary-50 hover:text-primary', 'text-primary bg-primary-50'=>
+                    request()->routeIs('departments','department'),
+                    'text-gray-700' => true])>
+                    <span class="flex items-center gap-3"><i
+                            class="fas fa-building-columns w-4 text-center opacity-60"></i> Departments</span>
+                    <i class="fas fa-chevron-down text-[10px] opacity-50 transition-transform duration-200"></i>
+                </button>
+                <div class="hidden pl-7 mt-1 space-y-0.5 pb-1">
+                    <p class="text-[10px] font-bold tracking-widest uppercase text-gray-400 px-3 pt-2 pb-1">Academic</p>
+                    @foreach ($departments->where('type', 'academic') as $department)
+                    <a href="{{ route('department', $department->slug) }}" @class(['flex items-center gap-2 px-3 py-2
+                        rounded-lg text-sm hover:bg-primary-50 hover:text-primary transition-all', 'text-primary'=>
+                        request()->is('departments/'.$department->slug),
+                        'text-gray-600' => !request()->is('departments/'.$department->slug)])>
+                        <i class="fas fa-book-open w-3.5 text-center text-xs opacity-60"></i>
+                        {{ $department->name }}
                     </a>
+                    @endforeach
+
+                    @if($departments->where('type', 'academic')->isEmpty())
+                    @foreach ($departments as $department)
+                    <a href="{{ route('department', $department->slug) }}" @class(['flex items-center gap-2 px-3 py-2
+                        rounded-lg text-sm hover:bg-primary-50 hover:text-primary transition-all', 'text-primary'=>
+                        request()->is('departments/'.$department->slug),
+                        'text-gray-600' => !request()->is('departments/'.$department->slug)])>
+                        <i class="fas fa-book-open w-3.5 text-center text-xs opacity-60"></i>
+                        {{ $department->name }}
+                    </a>
+                    @endforeach
+                    @endif
+
+                    <p class="text-[10px] font-bold tracking-widest uppercase text-gray-400 px-3 pt-2 pb-1">Non-Academic
+                    </p>
+                    @foreach ($departments->where('type', 'non-academic') as $department)
+                    <a href="{{ route('department', $department->slug) }}"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all">
+                        <i class="fas fa-star w-3.5 text-center text-xs opacity-60"></i>
+                        {{ $department->name }}
+                    </a>
+                    @endforeach
+
+                    @if($departments->where('type', 'non-academic')->isEmpty())
                     <a href="#"
-                        class="block px-2 py-3 transition-all rounded hover:bg-orange-100 hover:text-primary">
-                        TENDERS
-                    </a>
-                    <a href="{{ route('admissions') }}"
-                        @class([ 'block px-2 py-3 mt-4 text-center text-white transition-all bg-primary rounded hover:bg-orange-700'
-                        , 'ring-2 ring-primary'=> request()->routeIs('admissions'),
-                        ])>
-                        APPLY NOW
-                    </a>
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-heart w-3.5 text-center text-xs opacity-60"></i> Guidance &amp;
+                        Counselling</a>
+                    <a href="#"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-running w-3.5 text-center text-xs opacity-60"></i> Sports</a>
+                    <a href="#"
+                        class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-primary-50 hover:text-primary transition-all"><i
+                            class="fas fa-music w-3.5 text-center text-xs opacity-60"></i> Music &amp; Arts</a>
+                    @endif
                 </div>
+            </div>
+
+            <a href="{{ route('courses') }}" @class(['flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+                transition-all hover:bg-primary-50 hover:text-primary', 'text-primary bg-primary-50'=>
+                request()->routeIs('courses'),
+                'text-gray-700' => !request()->routeIs('courses')])>
+                <i class="fas fa-list-check w-4 text-center opacity-60"></i> Courses
+            </a>
+
+            <a href="{{ route('contact') }}" @class(['flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+                transition-all hover:bg-primary-50 hover:text-primary', 'text-primary bg-primary-50'=>
+                request()->routeIs('contact'),
+                'text-gray-700' => !request()->routeIs('contact')])>
+                <i class="fas fa-envelope w-4 text-center opacity-60"></i> Contact Us
+            </a>
+
+            <!-- Divider + utility links -->
+            <div class="pt-3 mt-3 border-t border-gray-100 space-y-0.5">
+                <a href="{{ route('downloads') }}"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-primary-50 hover:text-primary transition-all">
+                    <i class="fas fa-download w-4 text-center opacity-60"></i> Downloads
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-primary-50 hover:text-primary transition-all">
+                    <i class="fas fa-file-contract w-4 text-center opacity-60"></i> Tenders
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-primary-50 hover:text-primary transition-all">
+                    <i class="fas fa-briefcase-blank w-4 text-center opacity-60"></i> Vacancies
+                </a>
+                <a href="#"
+                    class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-primary-50 hover:text-primary transition-all">
+                    <i class="fas fa-file-lines w-4 text-center opacity-60"></i> Past Papers
+                </a>
+            </div>
+
+            <!-- Social -->
+            <div class="pt-4 mt-2 border-t border-gray-100 flex items-center gap-2 px-3">
+                <a href="#"
+                    class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 text-gray-500 hover:bg-primary hover:text-white transition-all text-sm"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#"
+                    class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 text-gray-500 hover:bg-primary hover:text-white transition-all text-sm"><i
+                        class="fab fa-tiktok"></i></a>
+                <a href="#"
+                    class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 text-gray-500 hover:bg-primary hover:text-white transition-all text-sm"><i
+                        class="fab fa-x-twitter"></i></a>
+                <a href="#"
+                    class="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 text-gray-500 hover:bg-primary hover:text-white transition-all text-sm"><i
+                        class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
 
-
-    <!-- Overlay when mobile menu is open -->
-    <div id="menu-overlay" class="menu-overlay max-h-screen fixed inset-0 z-40 bg-black/50"></div>
-
+    <!-- Overlay -->
+    <div id="menu-overlay" class="menu-overlay fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"></div>
 
 
+    <!-- ═══════════════════════════════════════════
+        PAGE SLOT
+    ═══════════════════════════════════════════ -->
     {{ $slot }}
 
 
+    <!-- ═══════════════════════════════════════════
+        FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer class="bg-gray-900 text-white">
 
-    <footer class="py-12 text-white bg-gray-800">
-        <div class="container px-4 mx-auto">
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                <!-- About {{ $institution->name }} -->
-                <div data-aos='fade-up'>
-                    <h3 class="mb-4 text-xl font-semibold">About {{ $institution->name }}</h3>
-                    <p class="mb-4 text-gray-400">{{ $institution->name }} is committed to providing quality
-                        education and training to empower students for successful careers.</p>
-                    <a href="/about" class="text-primary hover:text-orange-300">Learn More</a>
+        <!-- Main footer content -->
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 py-14">
+            <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+
+                <!-- Brand -->
+                <div data-aos="fade-up">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo"
+                            class="h-10 w-auto object-contain brightness-0 invert opacity-90">
+                        <span class="font-['Righteous'] text-xl text-white/90">{{ $institution->name }}</span>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-5">{{ $institution->name }} is committed to
+                        providing quality education and training to empower students for successful careers.</p>
+                    <a href="{{ route('about') }}"
+                        class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-orange-300 transition-colors">
+                        Learn More <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
                 </div>
 
                 <!-- Quick Links -->
-                <div data-aos='fade-up'>
-                    <h3 class="mb-4 text-xl font-semibold">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="{{ route('courses') }}" class="text-gray-400 hover:text-white">Programs</a></li>
-                        <li><a href="{{ route('admissions') }}" class="text-gray-400 hover:text-white">Admissions</a>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-sm font-bold tracking-widest uppercase text-gray-400 mb-4">Quick Links</h3>
+                    <ul class="space-y-2.5">
+                        <li><a href="{{ route('courses') }}"
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Programs & Courses</a>
                         </li>
-                        <li><a href="{{ route('departments') }}" class="text-gray-400 hover:text-white">Departments</a>
-                        </li>
+                        <li><a href="{{ route('admissions') }}"
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Admissions</a></li>
+                        <li><a href="{{ route('departments') }}"
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Departments</a></li>
                         <li><a href="{{ route('administration') }}"
-                                class="text-gray-400 hover:text-white">Administration</a></li>
-                        <li><a href="{{ route('downloads') }}" class="text-gray-400 hover:text-white">Downloads</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Administration</a></li>
+                        <li><a href="{{ route('downloads') }}"
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Downloads</a></li>
+                        <li><a href="#"
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Tenders</a></li>
+                        <li><a href="#"
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
+                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Vacancies</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact Information -->
-                <div data-aos='fade-up'>
-                    <h3 class="mb-4 text-xl font-semibold">Contact Us</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>
-                            <i class="mr-2 text-primary fas fa-map-marker-alt"></i>
+                <!-- Contact -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-sm font-bold tracking-widest uppercase text-gray-400 mb-4">Contact Us</h3>
+                    <ul class="space-y-3.5">
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span
+                                class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 mt-0.5 text-xs"><i
+                                    class="fas fa-map-marker-alt"></i></span>
                             {{ $institution->address }}
                         </li>
                         <li>
-                            <i class="mr-2 text-primary fas fa-phone"></i>
-                            {{ $institution->phone }}
+                            <a href="tel:{{ $institution->phone }}"
+                                class="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
+                                <span
+                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><i
+                                        class="fas fa-phone"></i></span>
+                                {{ $institution->phone }}
+                            </a>
                         </li>
                         <li>
-                            <i class="mr-2 text-primary fas fa-envelope"></i>
-                            {{ $institution->email }}
+                            <a href="mailto:{{ $institution->email }}"
+                                class="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
+                                <span
+                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><i
+                                        class="fas fa-envelope"></i></span>
+                                {{ $institution->email }}
+                            </a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Newsletter Signup -->
-                <div data-aos='fade-up'>
-                    <h3 class="mb-4 text-xl font-semibold">Stay Connected</h3>
-                    <p class="mb-4 text-gray-400">Subscribe to our newsletter for updates and news.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Enter your email"
-                            class="w-full px-3 py-2 bg-white text-gray-800 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary">
-                        <button type="submit"
-                            class="px-4 py-2 transition duration-300 bg-primary hover:bg-orange-700 rounded-r-md">
+                <!-- Newsletter -->
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-sm font-bold tracking-widest uppercase text-gray-400 mb-4">Stay Connected</h3>
+                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">Subscribe to our newsletter for the latest
+                        updates, news, and announcements.</p>
+                    <div
+                        class="flex rounded-lg overflow-hidden border border-white/10 focus-within:border-primary/50 transition-colors">
+                        <input type="email" placeholder="your@email.com"
+                            class="flex-1 px-3.5 py-2.5 bg-white/5 rounded-l-lg text-sm  text-white placeholder-gray-500 focus:outline-none">
+                        <button type="button"
+                            class="px-4 py-2.5 bg-primary hover:brightness-110 transition-all text-sm font-semibold whitespace-nowrap">
                             Subscribe
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Social Media Links -->
-            <div class="flex flex-col items-center justify-between pt-8 mt-8 border-t border-gray-700 md:flex-row">
-                <div class="mb-4 md:mb-0">
-                    <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-tiktok"></i></a>
-                    <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" class="mr-4 text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+        <!-- Footer bottom bar -->
+        <div class="border-t border-white/5">
+            <div
+                class="max-w-7xl mx-auto px-4 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <a href="#" aria-label="Facebook"
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="TikTok"
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><i
+                            class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="Twitter/X"
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><i
+                            class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><i
+                            class="fab fa-instagram"></i></a>
                 </div>
-                <div class="text-sm text-gray-400">
-                    © {{ date('Y') }} {{ $institution->name }}. Created by <a class="text-blue-600 hover:underline" href="http://github.com/titustum">Titus Tum</a>.
-                </div>
+                <p class="text-xs text-gray-500 text-center">
+                    © {{ date('Y') }} {{ $institution->name }}. Crafted by
+                    <a href="http://github.com/titustum"
+                        class="text-blue-400 hover:text-blue-300 hover:underline transition-colors">Titus Tum</a>.
+                </p>
             </div>
         </div>
     </footer>
 
 
-
-
     @livewireScripts
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        // Desktop navigation hover effects
-        const navItems = document.querySelectorAll('#mainNav .xl\\:flex a');
-        navItems.forEach(item => {
-            item.addEventListener('mouseenter', function () {
-                this.classList.add('text-primary');
-            });
-            item.addEventListener('mouseleave', function () {
-                if (!this.classList.contains('active')) {
-                    this.classList.remove('text-primary');
-                }
-            });
-        });
-
-        // Mobile menu functionality
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const closeMobileMenu = document.getElementById('close-mobile-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuOverlay = document.getElementById('menu-overlay');
-
-        function openMenu() {
-            mobileMenu.classList.add('mobile-menu-open');
-            menuOverlay.classList.add('menu-overlay-open');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-        }
-
-        function closeMenu() {
-            mobileMenu.classList.remove('mobile-menu-open');
-            menuOverlay.classList.remove('menu-overlay-open');
-            document.body.style.overflow = ''; // Re-enable scrolling
-        }
-
-        mobileMenuButton?.addEventListener('click', openMenu);
-        closeMobileMenu?.addEventListener('click', closeMenu);
-        menuOverlay?.addEventListener('click', closeMenu);
-
-        // Close menu when clicking on non-dropdown links
-        const menuLinks = document.querySelectorAll('#mobile-menu a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // If this is NOT inside a dropdown, close menu
-                if (!link.closest('.mobile-dropdown')) {
-                    closeMenu();
-                }
-            });
-        });
-
-        // Toggle dropdowns in mobile menu
-        const mobileDropdowns = document.querySelectorAll('#mobile-menu .mobile-dropdown');
-        mobileDropdowns.forEach(dropdownContainer => {
-            const toggleButton = dropdownContainer.querySelector('button');
-            const dropdownContent = dropdownContainer.querySelector('div');
-            const icon = toggleButton.querySelector('i');
-
-            toggleButton.addEventListener('click', function () {
-                const isHidden = dropdownContent.classList.contains('hidden');
-                dropdownContent.classList.toggle('hidden');
-
-                // Toggle icon
-                if (isHidden) {
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-up');
-                } else {
-                    icon.classList.remove('fa-chevron-up');
-                    icon.classList.add('fa-chevron-down');
-                }
-            });
-        });
-    });
-    </script>
-
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const swiper = new Swiper('.heroSwiper', {
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                on: {
-                    init: function() {
-                        animateSlideElements(this.slides[this.activeIndex]);
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ── AOS ──────────────────────────────────
+            AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
+
+            // ── Swiper (hero) ─────────────────────────
+            if (document.querySelector('.heroSwiper')) {
+                const swiper = new Swiper('.heroSwiper', {
+                    loop: true,
+                    autoplay: { delay: 5000 },
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                    on: {
+                        init() { animateSlide(this.slides[this.activeIndex]); },
+                        slideChangeTransitionEnd() { animateSlide(this.slides[this.activeIndex]); },
                     },
-                    slideChangeTransitionEnd: function() {
-                        animateSlideElements(this.slides[this.activeIndex]);
-                    },
-                },
+                });
+
+                function animateSlide(slide) {
+                    const els = slide.querySelectorAll('[data-swiper-animation]');
+                    els.forEach(el => {
+                        el.classList.remove('animate__fadeInLeft','animate__fadeInUp','animate__zoomIn');
+                        el.style.opacity = '0';
+                    });
+                    els.forEach(el => {
+                        const anim = el.dataset.swiperAnimation;
+                        const delay = parseFloat(el.dataset.animationDelay || '0');
+                        setTimeout(() => { el.style.opacity = '1'; el.classList.add(anim); }, delay * 1000);
+                    });
+                }
+            }
+
+            // ── Sticky nav shadow on scroll ───────────
+            const nav = document.getElementById('mainNav');
+            window.addEventListener('scroll', () => {
+                nav.classList.toggle('shadow-md', window.scrollY > 10);
+            }, { passive: true });
+
+            // ── Mobile menu ───────────────────────────
+            const mobileMenu    = document.getElementById('mobile-menu');
+            const menuOverlay   = document.getElementById('menu-overlay');
+            const openBtn       = document.getElementById('mobile-menu-button');
+            const closeBtn      = document.getElementById('close-mobile-menu');
+
+            const openMenu  = () => { mobileMenu.classList.add('mobile-menu-open'); menuOverlay.classList.add('menu-overlay-open'); document.body.style.overflow = 'hidden'; };
+            const closeMenu = () => { mobileMenu.classList.remove('mobile-menu-open'); menuOverlay.classList.remove('menu-overlay-open'); document.body.style.overflow = ''; };
+
+            openBtn?.addEventListener('click', openMenu);
+            closeBtn?.addEventListener('click', closeMenu);
+            menuOverlay?.addEventListener('click', closeMenu);
+
+            // Close on direct link click (not inside a dropdown)
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => { if (!link.closest('.mobile-dropdown')) closeMenu(); });
             });
 
-            function animateSlideElements(slide) {
-                // Reset all animations
-                const elements = slide.querySelectorAll('[data-swiper-animation]');
-                elements.forEach(el => {
-                    el.classList.remove('animate__fadeInLeft', 'animate__fadeInUp', 'animate__zoomIn');
-                    el.style.opacity = '0';
-                });
+            // ── Mobile accordion dropdowns ────────────
+            document.querySelectorAll('#mobile-menu .mobile-dropdown').forEach(container => {
+                const btn     = container.querySelector('button');
+                const content = container.querySelector('div');
+                const icon    = btn.querySelector('.fa-chevron-down, .fa-chevron-up');
 
-                // Animate elements with delay
-                elements.forEach(el => {
-                    const animation = el.dataset.swiperAnimation;
-                    const delay = el.dataset.animationDelay || '0';
-
-                    setTimeout(() => {
-                        el.style.opacity = '1';
-                        el.classList.add(animation);
-                    }, delay * 1000);
+                btn.addEventListener('click', () => {
+                    const isHidden = content.classList.toggle('hidden');
+                    if (icon) {
+                        icon.classList.toggle('fa-chevron-down', isHidden);
+                        icon.classList.toggle('fa-chevron-up', !isHidden);
+                        icon.classList.toggle('rotate-180', !isHidden);
+                    }
                 });
-            }
+            });
         });
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            AOS.init({
-                duration: 1000, // Animation duration in milliseconds
-                once: true, // Whether animation should happen only once
-                easing: 'ease-in-out', // Easing function for the animation
-            });
-
-            });
-
-    </script>
-
-
 
 </body>
 

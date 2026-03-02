@@ -3,9 +3,13 @@
 use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
 
-// Livewire 4 style routes
+// Home test routes
 Route::livewire('/', 'pages::home')->name('home');
+Route::livewire('/v1', 'pages::home')->name('home');
+Route::livewire('/v2', 'pages::home2')->name('home');
+Route::livewire('/v3', 'pages::home3')->name('home');
 
+// Home test routes
 Route::livewire('/about', 'pages::about')->name('about');
 Route::livewire('/contact', 'pages::contact')->name('contact');
 Route::livewire('/departments', 'pages::departments')->name('departments');
