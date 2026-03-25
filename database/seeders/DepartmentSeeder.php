@@ -10,7 +10,7 @@ class DepartmentSeeder extends Seeder
 {
     public function run(): void
     {
-        $placeholderPhoto = 'image-placeholder.webp';
+        $placeholderPhoto =  null;
 
         $departments = [
             [
@@ -35,6 +35,22 @@ class DepartmentSeeder extends Seeder
                 'photo' => $placeholderPhoto,
                 'short_desc' => 'Grow your future with innovative agricultural education and practice.',
                 'full_desc' => 'The Agriculture department provides hands-on training in crop production, livestock management, and agribusiness, empowering students to lead in sustainable food systems.',
+                'banner_pic' => '',
+            ],
+            [
+                'name' => 'Hospitality & Tourism',
+                'slug' => Str::slug('Hospitality & Tourism'),
+                'photo' => $placeholderPhoto,
+                'short_desc' => 'Embark on an exciting journey in hospitality management and tourism services.',
+                'full_desc' => 'Our Hospitality & Tourism department prepares students for dynamic careers in hotels, restaurants, event management, and travel agencies, with a focus on exceptional guest experiences.',
+                'banner_pic' => '',
+            ],
+            [
+                'name' => 'Business & Management',
+                'slug' => Str::slug('Business & Management'),
+                'photo' => $placeholderPhoto,
+                'short_desc' => 'Develop leadership skills and business acumen for the corporate world.',
+                'full_desc' => 'The Business & Management department offers comprehensive programs in accounting, marketing, entrepreneurship, and organizational leadership, preparing students for success in diverse business environments.',
                 'banner_pic' => '',
             ],
         ];

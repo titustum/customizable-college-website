@@ -367,7 +367,8 @@ class extends Component {
 
                     {{-- Image --}}
                     <div class="relative h-52 overflow-hidden">
-                        <img src="{{ asset('storage/'.$department->photo) }}" alt="{{ $department->name }}"
+                        <img src="{{ $department->photo ? Storage::url($department->photo) : asset('images/placeholders/department-placeholder.webp') }}"
+                            alt="{{ $department->name }}"
                             class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105">
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
