@@ -16,10 +16,12 @@
 
     <!-- Fonts -->
     <!-- Fonts: Clash Display (editorial) + Plus Jakarta Sans (body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="shortcut icon" href="{{ asset('storage/'. $institution->logo) }}" type="image/jpeg">
@@ -48,104 +50,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .bg-primary {
-            background-color: var(--primary-color);
-        }
-
-        .bg-primary-50 {
-            background-color: rgba(var(--primary-color-rgb), 0.08);
-        }
-
-        .hover\:bg-primary:hover {
-            background-color: var(--primary-color);
-        }
-
-        .text-primary {
-            color: var(--primary-color);
-        }
-
-        .border-primary {
-            border-color: var(--primary-color);
-        }
-
-        .hover\:text-primary:hover {
-            color: var(--primary-color);
-        }
-
-        .hover\:border-primary:hover {
-            border-color: var(--primary-color);
-        }
-
-        .ring-primary {
-            --tw-ring-color: var(--primary-color);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @media (max-width: 480px) {
-            html {
-                font-size: 15px;
-            }
-        }
-
-        @media (max-width: 767px) {
-
-            .swiper-button-prev,
-            .swiper-button-next {
-                display: none !important;
-            }
-        }
-
-        /* Mega-menu column headers */
-        .mega-menu-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        /* Smooth dropdown reveal */
-        .nav-dropdown {
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(6px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-
-        .group:hover .nav-dropdown {
-            pointer-events: auto;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile slide-in */
-        .mobile-menu {
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .mobile-menu-open {
-            transform: translateX(0);
-        }
-
-        .menu-overlay {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .menu-overlay-open {
-            opacity: 1;
-            visibility: visible;
-        }
-    </style>
 </head>
 
 <body class="antialiased text-gray-800 ">
@@ -214,12 +118,12 @@
             </button>
 
             <!-- Logo -->
-            <a href="{{ route('home') }}" class="flex items-center gap-2.5 text-primary">
+            <a href="{{ route('home') }}" class="flex items-center gap-2.5 text-primary font-righteous">
                 @if ($institution->logo)
                 <img src="{{ asset('storage/'.$institution->logo) }}" alt="{{ $institution->name }} logo"
                     class="h-11 w-auto object-contain">
                 @endif
-                <span class="font-['Righteous'] text-2xl hidden lg:inline leading-none">{{ $institution->name }}</span>
+                <span class="font-righteous text-2xl hidden lg:inline leading-none">{{ $institution->name }}</span>
             </a>
 
             <!-- Desktop Nav -->
@@ -472,9 +376,9 @@
 
         <!-- Drawer header -->
         <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100 bg-gray-50">
-            <a href="{{ route('home') }}" class="flex items-center gap-2">
+            <a href="{{ route('home') }}" class="flex items-center gap-2 ">
                 <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-9 w-auto object-contain">
-                <span class="font-['Righteous'] text-xl text-primary leading-none">{{ $institution->name }}</span>
+                <span class="font-righteous text-xl text-primary leading-none">{{ $institution->name }}</span>
             </a>
             <button id="close-mobile-menu" aria-label="Close mobile menu"
                 class="w-9 h-9 flex items-center justify-center rounded-lg text-gray-500 hover:text-primary hover:bg-gray-100 transition-all">
@@ -682,7 +586,7 @@
                     <div class="flex items-center gap-2.5 mb-4">
                         <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo"
                             class="h-10 w-auto object-contain brightness-0 invert opacity-90">
-                        <span class="font-['Righteous'] text-xl text-white/90">{{ $institution->name }}</span>
+                        <span class="font-righteous text-xl text-white/90">{{ $institution->name }}</span>
                     </div>
                     <p class="text-sm text-gray-400 leading-relaxed mb-5">{{ $institution->name }} is committed to
                         providing quality education and training to empower students for successful careers.</p>

@@ -10,4 +10,71 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-primary: oklch(64.6% 0.222 41.116);
+
+}
+
+.font-righteous {
+    font-family: 'Righteous', cursive;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none !important;
+    }
+}
+
+/* Mega-menu column headers */
+.mega-menu-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Smooth dropdown reveal */
+.nav-dropdown {
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.group:hover .nav-dropdown {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile slide-in */
+.mobile-menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu-open {
+    transform: translateX(0);
+}
+
+.menu-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.menu-overlay-open {
+    opacity: 1;
+    visibility: visible;
 }

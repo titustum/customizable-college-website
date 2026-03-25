@@ -20,8 +20,7 @@ class HeroSlideForm
                         FileUpload::make('image')
                             ->image()
                             ->disk('public')
-                            ->directory('hero-slides')
-                            ->required(),
+                            ->directory('hero-slides'),
                         TextInput::make('title')
                             ->required(),
                         TextInput::make('subtitle')

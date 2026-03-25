@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Institutions\Schemas;
 
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -13,7 +14,8 @@ class InstitutionInfolist
             ->components([
                 TextEntry::make('name'),
                 TextEntry::make('principal_name'),
-                TextEntry::make('principal_photo'),
+                ImageEntry::make('principal_photo')
+                    ->disk('public'),
                 TextEntry::make('motto'),
                 TextEntry::make('primary_color'),
                 TextEntry::make('primary_font'),

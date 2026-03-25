@@ -31,156 +31,124 @@ class extends Component {
 <main>
 
     {{-- ═══════════════════════════════════════════
-    HERO SECTION — Full-screen cinematic slider
+    HERO SECTION — Static hero + content grid (No auto‑slider)
     ═══════════════════════════════════════════ --}}
-    <section id="hero" class="relative w-full" style="height: calc(100vh - 77px); min-height: 520px;">
+    <section id="hero" class="relative w-full bg-gray-900">
+        {{-- Hero background (first slide's image) --}}
+        @php $firstSlide = $heroSlides->first(); @endphp
+        <div class="relative w-full min-h-[80vh] flex items-center">
+            {{-- Background image/video container --}}
+            <div class="absolute inset-0 overflow-hidden">
 
-        <div class="h-full swiper heroSwiper">
-            <div class="swiper-wrapper">
+                <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline
+                    poster="{{ asset('images/hero-fallback.webp') }}">
+                    <source src="{{ asset('video/college-video.mp4') }}" type="video/mp4">
+                    <source src="{{ asset('video/college-video.webm') }}" type="video/webm">
+                </video>
 
-                @forelse ($heroSlides as $slide)
-                <div class="relative h-full swiper-slide overflow-hidden"
-                    style="background-image: url('{{ asset('storage/' . $slide->image) }}'); background-size: cover; background-position: center;">
+                {{-- Enhanced overlays for depth --}}
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20"></div>
+            </div>
 
-                    {{-- Multi-layer overlay for depth --}}
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
-
-                    {{-- Decorative diagonal accent --}}
-                    <div
-                        class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-orange-400 to-transparent opacity-80">
-                    </div>
-
-                    {{-- Content --}}
-                    <div class="relative h-full flex items-center">
-                        <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
-                            <div class="max-w-2xl">
-
-                                {{-- Tag / label --}}
-                                <div class="mb-5 opacity-0 animate__animated"
-                                    data-swiper-animation="animate__fadeInLeft" data-animation-delay="0.1">
-                                    <span
-                                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-orange-300 text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                                        {{ $institution->name }}
-                                    </span>
-                                </div>
-
-                                {{-- Heading --}}
-                                <h1 class="mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-white opacity-0 animate__animated"
-                                    data-swiper-animation="animate__fadeInLeft" data-animation-delay="0.3"
-                                    style="text-shadow: 0 2px 20px rgba(0,0,0,0.4);">
-                                    {{ $slide->title }}
-                                </h1>
-
-                                {{-- Subtitle --}}
-                                @if ($slide->subtitle)
-                                <h2 class="mb-3 text-xl md:text-2xl font-semibold text-cyan-300 opacity-0 animate__animated"
-                                    data-swiper-animation="animate__fadeInLeft" data-animation-delay="0.55">
-                                    {{ $slide->subtitle }}
-                                </h2>
-                                @endif
-
-                                {{-- Slogan --}}
-                                @if ($slide->slogan)
-                                <p class="mb-8 text-base md:text-lg text-white/70 leading-relaxed opacity-0 animate__animated"
-                                    data-swiper-animation="animate__fadeInUp" data-animation-delay="0.75">
-                                    {{ $slide->slogan }}
-                                </p>
-                                @endif
-
-                                {{-- CTAs --}}
-                                <div class="flex flex-wrap items-center gap-3 opacity-0 animate__animated"
-                                    data-swiper-animation="animate__fadeInUp" data-animation-delay="1.0">
-                                    <a href="{{ route('admissions') }}"
-                                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:brightness-110 text-white font-bold rounded-full shadow-lg shadow-primary/30 transition-all duration-300 text-sm">
-                                        {{ $slide->button_text ?? 'Apply Now' }}
-                                        <i class="fas fa-arrow-right text-xs"></i>
-                                    </a>
-                                    <a href="{{ route('courses') }}"
-                                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold rounded-full backdrop-blur-sm transition-all duration-300 text-sm">
-                                        <i class="fas fa-book-open text-xs"></i>
-                                        Our Courses
-                                    </a>
-                                </div>
-
-                            </div>
+            {{-- Hero content --}}
+            <div class="relative z-10">
+                <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full py-16 md:py-24">
+                    <div class="max-w-2xl">
+                        {{-- Institution tag --}}
+                        <div class="mb-5">
+                            <span
+                                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-orange-300 text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                                {{ $institution->name }}
+                            </span>
                         </div>
-                    </div>
 
-                    {{-- Slide number indicator --}}
-                    <div
-                        class="absolute bottom-6 right-6 lg:right-12 text-white/30 text-xs font-mono tracking-widest select-none">
-                        {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }} / {{ str_pad(count($heroSlides), 2, '0',
-                        STR_PAD_LEFT) }}
-                    </div>
-                </div>
+                        {{-- Heading & text from first slide or fallback --}}
+                        <h1 class="mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-white"
+                            style="text-shadow: 0 2px 20px rgba(0,0,0,0.4);">
+                            {{ $firstSlide->title ?? 'Welcome to ' . $institution->name }}
+                        </h1>
+                        @if($firstSlide && $firstSlide->subtitle)
+                        <h2 class="mb-3 text-xl md:text-2xl font-semibold text-cyan-300">
+                            {{ $firstSlide->subtitle }}
+                        </h2>
+                        @endif
+                        @if($firstSlide && $firstSlide->slogan)
+                        <p class="mb-8 text-base md:text-lg text-white/70 leading-relaxed">
+                            {{ $firstSlide->slogan }}
+                        </p>
+                        @else
+                        <p class="mb-8 text-base md:text-lg text-white/70 leading-relaxed">
+                            Empowering Students with Skills for the Future
+                        </p>
+                        @endif
 
-                @empty
-                {{-- Fallback slide --}}
-                <div class="relative h-full swiper-slide overflow-hidden"
-                    style="background-image: url('{{ asset('images/default-hero.webp') }}'); background-size: cover; background-position: center;">
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
-                    <div
-                        class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-orange-400 to-transparent opacity-80">
-                    </div>
-                    <div class="relative h-full flex items-center">
-                        <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
-                            <div class="max-w-2xl">
-                                <div class="mb-5">
-                                    <span
-                                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-orange-300 text-xs font-bold tracking-widest uppercase">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                                        {{ $institution->name }}
-                                    </span>
-                                </div>
-                                <h1
-                                    class="mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-white">
-                                    Welcome to {{ $institution->name }}
-                                </h1>
-                                <h2 class="mb-3 text-xl md:text-2xl font-semibold text-cyan-300">
-                                    Empowering Students with Skills for the Future
-                                </h2>
-                                <p class="mb-8 text-base text-white/70">Join our vibrant community of learners today.
-                                </p>
-                                <div class="flex flex-wrap items-center gap-3">
-                                    <a href="{{ route('admissions') }}"
-                                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all text-sm">
-                                        Apply Now <i class="fas fa-arrow-right text-xs"></i>
-                                    </a>
-                                    <a href="{{ route('courses') }}"
-                                        class="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 border border-white/30 text-white font-semibold rounded-full hover:bg-white/20 transition-all text-sm">
-                                        <i class="fas fa-book-open text-xs"></i> Our Courses
-                                    </a>
-                                </div>
-                            </div>
+                        {{-- Primary CTAs (consistent for all pages) --}}
+                        <div class="flex flex-wrap items-center gap-3">
+                            <a href="{{ route('admissions') }}"
+                                class="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:brightness-110 text-white font-bold rounded-full shadow-lg shadow-primary/30 transition-all duration-300 text-sm">
+                                {{ $firstSlide->button_text ?? 'Apply Now' }}
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </a>
+                            <a href="{{ route('courses') }}"
+                                class="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold rounded-full backdrop-blur-sm transition-all duration-300 text-sm">
+                                <i class="fas fa-book-open text-xs"></i>
+                                Our Courses
+                            </a>
                         </div>
                     </div>
                 </div>
-                @endforelse
-
             </div>
 
-            {{-- Custom pagination dots --}}
-            <div class="swiper-pagination !bottom-7 !left-6 lg:!left-12 !w-auto flex gap-1.5"></div>
-
-            {{-- Navigation arrows — styled --}}
+            {{-- Scroll indicator (optional) --}}
             <div
-                class="swiper-button-prev !hidden md:!flex !w-11 !h-11 !rounded-full !bg-white/10 !backdrop-blur-sm !border !border-white/20 after:!text-sm after:!font-black !text-white hover:!bg-white/25 !transition-all !top-1/2 !-translate-y-1/2 !left-5 lg:!left-10">
-            </div>
-            <div
-                class="swiper-button-next !hidden md:!flex !w-11 !h-11 !rounded-full !bg-white/10 !backdrop-blur-sm !border !border-white/20 after:!text-sm after:!font-black !text-white hover:!bg-white/25 !transition-all !top-1/2 !-translate-y-1/2 !right-5 lg:!right-10">
+                class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1.5 text-white/40 animate-bounce">
+                <span class="text-[10px] tracking-widest uppercase font-semibold">Scroll</span>
+                <i class="fas fa-chevron-down text-xs"></i>
             </div>
         </div>
 
-        {{-- Scroll indicator --}}
-        <div
-            class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1.5 text-white/40 animate-bounce">
-            <span class="text-[10px] tracking-widest uppercase font-semibold">Scroll</span>
-            <i class="fas fa-chevron-down text-xs"></i>
+        {{-- ═══════════════════════════════════════════
+        FEATURE GRID — Other slides become explore cards
+        (Only shown if more than 1 slide exists)
+        ═══════════════════════════════════════════ --}}
+        @if($heroSlides->count() > 1)
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 -mt-16 pb-16 md:pb-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach($heroSlides->skip(1) as $slide)
+                <div
+                    class="group bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10">
+                    @if($slide->image)
+                    <div class="h-48 overflow-hidden">
+                        <img src="{{ asset('storage/' . $slide->image) }}" alt="{{ $slide->title }}"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    @endif
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">{{ $slide->title }}</h3>
+                        @if($slide->subtitle)
+                        <p class="text-cyan-300 text-sm font-semibold mb-3">{{ $slide->subtitle }}</p>
+                        @endif
+                        @if($slide->slogan)
+                        <p class="text-white/70 text-sm line-clamp-3">{{ $slide->slogan }}</p>
+                        @endif
+                        <div class="mt-4">
+                            <a href="{{ route('admissions') }}"
+                                class="inline-flex items-center text-sm font-medium text-primary hover:text-orange-300 transition-colors">
+                                Learn more
+                                <i class="fas fa-arrow-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
         </div>
+        @endif
     </section>
+
+
 
 
     {{-- ═══════════════════════════════════════════
