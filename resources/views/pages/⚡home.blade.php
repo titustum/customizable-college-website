@@ -195,9 +195,9 @@ class extends Component {
 
                 {{-- Principal Message --}}
                 <a href="{{ route('principal.office') }}" data-aos="fade-up" data-aos-delay="0"
-                    class="group flex items-start gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
-                    <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0">
-                        <img src="{{ asset('images/principal-tetu-tvc-2025-12345.jpg') }}"
+                    class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
+                    <div class="w-20 rounded-xl overflow-hidden shrink-0">
+                        <img src="{{ asset('images/principal-tetu-tvc-2025-12345') }}"
                             alt="Principal" class="object-cover w-full h-full">
                     </div>
                     <div class="flex-grow min-w-0">
@@ -209,9 +209,9 @@ class extends Component {
 
                 {{-- Recent Updates --}}
                 <a href="#" data-aos="fade-up" data-aos-delay="100"
-                    class="group flex items-start gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
-                    <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0">
-                        <img src="{{ asset('images/gate.jpg') }}"
+                    class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
+                    <div class="w-20 rounded-xl overflow-hidden shrink-0">
+                        <img src="{{ asset('images/gate') }}"
                             alt="Updates" class="object-cover w-full h-full">
                     </div>
                     <div class="flex-grow min-w-0">
@@ -223,9 +223,9 @@ class extends Component {
 
                 {{-- Gallery --}}
                 <a href="#" data-aos="fade-up" data-aos-delay="200"
-                    class="group flex items-start gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
-                    <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0">
-                        <img src="{{ asset('images/gate.jpg') }}"
+                    class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
+                    <div class="w-20 rounded-xl overflow-hidden shrink-0">
+                        <img src="{{ asset('images/gate') }}"
                             alt="Gallery" class="object-cover w-full h-full">
                     </div>
                     <div class="flex-grow min-w-0">
