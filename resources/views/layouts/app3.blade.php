@@ -112,12 +112,18 @@
                         <div
                             class="px-4 py-3 text-[9px] font-bold tracking-wider uppercase text-[#8A8078] border-b border-black/8">
                             Leadership</div>
-                        <a href="#"
+                        <a href="{{ route('principal.office') }}"
                             class="flex items-center gap-2 px-4 py-2.5 text-[13px] font-medium text-[#444] hover:bg-[#FFF5F2] hover:text-[#D63A00] hover:pl-5 transition-all border-b border-black/8 last:border-0"><i
                                 class="fas fa-user-tie w-4 text-[10px] text-[#FF6940]"></i> Principal's Office</a>
-                        <a href="#"
+                        <a href="{{ route('deputy.admin') }}"
                             class="flex items-center gap-2 px-4 py-2.5 text-[13px] font-medium text-[#444] hover:bg-[#FFF5F2] hover:text-[#D63A00] hover:pl-5 transition-all border-b border-black/8 last:border-0"><i
-                                class="fas fa-users w-4 text-[10px] text-[#FF6940]"></i> Our Staff Members</a>
+                                class="fas fa-user-clock w-4 text-[10px] text-[#FF6940]"></i> Deputy Principal Administration</a>
+                        <a href="{{ route('deputy.academics') }}"
+                            class="flex items-center gap-2 px-4 py-2.5 text-[13px] font-medium text-[#444] hover:bg-[#FFF5F2] hover:text-[#D63A00] hover:pl-5 transition-all border-b border-black/8 last:border-0"><i
+                                class="fas fa-user-graduate w-4 text-[10px] text-[#FF6940]"></i> Deputy Principal Academics</a>
+                        <a href="{{ route('staff.members') }}"
+                            class="flex items-center gap-2 px-4 py-2.5 text-[13px] font-medium text-[#444] hover:bg-[#FFF5F2] hover:text-[#D63A00] hover:pl-5 transition-all border-b border-black/8 last:border-0"><i
+                                class="fas fa-users w-4 text-[10px] text-[#FF6940]"></i> Staff Members</a>
                     </div>
                 </div>
 

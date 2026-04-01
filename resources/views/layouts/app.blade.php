@@ -138,9 +138,9 @@
                         <div class="dropdown-menu rounded-b-lg overflow-hidden">
                             <a href="{{ route('principal.office') }}"
                                 class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Principal's Office</a>
-                            <a href="#"
+                            <a href="{{ route('deputy.admin') }}"
                                 class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy Principal – Administration</a>
-                            <a href="#"
+                            <a href="{{ route('deputy.academics') }}"
                                 class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy Principal – Academics</a>
                             <a href="{{ route('staff.members') }}"
                                 class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Our Staff Team</a>
@@ -238,8 +238,8 @@
                     </svg></summary>
                 <div class="ml-4 mt-1 space-y-1 border-l-2 border-orange-200 pl-3">
                     <a href="{{ route('principal.office') }}" class="block py-2 text-sm">Principal's Office</a>
-                    <a href="#" class="block py-2 text-sm">Deputy Principal – Admin</a>
-                    <a href="#" class="block py-2 text-sm">Deputy Principal – Academics</a>
+                    <a href="{{ route('deputy.admin') }}" class="block py-2 text-sm">Deputy Principal – Administration</a>
+                    <a href="{{ route('deputy.academics') }}" class="block py-2 text-sm">Deputy Principal – Academics</a>
                     <a href="{{ route('staff.members') }}" class="block py-2 text-sm">Our Staff Team</a>
                 </div>
             </details>

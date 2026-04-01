@@ -1,11 +1,14 @@
 <?php
 
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Contact;
+use App\Models\Institution;
 
 new
 #[Title('Contact Us')]
+#[Layout('layouts::app')]
 class extends Component
 {
     public $name = '';
@@ -14,6 +17,26 @@ class extends Component
     public $message = '';
     public $successMessage = '';
     public $loading = false;
+
+    public function with()
+    {
+        $institution = Institution::first() ?? (object) [
+            'name' => 'Our College',
+            'address' => 'Address not available',
+            'phone' => 'Phone not available',
+            'email' => 'Email not available',
+            'facebook' => '#',
+            'twitter' => '#',
+            'instagram' => '#',
+            'linkedin' => '#',
+            'latitude' => null,
+            'longitude' => null,
+        ];
+
+        return [
+            'institution' => $institution,
+        ];
+    }
 
     public function submitForm()
     {
@@ -38,19 +61,26 @@ class extends Component
 
 <main>
   <!-- =============start contact================ -->
-  <section class="w-full px-4 py-16 bg-gradient-to-b from-blue-50 to-white">
-    <div class="mx-auto max-w-7xl">
-      <div class="mb-12 text-center">
-        <h2 class="mb-2 text-4xl font-bold text-gray-800">Get in Touch</h2>
-        <p class="max-w-2xl mx-auto text-gray-600">We'd love to hear from you. Fill out the form below and we'll get
-          back to you as soon as possible.</p>
-      </div>
+  <section class="relative clip-diagonal grain py-20 overflow-hidden bg-gray-900">
+    <div class="absolute inset-0 z-0">
+      <img src="{{ asset('images/gate.jpg') }}" alt="Campus" class="object-cover w-full h-full opacity-30">
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90"></div>
+    </div>
+    <div class="container relative z-10 px-4 mx-auto text-center">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-4" data-aos="fade-down">Contact Us</span>
+      <h1 class="hero-display mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl" data-aos="fade-up">Get in Touch</h1>
+      <p class="max-w-2xl mx-auto text-lg text-gray-300 md:text-xl" data-aos="fade-up" data-aos-delay="100">We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
+    </div>
+  </section>
 
-      <div class="grid gap-10 lg:grid-cols-12">
+  <section class="w-full py-16 bg-gray-50">
+
+      <div class="max-w-7xl mx-auto">
+        <div class="grid gap-10 lg:grid-cols-12">
         <!-- Contact Information -->
         <div class="lg:col-span-5">
           <div class="p-8 transition-all duration-300 bg-white shadow-lg rounded-2xl hover:shadow-xl"
-            data-aos="fade-up">
+            data-aos="fade-right">
             <div class="flex items-center justify-center w-16 h-16 mb-6 text-white bg-primary rounded-2xl">
               <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">

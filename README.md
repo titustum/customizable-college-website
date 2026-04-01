@@ -48,7 +48,7 @@ composer run dev
 
 ## 🧩 Tech Stack
 
-- Laravel v12
+- Laravel v13
 - Filament v5 (Admin Panel)
 - Livewire v4 (Frontend)
 - Tailwind CSS

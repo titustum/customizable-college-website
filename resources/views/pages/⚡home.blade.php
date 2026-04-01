@@ -56,21 +56,21 @@ class extends Component {
         <div class="relative max-w-7xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-16 items-center">
 
             <!-- Text content -->
-            <div class="text-white">
-                <div class="section-label text-orange-400">
+            <div class="text-white" data-aos="fade-right" data-aos-duration="1000">
+                <div class="section-label text-orange-400" data-aos="fade-down" data-aos-delay="200">
                     KNQA Accredited Institution
                 </div>
-                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-none text-white mb-6">
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-none text-white mb-6" data-aos="fade-up" data-aos-delay="300">
                     Build Skills.<br />
                     <span class="text-orange-500">Build Futures.</span>
                 </h1>
-                <p class="text-gray-300 text-lg leading-relaxed mb-8 max-w-lg">
+                <p class="text-gray-300 text-lg leading-relaxed mb-8 max-w-lg" data-aos="fade-up" data-aos-delay="400">
                     Tetu Technical and Vocational College offers world-class technical education designed to equip
                     students with practical skills for today's economy. Located in Tetu Sub-County, Nyeri County.
                 </p>
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="500">
                     <a href="#"
-                        class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5">
+                        class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5" data-aos="zoom-in" data-aos-delay="600">
                         Apply for Admission
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -78,13 +78,13 @@ class extends Component {
                         </svg>
                     </a>
                     <a href="#courses"
-                        class="inline-flex items-center gap-2 border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5">
+                        class="inline-flex items-center gap-2 border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5" data-aos="zoom-in" data-aos-delay="700">
                         Browse Courses
                     </a>
                 </div>
                 <!-- Accreditation badges -->
-                <div class="flex flex-wrap gap-4 mt-10 pt-8 border-t border-gray-700">
-                    <div class="flex items-center gap-2 text-sm text-gray-400">
+                <div class="flex flex-wrap gap-4 mt-10 pt-8 border-t border-gray-700" data-aos="fade-up" data-aos-delay="800">
+                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right" data-aos-delay="900">
                         <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -92,7 +92,7 @@ class extends Component {
                         </svg>
                         TVETA Registered
                     </div>
-                    <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right" data-aos-delay="1000">
                         <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -100,7 +100,7 @@ class extends Component {
                         </svg>
                         KNQA Aligned
                     </div>
-                    <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right" data-aos-delay="1100">
                         <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -112,7 +112,7 @@ class extends Component {
             </div>
 
             <!-- Hero image card / stats -->
-            <div class="hidden lg:block">
+            <div class="hidden lg:block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <div class="relative">
                     <!-- Main card -->
                     <div
@@ -144,7 +144,7 @@ class extends Component {
                             </div>
                         </div>
                         <!-- Quick stats row -->
-                        <div class="grid grid-cols-3 divide-x divide-white/10">
+                        <div class="grid grid-cols-3 divide-x divide-white/10" data-aos="fade-up" data-aos-delay="600">
                             <div class="text-center py-5 px-4">
                                 <div class="text-3xl font-display font-bold text-orange-400">6+</div>
                                 <div class="text-gray-400 text-xs mt-1">Departments</div>
@@ -161,7 +161,7 @@ class extends Component {
                     </div>
                     <!-- Floating badge -->
                     <div
-                        class="absolute -bottom-5 -left-5 bg-orange-600 text-white px-4 py-3 rounded-xl shadow-xl text-sm font-bold flex items-center gap-2">
+                        class="absolute -bottom-5 -left-5 bg-orange-600 text-white px-4 py-3 rounded-xl shadow-xl text-sm font-bold flex items-center gap-2" data-aos="zoom-in" data-aos-delay="800">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
@@ -194,7 +194,7 @@ class extends Component {
             <div class="grid gap-6 md:grid-cols-3">
 
                 {{-- Principal Message --}}
-                <a href="{{ route('principal.office') }}" data-aos="fade-up" data-aos-delay="0"
+                <a href="{{ route('principal.office') }}" data-aos="fade-up-right" data-aos-delay="0"
                     class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
                     <div class="w-20 rounded-xl overflow-hidden shrink-0">
                         <img src="{{ asset('images/principal-tetu-tvc-2025-12345') }}"
@@ -222,7 +222,7 @@ class extends Component {
                 </a>
 
                 {{-- Gallery --}}
-                <a href="#" data-aos="fade-up" data-aos-delay="200"
+                <a href="#" data-aos="fade-up-left" data-aos-delay="200"
                     class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
                     <div class="w-20 rounded-xl overflow-hidden shrink-0">
                         <img src="{{ asset('images/gate') }}"
@@ -292,8 +292,8 @@ class extends Component {
             <div class="mb-14 text-center" data-aos="fade-up">
                 <span
                     class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Academics</span>
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">Our Academic Departments</h2>
-                <p class="max-w-2xl mx-auto text-gray-500 text-base leading-relaxed">Discover our diverse range of departments offering hands-on training and industry-relevant skills for your successful career.</p>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4" data-aos="fade-up" data-aos-delay="100">Our Academic Departments</h2>
+                <p class="max-w-2xl mx-auto text-gray-500 text-base leading-relaxed" data-aos="fade-up" data-aos-delay="200">Discover our diverse range of departments offering hands-on training and industry-relevant skills for your successful career.</p>
             </div>
 
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -381,7 +381,7 @@ class extends Component {
 
             <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
                 {{-- Left: Content --}}
-                <div data-aos="fade-up">
+                <div data-aos="fade-right">
                     <div class="flex items-center gap-3 mb-6">
                         <button onclick="switchCharter('en')" id="btn-en"
                             class="lang-btn px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-white transition-all">
@@ -459,7 +459,7 @@ class extends Component {
             <div class="grid gap-8 md:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
                 @foreach ($successStories as $story)
                 <div
-                    class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col pt-14 px-6 pb-6">
+                    class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col pt-14 px-6 pb-6" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
 
                     {{-- Avatar (overlapping top) --}}
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2">
@@ -514,9 +514,9 @@ class extends Component {
                 ['target' => 78, 'suffix' => '%', 'label' => 'Industry Partners', 'icon' => 'fa-handshake'],
                 ['target' => 120, 'suffix' => '+', 'label' => 'Certifications', 'icon' => 'fa-award'],
                 ] as $stat)
-                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}"
+                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" data-aos-anchor-placement="top-bottom"
                     class="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0">
+                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 200 }}">
                         <i class="fas {{ $stat['icon'] }} text-white text-lg"></i>
                     </div>
                     <div>
@@ -548,9 +548,9 @@ class extends Component {
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6" data-aos="zoom-in" data-aos-delay="100">
                 @foreach ($partners as $partner)
-                <div title="{{ $partner->name }}"
+                <div title="{{ $partner->name }}" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 50 }}"
                     class="flex items-center justify-center p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 hover:-translate-y-0.5 transition-all duration-300">
                     <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}"
                         class="h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300">
@@ -564,22 +564,22 @@ class extends Component {
     {{-- ═══════════════════════════════════════════
     CTA BANNER
     ═══════════════════════════════════════════ --}}
-    <section class="relative py-16 overflow-hidden bg-gray-950" data-aos="fade-up">
+    <section class="relative py-16 overflow-hidden bg-gray-950" data-aos="fade-up" data-aos-duration="800">
         {{-- background pattern --}}
         <div class="absolute inset-0 opacity-5"
             style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 30px 30px;">
         </div>
-        <div class="absolute left-0 top-0 h-full w-1 bg-primary"></div>
+        <div class="absolute left-0 top-0 h-full w-1 bg-primary" data-aos="fade-left" data-aos-delay="300"></div>
 
         <div class="relative max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl lg:text-4xl font-extrabold text-white mb-4">
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
                 Ready to Start Your <span class="text-primary">Journey?</span>
             </h2>
-            <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto leading-relaxed">
+            <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
                 Join thousands of students who have transformed their lives through quality education at {{
                 $institution->name }}.
             </p>
-            <div class="flex flex-wrap items-center justify-center gap-4">
+            <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
                 <a href="{{ route('admissions') }}"
                     class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
                     Apply Now <i class="fas fa-arrow-right text-xs"></i>

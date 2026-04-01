@@ -19,6 +19,8 @@ Route::livewire('/success-stories', 'pages::success-stories')->name('success.sto
 Route::livewire('/terms-and-conditions', 'pages::terms-and-conditions')->name('terms.conditions');
 Route::livewire('/privacy-policy', 'pages::privacy-policy')->name('privacy.policy');
 Route::livewire('/principal-office', 'pages::principal-office')->name('principal.office');
+Route::livewire('/deputy-principal-administration', 'pages::deputy-principal-administration')->name('deputy.admin');
+Route::livewire('/deputy-principal-academics', 'pages::deputy-principal-academics')->name('deputy.academics');
 Route::livewire('/downloads', 'pages::downloads')->name('downloads');
 Route::livewire('/courses', 'pages::courses')->name('courses');
 Route::livewire('/administration', 'pages::administration')->name('administration');

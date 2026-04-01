@@ -1087,14 +1087,11 @@
                     </button>
                     <div class="dropdown-panel">
                         <div class="dropdown-header">Leadership</div>
-                        <a href="#" class="dropdown-item"><i class="fas fa-user-tie"></i> Principal's Office</a>
-                        <a href="#" class="dropdown-item"><i class="fas fa-users"></i> Deputy Principal -
-                            Adminstration</a>
-                        <a href="#" class="dropdown-item"><i class="fas fa-users"></i> Deputy Principal - Academics</a>
-                        <a href="#" class="dropdown-item"><i class="fas fa-users"></i> Dean of Students</a>
-                        <a href="#" class="dropdown-item"><i class="fas fa-users"></i> Registry Office</a>
-                        <a href="#" class="dropdown-item"><i class="fas fa-users"></i> Teaching - Staff Members</a>
-                        <a href="#" class="dropdown-item"><i class="fas fa-users"></i> Non Teaching - Staff Members</a>
+                        <a href="{{ route('principal.office') }}" class="dropdown-item"><i class="fas fa-user-tie"></i> Principal's Office</a>
+                        <a href="{{ route('deputy.admin') }}" class="dropdown-item"><i class="fas fa-users"></i> Deputy Principal -
+                            Administration</a>
+                        <a href="{{ route('deputy.academics') }}" class="dropdown-item"><i class="fas fa-users"></i> Deputy Principal - Academics</a>
+                        <a href="{{ route('staff.members') }}" class="dropdown-item"><i class="fas fa-users"></i> Staff Members</a>
                     </div>
                 </div>
 
@@ -1168,8 +1165,10 @@
                 Administration <i class="fas fa-chevron-down acc-icon"></i>
             </button>
             <div id="mob-admin" class="acc-content">
-                <a href="#" class="acc-link">Principal's Office</a>
-                <a href="#" class="acc-link">Our Staff Members</a>
+                <a href="{{ route('principal.office') }}" class="acc-link">Principal's Office</a>
+                <a href="{{ route('deputy.admin') }}" class="acc-link">Deputy Principal Administration</a>
+                <a href="{{ route('deputy.academics') }}" class="acc-link">Deputy Principal Academics</a>
+                <a href="{{ route('staff.members') }}" class="acc-link">Staff Members</a>
             </div>
 
             <!-- Departments -->
