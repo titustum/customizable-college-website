@@ -30,284 +30,253 @@ class extends Component {
 
 <main>
 
+    <!-- ======================================================
+         HERO SECTION
+    ====================================================== -->
+    <section class="relative min-h-[85vh] flex items-center overflow-hidden bg-gray-900">
+        <!-- Background pattern (SVG grid) -->
+        <div class="absolute inset-0 opacity-10">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ea580c" stroke-width="0.8" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+        <!-- Decorative orange circle glow -->
+        <div
+            class="absolute right-0 top-0 w-[700px] h-[700px] bg-orange-600 rounded-full opacity-10 blur-3xl translate-x-1/3 -translate-y-1/4 pointer-events-none">
+        </div>
+        <div
+            class="absolute left-0 bottom-0 w-[400px] h-[400px] bg-orange-500 rounded-full opacity-5 blur-3xl -translate-x-1/2 translate-y-1/2 pointer-events-none">
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-16 items-center">
+
+            <!-- Text content -->
+            <div class="text-white">
+                <div class="section-label text-orange-400">
+                    KNQA Accredited Institution
+                </div>
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-none text-white mb-6">
+                    Build Skills.<br />
+                    <span class="text-orange-500">Build Futures.</span>
+                </h1>
+                <p class="text-gray-300 text-lg leading-relaxed mb-8 max-w-lg">
+                    Tetu Technical and Vocational College offers world-class technical education designed to equip
+                    students with practical skills for today's economy. Located in Tetu Sub-County, Nyeri County.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#"
+                        class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5">
+                        Apply for Admission
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                        </svg>
+                    </a>
+                    <a href="#courses"
+                        class="inline-flex items-center gap-2 border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5">
+                        Browse Courses
+                    </a>
+                </div>
+                <!-- Accreditation badges -->
+                <div class="flex flex-wrap gap-4 mt-10 pt-8 border-t border-gray-700">
+                    <div class="flex items-center gap-2 text-sm text-gray-400">
+                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                        </svg>
+                        TVETA Registered
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-400">
+                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        </svg>
+                        KNQA Aligned
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-gray-400">
+                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                        </svg>
+                        CBC Competency-Based
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero image card / stats -->
+            <div class="hidden lg:block">
+                <div class="relative">
+                    <!-- Main card -->
+                    <div
+                        class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+                        <!-- Placeholder image area with gradient -->
+                        <div
+                            class="h-64 bg-gradient-to-br from-orange-700 via-orange-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-30">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+                                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid2)" />
+                                </svg>
+                            </div>
+                            <div class="relative text-center text-white px-8">
+                                <div
+                                    class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
+                                    <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
+                                    </svg>
+                                </div>
+                                <p class="font-display text-2xl font-bold">Tetu TVC</p>
+                                <p class="text-orange-200 text-sm mt-1">Nyeri County, Kenya</p>
+                            </div>
+                        </div>
+                        <!-- Quick stats row -->
+                        <div class="grid grid-cols-3 divide-x divide-white/10">
+                            <div class="text-center py-5 px-4">
+                                <div class="text-3xl font-display font-bold text-orange-400">6+</div>
+                                <div class="text-gray-400 text-xs mt-1">Departments</div>
+                            </div>
+                            <div class="text-center py-5 px-4">
+                                <div class="text-3xl font-display font-bold text-orange-400">20+</div>
+                                <div class="text-gray-400 text-xs mt-1">Programmes</div>
+                            </div>
+                            <div class="text-center py-5 px-4">
+                                <div class="text-3xl font-display font-bold text-orange-400">500+</div>
+                                <div class="text-gray-400 text-xs mt-1">Students</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating badge -->
+                    <div
+                        class="absolute -bottom-5 -left-5 bg-orange-600 text-white px-4 py-3 rounded-xl shadow-xl text-sm font-bold flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
+                        </svg>
+                        Intake 2025 Open!
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /grid -->
+
+        <!-- Scroll indicator -->
+        <div
+            class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce">
+            <span class="text-xs tracking-widest uppercase">Scroll</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- /hero -->
+
+
     {{-- ═══════════════════════════════════════════
-    HERO SECTION — Static hero + content grid (No auto‑slider)
+    QUICK LINKS CARDS
     ═══════════════════════════════════════════ --}}
-    <section id="hero" class="relative w-full bg-gray-900">
-        {{-- Hero background (first slide's image) --}}
-        @php $firstSlide = $heroSlides->first(); @endphp
-        <div class="relative w-full min-h-[80vh] flex items-center">
-            {{-- Background image/video container --}}
-            <div class="absolute inset-0 overflow-hidden">
+    <section class="py-16 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid gap-6 md:grid-cols-3">
 
-                <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline
-                    poster="{{ asset('images/hero-fallback.webp') }}">
-                    <source src="{{ asset('video/college-video.mp4') }}" type="video/mp4">
-                    <source src="{{ asset('video/college-video.webm') }}" type="video/webm">
-                </video>
-
-                {{-- Enhanced overlays for depth --}}
-                <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20"></div>
-            </div>
-
-            {{-- Hero content --}}
-            <div class="relative z-10">
-                <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full py-16 md:py-24">
-                    <div class="max-w-2xl">
-                        {{-- Institution tag --}}
-                        <div class="mb-5">
-                            <span
-                                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary/40 text-orange-300 text-xs font-bold tracking-widest uppercase backdrop-blur-sm">
-                                <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                                {{ $institution->name }}
-                            </span>
-                        </div>
-
-                        {{-- Heading & text from first slide or fallback --}}
-                        <h1 class="mb-4 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-white"
-                            style="text-shadow: 0 2px 20px rgba(0,0,0,0.4);">
-                            {{ $firstSlide->title ?? 'Welcome to ' . $institution->name }}
-                        </h1>
-                        @if($firstSlide && $firstSlide->subtitle)
-                        <h2 class="mb-3 text-xl md:text-2xl font-semibold text-cyan-300">
-                            {{ $firstSlide->subtitle }}
-                        </h2>
-                        @endif
-                        @if($firstSlide && $firstSlide->slogan)
-                        <p class="mb-8 text-base md:text-lg text-white/70 leading-relaxed">
-                            {{ $firstSlide->slogan }}
-                        </p>
-                        @else
-                        <p class="mb-8 text-base md:text-lg text-white/70 leading-relaxed">
-                            Empowering Students with Skills for the Future
-                        </p>
-                        @endif
-
-                        {{-- Primary CTAs (consistent for all pages) --}}
-                        <div class="flex flex-wrap items-center gap-3">
-                            <a href="{{ route('admissions') }}"
-                                class="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:brightness-110 text-white font-bold rounded-full shadow-lg shadow-primary/30 transition-all duration-300 text-sm">
-                                {{ $firstSlide->button_text ?? 'Apply Now' }}
-                                <i class="fas fa-arrow-right text-xs"></i>
-                            </a>
-                            <a href="{{ route('courses') }}"
-                                class="inline-flex items-center gap-2 px-7 py-3.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold rounded-full backdrop-blur-sm transition-all duration-300 text-sm">
-                                <i class="fas fa-book-open text-xs"></i>
-                                Our Courses
-                            </a>
-                        </div>
+                {{-- Principal Message --}}
+                <a href="{{ route('principal.office') }}" data-aos="fade-up" data-aos-delay="0"
+                    class="group flex items-start gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
+                    <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                        <img src="{{ asset('images/principal-tetu-tvc-2025-12345.jpg') }}"
+                            alt="Principal" class="object-cover w-full h-full">
                     </div>
-                </div>
-            </div>
+                    <div class="flex-grow min-w-0">
+                        <h4 class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">Principal's Message</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">Welcome message from our College Principal</p>
+                        <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">Read More <i class="fas fa-arrow-right text-xs"></i></span>
+                    </div>
+                </a>
 
-            {{-- Scroll indicator (optional) --}}
-            <div
-                class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-1.5 text-white/40 animate-bounce">
-                <span class="text-[10px] tracking-widest uppercase font-semibold">Scroll</span>
-                <i class="fas fa-chevron-down text-xs"></i>
+                {{-- Recent Updates --}}
+                <a href="#" data-aos="fade-up" data-aos-delay="100"
+                    class="group flex items-start gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
+                    <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                        <img src="{{ asset('images/gate.jpg') }}"
+                            alt="Updates" class="object-cover w-full h-full">
+                    </div>
+                    <div class="flex-grow min-w-0">
+                        <h4 class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">Recent Updates</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">Latest news, announcements and upcoming events</p>
+                        <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">Read More <i class="fas fa-arrow-right text-xs"></i></span>
+                    </div>
+                </a>
+
+                {{-- Gallery --}}
+                <a href="#" data-aos="fade-up" data-aos-delay="200"
+                    class="group flex items-start gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
+                    <div class="w-16 h-16 rounded-xl overflow-hidden shrink-0">
+                        <img src="{{ asset('images/gate.jpg') }}"
+                            alt="Gallery" class="object-cover w-full h-full">
+                    </div>
+                    <div class="flex-grow min-w-0">
+                        <h4 class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">Photo Gallery</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">View photos and videos of our campus life</p>
+                        <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">View Gallery <i class="fas fa-arrow-right text-xs"></i></span>
+                    </div>
+                </a>
+
             </div>
         </div>
-
-        {{-- ═══════════════════════════════════════════
-        FEATURE GRID — Other slides become explore cards
-        (Only shown if more than 1 slide exists)
-        ═══════════════════════════════════════════ --}}
-        @if($heroSlides->count() > 1)
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 -mt-16 pb-16 md:pb-24">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @foreach($heroSlides->skip(1) as $slide)
-                <div
-                    class="group bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10">
-                    @if($slide->image)
-                    <div class="h-48 overflow-hidden">
-                        <img src="{{ asset('storage/' . $slide->image) }}" alt="{{ $slide->title }}"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    @endif
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">{{ $slide->title }}</h3>
-                        @if($slide->subtitle)
-                        <p class="text-cyan-300 text-sm font-semibold mb-3">{{ $slide->subtitle }}</p>
-                        @endif
-                        @if($slide->slogan)
-                        <p class="text-white/70 text-sm line-clamp-3">{{ $slide->slogan }}</p>
-                        @endif
-                        <div class="mt-4">
-                            <a href="{{ route('admissions') }}"
-                                class="inline-flex items-center text-sm font-medium text-primary hover:text-orange-300 transition-colors">
-                                Learn more
-                                <i class="fas fa-arrow-right ml-1 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-        @endif
     </section>
 
 
-
-
     {{-- ═══════════════════════════════════════════
-    QUICK STATS BAR
+    COLLEGE HISTORY
     ═══════════════════════════════════════════ --}}
-    <div class="bg-gray-950 text-white py-4 border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
-                @foreach([
-                ['value' => '92', 'suffix' => '%', 'label' => 'Graduation Rate', 'icon' => 'fa-graduation-cap'],
-                ['value' => '85', 'suffix' => '%', 'label' => 'Job Placement', 'icon' => 'fa-briefcase'],
-                ['value' => '20', 'suffix' => '+', 'label' => 'Programs Offered', 'icon' => 'fa-book-open'],
-                ['value' => '120', 'suffix' => '+', 'label' => 'Certifications', 'icon' => 'fa-award'],
-                ] as $stat)
-                <div class="flex items-center justify-center gap-3 px-4 py-2">
-                    <i class="fas {{ $stat['icon'] }} text-primary text-lg opacity-80"></i>
-                    <div>
-                        <div class="text-xl font-extrabold leading-none">
-                            <span class="counter" data-target="{{ $stat['value'] }}">0</span>{{ $stat['suffix'] }}
-                        </div>
-                        <div class="text-[11px] text-white/40 mt-0.5">{{ $stat['label'] }}</div>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+
+                {{-- Image --}}
+                <div data-aos="fade-up" class="relative">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                        <img src="{{ asset('images/gate.jpg') }}"
+                            alt="{{ $institution->name }} History"
+                            class="object-cover w-full h-full">
                     </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
-
-    {{-- ═══════════════════════════════════════════
-    WELCOME + QUICK CARDS
-    ═══════════════════════════════════════════ --}}
-    <section class="w-full px-4 py-20 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
-                {{-- Principal Card --}}
-                <div data-aos="fade-up" class="lg:col-span-1">
-                    <div
-                        class="flex flex-col h-full bg-white border border-gray-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-
-                        {{-- Top band --}}
-                        <div class="h-2 w-full bg-gradient-to-r from-primary to-orange-400"></div>
-
-                        <div class="flex flex-col flex-grow p-7">
-                            <h3 class="mb-6 text-xl font-bold text-center text-gray-800">
-                                A Word from the <span class="text-primary">Principal</span>
-                            </h3>
-
-                            {{-- Avatar --}}
-                            <div class="flex justify-center mb-5">
-                                <div class="relative">
-                                    <div
-                                        class="w-32 h-32 rounded-full ring-4 ring-primary/20 ring-offset-2 overflow-hidden">
-                                        <img src="{{ $institution->principal_photo ? asset('storage/'.$institution->principal_photo) : asset('images/default-avatar.jpg') }}"
-                                            class="object-cover w-full h-full" alt="Principal">
-                                    </div>
-                                    <div
-                                        class="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow">
-                                        <i class="fas fa-quote-left text-white text-[10px]"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <blockquote class="text-gray-600 text-sm leading-relaxed text-center flex-grow italic mb-5">
-                                "{{ Str::limit($institution->welcome_message, 200) }}"
-                            </blockquote>
-
-                            <div class="text-center pt-4 border-t border-gray-100">
-                                <p class="font-bold text-gray-800 text-sm">{{ $institution->principal_name }}</p>
-                                <p class="text-primary text-xs font-semibold mt-0.5">College Principal</p>
-                            </div>
-
-                            <div class="mt-5 text-center">
-                                <a href="{{ route('principal.office') }}"
-                                    class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full shadow hover:brightness-110 transition-all">
-                                    Meet Our Team <i class="fas fa-arrow-right text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
+                    {{-- Decorative badge --}}
+                    <div class="absolute -bottom-4 -right-4 bg-primary text-white px-6 py-4 rounded-xl shadow-lg">
+                        <div class="text-3xl font-bold">{{ $institution->established_year ?? '2020' }}</div>
+                        <div class="text-xs font-semibold uppercase tracking-wider">Established</div>
                     </div>
                 </div>
 
-                {{-- Right 2-col grid --}}
-                <div data-aos="fade-up" data-aos-delay="100" class="lg:col-span-2">
-                    <div class="grid h-full gap-5 md:grid-cols-2">
-
-                        {{-- Admissions Card --}}
-                        <div class="relative flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg group">
-                            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800"></div>
-                            <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity"
-                                style="background-image: radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 24px 24px;">
-                            </div>
-                            <div class="relative p-6">
-                                <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4">
-                                    <i class="fas fa-user-graduate text-white text-xl"></i>
-                                </div>
-                                <h4 class="text-lg font-bold text-white mb-2">Admissions Open!</h4>
-                                <p class="text-white/75 text-sm leading-relaxed">Apply now for Artisan, Certificate, and
-                                    Diploma programs in various technical fields.</p>
-                            </div>
-                            <div class="relative p-6 pt-0">
-                                <a href="{{ route('admissions') }}"
-                                    class="inline-flex items-center gap-2 px-5 py-2 text-sm font-bold text-blue-700 bg-white rounded-full shadow hover:bg-blue-50 transition-all">
-                                    Apply Now <i class="fas fa-arrow-right text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        {{-- Resources Card --}}
-                        <div class="relative flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg group">
-                            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 to-emerald-700"></div>
-                            <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity"
-                                style="background-image: radial-gradient(circle at 80% 20%, white 1px, transparent 1px); background-size: 24px 24px;">
-                            </div>
-                            <div class="relative p-6">
-                                <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mb-4">
-                                    <i class="fas fa-folder-open text-white text-xl"></i>
-                                </div>
-                                <h4 class="text-lg font-bold text-white mb-2">Resources</h4>
-                                <p class="text-white/75 text-sm leading-relaxed">Access course outlines, student
-                                    handbooks, and important documents.</p>
-                            </div>
-                            <div class="relative p-6 pt-0">
-                                <a href="{{ route('downloads') }}"
-                                    class="inline-flex items-center gap-2 px-5 py-2 text-sm font-bold text-emerald-700 bg-white rounded-full shadow hover:bg-emerald-50 transition-all">
-                                    Download <i class="fas fa-download text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        {{-- Programs (wide) --}}
-                        <div
-                            class="relative flex flex-col justify-between rounded-2xl overflow-hidden shadow-lg md:col-span-2 group">
-                            <div class="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500"></div>
-                            <div class="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity"
-                                style="background-image: radial-gradient(circle at 90% 50%, white 1px, transparent 1px); background-size: 28px 28px;">
-                            </div>
-                            <div class="relative p-7 flex flex-col md:flex-row items-center gap-6">
-                                <div class="flex-grow">
-                                    <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-3">
-                                        <i class="fas fa-book-open text-white text-xl"></i>
-                                    </div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Explore Our Programs</h4>
-                                    <p class="text-white/80 text-sm leading-relaxed max-w-md">Discover our wide range of
-                                        technical and vocational programs designed to equip you with industry-relevant
-                                        skills.</p>
-                                </div>
-                                <div class="shrink-0">
-                                    <a href="{{ route('courses') }}"
-                                        class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-amber-600 bg-white rounded-full shadow-lg hover:bg-amber-50 transition-all whitespace-nowrap">
-                                        Explore Programs <i class="fas fa-arrow-right text-xs"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                {{-- Content --}}
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Our History</span>
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">Building the Future Since {{ $institution->established_year ?? '2020' }}</h2>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6">
+                        {{ $institution->history ?? 'Tetu Technical and Vocational College has been at the forefront of providing quality technical and vocational education in Nyeri County. Our institution is dedicated to equipping students with practical skills that meet industry demands.' }}
+                    </p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-8">
+                        Through years of excellence, we have grown to become one of the leading TVET institutions in the region, offering diverse programs that empower youth with market-relevant skills and knowledge.
+                    </p>
+                    <a href="{{ route('about') }}"
+                        class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-primary rounded-lg shadow-lg hover:brightness-110 hover:shadow-xl transition-all">
+                        Learn More About Us <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -322,48 +291,52 @@ class extends Component {
             {{-- Section header --}}
             <div class="mb-14 text-center" data-aos="fade-up">
                 <span
-                    class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Departments</span>
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3">Our Academic Departments</h2>
-                <p class="max-w-xl mx-auto text-gray-500 text-base leading-relaxed">Explore our outstanding departments
-                    designed to provide industry-relevant skills and knowledge.</p>
+                    class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Academics</span>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">Our Academic Departments</h2>
+                <p class="max-w-2xl mx-auto text-gray-500 text-base leading-relaxed">Discover our diverse range of departments offering hands-on training and industry-relevant skills for your successful career.</p>
             </div>
 
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($departments as $department)
                 <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}"
-                    class="group bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition-all duration-300 flex flex-col">
+                    class="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col">
 
-                    {{-- Image --}}
-                    <div class="relative h-52 overflow-hidden">
+                    {{-- Image with overlay --}}
+                    <div class="relative h-56 overflow-hidden">
                         <img src="{{ $department->photo ? Storage::url($department->photo) : asset('images/placeholders/department-placeholder.webp') }}"
                             alt="{{ $department->name }}"
-                            class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        </div>
-                        {{-- Department type badge --}}
+                            class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent"></div>
+
+                        {{-- Type badge --}}
                         @if($department->type === 'non-academic')
-                        <span
-                            class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-cyan-500/90 text-white text-[10px] font-bold tracking-wide uppercase backdrop-blur-sm">
+                        <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyan-500 text-white text-[10px] font-bold tracking-wide uppercase">
                             Non-Academic
                         </span>
                         @endif
+
+                        {{-- Icon overlay --}}
+                        <div class="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                            <i class="fas fa-{{ $department->icon ?? 'school' }} text-white text-xl"></i>
+                        </div>
                     </div>
 
                     {{-- Content --}}
-                    <div class="p-5 flex flex-col flex-grow">
-                        <h3
-                            class="text-lg font-bold text-gray-800 group-hover:text-primary transition-colors duration-300 mb-2">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300 mb-3">
                             {{ $department->name }}
                         </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-grow">
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-grow mb-4">
                             {{ $department->short_desc }}
                         </p>
-                        <div class="mt-4 pt-4 border-t border-gray-100">
+
+                        <div class="pt-4 border-t border-gray-100">
                             <a href="{{ route('department', $department->slug) }}"
-                                class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-300">
-                                Explore Department
-                                <i class="fas fa-arrow-right text-xs"></i>
+                                class="inline-flex items-center justify-between w-full text-sm font-semibold text-gray-700 group-hover:text-primary transition-colors duration-300">
+                                <span>Explore Department</span>
+                                <span class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-all duration-300">
+                                    <i class="fas fa-arrow-right text-xs"></i>
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -372,18 +345,96 @@ class extends Component {
 
                 {{-- View All CTA tile --}}
                 <div data-aos="fade-up" data-aos-delay="{{ count($departments) * 80 }}"
-                    class="flex items-center justify-center rounded-2xl bg-primary p-8 text-center shadow hover:shadow-xl transition-shadow">
-                    <div>
-                        <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-building-columns text-white text-2xl"></i>
+                    class="relative group flex items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-8 text-center shadow-lg hover:shadow-2xl transition-all overflow-hidden">
+                    <div class="relative">
+                        <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-5">
+                            <i class="fas fa-layer-group text-white text-2xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">All Departments</h3>
-                        <p class="text-white/80 text-sm leading-relaxed mb-6">Discover every technical and vocational
-                            program we offer.</p>
+                        <h3 class="text-xl font-bold text-white mb-3">View All Departments</h3>
+                        <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-xs mx-auto">Explore our complete list of academic and non-academic departments.</p>
                         <a href="{{ route('departments') }}"
-                            class="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-primary bg-white rounded-full shadow hover:bg-gray-50 transition-all">
-                            View All <i class="fas fa-arrow-right text-xs"></i>
+                            class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-primary bg-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                            Explore All <i class="fas fa-arrow-right text-xs"></i>
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Bottom CTA --}}
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <p class="text-gray-500 text-sm">Can't find what you're looking for? <a href="{{ route('contact') }}" class="text-primary font-semibold hover:underline">Contact us</a> for more information.</p>
+            </div>
+        </div>
+    </section>
+
+
+    {{-- ═══════════════════════════════════════════
+    SERVICE CHARTER
+    ═══════════════════════════════════════════ --}}
+    <section class="py-16 bg-white border-t border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Service Charter</span>
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-gray-900 mb-2">Our Service Commitment</h2>
+                <p class="text-gray-500 text-sm max-w-xl mx-auto">Learn about our commitment to quality service delivery.</p>
+            </div>
+
+            <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+                {{-- Left: Content --}}
+                <div data-aos="fade-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <button onclick="switchCharter('en')" id="btn-en"
+                            class="lang-btn px-4 py-2 rounded-lg text-sm font-semibold bg-primary text-white transition-all">
+                            English
+                        </button>
+                        <button onclick="switchCharter('sw')" id="btn-sw"
+                            class="lang-btn px-4 py-2 rounded-lg text-sm font-semibold bg-gray-200 text-gray-600 hover:bg-gray-300 transition-all">
+                            Kiswahili
+                        </button>
+                    </div>
+
+                    <div id="charter-content">
+                        <div id="en-content" class="charter-text">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Service Charter</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                Our service charter outlines our commitment to providing quality education and services to our students, parents, and stakeholders. We pledge to maintain the highest standards of professionalism, transparency, and accountability.
+                            </p>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Quality technical and vocational education</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Timely response to inquiries</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Transparent admission processes</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Regular progress reports</span></li>
+                            </ul>
+                        </div>
+                        <div id="sw-content" class="charter-text hidden">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Mkataba wa Huduma</h3>
+                            <p class="text-gray-600 leading-relaxed mb-6">
+                                Mkataba wetu wa huduma unaonyowa ahadi yetu ya kutoa elimu na huduma bora kwa wanafunzi, wazazi, na watendakazi. Tunaahidi kushikamia viwango vya juu vya kitaaluma, uwazi, na uwajibikaji.
+                            </p>
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Elimu ya kiwandani na ufundi bora</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Majibu ya haraka kwa maswali</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Mchakato wa usajili wa uwazi</span></li>
+                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Ripoti za kawaida za maendeleo</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg font-semibold hover:brightness-110 transition-all">
+                            <i class="fas fa-download text-sm"></i> Download
+                        </a>
+                        <button class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all">
+                            <i class="fas fa-play text-sm"></i> Play Audio
+                        </button>
+                    </div>
+                </div>
+
+                {{-- Right: Image --}}
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+                        <img id="charter-image" src="{{ asset('images/placeholders/service-charter-en.jpg') }}"
+                            alt="Service Charter" class="object-top w-full h-full">
                     </div>
                 </div>
             </div>
@@ -540,29 +591,5 @@ class extends Component {
             </div>
         </div>
     </section>
-
-
-    {{-- Counter Script --}}
-    <script>
-        document.querySelectorAll('.counter').forEach(counter => {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    const target = +counter.getAttribute('data-target');
-                    const duration = 1800;
-                    const step = Math.ceil(target / (duration / 16));
-                    let current = 0;
-                    const tick = () => {
-                        current = Math.min(current + step, target);
-                        counter.textContent = current;
-                        if (current < target) requestAnimationFrame(tick);
-                    };
-                    requestAnimationFrame(tick);
-                    observer.unobserve(counter);
-                });
-            }, { threshold: 0.5 });
-            observer.observe(counter);
-        });
-    </script>
 
 </main>
