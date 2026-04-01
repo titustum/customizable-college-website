@@ -9,6 +9,7 @@ use App\Models\TeamMember;
 use Filament\Support\Icons\Heroicon;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Illuminate\Support\Carbon;
 
 class StatsOverview extends StatsOverviewWidget
 {
@@ -59,7 +60,7 @@ class StatsOverview extends StatsOverviewWidget
         $records = $model::query()
             ->whereDate($dateColumn, '>=', $start)
             ->get()
-            ->groupBy(fn ($item) => \Illuminate\Support\Carbon::parse($item->$dateColumn)->format('Y-m-d'));
+            ->groupBy(fn ($item) => Carbon::parse($item->$dateColumn)->format('Y-m-d'));
 
         $trend = [];
 

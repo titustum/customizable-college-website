@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Courses\Schemas;
 
+use App\Models\Department;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
@@ -21,7 +22,7 @@ class CourseForm
 
                         Select::make('department_id')
                             ->required()
-                            ->options(fn () => \App\Models\Department::pluck('name', 'id')),
+                            ->options(fn () => Department::pluck('name', 'id')),
                         TextInput::make('name')
                             ->required(),
                         TextInput::make('photo'),

@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
+use App\Models\Department;
+use App\Models\Role;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -36,13 +38,13 @@ class TeamMemberForm
 
                     Select::make('department_id')
                         ->label('Department')
-                        ->options(fn () => \App\Models\Department::pluck('name', 'id'))
+                        ->options(fn () => Department::pluck('name', 'id'))
                         ->searchable()
                         ->required(),
 
                     Select::make('role_id')
                         ->label('Role')
-                        ->options(fn () => \App\Models\Role::pluck('name', 'id'))
+                        ->options(fn () => Role::pluck('name', 'id'))
                         ->searchable()
                         ->required(),
 

@@ -20,6 +20,6 @@ class PastPaper extends Model
 
     public function course()
     {
-        return $this->belongsTo(\App\Models\Course::class);
+        return $this->belongsTo(Course::class);
     }
 }

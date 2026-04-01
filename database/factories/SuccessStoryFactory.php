@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\SuccessStory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\SuccessStory>
+ * @extends Factory<SuccessStory>
  */
 class SuccessStoryFactory extends Factory
 {

@@ -30,6 +30,6 @@ class Vacancy extends Model
 
     public function department(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Department::class);
+        return $this->belongsTo(Department::class);
     }
 }

@@ -10,7 +10,7 @@ class DepartmentSeeder extends Seeder
 {
     public function run(): void
     {
-        $placeholderPhoto =  null;
+        $placeholderPhoto = null;
 
         $departments = [
             [
