@@ -3,13 +3,10 @@
 use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
 
-// Home test routes
+// Home route
 Route::livewire('/', 'pages::home')->name('home');
-Route::livewire('/v1', 'pages::home')->name('home');
-Route::livewire('/v2', 'pages::home2')->name('home');
-Route::livewire('/v3', 'pages::home3')->name('home');
 
-// Home test routes
+// Other routes
 Route::livewire('/about', 'pages::about')->name('about');
 Route::livewire('/contact', 'pages::contact')->name('contact');
 Route::livewire('/departments', 'pages::departments')->name('departments');
@@ -27,6 +24,8 @@ Route::livewire('/administration', 'pages::administration')->name('administratio
 Route::livewire('/team', 'pages::team-members')->name('team');
 Route::livewire('/vacancies', 'pages::vacancies')->name('vacancies');
 Route::livewire('/past-papers', 'pages::past-papers')->name('past.papers');
+Route::livewire('/gallery', 'pages::gallery')->name('gallery');
+Route::livewire('/news', 'pages::news')->name('news');
 Route::livewire('/create-success-story', 'pages::success-stories-create')->name('create.success.story');
 
 // Admissions download (school verification)

@@ -60,7 +60,8 @@ class extends Component {
                 <div class="section-label text-orange-400" data-aos="fade-down" data-aos-delay="200">
                     KNQA Accredited Institution
                 </div>
-                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-none text-white mb-6" data-aos="fade-up" data-aos-delay="300">
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-none text-white mb-6"
+                    data-aos="fade-up" data-aos-delay="300">
                     Build Skills.<br />
                     <span class="text-orange-500">Build Futures.</span>
                 </h1>
@@ -70,7 +71,8 @@ class extends Component {
                 </p>
                 <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="500">
                     <a href="#"
-                        class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5" data-aos="zoom-in" data-aos-delay="600">
+                        class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5"
+                        data-aos="zoom-in" data-aos-delay="600">
                         Apply for Admission
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -78,13 +80,16 @@ class extends Component {
                         </svg>
                     </a>
                     <a href="#courses"
-                        class="inline-flex items-center gap-2 border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5" data-aos="zoom-in" data-aos-delay="700">
+                        class="inline-flex items-center gap-2 border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5"
+                        data-aos="zoom-in" data-aos-delay="700">
                         Browse Courses
                     </a>
                 </div>
                 <!-- Accreditation badges -->
-                <div class="flex flex-wrap gap-4 mt-10 pt-8 border-t border-gray-700" data-aos="fade-up" data-aos-delay="800">
-                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right" data-aos-delay="900">
+                <div class="flex flex-wrap gap-4 mt-10 pt-8 border-t border-gray-700" data-aos="fade-up"
+                    data-aos-delay="800">
+                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right"
+                        data-aos-delay="900">
                         <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -92,7 +97,8 @@ class extends Component {
                         </svg>
                         TVETA Registered
                     </div>
-                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right" data-aos-delay="1000">
+                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right"
+                        data-aos-delay="1000">
                         <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -100,7 +106,8 @@ class extends Component {
                         </svg>
                         KNQA Aligned
                     </div>
-                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right" data-aos-delay="1100">
+                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right"
+                        data-aos-delay="1100">
                         <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
                             stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -160,8 +167,8 @@ class extends Component {
                         </div>
                     </div>
                     <!-- Floating badge -->
-                    <div
-                        class="absolute -bottom-5 -left-5 bg-orange-600 text-white px-4 py-3 rounded-xl shadow-xl text-sm font-bold flex items-center gap-2" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="absolute -bottom-5 -left-5 bg-orange-600 text-white px-4 py-3 rounded-xl shadow-xl text-sm font-bold flex items-center gap-2"
+                        data-aos="zoom-in" data-aos-delay="800">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
@@ -197,41 +204,54 @@ class extends Component {
                 <a href="{{ route('principal.office') }}" data-aos="fade-up-right" data-aos-delay="0"
                     class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
                     <div class="w-20 rounded-xl overflow-hidden shrink-0">
-                        <img src="{{ asset('images/principal-tetu-tvc-2025-12345') }}"
-                            alt="Principal" class="object-cover w-full h-full">
+                        <img src="{{ asset('images/principal-tetu-tvc-2025-12345.jpg') }}" alt="Principal"
+                            class="object-cover w-full h-full">
                     </div>
                     <div class="flex-grow min-w-0">
-                        <h4 class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">Principal's Message</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">Welcome message from our College Principal</p>
-                        <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">Read More <i class="fas fa-arrow-right text-xs"></i></span>
+                        <h4
+                            class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">
+                            Principal's Message</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">Welcome message from our
+                            College Principal</p>
+                        <span
+                            class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">Read
+                            More <i class="fas fa-arrow-right text-xs"></i></span>
                     </div>
                 </a>
 
                 {{-- Recent Updates --}}
-                <a href="#" data-aos="fade-up" data-aos-delay="100"
+                <a href="{{ route('news') }}" data-aos="fade-up" data-aos-delay="100"
                     class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
                     <div class="w-20 rounded-xl overflow-hidden shrink-0">
-                        <img src="{{ asset('images/gate') }}"
-                            alt="Updates" class="object-cover w-full h-full">
+                        <img src="{{ asset('images/gate.jpg') }}" alt="Updates" class="object-cover w-full h-full">
                     </div>
                     <div class="flex-grow min-w-0">
-                        <h4 class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">Recent Updates</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">Latest news, announcements and upcoming events</p>
-                        <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">Read More <i class="fas fa-arrow-right text-xs"></i></span>
+                        <h4
+                            class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">
+                            News and Updates</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">Latest news, announcements
+                            and upcoming events</p>
+                        <span
+                            class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">Read
+                            More <i class="fas fa-arrow-right text-xs"></i></span>
                     </div>
                 </a>
 
                 {{-- Gallery --}}
-                <a href="#" data-aos="fade-up-left" data-aos-delay="200"
+                <a href="{{ route('gallery') }}" data-aos="fade-up-left" data-aos-delay="200"
                     class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
                     <div class="w-20 rounded-xl overflow-hidden shrink-0">
-                        <img src="{{ asset('images/gate') }}"
-                            alt="Gallery" class="object-cover w-full h-full">
+                        <img src="{{ asset('images/gate.jpg') }}" alt="Gallery" class="object-cover w-full h-full">
                     </div>
                     <div class="flex-grow min-w-0">
-                        <h4 class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">Photo Gallery</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">View photos and videos of our campus life</p>
-                        <span class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">View Gallery <i class="fas fa-arrow-right text-xs"></i></span>
+                        <h4
+                            class="font-bold text-gray-800 text-base truncate group-hover:text-primary transition-colors mb-2">
+                            Photo Gallery</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">View photos and videos of our
+                            campus life</p>
+                        <span
+                            class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">View
+                            Gallery <i class="fas fa-arrow-right text-xs"></i></span>
                     </div>
                 </a>
 
@@ -250,8 +270,7 @@ class extends Component {
                 {{-- Image --}}
                 <div data-aos="fade-up" class="relative">
                     <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                        <img src="{{ asset('images/gate.jpg') }}"
-                            alt="{{ $institution->name }} History"
+                        <img src="{{ asset('images/gate.jpg') }}" alt="{{ $institution->name }} History"
                             class="object-cover w-full h-full">
                     </div>
                     {{-- Decorative badge --}}
@@ -263,13 +282,19 @@ class extends Component {
 
                 {{-- Content --}}
                 <div data-aos="fade-up" data-aos-delay="100">
-                    <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Our History</span>
-                    <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">Building the Future Since {{ $institution->established_year ?? '2020' }}</h2>
+                    <span
+                        class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Our
+                        History</span>
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">Building the Future Since {{
+                        $institution->established_year ?? '2020' }}</h2>
                     <p class="text-gray-600 text-base leading-relaxed mb-6">
-                        {{ $institution->history ?? 'Tetu Technical and Vocational College has been at the forefront of providing quality technical and vocational education in Nyeri County. Our institution is dedicated to equipping students with practical skills that meet industry demands.' }}
+                        {{ $institution->history ?? 'Tetu Technical and Vocational College has been at the forefront of
+                        providing quality technical and vocational education in Nyeri County. Our institution is
+                        dedicated to equipping students with practical skills that meet industry demands.' }}
                     </p>
                     <p class="text-gray-600 text-base leading-relaxed mb-8">
-                        Through years of excellence, we have grown to become one of the leading TVET institutions in the region, offering diverse programs that empower youth with market-relevant skills and knowledge.
+                        Through years of excellence, we have grown to become one of the leading TVET institutions in the
+                        region, offering diverse programs that empower youth with market-relevant skills and knowledge.
                     </p>
                     <a href="{{ route('about') }}"
                         class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-primary rounded-lg shadow-lg hover:brightness-110 hover:shadow-xl transition-all">
@@ -292,8 +317,11 @@ class extends Component {
             <div class="mb-14 text-center" data-aos="fade-up">
                 <span
                     class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Academics</span>
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4" data-aos="fade-up" data-aos-delay="100">Our Academic Departments</h2>
-                <p class="max-w-2xl mx-auto text-gray-500 text-base leading-relaxed" data-aos="fade-up" data-aos-delay="200">Discover our diverse range of departments offering hands-on training and industry-relevant skills for your successful career.</p>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4" data-aos="fade-up"
+                    data-aos-delay="100">Our Academic Departments</h2>
+                <p class="max-w-2xl mx-auto text-gray-500 text-base leading-relaxed" data-aos="fade-up"
+                    data-aos-delay="200">Discover our diverse range of departments offering hands-on training and
+                    industry-relevant skills for your successful career.</p>
             </div>
 
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -306,24 +334,28 @@ class extends Component {
                         <img src="{{ $department->photo ? Storage::url($department->photo) : asset('images/placeholders/department-placeholder.webp') }}"
                             alt="{{ $department->name }}"
                             class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent">
+                        </div>
 
                         {{-- Type badge --}}
                         @if($department->type === 'non-academic')
-                        <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyan-500 text-white text-[10px] font-bold tracking-wide uppercase">
+                        <span
+                            class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyan-500 text-white text-[10px] font-bold tracking-wide uppercase">
                             Non-Academic
                         </span>
                         @endif
 
                         {{-- Icon overlay --}}
-                        <div class="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <div
+                            class="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
                             <i class="fas fa-{{ $department->icon ?? 'school' }} text-white text-xl"></i>
                         </div>
                     </div>
 
                     {{-- Content --}}
                     <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300 mb-3">
+                        <h3
+                            class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300 mb-3">
                             {{ $department->name }}
                         </h3>
                         <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-grow mb-4">
@@ -334,7 +366,8 @@ class extends Component {
                             <a href="{{ route('department', $department->slug) }}"
                                 class="inline-flex items-center justify-between w-full text-sm font-semibold text-gray-700 group-hover:text-primary transition-colors duration-300">
                                 <span>Explore Department</span>
-                                <span class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-all duration-300">
+                                <span
+                                    class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-all duration-300">
                                     <i class="fas fa-arrow-right text-xs"></i>
                                 </span>
                             </a>
@@ -351,7 +384,8 @@ class extends Component {
                             <i class="fas fa-layer-group text-white text-2xl"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-3">View All Departments</h3>
-                        <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-xs mx-auto">Explore our complete list of academic and non-academic departments.</p>
+                        <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-xs mx-auto">Explore our complete list
+                            of academic and non-academic departments.</p>
                         <a href="{{ route('departments') }}"
                             class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-primary bg-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
                             Explore All <i class="fas fa-arrow-right text-xs"></i>
@@ -362,7 +396,8 @@ class extends Component {
 
             {{-- Bottom CTA --}}
             <div class="mt-12 text-center" data-aos="fade-up">
-                <p class="text-gray-500 text-sm">Can't find what you're looking for? <a href="{{ route('contact') }}" class="text-primary font-semibold hover:underline">Contact us</a> for more information.</p>
+                <p class="text-gray-500 text-sm">Can't find what you're looking for? <a href="{{ route('contact') }}"
+                        class="text-primary font-semibold hover:underline">Contact us</a> for more information.</p>
             </div>
         </div>
     </section>
@@ -374,9 +409,12 @@ class extends Component {
     <section class="py-16 bg-white border-t border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-10" data-aos="fade-up">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Service Charter</span>
+                <span
+                    class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Service
+                    Charter</span>
                 <h2 class="text-2xl lg:text-3xl font-extrabold text-gray-900 mb-2">Our Service Commitment</h2>
-                <p class="text-gray-500 text-sm max-w-xl mx-auto">Learn about our commitment to quality service delivery.</p>
+                <p class="text-gray-500 text-sm max-w-xl mx-auto">Learn about our commitment to quality service
+                    delivery.</p>
             </div>
 
             <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
@@ -397,34 +435,56 @@ class extends Component {
                         <div id="en-content" class="charter-text">
                             <h3 class="text-2xl font-bold text-gray-900 mb-4">Service Charter</h3>
                             <p class="text-gray-600 leading-relaxed mb-6">
-                                Our service charter outlines our commitment to providing quality education and services to our students, parents, and stakeholders. We pledge to maintain the highest standards of professionalism, transparency, and accountability.
+                                Our service charter outlines our commitment to providing quality education and services
+                                to our students, parents, and stakeholders. We pledge to maintain the highest standards
+                                of professionalism, transparency, and accountability.
                             </p>
                             <ul class="space-y-3 mb-6">
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Quality technical and vocational education</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Timely response to inquiries</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Transparent admission processes</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Regular progress reports</span></li>
+                                <li class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                        class="text-gray-600">Quality technical and vocational education</span></li>
+                                <li class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                        class="text-gray-600">Timely response to inquiries</span></li>
+                                <li class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                        class="text-gray-600">Transparent admission processes</span></li>
+                                <li class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                        class="text-gray-600">Regular progress reports</span></li>
                             </ul>
                         </div>
                         <div id="sw-content" class="charter-text hidden">
                             <h3 class="text-2xl font-bold text-gray-900 mb-4">Mkataba wa Huduma</h3>
                             <p class="text-gray-600 leading-relaxed mb-6">
-                                Mkataba wetu wa huduma unaonyowa ahadi yetu ya kutoa elimu na huduma bora kwa wanafunzi, wazazi, na watendakazi. Tunaahidi kushikamia viwango vya juu vya kitaaluma, uwazi, na uwajibikaji.
+                                Mkataba wetu wa huduma unaonyowa ahadi yetu ya kutoa elimu na huduma bora kwa wanafunzi,
+                                wazazi, na watendakazi. Tunaahidi kushikamia viwango vya juu vya kitaaluma, uwazi, na
+                                uwajibikaji.
                             </p>
                             <ul class="space-y-3 mb-6">
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Elimu ya kiwandani na ufundi bora</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Majibu ya haraka kwa maswali</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Mchakato wa usajili wa uwazi</span></li>
-                                <li class="flex items-start gap-3"><i class="fas fa-check-circle text-primary mt-1"></i><span class="text-gray-600">Ripoti za kawaida za maendeleo</span></li>
+                                <li class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                        class="text-gray-600">Elimu ya kiwandani na ufundi bora</span></li>
+                                <li class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                        class="text-gray-600">Majibu ya haraka kwa maswali</span></li>
+                                <li class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                        class="text-gray-600">Mchakato wa usajili wa uwazi</span></li>
+                                <li class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                        class="text-gray-600">Ripoti za kawaida za maendeleo</span></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="flex items-center gap-4">
-                        <a href="#" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg font-semibold hover:brightness-110 transition-all">
+                        <a href="#"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg font-semibold hover:brightness-110 transition-all">
                             <i class="fas fa-download text-sm"></i> Download
                         </a>
-                        <button class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all">
+                        <button
+                            class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all">
                             <i class="fas fa-play text-sm"></i> Play Audio
                         </button>
                     </div>
@@ -458,8 +518,8 @@ class extends Component {
 
             <div class="grid gap-8 md:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
                 @foreach ($successStories as $story)
-                <div
-                    class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col pt-14 px-6 pb-6" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
+                <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col pt-14 px-6 pb-6"
+                    data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 }}">
 
                     {{-- Avatar (overlapping top) --}}
                     <div class="absolute -top-8 left-1/2 -translate-x-1/2">
@@ -516,7 +576,8 @@ class extends Component {
                 ] as $stat)
                 <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" data-aos-anchor-placement="top-bottom"
                     class="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 200 }}">
+                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0"
+                        data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 200 }}">
                         <i class="fas {{ $stat['icon'] }} text-white text-lg"></i>
                     </div>
                     <div>
@@ -575,7 +636,8 @@ class extends Component {
             <h2 class="text-3xl lg:text-4xl font-extrabold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
                 Ready to Start Your <span class="text-primary">Journey?</span>
             </h2>
-            <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto leading-relaxed" data-aos="fade-up"
+                data-aos-delay="200">
                 Join thousands of students who have transformed their lives through quality education at {{
                 $institution->name }}.
             </p>

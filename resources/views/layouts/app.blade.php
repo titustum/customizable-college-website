@@ -79,7 +79,6 @@
             <div class="flex items-center gap-5">
                 <div class="hidden sm:flex items-center gap-4 border-r border-gray-700 pr-5">
                     <a href="#" class="hover:text-orange-500 transition-colors">Tenders</a>
-                    <a href="#" class="hover:text-orange-500 transition-colors">Downloads</a>
                     <a href="#" class="hover:text-orange-500 transition-colors">Vacancies</a>
                     <a href="#" class="hover:text-orange-500 transition-colors font-semibold text-orange-400">ODeL</a>
                 </div>
@@ -137,13 +136,17 @@
                             </svg></button>
                         <div class="dropdown-menu rounded-b-lg overflow-hidden">
                             <a href="{{ route('principal.office') }}"
-                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Principal's Office</a>
+                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Principal's
+                                Office</a>
                             <a href="{{ route('deputy.admin') }}"
-                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy Principal – Administration</a>
+                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy
+                                Principal – Administration</a>
                             <a href="{{ route('deputy.academics') }}"
-                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy Principal – Academics</a>
+                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy
+                                Principal – Academics</a>
                             <a href="{{ route('staff.members') }}"
-                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Our Staff Team</a>
+                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Our
+                                Staff Team</a>
                         </div>
                     </div>
                     <div class="dropdown relative px-1">
@@ -182,6 +185,27 @@
                     </div>
                     <a href="{{ route('courses') }}"
                         class="nav-link px-3 py-2 text-sm font-semibold text-gray-800 hover:text-orange-600 transition-colors">Courses</a>
+                    <div class="dropdown relative px-1">
+
+                        <button
+                            class="nav-link flex items-center gap-1 px-3 py-2 text-sm font-semibold text-gray-800 hover:text-orange-600 transition-colors">
+                            More
+                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                            </svg></button>
+                        <div class="dropdown-menu rounded-b-lg overflow-hidden">
+                            <a href="{{ route('gallery') }}"
+                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Gallery</a>
+                            <a href="{{ route('news') }}"
+                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">News
+                                & Updates</a>
+                            <a href="{{ route('downloads') }}"
+                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Downloads</a>
+                            <a href="{{ route('past.papers') }}"
+                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Past
+                                Papers</a>
+                        </div>
+                    </div>
                     <a href="{{ route('contact') }}"
                         class="nav-link px-3 py-2 text-sm font-semibold text-gray-800 hover:text-orange-600 transition-colors">Contact
                         Us</a>
@@ -238,8 +262,10 @@
                     </svg></summary>
                 <div class="ml-4 mt-1 space-y-1 border-l-2 border-orange-200 pl-3">
                     <a href="{{ route('principal.office') }}" class="block py-2 text-sm">Principal's Office</a>
-                    <a href="{{ route('deputy.admin') }}" class="block py-2 text-sm">Deputy Principal – Administration</a>
-                    <a href="{{ route('deputy.academics') }}" class="block py-2 text-sm">Deputy Principal – Academics</a>
+                    <a href="{{ route('deputy.admin') }}" class="block py-2 text-sm">Deputy Principal –
+                        Administration</a>
+                    <a href="{{ route('deputy.academics') }}" class="block py-2 text-sm">Deputy Principal –
+                        Academics</a>
                     <a href="{{ route('staff.members') }}" class="block py-2 text-sm">Our Staff Team</a>
                 </div>
             </details>
@@ -266,6 +292,27 @@
             </details>
             <a href="{{ route('courses') }}"
                 class="block px-3 py-2.5 text-base font-semibold text-gray-800 hover:text-orange-600 hover:bg-orange-50 rounded-lg">Courses</a>
+            <details class="group">
+                <summary
+                    class="flex items-center justify-between px-3 py-2.5 text-base font-semibold text-gray-800 hover:text-orange-600 hover:bg-orange-50 rounded-lg cursor-pointer list-none">
+                    <span class="flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                        </svg>
+                        More
+                    </span>
+                    <svg class="w-4 h-4 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </summary>
+                <div class="ml-4 mt-1 border-l-2 border-orange-200 pl-3 space-y-2">
+                    <a href="{{ route('gallery') }}" class="block py-1 text-sm">Gallery</a>
+                    <a href="{{ route('news') }}" class="block py-1 text-sm">News & Updates</a>
+                    <a href="{{ route('downloads') }}" class="block py-1 text-sm">Downloads</a>
+                    <a href="{{ route('past.papers') }}" class="block py-1 text-sm">Past Papers</a>
+                </div>
+            </details>
             <a href="{{ route('contact') }}"
                 class="block px-3 py-2.5 text-base font-semibold text-gray-800 hover:text-orange-600 hover:bg-orange-50 rounded-lg">Contact
                 Us</a>
