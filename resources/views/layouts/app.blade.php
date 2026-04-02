@@ -156,7 +156,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                             </svg></button>
                         <div class="dropdown-menu mega rounded-b-lg p-6">
-                            <div class="grid grid-cols-2 gap-6">
+                            <div class="grid grid-cols-3 gap-6">
                                 <div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-orange-600 mb-3">
                                         Academic</div>
@@ -338,7 +338,7 @@
 
         <!-- Main footer content -->
         <div class="max-w-7xl mx-auto px-4 lg:px-8 py-14">
-            <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
 
                 <!-- Brand -->
                 <div data-aos="fade-up">
@@ -415,21 +415,6 @@
                     </ul>
                 </div>
 
-                <!-- Newsletter -->
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-sm font-bold tracking-widest uppercase text-gray-400 mb-4">Stay Connected</h3>
-                    <p class="text-sm text-gray-400 mb-4 leading-relaxed">Subscribe to our newsletter for the latest
-                        updates, news, and announcements.</p>
-                    <div
-                        class="flex rounded-lg overflow-hidden border border-white/10 focus-within:border-primary/50 transition-colors">
-                        <input type="email" placeholder="your@email.com"
-                            class="flex-1 px-3.5 py-2.5 bg-white/5 rounded-l-lg text-sm  text-white placeholder-gray-500 focus:outline-none">
-                        <button type="button"
-                            class="px-4 py-2.5 bg-primary hover:brightness-110 transition-all text-sm font-semibold whitespace-nowrap">
-                            Subscribe
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 

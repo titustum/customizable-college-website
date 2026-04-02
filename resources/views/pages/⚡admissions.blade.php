@@ -236,38 +236,15 @@ class extends Component
 
 <main class="bg-gray-50 min-h-screen">
     <!-- Hero Section -->
-    <section class="relative py-16 bg-primary text-white">
-        <div class="container mx-auto px-4 text-center">
-            <div class="max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Apply to {{ $institution->name }}</h1>
-                <p class="text-xl text-white/90 mb-8">Take the first step towards your future career. Complete your
-                    application in just a few minutes.</p>
-
-                <!-- Progress Indicator -->
-                <div class="flex justify-center items-center space-x-4 mb-8">
-                    @for ($i = 1; $i <= $totalSteps; $i++) <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
-                                {{ $i <= $currentStep ? 'bg-white text-primary' : 'bg-white/20 text-white/60' }}">
-                            {{ $i }}
-                        </div>
-                        @if ($i < $totalSteps) <div class="w-8 h-1 mx-2
-                                    {{ $i < $currentStep ? 'bg-white' : 'bg-white/20' }}">
-                </div>
-                @endif
-            </div>
-            @endfor
+    <section class="relative clip-diagonal grain py-20 overflow-hidden bg-gray-900">
+        <div class="absolute inset-0 z-0">
+            <img src="{{ asset('images/gate.jpg') }}" alt="Campus" class="object-cover w-full h-full opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90"></div>
         </div>
-
-        <!-- Step Labels -->
-        <div class="text-sm text-white/80">
-            Step {{ $currentStep }} of {{ $totalSteps }}:
-            @if($currentStep == 1) Personal Information
-            @elseif($currentStep == 2) Academic Background
-            @elseif($currentStep == 3) Course Selection
-            @else Parent/Guardian Information
-            @endif
-        </div>
-        </div>
+        <div class="container relative z-10 px-4 mx-auto text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-4" data-aos="fade-down">Admissions</span>
+            <h1 class="hero-display mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl" data-aos="fade-up">Apply to {{ $institution->name }}</h1>
+            <p class="max-w-2xl mx-auto text-lg text-gray-300 md:text-xl" data-aos="fade-up" data-aos-delay="100">Take the first step towards your future career. Complete your application in just a few minutes.</p>
         </div>
     </section>
 

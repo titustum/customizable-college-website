@@ -161,17 +161,33 @@ class extends Component
         @endif
     </div>
 
-    <section class="py-16 text-white bg-primary">
-        <div class="container px-4 mx-auto">
-            <div class="flex flex-col items-center justify-between md:flex-row">
-                <div class="mb-8 text-center md:mb-0 md:text-left">
-                    <h2 class="mb-4 text-3xl font-bold">Start Your Technical Training Journey</h2>
-                    <p class="max-w-xl text-white/90">Explore our diverse range of courses and find the right path for your career.</p>
-                </div>
-                <div class="flex flex-col gap-4 sm:flex-row">
-                    <a href="{{ route('courses') }}" class="px-6 py-3 font-bold text-center text-primary transition duration-300 bg-white rounded-lg hover:bg-gray-100">View Courses</a>
-                    <a href="{{ route('contact') }}" class="px-6 py-3 font-bold text-center text-white transition duration-300 border-2 border-white rounded-lg hover:bg-white/10">Contact Us</a>
-                </div>
+
+    {{-- ═══════════════════════════════════════════
+    CTA BANNER
+    ═══════════════════════════════════════════ --}}
+    <section class="relative py-16 overflow-hidden bg-cyan-950" data-aos="fade-up" data-aos-duration="800">
+        <div class="absolute inset-0 opacity-5"
+            style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 30px 30px;">
+        </div>
+        <div class="absolute left-0 top-0 h-full w-1 bg-primary" data-aos="fade-left" data-aos-delay="300"></div>
+
+        <div class="relative max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl lg:text-4xl font-extrabold text-white mb-4" data-aos="fade-up" data-aos-delay="100">
+                Start Your <span class="text-primary">Technical Training</span> Journey
+            </h2>
+            <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto leading-relaxed" data-aos="fade-up"
+                data-aos-delay="200">
+                Explore our diverse range of courses and find the right path for your career.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
+                <a href="{{ route('courses') }}"
+                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
+                    View Courses <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+                <a href="{{ route('contact') }}"
+                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
+                    <i class="fas fa-envelope text-xs"></i> Contact Us
+                </a>
             </div>
         </div>
     </section>

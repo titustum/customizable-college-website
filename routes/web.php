@@ -29,10 +29,10 @@ Route::livewire('/news', 'pages::news')->name('news');
 Route::livewire('/create-success-story', 'pages::success-stories-create')->name('create.success.story');
 
 // Admissions download (school verification)
-Route::livewire('/admissions', 'pages::download-admission-letter')->name('admissions');
+// Route::livewire('/admissions', 'pages::download-admission-letter')->name('admissions');
 
 // Full online admissions (uncomment if needed)
-// Route::livewire('/admissions', 'pages::admissions')->name('admissions');
+Route::livewire('/admissions', 'pages::admissions')->name('admissions');
 // Route::livewire('/admissions/complete/{id}', 'pages::admissions-complete')->name('admissions.complete');
 // Route::livewire('/admissions/download/{id}', 'pages::admissions-download')->name('admissions.download');
 // Route::livewire('/admissions/verify', 'pages::admissions-verify')->name('admissions.verify');

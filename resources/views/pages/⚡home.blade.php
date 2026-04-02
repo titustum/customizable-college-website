@@ -168,7 +168,7 @@ class extends Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <!-- Custom controls below slider -->
                         <div class="flex items-center justify-center gap-3 py-4 -mt-2">
                             <button class="hero-prev text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer">
@@ -642,7 +642,7 @@ class extends Component {
     {{-- ═══════════════════════════════════════════
     CTA BANNER
     ═══════════════════════════════════════════ --}}
-    <section class="relative py-16 overflow-hidden bg-gray-950" data-aos="fade-up" data-aos-duration="800">
+    <section class="relative py-16 overflow-hidden bg-cyan-950" data-aos="fade-up" data-aos-duration="800">
         {{-- background pattern --}}
         <div class="absolute inset-0 opacity-5"
             style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 30px 30px;">

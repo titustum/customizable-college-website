@@ -150,7 +150,7 @@ class extends Component
     </section>
 
     <!-- CTA Section -->
-    <section class="relative py-16 overflow-hidden bg-gray-950" data-aos="fade-up" data-aos-duration="800">
+    <section class="relative py-16 overflow-hidden bg-cyan-950" data-aos="fade-up" data-aos-duration="800">
         <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 30px 30px;"></div>
         <div class="absolute left-0 top-0 h-full w-1 bg-primary" data-aos="fade-left" data-aos-delay="300"></div>
         <div class="relative max-w-4xl mx-auto px-6 text-center">
