@@ -71,10 +71,16 @@ class extends Component
             <div class="flex flex-col md:flex-row">
                 @if ($principal)
                 <div class="md:w-1/3 lg:w-1/4">
-                    <div class="relative h-full">
+                    <div class="relative h-full min-h-[300px] md:min-h-[400px] bg-gray-200 flex items-center justify-center">
+                        @if ($institution->principal_photo)
                         <img src="{{ asset('storage/'.$institution->principal_photo) }}" alt="{{ $principal->name }}"
-                            class="object-cover w-full h-full"
-                            onerror="this.src='{{ asset('storage/'. $institution->principal_photo) }}'">
+                            class="object-cover w-full h-full">
+                        @else
+                        <div class="text-center">
+                            <i class="fas fa-user text-6xl text-gray-400"></i>
+                            <p class="mt-2 text-gray-500">Photo Coming Soon</p>
+                        </div>
+                        @endif
                         <div
                             class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent md:hidden">
                             <h2 class="text-2xl font-bold text-white">{{ $principal->name }}</h2>
@@ -170,7 +176,7 @@ class extends Component
         @if ($academicDepartmentsList->isNotEmpty())
         <section class="py-12 mb-12 bg-white rounded-lg shadow-md">
             <div class="px-8">
-                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Academic Departments</h2>
+                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Departments</h2>
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($academicDepartmentsList as $department)
                     <div
@@ -200,7 +206,7 @@ class extends Component
                                 @endif
 
                                 <div class="mt-3">
-                                    <a href="{{ route('department', $department->slug) }}"
+                                    <a href="{{ $department->type === 'academic' ? route('academic.department', $department->slug) : route('non.academic.department', $department->slug) }}"
                                         class="inline-flex items-center text-sm font-medium text-primary transition-all duration-300 group-hover:text-primary">
                                         Learn More
                                         <svg xmlns="http://www.w3.org/2000/svg"

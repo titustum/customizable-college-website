@@ -156,30 +156,31 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                             </svg></button>
                         <div class="dropdown-menu mega rounded-b-lg p-6">
-                            <div class="grid grid-cols-3 gap-6">
+                            @php
+                            $academicDepts = $departments->where('type', 'academic');
+                            $nonAcademicDepts = $departments->where('type', 'non-academic');
+                            @endphp
+                            <div class="grid grid-cols-2 gap-6">
+                                @if ($academicDepts->isNotEmpty())
                                 <div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-orange-600 mb-3">
-                                        Academic</div>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-orange-600 mb-3">Academic</div>
                                     <div class="space-y-1">
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">ICT</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Electrical</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Hospitality</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Mechanical</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Agriculture</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Fashion</a>
+                                        @foreach ($academicDepts as $dept)
+                                        <a href="{{ route('academic.department', $dept->slug) }}" class="flex items-center gap-2 py-1.5 text-sm hover:text-orange-600">{{ $dept->name }}</a>
+                                        @endforeach
                                     </div>
                                 </div>
+                                @endif
+                                @if ($nonAcademicDepts->isNotEmpty())
                                 <div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
-                                        Non-Academic</div>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Non-Academic</div>
                                     <div class="space-y-1">
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Administration</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Finance</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Procurement</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Library</a>
-                                        <a href="#" class="flex items-center gap-2 py-1.5 text-sm">Student Affairs</a>
+                                        @foreach ($nonAcademicDepts as $dept)
+                                        <a href="{{ route('non.academic.department', $dept->slug) }}" class="flex items-center gap-2 py-1.5 text-sm hover:text-orange-600">{{ $dept->name }}</a>
+                                        @endforeach
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -277,17 +278,22 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg></summary>
                 <div class="ml-4 mt-1 border-l-2 border-orange-200 pl-3 space-y-2">
+                    @php
+                    $academicDepts = $departments->where('type', 'academic');
+                    $nonAcademicDepts = $departments->where('type', 'non-academic');
+                    @endphp
+                    @if ($academicDepts->isNotEmpty())
                     <div class="text-xs font-bold uppercase text-orange-600 pt-1">Academic</div>
-                    <a href="#" class="block py-1 text-sm">ICT</a>
-                    <a href="#" class="block py-1 text-sm">Electrical</a>
-                    <a href="#" class="block py-1 text-sm">Hospitality</a>
-                    <a href="#" class="block py-1 text-sm">Mechanical</a>
-                    <a href="#" class="block py-1 text-sm">Agriculture</a>
-                    <a href="#" class="block py-1 text-sm">Fashion</a>
+                    @foreach ($academicDepts as $dept)
+                    <a href="{{ route('academic.department', $dept->slug) }}" class="block py-1 text-sm">{{ $dept->name }}</a>
+                    @endforeach
+                    @endif
+                    @if ($nonAcademicDepts->isNotEmpty())
                     <div class="text-xs font-bold uppercase text-gray-500 pt-1">Non-Academic</div>
-                    <a href="#" class="block py-1 text-sm">Administration</a>
-                    <a href="#" class="block py-1 text-sm">Finance</a>
-                    <a href="#" class="block py-1 text-sm">Student Affairs</a>
+                    @foreach ($nonAcademicDepts as $dept)
+                    <a href="{{ route('non.academic.department', $dept->slug) }}" class="block py-1 text-sm">{{ $dept->name }}</a>
+                    @endforeach
+                    @endif
                 </div>
             </details>
             <a href="{{ route('courses') }}"

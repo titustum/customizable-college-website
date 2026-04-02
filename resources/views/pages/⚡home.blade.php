@@ -20,7 +20,7 @@ class extends Component {
 
         return [
             'institution' => $institution,
-            'departments' => Department::all(),
+            // 'departments' => Department::where('type', 'academic')->get(), //only academic departments for the homepage
             'successStories'=> SuccessStory::where('is_approved', true)
                                             ->latest()
                                             ->take(3)
@@ -171,21 +171,30 @@ class extends Component {
 
                         <!-- Custom controls below slider -->
                         <div class="flex items-center justify-center gap-3 py-4 -mt-2">
-                            <button class="hero-prev text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer">
-                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <button
+                                class="hero-prev text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                                 </svg>
                             </button>
-                            <button class="hero-pause text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer" id="heroPauseBtn">
-                                <svg class="w-4 h-4 pause-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <button
+                                class="hero-pause text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer"
+                                id="heroPauseBtn">
+                                <svg class="w-4 h-4 pause-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6" />
                                 </svg>
-                                <svg class="w-4 h-4 play-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <svg class="w-4 h-4 play-icon hidden" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                 </svg>
                             </button>
-                            <button class="hero-next text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer">
-                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <button
+                                class="hero-next text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
@@ -342,7 +351,7 @@ class extends Component {
             </div>
 
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                @foreach ($departments as $department)
+                @foreach ($departments->where('type', 'academic') as $department)
                 <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}"
                     class="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col">
 
@@ -380,7 +389,8 @@ class extends Component {
                         </p>
 
                         <div class="pt-4 border-t border-gray-100">
-                            <a href="{{ route('department', $department->slug) }}"
+                            <a href="{{ route('academic.department', $department->slug) }}" {{-- Assuming all
+                                departments have an academic page for now --}}
                                 class="inline-flex items-center justify-between w-full text-sm font-semibold text-gray-700 group-hover:text-primary transition-colors duration-300">
                                 <span>Explore Department</span>
                                 <span
@@ -392,29 +402,14 @@ class extends Component {
                     </div>
                 </div>
                 @endforeach
-
-                {{-- View All CTA tile --}}
-                <div data-aos="fade-up" data-aos-delay="{{ count($departments) * 80 }}"
-                    class="relative group flex items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-8 text-center shadow-lg hover:shadow-2xl transition-all overflow-hidden">
-                    <div class="relative">
-                        <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-5">
-                            <i class="fas fa-layer-group text-white text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">View All Departments</h3>
-                        <p class="text-white/80 text-sm leading-relaxed mb-6 max-w-xs mx-auto">Explore our complete list
-                            of academic and non-academic departments.</p>
-                        <a href="{{ route('departments') }}"
-                            class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-primary bg-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                            Explore All <i class="fas fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
 
-            {{-- Bottom CTA --}}
-            <div class="mt-12 text-center" data-aos="fade-up">
-                <p class="text-gray-500 text-sm">Can't find what you're looking for? <a href="{{ route('contact') }}"
-                        class="text-primary font-semibold hover:underline">Contact us</a> for more information.</p>
+            {{-- View All Button --}}
+            <div class="mt-10 text-center" data-aos="fade-up">
+                <a href="{{ route('departments') }}"
+                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
+                    View All Departments <i class="fas fa-arrow-right text-xs"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -583,8 +578,9 @@ class extends Component {
                 </a>
             </div>
 
+
             {{-- Stats strip --}}
-            <div class="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div class="mt-16 grid gap-6 grid-cols-2 lg:grid-cols-4">
                 @foreach([
                 ['target' => 92, 'suffix' => '%', 'label' => 'Graduation Rate', 'icon' => 'fa-graduation-cap'],
                 ['target' => 85, 'suffix' => '%', 'label' => 'Job Placement', 'icon' => 'fa-briefcase'],
@@ -592,13 +588,13 @@ class extends Component {
                 ['target' => 120, 'suffix' => '+', 'label' => 'Certifications', 'icon' => 'fa-award'],
                 ] as $stat)
                 <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" data-aos-anchor-placement="top-bottom"
-                    class="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow transition-all">
-                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0"
+                    class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow transition-all text-center sm:text-left">
+                    <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0 mx-auto sm:mx-0"
                         data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 200 }}">
                         <i class="fas {{ $stat['icon'] }} text-white text-lg"></i>
                     </div>
                     <div>
-                        <div class="text-3xl font-extrabold text-gray-900 leading-none">
+                        <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-none">
                             <span class="counter" data-target="{{ $stat['target'] }}">0</span>{{ $stat['suffix'] }}
                         </div>
                         <div class="text-gray-500 text-sm mt-0.5">{{ $stat['label'] }}</div>
@@ -606,6 +602,8 @@ class extends Component {
                 </div>
                 @endforeach
             </div>
+
+
         </div>
     </section>
 

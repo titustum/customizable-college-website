@@ -10,7 +10,7 @@ new
 class extends Component
 {
     public $deputyAdmin;
-    public $academicDepartmentsList = [];
+    public $nonAcademicDepartmentsList = [];
     public $institution;
 
     public function mount(): void
@@ -21,7 +21,7 @@ class extends Component
             })
             ->first();
 
-        $this->academicDepartmentsList = Department::all();
+        $this->nonAcademicDepartmentsList = Department::where('type', 'non-academic')->get();
     }
 }
 ?>
@@ -32,10 +32,17 @@ class extends Component
             <div class="flex flex-col md:flex-row">
                 @if ($deputyAdmin)
                 <div class="md:w-1/3 lg:w-1/4">
-                    <div class="relative h-full">
-                        <img src="{{ $deputyAdmin->photo ? asset('storage/'.$deputyAdmin->photo) : asset('images/placeholder-user.png') }}" 
+                    <div class="relative h-full min-h-[300px] md:min-h-[400px] bg-gray-200 flex items-center justify-center">
+                        @if ($deputyAdmin->photo)
+                        <img src="{{ asset('storage/'.$deputyAdmin->photo) }}" 
                             alt="{{ $deputyAdmin->name }}"
                             class="object-cover w-full h-full">
+                        @else
+                        <div class="text-center">
+                            <i class="fas fa-user text-6xl text-gray-400"></i>
+                            <p class="mt-2 text-gray-500">Photo Coming Soon</p>
+                        </div>
+                        @endif
                         <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent md:hidden">
                             <h2 class="text-2xl font-bold text-white">{{ $deputyAdmin->name }}</h2>
                             <p class="text-lg text-gray-200">Deputy Principal Administration</p>
@@ -99,12 +106,12 @@ class extends Component
             </div>
         </section>
 
-        @if ($academicDepartmentsList->isNotEmpty())
+        @if ($nonAcademicDepartmentsList->isNotEmpty())
         <section class="py-12 mb-12 bg-white rounded-lg shadow-md">
             <div class="px-8">
-                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Departments Under Administration</h2>
+                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Non-Academic Departments</h2>
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($academicDepartmentsList as $department)
+                    @foreach ($nonAcademicDepartmentsList as $department)
                     <div class="p-6 transition-all duration-300 bg-white border-t-4 border-primary rounded-md shadow-sm hover:shadow-md group">
                         <div class="flex items-start">
                             <div class="flex items-center justify-center w-12 h-12 mr-4 text-white bg-primary rounded-full">
@@ -116,7 +123,7 @@ class extends Component
                                 <h4 class="font-semibold text-gray-800">{{ $department->name }}</h4>
                                 <p class="mt-1 text-sm text-gray-600">{{ $department->description ?? 'Explore the programs offered within this department.' }}</p>
                                 <div class="mt-3">
-                                    <a href="{{ route('department', $department->slug) }}" class="inline-flex items-center text-sm font-medium text-primary transition-all duration-300 group-hover:text-primary">
+                                    <a href="{{ route('non.academic.department', $department->slug) }}" class="inline-flex items-center text-sm font-medium text-primary transition-all duration-300 group-hover:text-primary">
                                         Learn More
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />

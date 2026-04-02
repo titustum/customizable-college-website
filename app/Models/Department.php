@@ -12,6 +12,7 @@ class Department extends Model
 
     protected $fillable = [
         'name',
+        'type',
         'photo',
         'short_desc',
         'full_desc',
@@ -20,6 +21,16 @@ class Department extends Model
         'facility_pic2',
         'slug',
     ];
+
+    public function getHodAttribute()
+    {
+        return $this->teamMembers()->where('is_hod', true)->first();
+    }
+
+    public function getTrainersAttribute()
+    {
+        return $this->teamMembers()->where('is_hod', false)->get();
+    }
 
     public function courses()
     {

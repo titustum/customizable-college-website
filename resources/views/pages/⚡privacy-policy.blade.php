@@ -1,6 +1,22 @@
+<?php
+
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+
+new
+#[Title('Privacy Policy')]
+#[Layout('layouts.app')]
+class extends Component
+{
+    //
+};
+
+?>
+
 <main class="overflow-hidden">
 
-    <!-- 🟦 Hero Section -->
+    <!-- Hero Section -->
     <section class="relative py-24 bg-gray-900">
         <div class="absolute inset-0">
             <img src="{{ asset('images/gate.jpg') }}" alt="Tetu TVC Campus"
@@ -17,16 +33,14 @@
         </div>
     </section>
 
-    <!-- 📄 Privacy Policy Section -->
+    <!-- Privacy Policy Section -->
     <section class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-6 md:px-10 lg:px-12 text-gray-800">
-            <!-- Section: Overview -->
             <h2 class="text-2xl font-bold mb-4">Overview</h2>
             <p class="mb-6 leading-relaxed">
                 This Privacy Policy outlines how we handle your personal data when you use our website and services.
             </p>
 
-            <!-- Section: Information We Collect -->
             <h2 class="text-xl font-semibold mb-3">Information We Collect</h2>
             <ul class="list-disc pl-6 space-y-2 mb-6">
                 <li>Your name and contact information</li>
@@ -34,7 +48,6 @@
                 <li>Cookies and session information</li>
             </ul>
 
-            <!-- Section: How We Use Information -->
             <h2 class="text-xl font-semibold mb-3">How We Use Your Information</h2>
             <ul class="list-disc pl-6 space-y-2 mb-6">
                 <li>Improve our services and your experience</li>
@@ -42,7 +55,6 @@
                 <li>Meet legal, regulatory, and security requirements</li>
             </ul>
 
-            <!-- Section: Your Rights -->
             <h2 class="text-xl font-semibold mb-3">Your Rights</h2>
             <ul class="list-disc pl-6 space-y-2 mb-6">
                 <li>Access your personal data</li>
@@ -50,7 +62,6 @@
                 <li>Withdraw consent at any time</li>
             </ul>
 
-            <!-- Section: Contact -->
             <h2 class="text-xl font-semibold mb-3">Contact Us</h2>
             <p class="mb-2 leading-relaxed">
                 If you have any questions about this policy, feel free to contact us at:

@@ -23,7 +23,7 @@ class extends Component
             })
             ->first();
 
-        $this->academicDepartmentsList = Department::all();
+        $this->academicDepartmentsList = Department::where('type', 'academic')->get();
         $this->coursesList = Course::with('department')->take(6)->get();
     }
 }
@@ -35,10 +35,17 @@ class extends Component
             <div class="flex flex-col md:flex-row">
                 @if ($deputyAcademics)
                 <div class="md:w-1/3 lg:w-1/4">
-                    <div class="relative h-full">
-                        <img src="{{ $deputyAcademics->photo ? asset('storage/'.$deputyAcademics->photo) : asset('images/placeholder-user.png') }}" 
+                    <div class="relative h-full min-h-[300px] md:min-h-[400px] bg-gray-200 flex items-center justify-center">
+                        @if ($deputyAcademics->photo)
+                        <img src="{{ asset('storage/'.$deputyAcademics->photo) }}" 
                             alt="{{ $deputyAcademics->name }}"
                             class="object-cover w-full h-full">
+                        @else
+                        <div class="text-center">
+                            <i class="fas fa-user text-6xl text-gray-400"></i>
+                            <p class="mt-2 text-gray-500">Photo Coming Soon</p>
+                        </div>
+                        @endif
                         <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent md:hidden">
                             <h2 class="text-2xl font-bold text-white">{{ $deputyAcademics->name }}</h2>
                             <p class="text-lg text-gray-200">Deputy Principal Academics</p>
@@ -119,7 +126,7 @@ class extends Component
                                 <h4 class="font-semibold text-gray-800">{{ $department->name }}</h4>
                                 <p class="mt-1 text-sm text-gray-600">{{ $department->description ?? 'Explore the programs offered within this department.' }}</p>
                                 <div class="mt-3">
-                                    <a href="{{ route('department', $department->slug) }}" class="inline-flex items-center text-sm font-medium text-primary transition-all duration-300 group-hover:text-primary">
+                                    <a href="{{ route('academic.department', $department->slug) }}" class="inline-flex items-center text-sm font-medium text-primary transition-all duration-300 group-hover:text-primary">
                                         Learn More
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
