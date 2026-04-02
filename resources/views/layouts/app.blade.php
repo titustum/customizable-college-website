@@ -116,7 +116,7 @@
                 <a href="{{ route('home') }}" class="flex items-center gap-3 flex-shrink-0">
                     <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-10 w-auto object-contain">
                     <div class="leading-tight">
-                        <div class="font-display font-bold text-gray-900 text-lg leading-none">TETU TVC</div>
+                        <div class="font-righteous font-bold text-gray-900 text-lg leading-none">TETU TVC</div>
                         <div class="text-xs text-gray-500 tracking-wide">Skills for Industrial Growth</div>
                     </div>
                 </a>
