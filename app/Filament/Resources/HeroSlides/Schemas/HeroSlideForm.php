@@ -21,17 +21,11 @@ class HeroSlideForm
                             ->image()
                             ->disk('public')
                             ->directory('hero-slides'),
-                        TextInput::make('title')
-                            ->required(),
-                        TextInput::make('subtitle')
-                            ->required(),
+                        TextInput::make('title'),
+                        TextInput::make('subtitle'),
                         TextInput::make('slogan'),
-                        TextInput::make('button_text')
-                            ->required()
-                            ->default('Join Us Now'),
-                        TextInput::make('button_link')
-                            ->required()
-                            ->default('#'),
+                        TextInput::make('button_text'),
+                        TextInput::make('button_link'),
                     ]),
             ]);
     }

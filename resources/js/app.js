@@ -125,3 +125,49 @@ window.switchCharter = function(lang) {
         }
     }
 };
+
+// Hero Swiper Slider
+function initHeroSwiper() {
+    const heroSwiperEl = document.querySelector('.heroSwiper');
+    if (!heroSwiperEl || typeof Swiper === 'undefined') return;
+
+    const existingSwiper = heroSwiperEl.swiper;
+    if (existingSwiper) {
+        existingSwiper.destroy(true, true);
+    }
+
+    const swiper = new Swiper('.heroSwiper', {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.hero-next',
+            prevEl: '.hero-prev',
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        }
+    });
+
+    const pauseBtn = document.getElementById('heroPauseBtn');
+    if (pauseBtn) {
+        pauseBtn.onclick = function() {
+            if (swiper.autoplay.running) {
+                swiper.autoplay.stop();
+                this.querySelector('.pause-icon').classList.add('hidden');
+                this.querySelector('.play-icon').classList.remove('hidden');
+            } else {
+                swiper.autoplay.start();
+                this.querySelector('.pause-icon').classList.remove('hidden');
+                this.querySelector('.play-icon').classList.add('hidden');
+            }
+        };
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initHeroSwiper);
+window.addEventListener('load', initHeroSwiper);
+window.addEventListener('livewire:navigated', initHeroSwiper);

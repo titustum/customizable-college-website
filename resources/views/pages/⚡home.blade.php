@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\SuccessStory;
 use App\Models\Partner;
 use App\Models\HeroSlide;
+use App\Models\Institution;
 
 new
 #[Title('Welcome to Our College')]
@@ -15,7 +16,10 @@ class extends Component {
 
     public function with()
     {
+        $institution = Institution::first() ?? (object) ['name' => 'Our College', 'phone' => ''];
+
         return [
+            'institution' => $institution,
             'departments' => Department::all(),
             'successStories'=> SuccessStory::where('is_approved', true)
                                             ->latest()
@@ -69,9 +73,9 @@ class extends Component {
                     Tetu Technical and Vocational College offers world-class technical education designed to equip
                     students with practical skills for today's economy. Located in Tetu Sub-County, Nyeri County.
                 </p>
-                <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="500">
-                    <a href="#"
-                        class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5"
+                <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="500">
+                    <a href="{{ route('admissions') }}"
+                        class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5"
                         data-aos="zoom-in" data-aos-delay="600">
                         Apply for Admission
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor">
@@ -79,41 +83,41 @@ class extends Component {
                                 d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                         </svg>
                     </a>
-                    <a href="#courses"
-                        class="inline-flex items-center gap-2 border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5"
+                    <a href="{{ route('courses') }}"
+                        class="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5"
                         data-aos="zoom-in" data-aos-delay="700">
                         Browse Courses
                     </a>
                 </div>
-                <!-- Accreditation badges -->
-                <div class="flex flex-wrap gap-4 mt-10 pt-8 border-t border-gray-700" data-aos="fade-up"
+                <!-- Trust indicators / Social proof -->
+                <div class="flex flex-wrap gap-6 mt-10 pt-8 border-t border-gray-700" data-aos="fade-up"
                     data-aos-delay="800">
-                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right"
-                        data-aos-delay="900">
-                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
-                            stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-                        </svg>
-                        TVETA Registered
+                    <div class="flex items-center gap-2" data-aos="fade-right" data-aos-delay="900">
+                        <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
+                            <i class="fas fa-users text-orange-500"></i>
+                        </div>
+                        <div>
+                            <span class="block text-white font-bold">2000+</span>
+                            <span class="text-xs text-gray-400">Happy Students</span>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right"
-                        data-aos-delay="1000">
-                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
-                            stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                        </svg>
-                        KNQA Aligned
+                    <div class="flex items-center gap-2" data-aos="fade-right" data-aos-delay="1100">
+                        <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
+                            <i class="fas fa-briefcase text-orange-500"></i>
+                        </div>
+                        <div>
+                            <span class="block text-white font-bold">85%+</span>
+                            <span class="text-xs text-gray-400">Job Placement</span>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2 text-sm text-gray-400" data-aos="fade-right"
-                        data-aos-delay="1100">
-                        <svg class="w-5 h-5 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24"
-                            stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-                        </svg>
-                        CBC Competency-Based
+                    <div class="flex items-center gap-2" data-aos="fade-right" data-aos-delay="1200">
+                        <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
+                            <i class="fas fa-star text-orange-500"></i>
+                        </div>
+                        <div>
+                            <span class="block text-white font-bold">4.8/5</span>
+                            <span class="text-xs text-gray-400">Student Rating</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,57 +127,70 @@ class extends Component {
                 <div class="relative">
                     <!-- Main card -->
                     <div
-                        class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-                        <!-- Placeholder image area with gradient -->
-                        <div
-                            class="h-64 bg-gradient-to-br from-orange-700 via-orange-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
-                            <div class="absolute inset-0 opacity-30">
-                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
-                                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" />
-                                        </pattern>
-                                    </defs>
-                                    <rect width="100%" height="100%" fill="url(#grid2)" />
-                                </svg>
-                            </div>
-                            <div class="relative text-center text-white px-8">
-                                <div
-                                    class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                                    <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-                                    </svg>
+                        class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl overflow-visible shadow-2xl">
+                        <!-- Hero image Swiper slider -->
+                        <div class="relative h-[500px] overflow-hidden rounded-t-2xl">
+                            <div class="swiper heroSwiper w-full h-full">
+                                <div class="swiper-wrapper">
+                                    @if(count($heroSlides) > 0)
+                                    @foreach($heroSlides as $slide)
+                                    <div class="swiper-slide relative">
+                                        <img src="{{ Storage::url($slide->image) }}"
+                                            alt="{{ $slide->title ?? 'Hero Image' }}"
+                                            class="w-full h-full object-cover">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/30 to-transparent">
+                                        </div>
+                                        @if($slide->title || $slide->subtitle)
+                                        <div class="absolute bottom-4 left-4 right-4">
+                                            @if($slide->title)
+                                            <p class="text-white font-semibold text-lg">{{ $slide->title }}</p>
+                                            @endif
+                                            @if($slide->subtitle)
+                                            <p class="text-white/80 text-sm">{{ $slide->subtitle }}</p>
+                                            @endif
+                                        </div>
+                                        @endif
+                                    </div>
+                                    @endforeach
+                                    @else
+                                    <div class="swiper-slide relative">
+                                        <img src="https://tetutvc.ac.ke/storage/hero_slide_images/tetu-tvc-ict-practicals.jpg"
+                                            alt="Hero Image" class="w-full h-full object-cover">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/30 to-transparent">
+                                        </div>
+                                        <div class="absolute bottom-4 left-4 right-4">
+                                            <p class="text-white font-semibold text-lg">Hands-on Learning Experience</p>
+                                        </div>
+                                    </div>
+                                    @endif
                                 </div>
-                                <p class="font-display text-2xl font-bold">Tetu TVC</p>
-                                <p class="text-orange-200 text-sm mt-1">Nyeri County, Kenya</p>
                             </div>
                         </div>
-                        <!-- Quick stats row -->
-                        <div class="grid grid-cols-3 divide-x divide-white/10" data-aos="fade-up" data-aos-delay="600">
-                            <div class="text-center py-5 px-4">
-                                <div class="text-3xl font-display font-bold text-orange-400">6+</div>
-                                <div class="text-gray-400 text-xs mt-1">Departments</div>
-                            </div>
-                            <div class="text-center py-5 px-4">
-                                <div class="text-3xl font-display font-bold text-orange-400">20+</div>
-                                <div class="text-gray-400 text-xs mt-1">Programmes</div>
-                            </div>
-                            <div class="text-center py-5 px-4">
-                                <div class="text-3xl font-display font-bold text-orange-400">500+</div>
-                                <div class="text-gray-400 text-xs mt-1">Students</div>
-                            </div>
+                        
+                        <!-- Custom controls below slider -->
+                        <div class="flex items-center justify-center gap-3 py-4 -mt-2">
+                            <button class="hero-prev text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </button>
+                            <button class="hero-pause text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer" id="heroPauseBtn">
+                                <svg class="w-4 h-4 pause-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6" />
+                                </svg>
+                                <svg class="w-4 h-4 play-icon hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                </svg>
+                            </button>
+                            <button class="hero-next text-white opacity-70 hover:opacity-100 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center transition-all border-0 cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
                         </div>
-                    </div>
-                    <!-- Floating badge -->
-                    <div class="absolute -bottom-5 -left-5 bg-orange-600 text-white px-4 py-3 rounded-xl shadow-xl text-sm font-bold flex items-center gap-2"
-                        data-aos="zoom-in" data-aos-delay="800">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
-                        </svg>
-                        Intake 2025 Open!
+
                     </div>
                 </div>
             </div>
@@ -653,5 +670,19 @@ class extends Component {
             </div>
         </div>
     </section>
+
+    <!-- WhatsApp Chat Button -->
+    <div class="fixed z-50 bottom-6 right-6">
+        <a href="https://wa.me/{{ $institution->phone }}" target="_blank" rel="noopener noreferrer"
+            class="relative flex items-center gap-2 px-4 py-3 text-white bg-green-600 rounded-full shadow-xl hover:bg-green-700 focus:outline-none transition-all hover:scale-110 animate-bounce shadow-green-600/30">
+            <span class="absolute -top-1 -right-1 flex h-4 w-4">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-4 w-4 bg-green-500"></span>
+            </span>
+            <i class="fab fa-whatsapp text-xl"></i>
+            <span class="font-semibold hidden sm:inline">Chat</span>
+        </a>
+    </div>
 
 </main>
