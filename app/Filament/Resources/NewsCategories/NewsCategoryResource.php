@@ -6,6 +6,9 @@ use App\Filament\Resources\NewsCategories\Pages\CreateNewsCategory;
 use App\Filament\Resources\NewsCategories\Pages\EditNewsCategory;
 use App\Filament\Resources\NewsCategories\Pages\ListNewsCategories;
 use App\Filament\Resources\NewsCategories\Pages\ViewNewsCategory;
+use App\Filament\Resources\NewsCategories\Schemas\NewsCategoryForm;
+use App\Filament\Resources\NewsCategories\Schemas\NewsCategoryInfolist;
+use App\Filament\Resources\NewsCategories\Tables\NewsCategoriesTable;
 use App\Models\NewsCategory;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -19,50 +22,21 @@ class NewsCategoryResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTag;
 
-    protected static ?string $recordTitleAttribute = 'name';
-
     protected static ?int $navigationSort = 12;
 
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->schema([
-                \Filament\Forms\Components\TextInput::make('name')->required(),
-                \Filament\Forms\Components\TextInput::make('slug')->required(),
-                \Filament\Forms\Components\Textarea::make('description'),
-            ]);
+        return NewsCategoryForm::configure($schema);
     }
 
     public static function infolist(Schema $schema): Schema
     {
-        return $schema
-            ->schema([
-                \Filament\Infolists\Components\TextEntry::make('name'),
-                \Filament\Infolists\Components\TextEntry::make('slug'),
-                \Filament\Infolists\Components\TextEntry::make('description'),
-            ]);
+        return NewsCategoryInfolist::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                \Filament\Tables\Columns\TextColumn::make('name'),
-                \Filament\Tables\Columns\TextColumn::make('slug'),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                \Filament\Tables\Actions\ViewAction::make(),
-                \Filament\Tables\Actions\EditAction::make(),
-                \Filament\Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                \Filament\Tables\Actions\BulkActionGroup::make([
-                    \Filament\Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        return NewsCategoriesTable::configure($table);
     }
 
     public static function getRelations(): array

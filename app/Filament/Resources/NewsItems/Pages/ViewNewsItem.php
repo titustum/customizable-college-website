@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Galleries\Pages;
+namespace App\Filament\Resources\NewsItems\Pages;
 
-use App\Filament\Resources\Galleries\GalleryResource;
+use App\Filament\Resources\NewsItems\NewsItemResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewGallery extends ViewRecord
+class ViewNewsItem extends ViewRecord
 {
-    protected static string $resource = GalleryResource::class;
+    protected static string $resource = NewsItemResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\Galleries\Pages;
+namespace App\Filament\Resources\NewsItems\Pages;
 
-use App\Filament\Resources\Galleries\GalleryResource;
+use App\Filament\Resources\NewsItems\NewsItemResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditGallery extends EditRecord
+class EditNewsItem extends EditRecord
 {
-    protected static string $resource = GalleryResource::class;
+    protected static string $resource = NewsItemResource::class;
 
     protected function getHeaderActions(): array
     {

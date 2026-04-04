@@ -6,6 +6,9 @@ use App\Filament\Resources\Galleries\Pages\CreateGallery;
 use App\Filament\Resources\Galleries\Pages\EditGallery;
 use App\Filament\Resources\Galleries\Pages\ListGalleries;
 use App\Filament\Resources\Galleries\Pages\ViewGallery;
+use App\Filament\Resources\Galleries\Schemas\GalleryForm;
+use App\Filament\Resources\Galleries\Schemas\GalleryInfolist;
+use App\Filament\Resources\Galleries\Tables\GalleriesTable;
 use App\Models\Gallery;
 use BackedEnum;
 use Filament\Resources\Resource;
@@ -19,50 +22,21 @@ class GalleryResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhoto;
 
-    protected static ?string $recordTitleAttribute = 'name';
-
     protected static ?int $navigationSort = 10;
 
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->schema([
-                \Filament\Forms\Components\TextInput::make('name')->required(),
-                \Filament\Forms\Components\Textarea::make('description'),
-                \Filament\Forms\Components\FileUpload::make('image')->image(),
-            ]);
+        return GalleryForm::configure($schema);
     }
 
     public static function infolist(Schema $schema): Schema
     {
-        return $schema
-            ->schema([
-                \Filament\Infolists\Components\TextEntry::make('name'),
-                \Filament\Infolists\Components\TextEntry::make('description'),
-                \Filament\Infolists\Components\ImageEntry::make('image'),
-            ]);
+        return GalleryInfolist::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->columns([
-                \Filament\Tables\Columns\ImageColumn::make('image'),
-                \Filament\Tables\Columns\TextColumn::make('name'),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                \Filament\Tables\Actions\ViewAction::make(),
-                \Filament\Tables\Actions\EditAction::make(),
-                \Filament\Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                \Filament\Tables\Actions\BulkActionGroup::make([
-                    \Filament\Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+        return GalleriesTable::configure($table);
     }
 
     public static function getRelations(): array
