@@ -57,7 +57,7 @@
     <!-- TOP HEADER BAR (unchanged) -->
     <div class="bg-gray-900 text-gray-300 text-sm py-2 px-4">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-y-2">
-            <div class="flex flex-wrap items-center gap-4">
+            <div class="flex-grow flex justify-between md:justify-start items-center gap-4">
                 <a href="tel:+254758660300" class="flex items-center gap-1.5 hover:text-orange-500 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.7" stroke="currentColor">
@@ -76,13 +76,13 @@
                     info@tetutvc.ac.ke
                 </a>
             </div>
-            <div class="flex items-center gap-5">
-                <div class="hidden sm:flex items-center gap-4 border-r border-gray-700 pr-5">
+            <div class="hidden sm:flex items-center gap-5">
+                <div class="flex items-center gap-4 border-r border-gray-700 pr-5">
                     <a href="#" class="hover:text-orange-500 transition-colors">Tenders</a>
                     <a href="#" class="hover:text-orange-500 transition-colors">Vacancies</a>
                     <a href="#" class="hover:text-orange-500 transition-colors font-semibold text-orange-400">ODeL</a>
                 </div>
-                <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-3">
                     <a href="#" aria-label="Facebook" class="hover:text-orange-500 transition-colors"><svg
                             class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -163,20 +163,26 @@
                             <div class="grid grid-cols-2 gap-6">
                                 @if ($academicDepts->isNotEmpty())
                                 <div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-orange-600 mb-3">Academic</div>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-orange-600 mb-3">
+                                        Academic</div>
                                     <div class="space-y-1">
                                         @foreach ($academicDepts as $dept)
-                                        <a href="{{ route('academic.department', $dept->slug) }}" class="flex items-center gap-2 py-1.5 text-sm hover:text-orange-600">{{ $dept->name }}</a>
+                                        <a href="{{ route('academic.department', $dept->slug) }}"
+                                            class="flex items-center gap-2 py-1.5 text-sm hover:text-orange-600">{{
+                                            $dept->name }}</a>
                                         @endforeach
                                     </div>
                                 </div>
                                 @endif
                                 @if ($nonAcademicDepts->isNotEmpty())
                                 <div>
-                                    <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Non-Academic</div>
+                                    <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
+                                        Non-Academic</div>
                                     <div class="space-y-1">
                                         @foreach ($nonAcademicDepts as $dept)
-                                        <a href="{{ route('non.academic.department', $dept->slug) }}" class="flex items-center gap-2 py-1.5 text-sm hover:text-orange-600">{{ $dept->name }}</a>
+                                        <a href="{{ route('non.academic.department', $dept->slug) }}"
+                                            class="flex items-center gap-2 py-1.5 text-sm hover:text-orange-600">{{
+                                            $dept->name }}</a>
                                         @endforeach
                                     </div>
                                 </div>
@@ -285,13 +291,15 @@
                     @if ($academicDepts->isNotEmpty())
                     <div class="text-xs font-bold uppercase text-orange-600 pt-1">Academic</div>
                     @foreach ($academicDepts as $dept)
-                    <a href="{{ route('academic.department', $dept->slug) }}" class="block py-1 text-sm">{{ $dept->name }}</a>
+                    <a href="{{ route('academic.department', $dept->slug) }}" class="block py-1 text-sm">{{ $dept->name
+                        }}</a>
                     @endforeach
                     @endif
                     @if ($nonAcademicDepts->isNotEmpty())
                     <div class="text-xs font-bold uppercase text-gray-500 pt-1">Non-Academic</div>
                     @foreach ($nonAcademicDepts as $dept)
-                    <a href="{{ route('non.academic.department', $dept->slug) }}" class="block py-1 text-sm">{{ $dept->name }}</a>
+                    <a href="{{ route('non.academic.department', $dept->slug) }}" class="block py-1 text-sm">{{
+                        $dept->name }}</a>
                     @endforeach
                     @endif
                 </div>
@@ -302,9 +310,6 @@
                 <summary
                     class="flex items-center justify-between px-3 py-2.5 text-base font-semibold text-gray-800 hover:text-orange-600 hover:bg-orange-50 rounded-lg cursor-pointer list-none">
                     <span class="flex items-center gap-2">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
-                        </svg>
                         More
                     </span>
                     <svg class="w-4 h-4 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24"

@@ -22,15 +22,14 @@ class extends Component
 
         return [
             'institution' => $institution,
-            'departments' => Department::with(['courses' => function ($query) {
-                $query->when($this->search, function ($q) {
-                    $q->where('name', 'like', '%' . $this->search . '%');
-                });
-            }])
-            ->when($this->department, function ($query) {
-                $query->where('name', $this->department);
-            })
-            ->get(),
+            'departments' => Department::where('type', 'academic')
+                ->with(['courses' => function ($query) {
+                    $query->when($this->search, function ($q) {
+                        $q->where('name', 'like', '%' . $this->search . '%');
+                    });
+                }])
+                ->get(),
+            'allDepartments' => Department::where('type', 'academic')->pluck('name'),
         ];
     }
 
@@ -70,7 +69,7 @@ class extends Component
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <!-- Search and Filter -->
-            <div class="mb-10 flex flex-col md:flex-row gap-4" data-aos="fade-up">
+            <div class="mb-10 flex flex-col md:flex-row gap-4">
                 <div class="flex-grow">
                     <div class="relative">
                         <input wire:model.debounce.300ms="search" type="text" placeholder="Search courses..."
@@ -84,16 +83,15 @@ class extends Component
                     <select wire:model.live="department" wire:key="department-select"
                         class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
                         <option value="">All Departments</option>
-                        @foreach($departments as $dept)
-                        <option value="{{ $dept->name }}">{{ $dept->name }}</option>
+                        @foreach($allDepartments as $name)
+                        <option value="{{ $name }}">{{ $name }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
 
-            @foreach($departments as $departmentIndex => $department)
-            @if(count($department->courses) > 0)
-            <div class="mb-12 overflow-hidden bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="{{ $departmentIndex * 100 }}">
+            @foreach($departments->filter(fn($d) => (!$this->department || $d->name === $this->department) && $d->courses->isNotEmpty()) as $departmentIndex => $department)
+            <div class="mb-12 overflow-hidden bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow">
                 <div class="p-6 border-b border-gray-100">
                     <div class="flex items-center gap-4">
                         <img src="{{ $department->photo ? asset('storage/'. $department->photo) : asset('images/placeholders/department-placeholder.webp') }}" alt="{{ $department->name }}"
@@ -120,25 +118,24 @@ class extends Component
                         <tbody>
                             @foreach($department->courses as $course)
                             <tr class="border-b border-gray-200">
-                                <td class="px-2 py-2 sm:px-4 sm:py-3">
+                                <td class="px-4 py-2 sm:px-4 sm:py-3">
                                     <div class="font-medium">{{ $course->name }}</div>
                                     <div class="text-sm text-gray-500 sm:hidden">{{ $course->requirement }}</div>
                                     <div class="text-sm text-gray-500 sm:hidden md:hidden">{{ $course->duration }} | {{ $course->exam_body }}</div>
                                 </td>
-                                <td class="hidden px-2 py-2 sm:px-4 sm:py-3 sm:table-cell">{{ $course->requirement ?? 'N/A' }}</td>
-                                <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{ $course->duration ?? 'N/A' }}</td>
-                                <td class="hidden px-2 py-2 sm:px-4 sm:py-3 md:table-cell">{{ $course->exam_body ?? 'N/A' }}</td>
+                                <td class="hidden px-4 py-2 sm:px-4 sm:py-3 sm:table-cell">{{ $course->requirement ?? 'N/A' }}</td>
+                                <td class="hidden px-4 py-2 sm:px-4 sm:py-3 md:table-cell">{{ $course->duration ?? 'N/A' }}</td>
+                                <td class="hidden px-4 py-2 sm:px-4 sm:py-3 md:table-cell">{{ $course->exam_body ?? 'N/A' }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-            @endif
             @endforeach
 
             @if($departments->flatMap->courses->isEmpty())
-            <div class="text-center py-16" data-aos="fade-up">
+            <div class="text-center py-16">
                 <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="fas fa-search text-gray-400 text-xl"></i>
                 </div>

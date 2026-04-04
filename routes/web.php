@@ -34,10 +34,4 @@ Route::livewire('/create-success-story', 'pages::success-stories-create')->name(
 
 // Full online admissions (uncomment if needed)
 Route::livewire('/admissions', 'pages::admissions')->name('admissions');
-// Route::livewire('/admissions/complete/{id}', 'pages::admissions-complete')->name('admissions.complete');
-// Route::livewire('/admissions/download/{id}', 'pages::admissions-download')->name('admissions.download');
-// Route::livewire('/admissions/verify', 'pages::admissions-verify')->name('admissions.verify');
-
-// Keep controller-based download route
-Route::get('/admissions/download/{id}', [ApplicationController::class, 'download'])
-    ->name('admissions.download');
+Route::livewire('/admissions/complete', 'pages::admission-complete')->name('admissions.complete');
