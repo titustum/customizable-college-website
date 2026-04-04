@@ -28,10 +28,5 @@ Route::livewire('/past-papers', 'pages::past-papers')->name('past.papers');
 Route::livewire('/gallery', 'pages::gallery')->name('gallery');
 Route::livewire('/news', 'pages::news')->name('news');
 Route::livewire('/create-success-story', 'pages::success-stories-create')->name('create.success.story');
-
-// Admissions download (school verification)
-// Route::livewire('/admissions', 'pages::download-admission-letter')->name('admissions');
-
-// Full online admissions (uncomment if needed)
 Route::livewire('/admissions', 'pages::admissions')->name('admissions');
 Route::livewire('/admissions/complete', 'pages::admission-complete')->name('admissions.complete');
