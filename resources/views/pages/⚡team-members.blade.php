@@ -26,10 +26,17 @@ class extends Component
         $this->roleOrder = [
             'Principal',
             'Deputy Principal',
-            'Head of Department',
-            'Section Head',
+            'HOD',
+            'Industrial Liaison Officer',
+            'Registrar',
+            'Head of Section',
+            'Dean of Students',
+            'Librarian',
+            'Driver',
+            'Secretary',
+            'Chief Cook',
+            'Sports Coordinator',
             'Trainer',
-            'Coordinator',
         ];
     }
 

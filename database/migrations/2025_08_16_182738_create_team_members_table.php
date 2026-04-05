@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('phone')->nullable()->after('email');
             $table->string('name'); // fullname e.g. James Kariuki
             $table->string('photo')->nullable();
-            $table->string('qualification'); // e.g. BSc. Computer Science
+            $table->string('qualification')->nullable(); // e.g. BSc. Computer Science
             $table->text('bio')->nullable()->after('qualification');
             $table->boolean('is_hod')->default(false)->after('bio');
-            $table->string('graduation_year')->default('2022'); // Years of experience e.g. 4 years
+            $table->string('graduation_year')->nullable(); // Years of experience e.g. 4 years
             $table->timestamps();
         });
     }

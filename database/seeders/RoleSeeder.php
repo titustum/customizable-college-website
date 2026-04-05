@@ -7,18 +7,22 @@ use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $roles = [
             'Principal',
             'Deputy Principal',
-            'Head of Department',
-            'Section Head',
+            'HOD',
+            'Industrial Liaison Officer',
+            'Registrar',
+            'Head of Section',
+            'Dean of Students',
+            'Librarian',
+            'Driver',
+            'Secretary',
+            'Chief Cook',
+            'Sports Coordinator',
             'Trainer',
-            'Coordinator',
         ];
 
         foreach ($roles as $role) {
