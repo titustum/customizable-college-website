@@ -52,7 +52,6 @@ class TeamMemberSeeder extends Seeder
                 'is_hod' => false,
                 'phone' => '+254758660302',
             ],
-            // HODs for Academic Departments
             [
                 'department_id' => 1,
                 'role_id' => 3,
