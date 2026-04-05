@@ -13,6 +13,7 @@ class DepartmentSeeder extends Seeder
         $placeholderPhoto = null;
 
         $departments = [
+            // Academic Departments
             [
                 'name' => 'Cosmetology',
                 'slug' => Str::slug('Cosmetology'),
@@ -85,6 +86,8 @@ class DepartmentSeeder extends Seeder
                 'full_desc' => 'Our Mechanical department offers training in automotive mechanics, welding, fabrication, and mechanical engineering fundamentals. Students gain practical skills for careers in manufacturing, automotive repair, and mechanical engineering.',
                 'banner_pic' => '',
             ],
+
+            // Non-Academic Departments
             [
                 'name' => 'Finance',
                 'slug' => Str::slug('Finance'),
@@ -104,12 +107,48 @@ class DepartmentSeeder extends Seeder
                 'banner_pic' => '',
             ],
             [
+                'name' => 'Guiding & Counselling',
+                'slug' => Str::slug('Guiding & Counselling'),
+                'type' => 'non-academic',
+                'photo' => $placeholderPhoto,
+                'short_desc' => 'Providing academic and career guidance to students.',
+                'full_desc' => 'The Guiding & Counselling department offers support in academic planning, career development, and personal growth to ensure student success.',
+                'banner_pic' => '',
+            ],
+            [
+                'name' => 'Industrial Liaison Office (IILO)',
+                'slug' => Str::slug('Industrial Liaison Office (IILO)'),
+                'type' => 'non-academic',
+                'photo' => $placeholderPhoto,
+                'short_desc' => 'Fostering industry collaboration and internship opportunities.',
+                'full_desc' => 'The Industrial Liaison Office (IILO) facilitates partnerships with industry stakeholders to provide students with real-world experience and career opportunities.',
+                'banner_pic' => '',
+            ],
+            [
                 'name' => 'Procurement',
                 'slug' => Str::slug('Procurement'),
                 'type' => 'non-academic',
                 'photo' => $placeholderPhoto,
                 'short_desc' => 'Managing college procurement and supply chain operations.',
                 'full_desc' => 'The Procurement department handles purchasing, supplies, and vendor management for the college to ensure smooth operations.',
+                'banner_pic' => '',
+            ],
+            [
+                'name' => 'Sports',
+                'slug' => Str::slug('Sports'),
+                'type' => 'non-academic',
+                'photo' => $placeholderPhoto,
+                'short_desc' => 'Promoting physical fitness and competitive sports.',
+                'full_desc' => 'The Sports department organizes and manages various sports activities and competitions to promote physical fitness and team spirit.',
+                'banner_pic' => '',
+            ],
+            [
+                'name' => 'Music and Arts',
+                'slug' => Str::slug('Music and Arts'),
+                'type' => 'non-academic',
+                'photo' => $placeholderPhoto,
+                'short_desc' => 'Fostering creativity through music, drama, and visual arts.',
+                'full_desc' => 'The Music and Arts department offers programs in music, drama, and visual arts to nurture creativity and artistic expression among students.',
                 'banner_pic' => '',
             ],
             [

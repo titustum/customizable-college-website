@@ -48,21 +48,21 @@ class GallerySeeder extends Seeder
 
             $items = [
                 [
-                    'name' => $gallery['name'] . ' 1',
+                    'name' => $gallery['name'].' 1',
                     'category' => $gallery['name'],
-                    'description' => 'Description for ' . $gallery['name'] . ' image 1',
+                    'description' => 'Description for '.$gallery['name'].' image 1',
                     'image' => 'images/gate.jpg',
                 ],
                 [
-                    'name' => $gallery['name'] . ' 2',
+                    'name' => $gallery['name'].' 2',
                     'category' => $gallery['name'],
-                    'description' => 'Description for ' . $gallery['name'] . ' image 2',
+                    'description' => 'Description for '.$gallery['name'].' image 2',
                     'image' => 'images/gate.jpg',
                 ],
                 [
-                    'name' => $gallery['name'] . ' 3',
+                    'name' => $gallery['name'].' 3',
                     'category' => $gallery['name'],
-                    'description' => 'Description for ' . $gallery['name'] . ' image 3',
+                    'description' => 'Description for '.$gallery['name'].' image 3',
                     'image' => 'images/gate.jpg',
                 ],
             ];

@@ -78,8 +78,8 @@
             </div>
             <div class="hidden sm:flex items-center gap-5">
                 <div class="flex items-center gap-4 border-r border-gray-700 pr-5">
-                    <a href="#" class="hover:text-orange-500 transition-colors">Tenders</a>
-                    <a href="#" class="hover:text-orange-500 transition-colors">Vacancies</a>
+                    <a href="{{ route('tenders') }}" class="hover:text-orange-500 transition-colors">Tenders</a>
+                    <a href="{{ route('vacancies') }}" class="hover:text-orange-500 transition-colors">Vacancies</a>
                     <a href="#" class="hover:text-orange-500 transition-colors font-semibold text-orange-400">ODeL</a>
                 </div>
                 <div class="hidden sm:flex items-center gap-3">
@@ -192,6 +192,7 @@
                     </div>
                     <a href="{{ route('courses') }}"
                         class="nav-link px-3 py-2 text-sm font-semibold text-gray-800 hover:text-orange-600 transition-colors">Courses</a>
+
                     <div class="dropdown relative px-1">
 
                         <button
@@ -321,6 +322,8 @@
                     <a href="{{ route('gallery') }}" class="block py-1 text-sm">Gallery</a>
                     <a href="{{ route('news') }}" class="block py-1 text-sm">News & Updates</a>
                     <a href="{{ route('downloads') }}" class="block py-1 text-sm">Downloads</a>
+                    <a href="{{ route('tenders') }}" class="block py-1 text-sm">Tenders</a>
+                    <a href="{{ route('vacancies') }}" class="block py-1 text-sm">Vacancies</a>
                     <a href="{{ route('past.papers') }}" class="block py-1 text-sm">Past Papers</a>
                 </div>
             </details>
@@ -386,7 +389,7 @@
                         <li><a href="{{ route('downloads') }}"
                                 class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
                                     class="fas fa-chevron-right text-[9px] text-primary"></i> Downloads</a></li>
-                        <li><a href="#"
+                        <li><a href="{{ route('tenders') }}"
                                 class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
                                     class="fas fa-chevron-right text-[9px] text-primary"></i> Tenders</a></li>
                         <li><a href="{{ route('vacancies') }}"

@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             TeamMemberSeeder::class,
             CourseSeeder::class,
+            TenderSeeder::class,
+            VacancySeeder::class,
         ]);
     }
 }

@@ -156,6 +156,114 @@ class TeamMemberSeeder extends Seeder
                 'is_hod' => true,
                 'phone' => '+254758660310',
             ],
+
+            // Non-Academic HODs
+            [
+                'department_id' => 9, // Finance
+                'role_id' => 3,
+                'section_assigned' => null,
+                'email' => 'hod.finance@tetutvc.ac.ke',
+                'name' => 'Mr. John Doe',
+                'photo' => null,
+                'qualification' => '',
+                'graduation_year' => null,
+                'bio' => null,
+                'is_hod' => true,
+                'phone' => '+254758660317',
+            ],
+            [
+                'department_id' => 10, // Student Affairs
+                'role_id' => 3,
+                'section_assigned' => null,
+                'email' => 'hod.studentaffairs@tetutvc.ac.ke',
+                'name' => 'Mr. Jane Smith',
+                'photo' => null,
+                'qualification' => '',
+                'graduation_year' => null,
+                'bio' => null,
+                'is_hod' => true,
+                'phone' => '+254758660318',
+            ],
+            [
+                'department_id' => 11, // Procurement
+                'role_id' => 3,
+                'section_assigned' => null,
+                'email' => 'hod.procurement@tetutvc.ac.ke',
+                'name' => 'Mr. Robert Brown',
+                'photo' => null,
+                'qualification' => '',
+                'graduation_year' => null,
+                'bio' => null,
+                'is_hod' => true,
+                'phone' => '+254758660319',
+            ],
+            [
+                'department_id' => 12, // Library
+                'role_id' => 3,
+                'section_assigned' => null,
+                'email' => 'hod.library@tetutvc.ac.ke',
+                'name' => 'Mr. Michael Johnson',
+                'photo' => null,
+                'qualification' => '',
+                'graduation_year' => null,
+                'bio' => null,
+                'is_hod' => true,
+                'phone' => '+254758660320',
+            ],
+            // Additional Non-Academic HODs
+            [
+                'department_id' => 13, // Guiding & Counselling
+                'role_id' => 3,
+                'section_assigned' => null,
+                'email' => 'hod.counselling@tetutvc.ac.ke',
+                'name' => 'Mrs. Grace Wanjiku',
+                'photo' => null,
+                'qualification' => '',
+                'graduation_year' => null,
+                'bio' => null,
+                'is_hod' => true,
+                'phone' => '+254758660321',
+            ],
+            [
+                'department_id' => 14, // Industrial Liaison Office (IILO)
+                'role_id' => 3,
+                'section_assigned' => null,
+                'email' => 'hod.iilo@tetutvc.ac.ke',
+                'name' => 'Mr. Peter Kamau',
+                'photo' => null,
+                'qualification' => '',
+                'graduation_year' => null,
+                'bio' => null,
+                'is_hod' => true,
+                'phone' => '+254758660322',
+            ],
+            [
+                'department_id' => 15, // Sports
+                'role_id' => 3,
+                'section_assigned' => null,
+                'email' => 'hod.sports@tetutvc.ac.ke',
+                'name' => 'Mr. James Ochieng',
+                'photo' => null,
+                'qualification' => '',
+                'graduation_year' => null,
+                'bio' => null,
+                'is_hod' => true,
+                'phone' => '+254758660323',
+            ],
+            [
+                'department_id' => 16, // Music and Arts
+                'role_id' => 3,
+                'section_assigned' => null,
+                'email' => 'hod.musicarts@tetutvc.ac.ke',
+                'name' => 'Madam Sarah Njoroge',
+                'photo' => null,
+                'qualification' => '',
+                'graduation_year' => null,
+                'bio' => null,
+                'is_hod' => true,
+                'phone' => '+254758660324',
+            ],
+
             // Trainers
             [
                 'department_id' => 4, // Building and Civil
@@ -246,7 +354,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660317',
+                'phone' => '+254758660401',
             ],
             [
                 'department_id' => 6, // ICT
@@ -259,7 +367,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660318',
+                'phone' => '+254758660402',
             ],
             [
                 'department_id' => 6,
@@ -272,7 +380,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660319',
+                'phone' => '+254758660403',
             ],
             [
                 'department_id' => 8, // Mechanical
@@ -285,7 +393,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660320',
+                'phone' => '+254758660404',
             ],
             [
                 'department_id' => 6,
@@ -298,7 +406,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660321',
+                'phone' => '+254758660405',
             ],
             [
                 'department_id' => 2,
@@ -311,7 +419,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660322',
+                'phone' => '+254758660406',
             ],
             [
                 'department_id' => 2,
@@ -324,7 +432,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660323',
+                'phone' => '+254758660407',
             ],
             [
                 'department_id' => 4,
@@ -337,7 +445,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660324',
+                'phone' => '+254758660408',
             ],
             [
                 'department_id' => 3,
@@ -350,20 +458,20 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660325',
+                'phone' => '+254758660409',
             ],
             [
                 'department_id' => 4,
                 'role_id' => 4,
                 'section_assigned' => null,
                 'email' => 'aminga@tetutvc.ac.ke',
-                'name' => 'Mr. Aming\'a',
+                'name' => "Mr. Aming'a",
                 'photo' => null,
                 'qualification' => '',
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660326',
+                'phone' => '+254758660410',
             ],
             [
                 'department_id' => 6,
@@ -376,7 +484,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660327',
+                'phone' => '+254758660411',
             ],
             [
                 'department_id' => 6,
@@ -389,7 +497,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660328',
+                'phone' => '+254758660412',
             ],
             [
                 'department_id' => 6,
@@ -402,7 +510,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660329',
+                'phone' => '+254758660413',
             ],
             [
                 'department_id' => 8,
@@ -415,7 +523,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660330',
+                'phone' => '+254758660414',
             ],
             [
                 'department_id' => 2,
@@ -428,7 +536,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660331',
+                'phone' => '+254758660415',
             ],
             [
                 'department_id' => 1,
@@ -441,7 +549,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660332',
+                'phone' => '+254758660416',
             ],
             [
                 'department_id' => 1,
@@ -454,7 +562,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660333',
+                'phone' => '+254758660417',
             ],
             [
                 'department_id' => 5, // Electrical
@@ -467,7 +575,7 @@ class TeamMemberSeeder extends Seeder
                 'graduation_year' => null,
                 'bio' => null,
                 'is_hod' => false,
-                'phone' => '+254758660334',
+                'phone' => '+254758660418',
             ],
         ];
 

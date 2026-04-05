@@ -316,29 +316,42 @@ PAGE WRAPPER
                                         d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>
                             </div>
-                            <h4 class="font-display font-bold text-white text-lg mb-2">Intake 2025 Open</h4>
-                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">Applications for the upcoming
-                                intake are now being accepted.</p>
-                            <a href="{{ route('admissions') }}"
-                                class="block w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-xl transition-all text-center mb-3">
-                                Apply Now →
-                            </a>
-                            <a href="{{ route('contact') }}"
-                                class="block w-full border border-gray-700 hover:border-orange-600 text-gray-400 hover:text-white font-semibold py-3 rounded-xl transition-all text-center text-sm">
-                                Ask a Question
-                            </a>
+
+                            @php
+                            $month = date('n');
+                            $year = date('Y');
+
+                            if ($month >= 10) {
+                            $intake = 'January';
+                            $year += 1;
+                            } elseif ($month >= 5 && $month <= 9) { $intake='September' ; } else { $intake='May' ; }
+                                @endphp <h4 class="font-display font-bold text-white text-lg mb-2">
+                                {{ $intake }} {{ $year }} Intake Open
+                                </h4>
+                                <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                                    Applications for the upcoming intake are now open.
+                                </p>
+                                <a href="{{ route('admissions') }}"
+                                    class="block w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-xl transition-all text-center mb-3">
+                                    Apply Now →
+                                </a>
+                                <a href="{{ route('contact') }}"
+                                    class="block w-full border border-gray-700 hover:border-orange-600 text-gray-400 hover:text-white font-semibold py-3 rounded-xl transition-all text-center text-sm">
+                                    Ask a Question
+                                </a>
                         </div>
 
                         {{-- Other departments mini list --}}
                         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                             <div class="px-5 py-4 border-b border-gray-100">
-                                <h3 class="font-semibold text-gray-800 text-sm uppercase tracking-widest">Other
+                                <h3 class="font-semibold text-gray-800 text-sm uppercase tracking-widest">Other Academic
                                     Departments</h3>
                             </div>
                             <ul class="divide-y divide-gray-50">
-                                @foreach ($departments->where('id', '!=', $department->id)->take(6) as $dep)
+                                @foreach ($departments->where('id', '!=', $department->id)->where('type',
+                                'academic') as $dep)
                                 <li>
-                <a href="{{ $dep->type === 'academic' ? route('academic.department', $dep->slug) : route('non.academic.department', $dep->slug) }}"
+                                    <a href="{{ $dep->type === 'academic' ? route('academic.department', $dep->slug) : route('non.academic.department', $dep->slug) }}"
                                         class="flex items-center justify-between px-5 py-3 text-sm text-gray-600 hover:text-orange-600 hover:bg-orange-50 transition-colors group">
                                         <span>{{ $dep->name }}</span>
                                         <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
