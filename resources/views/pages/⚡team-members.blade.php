@@ -26,16 +26,10 @@ class extends Component
         $this->roleOrder = [
             'Principal',
             'Deputy Principal',
-            'HOD',
-            'Registrar',
-            'Dean of Students',
-            'Finance Officer',
-            'Academic Officer',
-            'Web Master',
-            'Internal Auditor',
-            'Research & Innovations Officer',
+            'Head of Department',
+            'Section Head',
             'Trainer',
-            'Others'
+            'Coordinator',
         ];
     }
 
@@ -96,9 +90,12 @@ class extends Component
                     @endif
                     <div class="p-6">
                         <h3 class="mb-2 text-xl font-semibold text-orange-600">{{ $member->name }}</h3>
+                        @if($member->department)
                         <p class="mb-2 text-gray-600"><strong>Department:</strong> {{ $member->department->name }}</p>
+                        @elseif($member->section_assigned)
+                        <p class="mb-2 text-gray-600"><strong>Section:</strong> {{ $member->section_assigned }}</p>
+                        @endif
                         <p class="mb-2 text-gray-600"><strong>Qualification:</strong> {{ $member->qualification }}</p>
-                        <p class="text-gray-600"><strong>Experience:</strong> {{ $member->experience }}</p>
                     </div>
                 </div>
                 @endforeach
