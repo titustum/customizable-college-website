@@ -19,8 +19,9 @@ class extends Component
     {
         $this->deputyAcademics = TeamMember::with('role')
             ->whereHas('role', function ($query) {
-                $query->where('name', 'Deputy Principal Academics');
+                $query->where('name', 'Deputy Principal');
             })
+            ->where('section_assigned', 'Academics')
             ->first();
 
         $this->academicDepartmentsList = Department::where('type', 'academic')->get();
@@ -48,15 +49,15 @@ class extends Component
                         @endif
                         <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent md:hidden">
                             <h2 class="text-2xl font-bold text-white">{{ $deputyAcademics->name }}</h2>
-                            <p class="text-lg text-gray-200">Deputy Principal Academics</p>
+                            <p class="text-lg text-gray-200">Deputy Principal - Academics</p>
                         </div>
                     </div>
                 </div>
                 <div class="p-8 md:w-2/3 lg:w-3/4">
                     <div class="hidden md:block">
                         <h2 class="mb-2 text-3xl font-bold text-gray-800">{{ $deputyAcademics->name }}</h2>
-                        <p class="mb-2 text-lg text-gray-600">Deputy Principal Academics</p>
-                        @if ($deputyAcademics->qualifications)
+                        <p class="mb-2 text-lg text-gray-600">Deputy Principal - Academics</p>
+                        @if ($deputyAcademics->qualification)
                         <p class="mb-4 italic text-gray-600">{{ $deputyAcademics->qualifications }}</p>
                         @endif
                     </div>
@@ -68,7 +69,7 @@ class extends Component
                     @endif
 
                     <div class="mt-6">
-                        <h3 class="pb-2 mb-4 text-xl font-semibold text-primary border-b border-orange-200">A Message from Deputy Principal Academics</h3>
+                        <h3 class="pb-2 mb-4 text-xl font-semibold text-primary border-b border-orange-200">A Message from Deputy Principal - Academics</h3>
                         <div class="prose text-gray-700 max-w-none">
                             <p>Welcome to the Academics Office. Our department is committed to maintaining high academic standards, curriculum delivery, and quality assurance. We ensure our students receive the best technical and vocational education aligned with industry needs.</p>
                         </div>

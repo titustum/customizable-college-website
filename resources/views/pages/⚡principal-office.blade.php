@@ -92,7 +92,7 @@ class extends Component
                     <div class="hidden md:block">
                         <h2 class="mb-2 text-3xl font-bold text-gray-800">{{ $principal->name }}</h2>
                         <p class="mb-2 text-lg text-gray-600">Principal, {{ $institution->name }}</p>
-                        @if ($principal->qualifications)
+                        @if ($principal->qualification)
                         <p class="mb-4 italic text-gray-600">{{ $principal->qualifications }}</p>
                         @endif
                     </div>

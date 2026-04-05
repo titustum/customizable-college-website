@@ -17,8 +17,9 @@ class extends Component
     {
         $this->deputyAdmin = TeamMember::with('role')
             ->whereHas('role', function ($query) {
-                $query->where('name', 'Deputy Principal Administration');
+                $query->where('name', 'Deputy Principal');
             })
+            ->where('section_assigned', 'Administration')
             ->first();
 
         $this->nonAcademicDepartmentsList = Department::where('type', 'non-academic')->get();
@@ -45,15 +46,15 @@ class extends Component
                         @endif
                         <div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent md:hidden">
                             <h2 class="text-2xl font-bold text-white">{{ $deputyAdmin->name }}</h2>
-                            <p class="text-lg text-gray-200">Deputy Principal Administration</p>
+                            <p class="text-lg text-gray-200">Deputy Principal - Administration</p>
                         </div>
                     </div>
                 </div>
                 <div class="p-8 md:w-2/3 lg:w-3/4">
                     <div class="hidden md:block">
                         <h2 class="mb-2 text-3xl font-bold text-gray-800">{{ $deputyAdmin->name }}</h2>
-                        <p class="mb-2 text-lg text-gray-600">Deputy Principal Administration</p>
-                        @if ($deputyAdmin->qualifications)
+                        <p class="mb-2 text-lg text-gray-600">Deputy Principal - Administration</p>
+                        @if ($deputyAdmin->qualification)
                         <p class="mb-4 italic text-gray-600">{{ $deputyAdmin->qualifications }}</p>
                         @endif
                     </div>
@@ -65,7 +66,7 @@ class extends Component
                     @endif
 
                     <div class="mt-6">
-                        <h3 class="pb-2 mb-4 text-xl font-semibold text-primary border-b border-orange-200">A Message from Deputy Principal Administration</h3>
+                        <h3 class="pb-2 mb-4 text-xl font-semibold text-primary border-b border-orange-200">A Message from Deputy Principal - Administration</h3>
                         <div class="prose text-gray-700 max-w-none">
                             <p>Welcome to the Administration Office. Our department is dedicated to ensuring efficient institutional operations, student welfare, and administrative excellence. We work tirelessly to create an enabling environment for teaching and learning.</p>
                         </div>

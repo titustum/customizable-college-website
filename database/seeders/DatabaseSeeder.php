@@ -28,24 +28,15 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             InstitutionSeeder::class,
             DepartmentSeeder::class,
+            TeamMemberSeeder::class,
         ]);
 
-        // Seed departments
+        // Seed courses under each department
         $departments = Department::all();
 
-        // Seed courses and team members under each department
-        $roles = Role::all();
-
-        $departments->each(function ($department) use ($roles) {
-            // Courses
+        $departments->each(function ($department) {
             Course::factory(3)->create([
                 'department_id' => $department->id,
-            ]);
-
-            // Team Members
-            TeamMember::factory(4)->create([
-                'department_id' => $department->id,
-                'role_id' => $roles->random()->id,
             ]);
         });
     }

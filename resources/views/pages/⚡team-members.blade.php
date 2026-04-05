@@ -27,15 +27,6 @@ class extends Component
             'Principal',
             'Deputy Principal',
             'HOD',
-            'Industrial Liaison Officer',
-            'Registrar',
-            'Head of Section',
-            'Dean of Students',
-            'Librarian',
-            'Driver',
-            'Secretary',
-            'Chief Cook',
-            'Sports Coordinator',
             'Trainer',
         ];
     }
