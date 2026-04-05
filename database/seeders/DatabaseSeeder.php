@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Course;
-use App\Models\Department;
-use App\Models\Role;
-use App\Models\TeamMember;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -23,21 +19,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        // Seed roles
+        // Seed data
         $this->call([
             RoleSeeder::class,
             InstitutionSeeder::class,
             DepartmentSeeder::class,
             TeamMemberSeeder::class,
+            CourseSeeder::class,
         ]);
-
-        // Seed courses under each department
-        $departments = Department::all();
-
-        $departments->each(function ($department) {
-            Course::factory(3)->create([
-                'department_id' => $department->id,
-            ]);
-        });
     }
 }
