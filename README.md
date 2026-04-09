@@ -101,6 +101,6 @@ Here are some colleges, schools, and institutions currently using this platform:
 | Institution | Website | Notes |
 |------------|---------|-------|
 | Tetu TVC | [https://tetutvc.ac.ke](https://tetutvc.ac.ke) | Official institution website |
-| Your Project | [https://your-subdomain.tetutvc.ac.ke](https://your-subdomain.tetutvc.ac.ke) | Custom deployment example |
+| Local Project | [https://tetu-college.webesi.com](https://tetu-college.webesi.com) | Custom deployment example |
 
 > If you are using this project for your institution and want to be featured here, feel free to [contact me](mailto:tituskiptanuitum@gmail.com)!
