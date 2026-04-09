@@ -43,7 +43,7 @@ PAGE WRAPPER
             <img src="{{ asset('storage/' . $department->banner_pic) }}" alt="{{ $department->name }} Banner"
                 class="w-full h-full object-cover opacity-25 scale-105"
                 style="transform-origin:center; animation: subtle-zoom 14s ease-in-out infinite alternate;">
-            <div class="absolute inset-0 bg-gradient-to-br from-gray-950/80 via-gray-900/70 to-orange-950/30"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-950/50 via-gray-900/30 to-orange-950/10"></div>
         </div>
 
         {{-- Decorative glow orbs --}}
