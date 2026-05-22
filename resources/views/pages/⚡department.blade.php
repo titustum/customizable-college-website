@@ -17,12 +17,64 @@ class extends Component
 
     public function mount($slug)
     {
-        $this->departments = Department::all();
-        $this->department  = Department::where('slug', $slug)->firstOrFail();
-        $this->successStories = SuccessStory::all();
-        $this->hod = TeamMember::where('department_id', $this->department->id)
-            ->where('is_hod', true)
-            ->first();
+        /*
+        |--------------------------------------------------------------------------
+        | Optimized Department Loading
+        |--------------------------------------------------------------------------
+        | - Eager load relationships
+        | - Prevent N+1 queries
+        | - Include counts directly
+        */
+
+        $this->department = Department::with([
+            'courses',
+            'teamMembers.role',
+        ])
+        ->withCount([
+            'courses',
+            'teamMembers',
+        ])
+        ->where('slug', $slug)
+        ->where('type', 'academic')
+        ->firstOrFail();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Other Academic Departments (lightweight query)
+        |--------------------------------------------------------------------------
+        */
+
+        $this->departments = Department::select(
+                'id',
+                'name',
+                'slug',
+                'type'
+            )
+            ->where('type', 'academic')
+            ->where('id', '!=', $this->department->id)
+            ->orderBy('name')
+            ->get();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Department-Specific Testimonials
+        |--------------------------------------------------------------------------
+        */
+
+        $this->successStories = SuccessStory::where('department_id', $this->department->id)
+            ->latest()
+            ->take(6)
+            ->get();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Head of Department
+        |--------------------------------------------------------------------------
+        */
+
+        $this->hod = $this->department
+            ->teamMembers
+            ->firstWhere('is_hod', true);
     }
 };
 
