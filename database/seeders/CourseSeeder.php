@@ -17,12 +17,6 @@ class CourseSeeder extends Seeder
             ['department_id' => 1, 'name' => 'Cosmetology Level 3', 'requirement' => 'KCPE/KCSE', 'duration' => '2 Terms', 'exam_body' => 'CDACC'],
 
             // Hospitality (dept 2)
-            ['department_id' => 2, 'name' => 'Food & Beverage Sales and Service Management Level 6', 'requirement' => 'KCSE C- & Above', 'duration' => '7 Terms', 'exam_body' => 'CDACC'],
-            ['department_id' => 2, 'name' => 'Food & Beverage Sales and Service Management Level 5', 'requirement' => 'KCSE D & Above', 'duration' => '5 Terms', 'exam_body' => 'CDACC'],
-            ['department_id' => 2, 'name' => 'Food & Beverage Sales and Service Management Level 4', 'requirement' => 'KCSE', 'duration' => '3 Terms', 'exam_body' => 'CDACC'],
-            ['department_id' => 2, 'name' => 'Food & Beverage Production (Culinary Art) Level 6', 'requirement' => 'KCSE C- & Above', 'duration' => '7 Terms', 'exam_body' => 'CDACC'],
-            ['department_id' => 2, 'name' => 'Food & Beverage Production Level 5', 'requirement' => 'KCSE D & Above', 'duration' => '4 Terms', 'exam_body' => 'CDACC'],
-            ['department_id' => 2, 'name' => 'Housekeeping and Accommodation Level 5', 'requirement' => 'KCSE D & Above', 'duration' => '4 Terms', 'exam_body' => 'CDACC'],
             ['department_id' => 2, 'name' => 'Catering and Accommodation Management Level 6', 'requirement' => 'KCSE C- & Above', 'duration' => '9 Terms', 'exam_body' => 'CDACC'],
             ['department_id' => 2, 'name' => 'Catering and Accommodation Management Level 5', 'requirement' => 'KCSE D & Above', 'duration' => '5 Terms', 'exam_body' => 'CDACC'],
             ['department_id' => 2, 'name' => 'Accommodation Operator Level 4', 'requirement' => 'KCSE', 'duration' => '3 Terms', 'exam_body' => 'CDACC'],

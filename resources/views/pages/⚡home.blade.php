@@ -8,6 +8,7 @@ use App\Models\SuccessStory;
 use App\Models\Partner;
 use App\Models\HeroSlide;
 use App\Models\Institution;
+use Illuminate\Support\Str;
 
 new
 #[Title('Welcome to Our College')]
@@ -19,7 +20,11 @@ class extends Component {
         $institution = Institution::first() ?? (object) ['name' => 'Our College', 'phone' => ''];
 
         return [
-            'institution' => $institution,
+            'institution' => $institution ?? (object)[
+                'name'=>'Tetu TVC',
+                'established_year'=>now()->subYears(3),
+                'phone'=>0712345676
+            ],
             // 'departments' => Department::where('type', 'academic')->get(), //only academic departments for the homepage
             'successStories'=> SuccessStory::where('is_approved', true)
                                             ->latest()
@@ -57,7 +62,7 @@ class extends Component {
             class="absolute left-0 bottom-0 w-[400px] h-[400px] bg-orange-500 rounded-full opacity-5 blur-3xl -translate-x-1/2 translate-y-1/2 pointer-events-none">
         </div>
 
-        <div class="relative max-w-7xl mx-auto px-4 py-24 grid lg:grid-cols-2 gap-16 items-center">
+        <div class="relative max-w-7xl mx-auto px-4 py-12 md:py-24 grid lg:grid-cols-2 gap-16 items-center">
 
             <!-- Text content -->
             <div class="text-white" data-aos="fade-right" data-aos-duration="1000">
@@ -66,16 +71,17 @@ class extends Component {
                 </div>
                 <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-none text-white mb-6"
                     data-aos="fade-up" data-aos-delay="300">
-                    Build Skills.<br />
-                    <span class="text-orange-500">Build Futures.</span>
+                    Build Your Skills.<br />
+                    <span class="text-orange-500">For Industrial Growth.</span>
                 </h1>
-                <p class="text-gray-300 text-lg leading-relaxed mb-8 max-w-lg" data-aos="fade-up" data-aos-delay="400">
+                <p class="text-gray-300 hidden md:block text-lg leading-relaxed mb-8 max-w-lg" data-aos="fade-up"
+                    data-aos-delay="400">
                     Tetu Technical and Vocational College offers world-class technical education designed to equip
                     students with practical skills for today's economy. Located in Tetu Sub-County, Nyeri County.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="500">
                     <a href="{{ route('admissions') }}"
-                        class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5"
+                        class="inline-flex items-center justify-center gap-2 w-auto bg-orange-600 hover:bg-orange-500 text-white font-bold px-7 py-3.5 rounded-lg transition-all shadow-lg hover:shadow-orange-600/40 hover:-translate-y-0.5"
                         data-aos="zoom-in" data-aos-delay="600">
                         Apply for Admission
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor">
@@ -84,7 +90,7 @@ class extends Component {
                         </svg>
                     </a>
                     <a href="{{ route('courses') }}"
-                        class="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5"
+                        class="inline-flex items-center justify-center gap-2 w-auto border border-gray-500 hover:border-orange-500 text-gray-200 hover:text-orange-400 font-semibold px-7 py-3.5 rounded-lg transition-all hover:-translate-y-0.5"
                         data-aos="zoom-in" data-aos-delay="700">
                         Browse Courses
                     </a>
@@ -110,7 +116,7 @@ class extends Component {
                             <span class="text-xs text-gray-400">Job Placement</span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2" data-aos="fade-right" data-aos-delay="1200">
+                    <div class="sm:flex hidden items-center gap-2" data-aos="fade-right" data-aos-delay="1200">
                         <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
                             <i class="fas fa-star text-orange-500"></i>
                         </div>
@@ -123,7 +129,7 @@ class extends Component {
             </div>
 
             <!-- Hero image card / stats -->
-            <div class="hidden lg:block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+            <div class="" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <div class="relative">
                     <!-- Main card -->
                     <div
@@ -208,7 +214,7 @@ class extends Component {
 
         <!-- Scroll indicator -->
         <div
-            class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce">
+            class="hidden absolute bottom-8 left-1/2 -translate-x-1/2 md:flex flex-col items-center gap-2 text-gray-500 animate-bounce">
             <span class="text-xs tracking-widest uppercase">Scroll</span>
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -336,81 +342,90 @@ class extends Component {
     {{-- ═══════════════════════════════════════════
     DEPARTMENTS
     ═══════════════════════════════════════════ --}}
-    <section class="py-20 bg-gray-50">
+    <section class="py-16 sm:py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
 
             {{-- Section header --}}
-            <div class="mb-14 text-center" data-aos="fade-up">
+            <div class="mb-12 sm:mb-14 text-center" data-aos="fade-up">
                 <span
-                    class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Academics</span>
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4" data-aos="fade-up"
-                    data-aos-delay="100">Our Academic Departments</h2>
-                <p class="max-w-2xl mx-auto text-gray-500 text-base leading-relaxed" data-aos="fade-up"
-                    data-aos-delay="200">Discover our diverse range of departments offering hands-on training and
-                    industry-relevant skills for your successful career.</p>
+                    class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">
+                    Academics
+                </span>
+
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-3 sm:mb-4">
+                    Our Academic Departments
+                </h2>
+
+                <p class="max-w-2xl mx-auto text-gray-500 text-sm sm:text-base leading-relaxed">
+                    Discover our diverse range of departments offering hands-on training and industry-relevant skills
+                    for your successful career.
+                </p>
             </div>
 
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                @foreach ($departments->where('type', 'academic') as $department)
-                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}"
-                    class="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col">
+            {{-- GRID --}}
+            <div class="grid gap-4 sm:gap-5 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
-                    {{-- Image with overlay --}}
-                    <div class="relative h-56 overflow-hidden">
+                @foreach ($departments->where('type', 'academic') as $department)
+                <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 60 }}"
+                    class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+
+                    {{-- IMAGE --}}
+                    <div class="relative aspect-[4/3] overflow-hidden">
                         <img src="{{ $department->photo ? Storage::url($department->photo) : asset('images/placeholders/department-placeholder.webp') }}"
                             alt="{{ $department->name }}"
-                            class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent">
-                        </div>
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
 
-                        {{-- Type badge --}}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+                        {{-- Optional badge --}}
                         @if($department->type === 'non-academic')
                         <span
-                            class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cyan-500 text-white text-[10px] font-bold tracking-wide uppercase">
+                            class="absolute top-3 right-3 px-2 py-1 rounded-full bg-cyan-500 text-white text-[10px] font-bold uppercase">
                             Non-Academic
                         </span>
                         @endif
-
-                        {{-- Icon overlay --}}
-                        <div
-                            class="absolute bottom-4 left-4 w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                            <i class="fas fa-{{ $department->icon ?? 'school' }} text-white text-xl"></i>
-                        </div>
                     </div>
 
-                    {{-- Content --}}
-                    <div class="p-6 flex flex-col flex-grow">
+                    {{-- CONTENT --}}
+                    <div class="p-4 sm:p-5 flex flex-col flex-grow">
+
+                        {{-- Title --}}
                         <h3
-                            class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors duration-300 mb-3">
+                            class="text-sm sm:text-lg font-bold text-gray-900 group-hover:text-primary transition-colors leading-snug mb-2">
                             {{ $department->name }}
                         </h3>
-                        <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-grow mb-4">
-                            {{ $department->short_desc }}
+
+                        {{-- Description (hidden on mobile) --}}
+                        <p class="hidden sm:block text-gray-500 text-sm leading-relaxed mb-4 flex-grow">
+                            {{ Str::limit($department->short_desc, 85) }}
                         </p>
 
-                        <div class="pt-4 border-t border-gray-100">
-                            <a href="{{ route('academic.department', $department->slug) }}" {{-- Assuming all
-                                departments have an academic page for now --}}
-                                class="inline-flex items-center justify-between w-full text-sm font-semibold text-gray-700 group-hover:text-primary transition-colors duration-300">
-                                <span>Explore Department</span>
-                                <span
-                                    class="w-8 h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-all duration-300">
-                                    <i class="fas fa-arrow-right text-xs"></i>
-                                </span>
-                            </a>
-                        </div>
+                        {{-- CTA --}}
+                        <a href="{{ route('academic.department', $department->slug) }}"
+                            class="mt-auto inline-flex items-center justify-between text-xs sm:text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
+
+                            <span>View</span>
+
+                            <span
+                                class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-all">
+                                <i class="fas fa-arrow-right text-[10px] sm:text-xs"></i>
+                            </span>
+                        </a>
+
                     </div>
                 </div>
                 @endforeach
+
             </div>
 
-            {{-- View All Button --}}
+            {{-- View All --}}
             <div class="mt-10 text-center" data-aos="fade-up">
                 <a href="{{ route('departments') }}"
-                    class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
+                    class="inline-flex items-center gap-2 px-7 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
                     View All Departments <i class="fas fa-arrow-right text-xs"></i>
                 </a>
             </div>
+
         </div>
     </section>
 
@@ -611,28 +626,63 @@ class extends Component {
     {{-- ═══════════════════════════════════════════
     PARTNERS
     ═══════════════════════════════════════════ --}}
-    <section class="py-16 bg-gray-50 border-t border-gray-100">
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white border-t border-gray-100 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
 
-            <div class="mb-10 text-center" data-aos="fade-up">
+            {{-- SECTION HEADER --}}
+            <div class="mb-12 text-center" data-aos="fade-up">
+
                 <span
-                    class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Partners</span>
-                <h2 class="text-2xl lg:text-3xl font-extrabold text-gray-900 mb-2">Our Trusted Partners</h2>
-                <p class="max-w-xl mx-auto text-gray-500 text-sm leading-relaxed">
-                    Our partnerships with industry leaders ensure our programs remain cutting-edge and graduates are
-                    workforce-ready.
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4">
+
+                    <span class="w-2 h-2 rounded-full bg-primary"></span>
+                    Partners
+                </span>
+
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">
+                    Our Trusted Partners
+                </h2>
+
+                <p class="max-w-2xl mx-auto text-gray-500 text-sm lg:text-base leading-relaxed">
+                    We collaborate with industry leaders, institutions, and organizations
+                    to ensure our students receive practical exposure, modern training,
+                    and opportunities aligned with the evolving job market.
                 </p>
+
             </div>
 
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6" data-aos="zoom-in" data-aos-delay="100">
-                @foreach ($partners as $partner)
-                <div title="{{ $partner->name }}" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 50 }}"
-                    class="flex items-center justify-center p-5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/20 hover:-translate-y-0.5 transition-all duration-300">
-                    <img src="{{ asset('storage/'.$partner->logo) }}" alt="{{ $partner->name }}"
-                        class="h-12 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300">
+            {{-- PARTNERS SLIDER --}}
+            <div class="relative">
+
+                {{-- FADE LEFT --}}
+                <div
+                    class="absolute left-0 top-0 z-10 w-16 h-full bg-gradient-to-r from-white to-transparent pointer-events-none">
                 </div>
-                @endforeach
+
+                {{-- FADE RIGHT --}}
+                <div
+                    class="absolute right-0 top-0 z-10 w-16 h-full bg-gradient-to-l from-white to-transparent pointer-events-none">
+                </div>
+
+                {{-- SCROLL CONTAINER --}}
+                <div class="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 px-1">
+
+                    @foreach ($partners as $partner)
+
+                    <div title="{{ $partner->name }}" data-aos="zoom-in" data-aos-delay="{{ $loop->index * 50 }}"
+                        class="group min-w-[180px] h-36 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-6 snap-center">
+
+                        <img src="{{ asset('storage/' . $partner->logo) }}" alt="{{ $partner->name }}"
+                            class="max-h-20 max-w-full object-contain grayscale group-hover:grayscale-0 transition duration-300">
+
+                    </div>
+
+                    @endforeach
+
+                </div>
+
             </div>
+
         </div>
     </section>
 
@@ -670,17 +720,48 @@ class extends Component {
     </section>
 
     <!-- WhatsApp Chat Button -->
-    <div class="fixed z-50 bottom-6 right-6">
+    <div class="fixed z-50 bottom-5 right-5 sm:bottom-6 sm:right-6">
+
         <a href="https://wa.me/{{ $institution->phone }}" target="_blank" rel="noopener noreferrer"
-            class="relative flex items-center gap-2 px-4 py-3 text-white bg-green-600 rounded-full shadow-xl hover:bg-green-700 focus:outline-none transition-all hover:scale-110 animate-bounce shadow-green-600/30">
-            <span class="absolute -top-1 -right-1 flex h-4 w-4">
+            aria-label="Chat on WhatsApp" class="group relative flex items-center justify-center sm:justify-start gap-2
+              w-14 h-14 sm:w-auto sm:h-auto sm:px-4 sm:py-3
+              bg-green-600 hover:bg-green-700
+              text-white rounded-full sm:rounded-full
+              shadow-lg shadow-green-600/30
+              transition-all duration-300
+              hover:scale-105">
+
+            <!-- Pulse dot -->
+            <span class="absolute -top-1 -right-1 flex h-3 w-3 sm:h-4 sm:w-4">
                 <span
                     class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-4 w-4 bg-green-500"></span>
+                <span class="relative inline-flex rounded-full h-full w-full bg-green-500"></span>
             </span>
-            <i class="fab fa-whatsapp text-xl"></i>
-            <span class="font-semibold hidden sm:inline">Chat</span>
+
+            <!-- Icon -->
+            <i class="fab fa-whatsapp text-xl sm:text-2xl"></i>
+
+            <!-- Label (desktop only, smooth reveal) -->
+            <span
+                class="hidden sm:inline-block font-semibold max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-300">
+                Chat
+            </span>
+
         </a>
     </div>
 
 </main>
+
+
+
+{{-- HIDE SCROLLBAR --}}
+<style>
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>

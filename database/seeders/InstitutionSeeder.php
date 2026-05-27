@@ -12,7 +12,7 @@ class InstitutionSeeder extends Seeder
         Institution::create([
             'name' => 'Tetu TVC',
             'logo' => '',
-            'principal_name' => '',
+            'principal_name' => 'David Kariuki',
             'principal_photo' => '',
             'welcome_message' => 'Welcome to Tetu TVC - Empowering futures through technical education excellence.',
             'motto' => 'TVET skills for industrial growth.',
