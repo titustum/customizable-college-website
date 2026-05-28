@@ -137,7 +137,7 @@ class extends Component {
                         class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
             
                         <!-- Hero image Swiper slider -->
-                        <div class="relative h-[500px] overflow-hidden rounded-t-2xl">
+                        <div class="relative h-[300px] md:h-[500px] overflow-hidden rounded-t-2xl">
             
                             <!-- IMPORTANT -->
                             <div class="swiper heroSwiper min-w-0 w-full h-full">
