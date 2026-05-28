@@ -129,48 +129,70 @@ class extends Component {
             </div>
 
             <!-- Hero image card / stats -->
-            <div class="" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+            <div class="min-w-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                 <div class="relative">
+            
                     <!-- Main card -->
                     <div
-                        class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl overflow-visible shadow-2xl">
+                        class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+            
                         <!-- Hero image Swiper slider -->
                         <div class="relative h-[500px] overflow-hidden rounded-t-2xl">
-                            <div class="swiper heroSwiper w-full h-full">
+            
+                            <!-- IMPORTANT -->
+                            <div class="swiper heroSwiper min-w-0 w-full h-full">
                                 <div class="swiper-wrapper">
+            
                                     @if(count($heroSlides) > 0)
-                                    @foreach($heroSlides as $slide)
-                                    <div class="swiper-slide relative">
-                                        <img src="{{ Storage::url($slide->image) }}"
-                                            alt="{{ $slide->title ?? 'Hero Image' }}"
-                                            class="w-full h-full object-cover">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/30 to-transparent">
-                                        </div>
-                                        @if($slide->title || $slide->subtitle)
-                                        <div class="absolute bottom-4 left-4 right-4">
-                                            @if($slide->title)
-                                            <p class="text-white font-semibold text-lg">{{ $slide->title }}</p>
+                                        @foreach($heroSlides as $slide)
+            
+                                        <div class="swiper-slide relative overflow-hidden">
+                                            <img
+                                                src="{{ Storage::url($slide->image) }}"
+                                                alt="{{ $slide->title ?? 'Hero Image' }}"
+                                                class="w-full h-full object-cover"
+                                            >
+            
+                                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/30 to-transparent"></div>
+            
+                                            @if($slide->title || $slide->subtitle)
+                                            <div class="absolute bottom-4 left-4 right-4">
+                                                @if($slide->title)
+                                                    <p class="text-white font-semibold text-lg">
+                                                        {{ $slide->title }}
+                                                    </p>
+                                                @endif
+            
+                                                @if($slide->subtitle)
+                                                    <p class="text-white/80 text-sm">
+                                                        {{ $slide->subtitle }}
+                                                    </p>
+                                                @endif
+                                            </div>
                                             @endif
-                                            @if($slide->subtitle)
-                                            <p class="text-white/80 text-sm">{{ $slide->subtitle }}</p>
-                                            @endif
                                         </div>
-                                        @endif
-                                    </div>
-                                    @endforeach
+            
+                                        @endforeach
                                     @else
-                                    <div class="swiper-slide relative">
-                                        <img src="https://tetutvc.ac.ke/storage/hero_slide_images/tetu-tvc-ict-practicals.jpg"
-                                            alt="Hero Image" class="w-full h-full object-cover">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/30 to-transparent">
-                                        </div>
+            
+                                    <div class="swiper-slide relative overflow-hidden">
+                                        <img
+                                            src="https://tetutvc.ac.ke/storage/hero_slide_images/tetu-tvc-ict-practicals.jpg"
+                                            alt="Hero Image"
+                                            class="w-full h-full object-cover"
+                                        >
+            
+                                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/30 to-transparent"></div>
+            
                                         <div class="absolute bottom-4 left-4 right-4">
-                                            <p class="text-white font-semibold text-lg">Hands-on Learning Experience</p>
+                                            <p class="text-white font-semibold text-lg">
+                                                Hands-on Learning Experience
+                                            </p>
                                         </div>
                                     </div>
+            
                                     @endif
+            
                                 </div>
                             </div>
                         </div>
