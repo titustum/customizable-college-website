@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('team_members', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Department::class)->nullable();
-            $table->foreignIdFor(Role::class); // name e.g. Principal, Deputy Principal, HOD, Section Head, Trainer etc.
             $table->string('section_assigned')->nullable(); // section assigned i.e. games, clubs, etc
             $table->string('email')->unique()->nullable(); // email e.g.
             $table->string('phone')->nullable(); // phone number e.g. +254712345678

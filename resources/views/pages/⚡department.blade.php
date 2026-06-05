@@ -108,15 +108,6 @@ PAGE WRAPPER
 
         <div class="relative z-10 container mx-auto px-4 pt-16 pb-28">
 
-            {{-- Breadcrumb --}}
-            <nav class="flex items-center text-xs font-semibold tracking-wide text-white/50 mb-8" data-aos="fade-down">
-                <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
-                <span class="breadcrumb-item"></span>
-                <a href="{{ route('departments') }}"
-                    class="breadcrumb-item hover:text-white transition-colors">Departments</a>
-                <span class="breadcrumb-item text-white/80">{{ $department->name }}</span>
-            </nav>
-
             {{-- Department pill + title --}}
             <div data-aos="fade-up">
                 <span class="label-pill mb-5">Academic Department</span>
@@ -127,11 +118,10 @@ PAGE WRAPPER
                 {{ $department->name }}
             </h1>
 
-                <p class="mt-4 text-lg text-gray-200">
-                    {{ $department->short_desc ?? 'Discover our comprehensive training programs and expert
-                    trainers dedicated to preparing you for a successful career in the hospitality industry.' }}
-                </p>
-            </div>
+            <p class="mt-4 text-lg text-gray-200">
+                {{ $department->short_desc ?? 'Discover our comprehensive training programs and expert
+                trainers dedicated to preparing you for a successful career in the hospitality industry.' }}
+            </p>
         </div>
     </header>
 
@@ -141,44 +131,50 @@ PAGE WRAPPER
         {{-- ─────────────────────────────────────────────
         BREADCRUMBS
         ──────────────────────────────────────────────── --}}
-        <section class="border-b border-gray-100">
+        <section class="border-b border-gray-100 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
 
-                <nav class="flex items-center flex-wrap gap-2 text-sm">
+                <nav class="flex items-center text-xs font-semibold tracking-wide" aria-label="Breadcrumb">
+                    <ol class="flex items-center space-x-2 text-gray-500">
 
-                    {{-- Home --}}
-                    <a href="{{ route('home') }}"
-                        class="inline-flex items-center gap-2 text-gray-500 hover:text-amber-600 transition-colors font-medium">
+                        {{-- Home --}}
+                        <li>
+                            <a href="{{ route('home') }}" class="hover:text-gray-900 transition-colors">
+                                Home
+                            </a>
+                        </li>
 
-                        <i class="fas fa-home text-xs"></i>
-                        <span>Home</span>
-                    </a>
+                        {{-- Separator --}}
+                        <li aria-hidden="true">
+                            <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </li>
 
-                    {{-- Divider --}}
-                    <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
+                        {{-- Departments --}}
+                        <li>
+                            <a href="{{ route('departments') }}" class="hover:text-gray-900 transition-colors">
+                                Departments
+                            </a>
+                        </li>
 
-                    {{-- Departments --}}
-                    <a href="{{ route('departments') }}"
-                        class="inline-flex items-center gap-2 text-gray-500 hover:text-amber-600 transition-colors font-medium">
+                        {{-- Separator --}}
+                        <li aria-hidden="true">
+                            <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </li>
 
-                        <i class="fas fa-building text-xs"></i>
-                        <span>Departments</span>
-                    </a>
-
-                    {{-- Divider --}}
-                    <i class="fas fa-chevron-right text-[10px] text-gray-300"></i>
-
-                    {{-- Current Department --}}
-                    <div
-                        class="inline-flex items-center gap-2 text-amber-600 font-semibold max-w-[200px] sm:max-w-none">
-
-                        <i class="fas fa-graduation-cap text-xs"></i>
-
-                        <span class="truncate">
+                        {{-- Active Department --}}
+                        <li class="text-gray-900 font-bold truncate" aria-current="page">
                             {{ $department->name }}
-                        </span>
-                    </div>
+                        </li>
 
+                    </ol>
                 </nav>
 
             </div>
@@ -186,14 +182,11 @@ PAGE WRAPPER
 
 
 
+
         {{-- ─────────────────────────────────────────────
         INTRO
         ──────────────────────────────────────────────── --}}
 
-        <!-- Department Intro -->
-        {{-- ─────────────────────────────────────────────
-        INTRO
-        ──────────────────────────────────────────────── --}}
         <section class="py-14 sm:py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
 

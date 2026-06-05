@@ -2,66 +2,30 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
-use App\Models\Department;
-use App\Models\Role;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class TeamMemberForm
 {
     public static function configure(Schema $schema): Schema
     {
-        return $schema->components([
-            Section::make('Personal Information')
-                ->columns(2)
-                ->columnSpan('full')
-                ->schema([
-                    TextInput::make('name')
-                        ->label('Full Name')
-                        ->required(),
-
-                    TextInput::make('email')
-                        ->label('Email Address')
-                        ->email()
-                        ->nullable(),
-
-                    FileUpload::make('photo')
-                        ->label('Profile Photo')
-                        ->disk('public')
-                        ->directory('team_members')
-                        ->image()
-                        ->imageEditor()
-                        ->required(),
-
-                    Select::make('department_id')
-                        ->label('Department')
-                        ->options(fn () => Department::pluck('name', 'id'))
-                        ->searchable()
-                        ->required(),
-
-                    Select::make('role_id')
-                        ->label('Role')
-                        ->options(fn () => Role::pluck('name', 'id'))
-                        ->searchable()
-                        ->required(),
-
-                    TextInput::make('section_assigned')
-                        ->label('Section Assigned')
-                        ->nullable(),
-
-                    TextInput::make('qualification')
-                        ->label('Qualification')
-                        ->required(),
-
-                    TextInput::make('graduation_year')
-                        ->label('Graduation Year')
-                        ->numeric()
-                        ->default(now()->year)
-                        ->required(),
-                ]),
-        ]);
+        return $schema
+            ->components([
+                TextInput::make('department_id')
+                    ->numeric(),
+                TextInput::make('role_id')
+                    ->required()
+                    ->numeric(),
+                TextInput::make('section_assigned'),
+                TextInput::make('email')
+                    ->label('Email address')
+                    ->email(),
+                TextInput::make('phone')
+                    ->tel(),
+                TextInput::make('name')
+                    ->required(),
+                TextInput::make('photo'),
+                TextInput::make('qualification'),
+            ]);
     }
 }

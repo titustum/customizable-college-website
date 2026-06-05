@@ -10,8 +10,7 @@ class TeamMember extends Model
     use HasFactory;
 
      protected $fillable = [
-        'department_id',
-        'role_id',
+        'department_id', 
         'section_assigned',
         'email',
         'phone',
@@ -19,11 +18,19 @@ class TeamMember extends Model
         'photo',
         'qualification',
     ];
- 
-    public function role()
+  
+    public function roles()
     {
-        return $this->belongsTo(Role::class);
-    }
+        return $this->belongsToMany(Role::class)
+            ->withPivot([
+                'is_primary',
+                'is_active',
+                'start_date',
+                'end_date'
+            ])
+            ->withTimestamps();
+    } 
+
 
     public function department()
     {

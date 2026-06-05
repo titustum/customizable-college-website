@@ -9,10 +9,19 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
-
+    protected $fillable = ['name', 'level', 'display_order'];
+ 
+ 
     public function teamMembers()
     {
-        return $this->belongsToMany(TeamMember::class);
-    }
+        return $this->belongsToMany(TeamMember::class)
+            ->withPivot([
+                'is_primary',
+                'is_active',
+                'start_date',
+                'end_date'
+            ])
+            ->withTimestamps();
+    } 
+
 }

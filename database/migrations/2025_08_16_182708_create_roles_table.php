@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // Name of the role i.e. Principal, HOD, Coordinator, Trainer, etc.
-            $table->integer('level')->unsigned(); // Level of the role i.e. Principal, HOD, Coordinator, Trainer, etc.
-            $table->string('description')->nullable(); // Description of the role and its responsibilities
+            $table->unsignedInteger('level') ->default(100); // lower number = higher authority 
+            $table->unsignedInteger('display_order') ->default(100); // controls frontend ordering
             $table->timestamps();
         });
     }

@@ -17,6 +17,11 @@ class RolesTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
+                TextColumn::make('level')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('description')
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

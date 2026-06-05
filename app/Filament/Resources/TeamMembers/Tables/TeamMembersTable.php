@@ -6,7 +6,6 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -16,29 +15,25 @@ class TeamMembersTable
     {
         return $table
             ->columns([
-                ImageColumn::make('photo')
-                    ->disk('public'),
-                TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('department.name')
+                TextColumn::make('department_id')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('role.name')
+                TextColumn::make('role_id')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('section_assigned')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable(),
                 TextColumn::make('email')
                     ->label('Email address')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable(),
+                TextColumn::make('phone')
+                    ->searchable(),
+                TextColumn::make('name')
+                    ->searchable(),
+                TextColumn::make('photo')
+                    ->searchable(),
                 TextColumn::make('qualification')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('graduation_year')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
