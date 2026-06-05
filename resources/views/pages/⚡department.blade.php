@@ -13,6 +13,7 @@ class extends Component
     public $department;
     public $departments = [];
     public $successStories = [];
+    public $facilityPics = [];
     public $hod = null;
 
     public function mount($slug)
@@ -95,7 +96,9 @@ PAGE WRAPPER
             <img src="{{ asset('storage/' . $department->banner_pic) }}" alt="{{ $department->name }} Banner"
                 class="w-full h-full object-cover opacity-25 scale-105"
                 style="transform-origin:center; animation: subtle-zoom 14s ease-in-out infinite alternate;">
-            <div class="absolute inset-0 bg-gradient-to-br from-gray-950/50 via-gray-900/30 to-orange-950/10"></div>
+            {{-- <div class="absolute inset-0 bg-gradient-to-br from-gray-950/50 via-gray-900/30 to-orange-950/10">
+            </div> --}}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
         </div>
 
         {{-- Decorative glow orbs --}}
@@ -107,14 +110,6 @@ PAGE WRAPPER
 
         <div class="relative z-10 container mx-auto px-4 pt-16 pb-28">
 
-            {{-- Breadcrumb --}}
-            <nav class="flex items-center text-xs font-semibold tracking-wide text-white/50 mb-8" data-aos="fade-down">
-                <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
-                <span class="breadcrumb-item"></span>
-                <a href="{{ route('departments') }}"
-                    class="breadcrumb-item hover:text-white transition-colors">Departments</a>
-                <span class="breadcrumb-item text-white/80">{{ $department->name }}</span>
-            </nav>
 
             {{-- Department pill + title --}}
             <div data-aos="fade-up">
@@ -164,7 +159,13 @@ PAGE WRAPPER
         </div>
     </header>
 
+
+
+
+
+
     <main>
+
 
         {{-- ─────────────────────────────────────────────
         OVERVIEW (2-col: content + sidebar)
