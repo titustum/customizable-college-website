@@ -19,13 +19,10 @@ return new class extends Migration
             $table->foreignIdFor(Role::class); // name e.g. Principal, Deputy Principal, HOD, Section Head, Trainer etc.
             $table->string('section_assigned')->nullable(); // section assigned i.e. games, clubs, etc
             $table->string('email')->unique()->nullable(); // email e.g.
-            $table->string('phone')->nullable()->after('email');
+            $table->string('phone')->nullable(); // phone number e.g. +254712345678
             $table->string('name'); // fullname e.g. James Kariuki
             $table->string('photo')->nullable();
-            $table->string('qualification')->nullable(); // e.g. BSc. Computer Science
-            $table->text('bio')->nullable()->after('qualification');
-            $table->boolean('is_hod')->default(false)->after('bio');
-            $table->string('graduation_year')->nullable(); // Years of experience e.g. 4 years
+            $table->string('qualification')->nullable(); // e.g. BSc. Computer Science 
             $table->timestamps();
         });
     }

@@ -9,30 +9,17 @@ class TeamMember extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+     protected $fillable = [
         'department_id',
         'role_id',
         'section_assigned',
         'email',
+        'phone',
         'name',
         'photo',
         'qualification',
-        'graduation_year',
-        'bio',
-        'is_hod',
-        'phone',
     ];
-
-    protected $casts = [
-        'graduation_year' => 'integer',
-    ];
-
-    // years of experience = current year - graduation year
-    public function getYearsOfExperienceAttribute()
-    {
-        return now()->year - $this->graduation_year;
-    }
-
+ 
     public function role()
     {
         return $this->belongsTo(Role::class);

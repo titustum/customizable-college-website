@@ -3,16 +3,15 @@
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\TeamMember;
-use App\Models\Role;
 use App\Models\Department;
 
 new
-#Title('Team Members')
+#[Title('Team Members')]
 class extends Component
 {
     public $search = '';
     public $department = '';
-    public $roleOrder = [];
+
     public $departments = [];
 
     protected $queryString = [
@@ -22,13 +21,7 @@ class extends Component
 
     public function mount()
     {
-        $this->departments = Department::pluck('name');
-        $this->roleOrder = [
-            'Principal',
-            'Deputy Principal',
-            'HOD',
-            'Trainer',
-        ];
+        $this->departments = Department::orderBy('name')->pluck('name');
     }
 
     public function teamMembers()
@@ -43,9 +36,16 @@ class extends Component
                 });
             })
             ->get()
-            ->groupBy('role.name');
+            // 🔥 KEY CHANGE: sort by role level (not name order)
+            ->sortBy(fn ($member) => $member->role->level ?? 999)
+            // group dynamically
+            ->groupBy(fn ($member) => $member->role->name ?? 'Unassigned');
     }
 
+    public function rolesInOrder()
+    {
+        return \App\Models\Role::orderBy('level')->pluck('name');
+    }
 }
 ?>
 
@@ -69,31 +69,46 @@ class extends Component
             </div>
         </div>
 
-        @foreach($roleOrder as $role)
+
+        @foreach($this->rolesInOrder() as $role)
         @if(isset($this->teamMembers()[$role]))
         <div class="mb-12">
             <h2 class="mb-6 text-2xl font-semibold text-orange-600">
-                {{ $role }}@if($role != 'Others')s@endif
+                {{ $role }}
             </h2>
+
             <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach($this->teamMembers()[$role] as $member)
                 <div class="overflow-hidden bg-white rounded-lg shadow-xl">
+
                     @if($member->photo)
-                    <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}"
-                        class="object-cover w-full h-48">
+                    <img src="{{ asset('storage/' . $member->photo) }}" class="object-cover w-full h-48">
                     @else
                     <div class="flex items-center justify-center w-full h-48 bg-gray-200">
                         <span class="text-gray-500">No image available</span>
                     </div>
                     @endif
+
                     <div class="p-6">
-                        <h3 class="mb-2 text-xl font-semibold text-orange-600">{{ $member->name }}</h3>
+                        <h3 class="mb-2 text-xl font-semibold text-orange-600">
+                            {{ $member->name }}
+                        </h3>
+
                         @if($member->department)
-                        <p class="mb-2 text-gray-600"><strong>Department:</strong> {{ $member->department->name }}</p>
+                        <p class="mb-2 text-gray-600">
+                            <strong>Department:</strong> {{ $member->department->name }}
+                        </p>
                         @elseif($member->section_assigned)
-                        <p class="mb-2 text-gray-600"><strong>Section:</strong> {{ $member->section_assigned }}</p>
+                        <p class="mb-2 text-gray-600">
+                            <strong>Section:</strong> {{ $member->section_assigned }}
+                        </p>
                         @endif
-                        <p class="mb-2 text-gray-600"><strong>Qualification:</strong> {{ $member->qualification }}</p>
+
+                        @if($member->qualification)
+                        <p class="mb-2 text-gray-600">
+                            <strong>Qualification:</strong> {{ $member->qualification }}
+                        </p>
+                        @endif
                     </div>
                 </div>
                 @endforeach
@@ -101,5 +116,8 @@ class extends Component
         </div>
         @endif
         @endforeach
+
+
+
     </div>
 </section>

@@ -19,7 +19,7 @@ class extends Component
     public function mount(){
         $this->principals = TeamMember::whereHas('role', function ($query) {
             $query->where('name', 'Principal');
-        })->get();
+        })->first();
 
         $this->deputies = TeamMember::whereHas('role', function ($query) {
             $query->where('name', 'Deputy Principal');
@@ -30,11 +30,7 @@ class extends Component
         })->get();
 
         $this->sectionHeads = TeamMember::whereHas('role', function ($query) {
-            $query->where('name', 'Head of Section');
-        })->orWhere(function ($query) {
-            $query->whereDoesntHave('role', function ($q) {
-                      $q->whereIn('name', ['Principal', 'Deputy Principal', 'HOD', 'Trainer', 'Others', 'Head of Section']);
-                  });
+            $query->where('name', 'HOS');
         })->get();
 
 

@@ -2,16 +2,16 @@
     "agents": [
         "opencode"
     ],
+    "cloud": false,
     "guidelines": true,
     "mcp": true,
-    "nightwatch_mcp": false,
+    "nightwatch": false,
     "packages": [
         "filament/filament"
     ],
     "sail": false,
     "skills": [
         "laravel-best-practices",
-        "volt-development",
         "pest-testing",
         "tailwindcss-development"
     ]
