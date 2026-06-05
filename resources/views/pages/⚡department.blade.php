@@ -13,6 +13,7 @@ class extends Component
     public $department;
     public $departments = [];
     public $successStories = [];
+    public $facilityPics = [];
     public $hod = null;
 
     public function mount($slug)
@@ -88,23 +89,43 @@ PAGE WRAPPER
     {{-- ─────────────────────────────────────────────────
     HERO BANNER
     ───────────────────────────────────────────────── --}}
+    <header class="relative clip-diagonal grain bg-gray-900 overflow-hidden">
 
-    <!-- Hero Banner -->
-    <section class="relative h-[450px] clip-diagonal">
-        <img src="{{ asset('storage/'. $department->banner_pic) }}" alt="{{ $department->name }} Banner"
-            class="absolute inset-0 w-full h-full object-cover">
+        {{-- Background image --}}
+        <div class="absolute inset-0 z-0">
+            <img src="{{ asset('storage/' . $department->banner_pic) }}" alt="{{ $department->name }} Banner"
+                class="w-full h-full object-cover opacity-25 scale-105"
+                style="transform-origin:center; animation: subtle-zoom 14s ease-in-out infinite alternate;">
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-950/50 via-gray-900/30 to-orange-950/10"></div>
+        </div>
 
-        <div class="absolute inset-0 bg-black/60"></div>
+        {{-- Decorative glow orbs --}}
+        <div class="absolute top-1/3 right-10 w-72 h-72 rounded-full bg-orange-600/10 blur-3xl pointer-events-none z-0">
+        </div>
+        <div
+            class="absolute -bottom-20 left-0 w-96 h-96 rounded-full bg-orange-800/10 blur-3xl pointer-events-none z-0">
+        </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 h-full flex items-center">
-            <div class="text-white max-w-3xl">
-                <span class="bg-amber-500 text-white px-4 py-1 rounded-full text-sm">
-                    Academic Department
-                </span>
+        <div class="relative z-10 container mx-auto px-4 pt-16 pb-28">
 
-                <h1 class="text-5xl font-bold mt-4">
-                    {{ $department->name }} Department
-                </h1>
+            {{-- Breadcrumb --}}
+            <nav class="flex items-center text-xs font-semibold tracking-wide text-white/50 mb-8" data-aos="fade-down">
+                <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
+                <span class="breadcrumb-item"></span>
+                <a href="{{ route('departments') }}"
+                    class="breadcrumb-item hover:text-white transition-colors">Departments</a>
+                <span class="breadcrumb-item text-white/80">{{ $department->name }}</span>
+            </nav>
+
+            {{-- Department pill + title --}}
+            <div data-aos="fade-up">
+                <span class="label-pill mb-5">Academic Department</span>
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight max-w-3xl mb-5"
+                data-aos="fade-up" data-aos-delay="60">
+                {{ $department->name }}
+            </h1>
 
                 <p class="mt-4 text-lg text-gray-200">
                     {{ $department->short_desc ?? 'Discover our comprehensive training programs and expert
@@ -112,9 +133,10 @@ PAGE WRAPPER
                 </p>
             </div>
         </div>
-    </section>
+    </header>
 
     <main>
+
 
         {{-- ─────────────────────────────────────────────
         BREADCRUMBS
