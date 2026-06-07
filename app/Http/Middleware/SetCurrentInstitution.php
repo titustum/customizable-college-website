@@ -15,24 +15,31 @@ class SetCurrentInstitution
 
          $institution = null;
 
-    // 1. domain support (production style)
-    $host = $request->getHost(); // tetu.college.test
-    $subdomain = explode('.', $host)[0];
+        // 1. Try subdomain first (tetu.college.test → tetu)
+        $host = $request->getHost();
+        $subdomain = explode('.', $host)[0] ?? null;
 
-    // 2. query fallback (dev style)
-    if ($request->has('institution')) {
-        $subdomain = $request->input('institution');
-    }
+        if ($subdomain) {
+            $institution = Institution::where('slug', $subdomain)->first();
+        }
 
-    $institution = Institution::where('slug', $subdomain)->first();
+        // 2. Fallback: first institution in DB (safe default)
+        if (!$institution) {
+            $institution = Institution::first();
+        }
 
-    if (!$institution) {
-        abort(404, 'Institution not found');
-    }
+        // 3. If STILL nothing exists → system not initialized
+        if (!$institution) {
+            abort(500, 'No institution found. Please seed at least one institution.');
+        }
 
-    app()->instance('currentInstitution', $institution);
+        // 4. Share globally in app container
+        app()->instance('currentInstitution', $institution);
 
-    return $next($request);
+        // Optional: share with views
+        view()->share('currentInstitution', $institution);
+
+        return $next($request);
 
     }
 }
