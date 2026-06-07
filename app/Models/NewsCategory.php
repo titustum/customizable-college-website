@@ -11,6 +11,7 @@ class NewsCategory extends Model
     use HasFactory;
 
     protected $fillable = [
+        'institution_id',
         'name',
         'slug',
         'description',
@@ -21,9 +22,13 @@ class NewsCategory extends Model
         parent::boot();
 
         static::creating(function ($category) {
-            if (empty($category->slug)) {
-                $category->slug = Str::slug($category->name);
-            }
+            $slug = Str::slug($category->name);
+
+            $count = static::where('slug', 'LIKE', "{$slug}%")->count();
+
+            $category->slug = $count
+                ? "{$slug}-".($count + 1)
+                : $slug;
         });
     }
 

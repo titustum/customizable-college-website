@@ -9,24 +9,40 @@ class TeamMember extends Model
 {
     use HasFactory;
 
-     protected $fillable = [
-        'department_id',
-        'role_id',
-        'section_assigned',
+    protected $fillable = [
+        'institution_id',
         'email',
         'phone',
         'name',
         'photo',
-        'qualification',
+        'is_active',
     ];
- 
-    public function role()
+
+    public function departments()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsToMany(Department::class)
+            ->withPivot('role_id', 'custom_title')
+            ->withTimestamps();
     }
 
-    public function department()
+    public function roles()
     {
-        return $this->belongsTo(Department::class);
+        return $this->belongsToMany(Role::class, 'department_team_member')
+            ->withPivot('department_id', 'custom_title')
+            ->withTimestamps();
+    }
+
+    public function scopeHods($query)
+    {
+        return $query->whereHas('roles', function ($q) {
+            $q->where('name', 'HOD');
+        });
+    }
+
+    public function scopeSectionLeaders($query)
+    {
+        return $query->whereHas('roles', function ($q) {
+            $q->where('name', 'HOS');
+        });
     }
 }

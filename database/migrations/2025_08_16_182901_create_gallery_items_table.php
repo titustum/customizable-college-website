@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('gallery_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->foreignId('gallery_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('category')->nullable();

@@ -54,6 +54,7 @@ class TenderSeeder extends Seeder
 
         foreach ($tenders as $tender) {
             DB::table('tenders')->insert([
+                'institution_id' => 1,
                 'title' => $tender['title'],
                 'description' => $tender['description'],
                 'reference_number' => $tender['reference_number'],

@@ -74,6 +74,7 @@ class VacancySeeder extends Seeder
 
         foreach ($vacancies as $vacancy) {
             DB::table('vacancies')->insert([
+                'institution_id' => 1,
                 'title' => $vacancy['title'],
                 'description' => $vacancy['description'],
                 'reference_number' => $vacancy['reference_number'],

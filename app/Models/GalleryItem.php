@@ -10,6 +10,7 @@ class GalleryItem extends Model
     use HasFactory;
 
     protected $fillable = [
+        'institution_id',
         'gallery_id',
         'name',
         'category',

@@ -164,6 +164,7 @@ class DepartmentSeeder extends Seeder
 
         foreach ($departments as $department) {
             DB::table('departments')->insert([
+                'institution_id' => 1,
                 'name' => $department['name'],
                 'slug' => $department['slug'],
                 'type' => $department['type'],

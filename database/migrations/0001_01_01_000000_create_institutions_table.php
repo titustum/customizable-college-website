@@ -33,10 +33,13 @@ return new class extends Migration
             // Socials
             $table->string('facebook')->nullable();
             $table->string('tiktok')->nullable();
-            $table->string('x')->nullable(); // Twitter
+            $table->string('twitter')->nullable(); // Twitter
             $table->string('youtube')->nullable();
 
             $table->timestamps();
+
+            $table->softDeletes();
+
         });
     }
 

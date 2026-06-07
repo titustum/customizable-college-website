@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('name'); // name of the department e.g. Cosmetology, ICT, Agriculture etc.
-            $table->enum('type', ['academic', 'non-academic'])->default('academic')->after('name');
             $table->string('slug')->unique(); // e.g. cosmetology, ict, agriculture etc.
             $table->string('photo')->nullable(); // captivating pic of students of departments doing somethin; will be displayed on landing page.
-            $table->string('short_desc'); // short captivating desc that will be loaded in landing page e.g. Master the art and science of Beauty Therapy and Hairdressing with our amazing programs.
-            $table->text('full_desc')->nullable(); // The description that will be displayed on single page when user selects to view that department
-            $table->string('banner_pic')->nullable(); // Banner pic that will be displayed on single page when user selects to view that department
+            $table->string('short_description')->nullable(); // short captivating desc that will be loaded in landing page e.g. Master the art and science of Beauty Therapy and Hairdressing with our amazing programs.
+            $table->text('full_description')->nullable(); // The description that will be displayed on single page when user selects to view that department
+            $table->string('banner_photo')->nullable(); // Banner pic that will be displayed on single page when user selects to view that department
+            $table->string('type')->default('academic'); // academic (e.g. Cosmetology, ICT, Agriculture) or section (e.g. sports, clubs etc.)
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

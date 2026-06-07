@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('news_categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();

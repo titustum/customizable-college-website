@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SuccessStory extends Model
 {
     protected $fillable = [
-        'name', 'department_id', 'photo', 'course', 'year',
+        'institution_id', 'name', 'department_id', 'photo', 'course', 'year',
         'occupation', 'company', 'statement', 'rating',
         'is_approved',
     ];

@@ -11,6 +11,7 @@ class NewsItem extends Model
     use HasFactory;
 
     protected $fillable = [
+        'institution_id',
         'news_category_id',
         'title',
         'slug',

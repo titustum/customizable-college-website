@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tenders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('title'); // e.g. "Supply of ICT Equipment"
             $table->text('description')->nullable(); // Tender details
             $table->string('reference_number')->unique(); // e.g. TTVCT/ICT/2025/001
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->date('closing_date'); // Deadline
             $table->string('attachment_path')->nullable(); // PDF/Document link
             $table->enum('status', ['open', 'closed', 'cancelled'])->default('open');
+            $table->index('status');
             $table->timestamps();
         });
     }

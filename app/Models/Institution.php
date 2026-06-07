@@ -22,10 +22,11 @@ class Institution extends Model
         'email',
         'facebook',
         'tiktok',
-        'x',
+        'twitter',
         'youtube',
         'latitude',
         'longitude',
+        'address',
     ];
 
     public function getPrimaryColorRgbAttribute()

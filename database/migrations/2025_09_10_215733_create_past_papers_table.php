@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('past_papers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('title'); // e.g. "ICT Principles CAT 1"
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->string('unit_name'); // Optional: unit or subject

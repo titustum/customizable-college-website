@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('title'); // e.g. "ICT Lecturer"
             $table->text('description')->nullable(); // Full job description
             $table->string('reference_number')->unique(); // e.g. TTVCT/HR/2025/002
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->string('attachment_path')->nullable(); // Link to job PDF
             $table->enum('status', ['open', 'closed', 'cancelled'])->default('open');
             $table->timestamps();
+            $table->index('status');
         });
     }
 

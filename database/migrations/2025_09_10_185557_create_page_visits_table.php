@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('page_visits', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('url'); // e.g. /courses
             $table->string('full_url')->nullable();
             $table->string('referer')->nullable();
             $table->string('ip')->nullable(); // consider hashing for privacy
             $table->text('user_agent')->nullable();
-            $table->timestamp('visited_at')->default(now());
+            $table->timestamp('visited_at')->useCurrent();
+            $table->index('url');
+            $table->index('visited_at');
         });
     }
 

@@ -18,10 +18,10 @@ class TeamMemberSeeder extends Seeder
                 'email' => 'principal@tetutvc.ac.ke',
                 'name' => 'Mr. David M. Kariuki',
                 'photo' => null,
-                'qualification' => '', 
+                'qualification' => '',
                 'phone' => '+254758660300',
             ],
-                 // Deputy Principals
+            // Deputy Principals
             [
                 'department_id' => null,
                 'role_id' => 2,
@@ -47,7 +47,7 @@ class TeamMemberSeeder extends Seeder
             // ADMINISTRATORS (NEW)
             // =========================
 
-           [
+            [
                 'department_id' => null,
                 'role_id' => 3,
                 'section_assigned' => 'Registrar Office',
@@ -87,7 +87,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'hod.cosmetology@tetutvc.ac.ke',
                 'name' => 'Jacob Nyaga',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660303',
             ],
             [
@@ -96,7 +96,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'hod.hospitality@tetutvc.ac.ke',
                 'name' => 'Lily Mugo',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660304',
             ],
             [
@@ -105,7 +105,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'hod.fashion@tetutvc.ac.ke',
                 'name' => 'Madam Jane',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660305',
             ],
             [
@@ -114,7 +114,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'hod.building@tetutvc.ac.ke',
                 'name' => 'Gideon Muraguri',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660306',
             ],
             [
@@ -123,7 +123,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'hod.electrical@tetutvc.ac.ke',
                 'name' => 'Mr. Josiah',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660307',
             ],
             [
@@ -132,7 +132,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'hod.ict@tetutvc.ac.ke',
                 'name' => 'Ascar Jebet',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660308',
             ],
             [
@@ -141,7 +141,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'hod.agriculture@tetutvc.ac.ke',
                 'name' => 'Anthony S.',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660309',
             ],
             [
@@ -150,17 +150,17 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'hod.mechanical@tetutvc.ac.ke',
                 'name' => 'Mugure Ngigi',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660310',
             ],
             // Section Leaders (HOS) / Coordinators - Non-Academic Departments (5 departments)
             [
-                'department_id' => null,  //belongs to hospitality department
+                'department_id' => null,  // belongs to hospitality department
                 'role_id' => 3,
                 'section_assigned' => 'Guiding & Counselling',
                 'email' => 'hod.counselling@tetutvc.ac.ke',
                 'name' => 'Mrs. Grace Wanjiku',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660321',
             ],
             [
@@ -169,7 +169,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => 'Industrial Liaison Office (ILO)',
                 'email' => 'hos.ilo@tetutvc.ac.ke',
                 'name' => 'Joan Weru',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660322',
             ],
             [
@@ -178,26 +178,26 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => 'Sports',
                 'email' => 'hos.sports@tetutvc.ac.ke',
                 'name' => 'Dennis Njeru',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660323',
             ],
             [
-                'department_id' => 6, //belongs to ict department
+                'department_id' => 6, // belongs to ict department
                 'role_id' => 3,
                 'section_assigned' => 'Music and Arts',
                 'email' => 'hos.musicarts@tetutvc.ac.ke',
                 'name' => 'Joseph Ambrose',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660324',
             ],
 
             [
-                'department_id' => 3, //belongs to fashion department
+                'department_id' => 3, // belongs to fashion department
                 'role_id' => 3,
                 'section_assigned' => 'Research & innovations',
                 'email' => 'hos.research@tetutvc.ac.ke',
                 'name' => 'Rose Kiarie',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660324',
             ],
 
@@ -208,7 +208,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'felix@tetutvc.ac.ke',
                 'name' => 'Felix Njeru',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660311',
             ],
             [
@@ -218,7 +218,7 @@ class TeamMemberSeeder extends Seeder
                 'email' => 'festus@tetutvc.ac.ke',
                 'name' => 'Festus Chesaro',
                 'photo' => null,
-                'qualification' => '', 
+                'qualification' => '',
                 'phone' => '+254758660312',
             ],
             [
@@ -227,7 +227,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'alphonse@tetutvc.ac.ke',
                 'name' => 'Alphonse Otieno',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660313',
             ],
             [
@@ -236,7 +236,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'lucy@tetutvc.ac.ke',
                 'name' => 'Madam Lucy O.',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660314',
             ],
             [
@@ -245,7 +245,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'njeri@tetutvc.ac.ke',
                 'name' => 'Madam Njeri',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660315',
             ],
             [
@@ -254,7 +254,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'faithfashion@tetutvc.ac.ke',
                 'name' => 'Madam Faith',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660316',
             ],
             [
@@ -263,7 +263,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'peninah@tetutvc.ac.ke',
                 'name' => 'Madam Peninah',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660401',
             ],
             [
@@ -272,7 +272,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'lawrence@tetutvc.ac.ke',
                 'name' => 'Lawrence Mwaniki',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660402',
             ],
             [
@@ -281,7 +281,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'titus@tetutvc.ac.ke',
                 'name' => 'Titus Tum',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660403',
             ],
             [
@@ -290,7 +290,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'evans@tetutvc.ac.ke',
                 'name' => 'Evans Odima',
-                'photo' => null,  
+                'photo' => null,
                 'phone' => '+254758660404',
             ],
             [
@@ -299,7 +299,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'june@tetutvc.ac.ke',
                 'name' => 'June Njagi',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660405',
             ],
             [
@@ -308,7 +308,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'mercy@tetutvc.ac.ke',
                 'name' => 'Madam Mercy',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660406',
             ],
             [
@@ -317,7 +317,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'kioko@tetutvc.ac.ke',
                 'name' => 'Mr. Kioko',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660407',
             ],
             [
@@ -326,7 +326,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'dennis@tetutvc.ac.ke',
                 'name' => 'Mr. Dennis',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660408',
             ],
             [
@@ -335,7 +335,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'kimathi@tetutvc.ac.ke',
                 'name' => 'Kimathi Mwiti',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660409',
             ],
             [
@@ -344,7 +344,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'aminga@tetutvc.ac.ke',
                 'name' => "Mr. Aming'a",
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660410',
             ],
             [
@@ -353,7 +353,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'graceni@tetutvc.ac.ke',
                 'name' => 'Madam Grace N.',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660411',
             ],
             [
@@ -362,7 +362,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'bilhah@tetutvc.ac.ke',
                 'name' => 'Madam Bilhah',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660412',
             ],
             [
@@ -371,7 +371,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'ambrose@tetutvc.ac.ke',
                 'name' => 'Mr. Ambrose',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660413',
             ],
             [
@@ -380,7 +380,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'thomas@tetutvc.ac.ke',
                 'name' => 'Mr. Thomas',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660414',
             ],
             [
@@ -389,7 +389,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'evelynne@tetutvc.ac.ke',
                 'name' => 'Evelynne Donga',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660415',
             ],
             [
@@ -398,7 +398,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'fernice@tetutvc.ac.ke',
                 'name' => 'Fernice Gichevu',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660416',
             ],
             [
@@ -407,7 +407,7 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'monica@tetutvc.ac.ke',
                 'name' => 'Madam Monica',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660417',
             ],
             [
@@ -416,10 +416,10 @@ class TeamMemberSeeder extends Seeder
                 'section_assigned' => null,
                 'email' => 'okacha@tetutvc.ac.ke',
                 'name' => 'Mr. Okacha',
-                'photo' => null, 
+                'photo' => null,
                 'phone' => '+254758660418',
             ],
- 
+
             // =========================
             // SUPPORT STAFF
             // =========================
@@ -489,11 +489,14 @@ class TeamMemberSeeder extends Seeder
                 'qualification' => '',
                 'phone' => '+254700000015',
             ],
-                        
+
         ];
 
         foreach ($teamMembers as $member) {
-            DB::table('team_members')->insert($member);
+            DB::table('team_members')->insert(array_merge(
+                ['institution_id' => 1],
+                $member
+            ));
         }
     }
 }

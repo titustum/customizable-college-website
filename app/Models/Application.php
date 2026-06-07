@@ -10,6 +10,7 @@ class Application extends Model
     use HasFactory;
 
     protected $fillable = [
+        'institution_id',
         'full_name',
         'phone',
         'alternative_phone',
@@ -34,9 +35,9 @@ class Application extends Model
     public function scopeSearch($query, $term)
     {
         return $query->where(function ($query) use ($term) {
-            $query->where('first_name', 'like', '%'.$term.'%')
-                ->orWhere('last_name', 'like', '%'.$term.'%')
-                ->orWhere('email', 'like', '%'.$term.'%');
+            $query->where('full_name', 'like', "%{$term}%")
+                ->orWhere('phone', 'like', "%{$term}%")
+                ->orWhere('id_number', 'like', "%{$term}%");
         });
     }
 }

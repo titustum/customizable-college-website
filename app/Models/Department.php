@@ -11,25 +11,27 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable = [
+        'institution_id',
         'name',
-        'type',
-        'photo',
-        'short_desc',
-        'full_desc',
-        'banner_pic',
-        'facility_pic',
-        'facility_pic2',
         'slug',
+        'photo',
+        'short_description',
+        'full_description',
+        'banner_photo',
+        'type',
+        'is_active',
     ];
 
-    public function getHodAttribute()
+    public function hods()
     {
-        return $this->teamMembers()->where('is_hod', true)->first();
+        return $this->teamMembers()
+            ->whereHas('roles', fn ($q) => $q->where('name', 'HOD'));
     }
 
-    public function getTrainersAttribute()
+    public function trainers()
     {
-        return $this->teamMembers()->where('is_hod', false)->get();
+        return $this->teamMembers()
+            ->whereHas('roles', fn ($q) => $q->where('name', 'Trainer'));
     }
 
     public function courses()
@@ -39,7 +41,9 @@ class Department extends Model
 
     public function teamMembers()
     {
-        return $this->hasMany(TeamMember::class);
+        return $this->belongsToMany(TeamMember::class)
+            ->withPivot('role_id', 'custom_title')
+            ->withTimestamps();
     }
 
     // Automatically generate slug from name when creating or updating
@@ -47,10 +51,8 @@ class Department extends Model
     {
         parent::boot();
 
-        static::saving(function ($department) {
-            if (empty($department->slug) && ! empty($department->name)) {
-                $department->slug = Str::slug($department->name);
-            }
+        static::creating(function ($department) {
+            $department->slug = Str::slug($department->name);
         });
     }
 }

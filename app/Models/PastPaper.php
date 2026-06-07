@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
 
 class PastPaper extends Model
 {
     protected $fillable = [
+        'institution_id',
         'title',
         'course_id',
         'unit_name',

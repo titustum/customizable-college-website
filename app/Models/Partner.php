@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Partner extends Model
 {
     protected $fillable = [
+        'institution_id',
         'name',
         'logo',
         'website',

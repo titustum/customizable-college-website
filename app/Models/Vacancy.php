@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Vacancy extends Model
 {
     protected $fillable = [
+        'institution_id',
         'title',
         'description',
         'reference_number',

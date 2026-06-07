@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('news_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->foreignId('news_category_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->string('slug')->unique();
@@ -18,7 +19,11 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
+            $table->boolean('featured')->default(false);
             $table->timestamps();
+            $table->index('is_published');
+            $table->index('published_at');
+            $table->index(['is_published', 'published_at']);
         });
     }
 

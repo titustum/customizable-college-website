@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('name'); // Name of the role i.e. Principal, HOD, Coordinator, Trainer, etc.
-            $table->unsignedInteger('level') ->default(100); // lower number = higher authority 
-            $table->unsignedInteger('display_order') ->default(100); // controls frontend ordering
+            $table->unsignedInteger('level')->default(100); // lower number = higher authority
+            $table->unsignedInteger('display_order')->default(100); // controls frontend ordering
             $table->timestamps();
         });
     }

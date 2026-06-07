@@ -9,10 +9,10 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['institution_id', 'name', 'level', 'display_order'];
 
-    public function teamMembers()
+    public function departmentTeamMembers()
     {
-        return $this->belongsToMany(TeamMember::class);
+        return $this->hasMany(DepartmentTeamMember::class);
     }
 }
