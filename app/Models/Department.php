@@ -24,11 +24,15 @@ class Department extends Model
         'is_active',
     ];
 
-    public function hods()
+    public function hod()
     {
-        return $this->teamMembers()
-            ->whereHas('roles', fn ($q) => $q->where('name', 'HOD'));
+        return $this->belongsToMany(TeamMember::class)
+            ->withPivot('role_id', 'custom_title')
+            ->whereHas('roles', function ($q) {
+                $q->where('name', 'HOD');
+            });
     }
+
 
     public function trainers()
     {

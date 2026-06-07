@@ -29,7 +29,7 @@ class extends Component
 
         $this->department = Department::with([
             'courses',
-            'teamMembers.role',
+            'teamMembers.roles',
         ])
         ->withCount([
             'courses',
@@ -73,9 +73,7 @@ class extends Component
         |--------------------------------------------------------------------------
         */
 
-        $this->hod = $this->department
-            ->teamMembers
-            ->firstWhere('is_hod', true);
+        $this->hod = $this->department->hod()->first();
     }
 };
 
@@ -119,7 +117,7 @@ PAGE WRAPPER
             </h1>
 
             <p class="mt-4 text-lg text-gray-200">
-                {{ $department->short_desc ?? 'Discover our comprehensive training programs and expert
+                {{ $department->short_description ?? 'Discover our comprehensive training programs and expert
                 trainers dedicated to preparing you for a successful career in the hospitality industry.' }}
             </p>
         </div>
@@ -219,12 +217,13 @@ PAGE WRAPPER
 
                         {{-- Heading --}}
                         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4 leading-tight">
-                            Excellence in {{ $department->name }} Training
+                            Building Future {{ $department->name }} Professionals
                         </h2>
 
                         {{-- Description --}}
                         <p class="mt-6 text-gray-600 text-base sm:text-lg leading-relaxed">
-                            {{ $department->full_desc ?? 'Our department is dedicated to providing top-tier training in
+                            {{ $department->full_description ?? 'Our department is dedicated to providing top-tier
+                            training in
                             hospitality, equipping students with the skills and knowledge needed to excel in the
                             industry. With a focus on practical experience and industry connections, we prepare our
                             graduates for successful careers in hotels, restaurants, event management, and more.' }}
@@ -526,11 +525,9 @@ PAGE WRAPPER
                             </div>
                             <h3 class="font-semibold text-gray-900 text-sm leading-tight mb-1">{{ $trainer->name }}
                             </h3>
-                            <p class="text-orange-600 text-xs font-semibold mb-2">{{ $trainer->role->name ?? '' }}
+                            <p class="text-orange-600 text-xs font-semibold mb-2">{{
+                                $trainer->roles->pluck('name')->join(', ') }}
                             </p>
-                            @if ($trainer->qualification)
-                            <p class="text-gray-400 text-xs leading-relaxed">{{ $trainer->qualification }}</p>
-                            @endif
                         </div>
                     </div>
                     @endforeach

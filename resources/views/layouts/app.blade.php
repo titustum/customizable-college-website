@@ -139,13 +139,13 @@
                                 class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Principal's
                                 Office</a>
                             <a href="{{ route('deputy.admin') }}"
-                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy
+                                class="text-nowrap block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy
                                 Principal – Administration</a>
                             <a href="{{ route('deputy.academics') }}"
-                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy
+                                class="text-nowrap block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Deputy
                                 Principal – Academics</a>
                             <a href="{{ route('staff.members') }}"
-                                class="block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Our
+                                class="text-nowrap block px-5 py-3 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600">Our
                                 Staff Team</a>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                         <div class="dropdown-menu mega rounded-b-lg p-6">
                             @php
                             $academicDepts = $departments->where('type', 'academic');
-                            $nonAcademicDepts = $departments->where('type', 'non-academic');
+                            $sectionDepts = $departments->where('type', 'section');
                             @endphp
                             <div class="grid grid-cols-2 gap-6">
                                 @if ($academicDepts->isNotEmpty())
@@ -174,12 +174,12 @@
                                     </div>
                                 </div>
                                 @endif
-                                @if ($nonAcademicDepts->isNotEmpty())
+                                @if ($sectionDepts->isNotEmpty())
                                 <div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
-                                        Non-Academic</div>
+                                        Support Offices</div>
                                     <div class="space-y-1">
-                                        @foreach ($nonAcademicDepts as $dept)
+                                        @foreach ($sectionDepts as $dept)
                                         <a href="{{ route('non.academic.department', $dept->slug) }}"
                                             class="flex items-center gap-2 py-1.5 text-sm hover:text-orange-600">{{
                                             $dept->name }}</a>
@@ -297,7 +297,7 @@
                     @endforeach
                     @endif
                     @if ($nonAcademicDepts->isNotEmpty())
-                    <div class="text-xs font-bold uppercase text-gray-500 pt-1">Non-Academic</div>
+                    <div class="text-xs font-bold uppercase text-gray-500 pt-1">Support Offices</div>
                     @foreach ($nonAcademicDepts as $dept)
                     <a href="{{ route('non.academic.department', $dept->slug) }}" class="block py-1 text-sm">{{
                         $dept->name }}</a>

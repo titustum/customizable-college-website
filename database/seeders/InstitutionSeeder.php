@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Institution;
 use Illuminate\Database\Seeder;
 
-
 class InstitutionSeeder extends Seeder
 {
     public function run(): void
@@ -52,11 +51,11 @@ class InstitutionSeeder extends Seeder
             Institution::create(array_merge([
                 'logo' => '',
                 'principal_photo' => '',
-                'welcome_message' => 'Welcome to ' . $data['name'],
+                'welcome_message' => 'Welcome to '.$data['name'],
                 'motto' => 'Empowering through skills.',
                 'vision' => 'To be a leading technical institution.',
                 'mission' => 'To provide quality education and training.',
-                'about_us' => $data['name'] . ' is a leading technical institution.',
+                'about_us' => $data['name'].' is a leading technical institution.',
                 'primary_font' => 'Inter',
                 'phone' => '+254 700 000 000',
                 'address' => 'Kenya',

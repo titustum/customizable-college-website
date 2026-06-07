@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use App\Models\Institution;
-use App\Support\InstitutionContext;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +12,7 @@ class SetCurrentInstitution
     public function handle(Request $request, Closure $next): Response
     {
 
-         $institution = null;
+        $institution = null;
 
         // 1. Try subdomain first (tetu.college.test → tetu)
         $host = $request->getHost();
@@ -24,12 +23,12 @@ class SetCurrentInstitution
         }
 
         // 2. Fallback: first institution in DB (safe default)
-        if (!$institution) {
+        if (! $institution) {
             $institution = Institution::first();
         }
 
         // 3. If STILL nothing exists → system not initialized
-        if (!$institution) {
+        if (! $institution) {
             abort(500, 'No institution found. Please seed at least one institution.');
         }
 
