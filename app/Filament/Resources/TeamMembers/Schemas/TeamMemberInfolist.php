@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
+use App\Models\TeamMember;
+use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
@@ -11,13 +13,8 @@ class TeamMemberInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('department_id')
-                    ->numeric()
-                    ->placeholder('-'),
-                TextEntry::make('role_id')
+                TextEntry::make('institution_id')
                     ->numeric(),
-                TextEntry::make('section_assigned')
-                    ->placeholder('-'),
                 TextEntry::make('email')
                     ->label('Email address')
                     ->placeholder('-'),
@@ -26,14 +23,17 @@ class TeamMemberInfolist
                 TextEntry::make('name'),
                 TextEntry::make('photo')
                     ->placeholder('-'),
-                TextEntry::make('qualification')
-                    ->placeholder('-'),
+                IconEntry::make('is_active')
+                    ->boolean(),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('updated_at')
                     ->dateTime()
                     ->placeholder('-'),
+                TextEntry::make('deleted_at')
+                    ->dateTime()
+                    ->visible(fn (TeamMember $record): bool => $record->trashed()),
             ]);
     }
 }

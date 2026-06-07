@@ -20,6 +20,9 @@ class TeamMember extends Model
         'is_active',
     ];
 
+
+
+
     public function departments()
     {
         return $this->belongsToMany(Department::class, 'department_team_member')

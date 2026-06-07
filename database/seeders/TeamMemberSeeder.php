@@ -83,7 +83,7 @@ class TeamMemberSeeder extends Seeder
             // HODs - Academic Departments (8 departments)
             [
                 'department_id' => 1, // Cosmetology
-                'role_id' => 3,
+                'role_id' => 7, // HOD
                 'section_assigned' => null,
                 'email' => 'hod.cosmetology@tetutvc.ac.ke',
                 'name' => 'Jacob Nyaga',
@@ -174,7 +174,7 @@ class TeamMemberSeeder extends Seeder
             ],
             [
                 'department_id' => 7, // belongs to agric department
-                'role_id' => 3,
+                'role_id' => 8, // HOS
                 'section_assigned' => 'Sports',
                 'email' => 'hos.sports@tetutvc.ac.ke',
                 'name' => 'Dennis Njeru',

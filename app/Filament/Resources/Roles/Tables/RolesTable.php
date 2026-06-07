@@ -15,13 +15,17 @@ class RolesTable
     {
         return $table
             ->columns([
+                TextColumn::make('institution_id')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('level')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('description')
-                    ->searchable(),
+                TextColumn::make('display_order')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

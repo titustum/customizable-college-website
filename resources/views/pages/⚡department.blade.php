@@ -1,20 +1,19 @@
 <?php
 
-use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\Department;
 use App\Models\SuccessStory;
 use App\Models\TeamMember;
 
-new
-#[Title('Department')]
-class extends Component
+new class extends Component
 {
     public $department;
     public $departments = [];
     public $successStories = [];
     public $facilityPics = [];
     public $hod = null;
+    public $graduationRate = null;
+
 
     public function mount($slug)
     {
@@ -45,13 +44,7 @@ class extends Component
         |--------------------------------------------------------------------------
         */
 
-        $this->departments = Department::select(
-                'id',
-                'name',
-                'slug',
-                'type'
-            )
-            ->where('type', 'academic')
+        $this->departments = Department::where('type', 'academic')
             ->where('id', '!=', $this->department->id)
             ->orderBy('name')
             ->get();
@@ -74,6 +67,18 @@ class extends Component
         */
 
         $this->hod = $this->department->hod()->first();
+        $this->graduationRate = $this->department->graduation_rate ?? 90; // Default to 90% if not set
+
+
+        // dd($this->department);
+    }
+
+
+    // with view function
+    public function render()
+    {
+        return $this->view()
+            ->title($this->department->name . ' Department');
     }
 };
 
@@ -87,39 +92,23 @@ PAGE WRAPPER
     {{-- ─────────────────────────────────────────────────
     HERO BANNER
     ───────────────────────────────────────────────── --}}
-    <header class="relative clip-diagonal grain bg-gray-900 overflow-hidden">
-
-        {{-- Background image --}}
-        <div class="absolute inset-0 z-0">
-            <img src="{{ asset('storage/' . $department->banner_pic) }}" alt="{{ $department->name }} Banner"
-                class="w-full h-full object-cover opacity-25 scale-105"
-                style="transform-origin:center; animation: subtle-zoom 14s ease-in-out infinite alternate;">
-            <div class="absolute inset-0 bg-gradient-to-br from-gray-950/50 via-gray-900/30 to-orange-950/10"></div>
+    <header class="relative">
+        <!-- Banner Image -->
+        <div class="h-96 md:h-[500px] w-full overflow-hidden">
+            <img src="{{ Storage::url($department->banner_photo) }}" alt="{{ $department->name }} Banner"
+                class="object-cover w-full h-full">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
         </div>
 
-        {{-- Decorative glow orbs --}}
-        <div class="absolute top-1/3 right-10 w-72 h-72 rounded-full bg-orange-600/10 blur-3xl pointer-events-none z-0">
-        </div>
-        <div
-            class="absolute -bottom-20 left-0 w-96 h-96 rounded-full bg-orange-800/10 blur-3xl pointer-events-none z-0">
-        </div>
-
-        <div class="relative z-10 container mx-auto px-4 pt-16 pb-28">
-
-            {{-- Department pill + title --}}
-            <div data-aos="fade-up">
-                <span class="label-pill mb-5">Academic Department</span>
+        <!-- Department Title Overlay -->
+        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+            <div class="container mx-auto">
+                <div class="inline-block px-4 py-1 mb-3 text-sm font-semibold text-white bg-orange-500 rounded-full">
+                    Department
+                </div>
+                <h1 class="mb-2 text-3xl font-bold text-white md:text-5xl">{{ $department->name }}</h1>
+                <p class="max-w-3xl text-lg md:text-xl text-white/90">{{ $department->short_description }}</p>
             </div>
-
-            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight max-w-3xl mb-5"
-                data-aos="fade-up" data-aos-delay="60">
-                {{ $department->name }}
-            </h1>
-
-            <p class="mt-4 text-lg text-gray-200">
-                {{ $department->short_description ?? 'Discover our comprehensive training programs and expert
-                trainers dedicated to preparing you for a successful career in the hospitality industry.' }}
-            </p>
         </div>
     </header>
 
@@ -130,7 +119,7 @@ PAGE WRAPPER
         BREADCRUMBS
         ──────────────────────────────────────────────── --}}
         <section class="border-b border-gray-100 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+            <div class="container mx-auto px-4 sm:px-6 py-4">
 
                 <nav class="flex items-center text-xs font-semibold tracking-wide" aria-label="Breadcrumb">
                     <ol class="flex items-center space-x-2 text-gray-500">
@@ -181,134 +170,78 @@ PAGE WRAPPER
 
 
 
-        {{-- ─────────────────────────────────────────────
-        INTRO
-        ──────────────────────────────────────────────── --}}
+        <!-- Department Overview Section -->
+        <section class="py-16 bg-white">
+            <div class="container px-4 mx-auto">
 
-        <section class="py-14 sm:py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
-                <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+                <div class="p-6 prose prose-lg max-w-none" data-aos="fade-up">
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+                        <div class="md:col-span-2">
 
-                    {{-- Image --}}
-                    <div class="relative">
-                        <img src="{{ asset('storage/' . $department->photo) }}" alt="{{ $department->name }}"
-                            class="rounded-3xl shadow-2xl w-full object-cover">
+                            <h2 class="mb-6 text-3xl font-bold">Department Overview</h2>
+                            <p class="mb-4 text-gray-600">{{ $department->full_description }}</p>
 
-                        {{-- Floating Badge --}}
-                        <div
-                            class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-gray-100">
-
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-award text-amber-500 text-sm"></i>
-                                <span class="text-sm font-semibold text-gray-700">
-                                    Professional Training
-                                </span>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    {{-- Content --}}
-                    <div>
-
-                        {{-- Label --}}
-                        <h2 class="text-amber-600 font-semibold uppercase tracking-wide"> Department Overview </h2>
-
-                        {{-- Heading --}}
-                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-4 leading-tight">
-                            Building Future {{ $department->name }} Professionals
-                        </h2>
-
-                        {{-- Description --}}
-                        <p class="mt-6 text-gray-600 text-base sm:text-lg leading-relaxed">
-                            {{ $department->full_description ?? 'Our department is dedicated to providing top-tier
-                            training in
-                            hospitality, equipping students with the skills and knowledge needed to excel in the
-                            industry. With a focus on practical experience and industry connections, we prepare our
-                            graduates for successful careers in hotels, restaurants, event management, and more.' }}
-                        </p>
-
-                        {{-- Stats --}}
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-10">
-
-                            {{-- Courses --}}
-                            <div
-                                class="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:shadow-md transition-all">
-
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center">
-
-                                        <i class="fas fa-book-open text-amber-600"></i>
-                                    </div>
-
-                                    <div>
-                                        <h3 class="text-2xl font-bold text-gray-900">
-                                            {{ $department->courses_count }}+
-                                        </h3>
-
-                                        <p class="text-sm text-gray-500">
-                                            Courses
-                                        </p>
-                                    </div>
+                            <div class="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
+                                <div class="p-6 text-center rounded-lg bg-orange-50">
+                                    <span class="block mb-2 text-3xl font-bold text-orange-600">
+                                        {{ count($department->courses) }}</span>
+                                    <span class="text-gray-600">Courses Offered</span>
                                 </div>
-
-                            </div>
-
-                            {{-- Trainers --}}
-                            <div
-                                class="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:shadow-md transition-all">
-
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-11 h-11 rounded-xl bg-orange-100 flex items-center justify-center">
-
-                                        <i class="fas fa-chalkboard-teacher text-orange-600"></i>
-                                    </div>
-
-                                    <div>
-                                        <h3 class="text-2xl font-bold text-gray-900">
-                                            {{ $department->team_members_count }}
-                                        </h3>
-
-                                        <p class="text-sm text-gray-500">
-                                            Trainers
-                                        </p>
-                                    </div>
+                                <div class="p-6 text-center rounded-lg bg-blue-50">
+                                    <span class="block mb-2 text-3xl font-bold text-blue-600">{{
+                                        count($department->teamMembers) ?? 0
+                                        }}</span>
+                                    <span class="text-gray-600">Expert Trainers</span>
                                 </div>
-
-                            </div>
-
-                            {{-- Graduates --}}
-                            <div
-                                class="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:shadow-md transition-all">
-
-                                <div class="flex items-center gap-3 mb-3">
-                                    <div class="w-11 h-11 rounded-xl bg-cyan-100 flex items-center justify-center">
-
-                                        <i class="fas fa-user-graduate text-cyan-700"></i>
-                                    </div>
-
-                                    <div>
-                                        <h3 class="text-2xl font-bold text-gray-900">
-                                            500+
-                                        </h3>
-
-                                        <p class="text-sm text-gray-500">
-                                            Graduates
-                                        </p>
-                                    </div>
+                                <div class="p-6 text-center rounded-lg bg-green-50">
+                                    <span class="block mb-2 text-3xl font-bold text-green-600">{{ $graduationRate
+                                        }}%</span>
+                                    <span class="text-gray-600">Graduation Rate</span>
                                 </div>
-
                             </div>
+
+
+
+
+                            <h3 class="mb-4 text-2xl font-bold">Practical Learning Environment</h3>
+                            <div class="mb-8">
+                                <p class="mt-4">
+                                    Our {{ $department->name }} department emphasizes hands-on learning through
+                                    real-world simulations and practical sessions. Students actively engage with modern
+                                    tools and equipment under the guidance of experienced instructors, preparing them
+                                    for success in their respective fields.
+                                </p>
+                            </div>
+
+
+                            <!-- Industry connections -->
+                            <h3 class="mb-4 text-2xl font-bold">Industry Connections</h3>
+                            <p>Our program maintains strong relationships with industry leaders, providing students with
+                                internship opportunities, job placement assistance, and insights into current industry
+                                trends and practices.</p>
+
 
                         </div>
 
-                    </div>
+                        <div>
+                            @if($department->photo)
+                            <img src="{{ asset('storage/' . $department->photo) }}" alt="{{ $department->name }} Photo"
+                                class="w-full mb-4 rounded-lg shadow-md">
+                            @endif
 
+                            <div class="p-4 bg-orange-100 rounded-lg">
+                                <h3 class="mb-2 text-xl font-semibold text-orange-600">Quick Facts</h3>
+                                <p class="text-gray-700">{{ $department->short_description }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
 
             </div>
         </section>
+
 
 
         {{-- ─────────────────────────────────────────────

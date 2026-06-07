@@ -29,12 +29,12 @@ class DepartmentForm
                             ->directory('departments')
                             ->image()
                             ->required(),
-                        TextInput::make('short_desc')
+                        TextInput::make('short_description')
                             ->required(),
-                        Textarea::make('full_desc')
+                        Textarea::make('full_description')
                             ->required()
                             ->columnSpanFull(),
-                        FileUpload::make('banner_pic')
+                        FileUpload::make('banner_photo')
                             ->disk('public')
                             ->directory('departments')
                             ->image()

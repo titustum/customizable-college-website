@@ -22,8 +22,9 @@ class DepartmentInfolist
                         TextEntry::make('name'),
                         TextEntry::make('slug'),
                         ImageEntry::make('photo')->disk('public'),
-                        TextEntry::make('short_desc'),
-                        ImageEntry::make('banner_pic')->disk('public'),
+                        TextEntry::make('short_description')->columnSpanFull(),
+                        TextEntry::make('full_description')->columnSpanFull(),
+                        ImageEntry::make('banner_photo')->disk('public'),
                         TextEntry::make('created_at')
                             ->dateTime(),
                         TextEntry::make('updated_at')

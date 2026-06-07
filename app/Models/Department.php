@@ -33,6 +33,15 @@ class Department extends Model
             });
     }
 
+    public function hos()
+    {
+        return $this->belongsToMany(TeamMember::class, 'department_team_member')
+            ->withPivot(['role_id', 'custom_title'])
+            ->whereHas('roles', function ($q) {
+                $q->whereIn('name', ['HOS', 'Section Head']);
+            });
+    }
+
 
     public function trainers()
     {

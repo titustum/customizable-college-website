@@ -11,11 +11,13 @@ class RoleInfolist
     {
         return $schema
             ->components([
+                TextEntry::make('institution_id')
+                    ->numeric(),
                 TextEntry::make('name'),
                 TextEntry::make('level')
                     ->numeric(),
-                TextEntry::make('description')
-                    ->placeholder('-'),
+                TextEntry::make('display_order')
+                    ->numeric(),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),
