@@ -1,32 +1,38 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\SetCurrentInstitution;
 
-// Home route
-Route::livewire('/', 'pages::home')->name('home');
+Route::middleware([SetCurrentInstitution::class])
+    ->group(function () {
 
-// Other routes
-Route::livewire('/about', 'pages::about')->name('about');
-Route::livewire('/contact', 'pages::contact')->name('contact');
-Route::livewire('/departments', 'pages::departments')->name('departments');
-Route::livewire('/department/{slug}', 'pages::department')->name('academic.department');
-Route::livewire('/service/{slug}', 'pages::service-department')->name('non.academic.department');
-Route::livewire('/staff-members', 'pages::staff-members')->name('staff.members');
-Route::livewire('/success-stories', 'pages::success-stories')->name('success.stories');
-Route::livewire('/terms-and-conditions', 'pages::terms-and-conditions')->name('terms.conditions');
-Route::livewire('/privacy-policy', 'pages::privacy-policy')->name('privacy.policy');
-Route::livewire('/principal-office', 'pages::principal-office')->name('principal.office');
-Route::livewire('/deputy-principal-administration', 'pages::deputy-principal-administration')->name('deputy.admin');
-Route::livewire('/deputy-principal-academics', 'pages::deputy-principal-academics')->name('deputy.academics');
-Route::livewire('/downloads', 'pages::downloads')->name('downloads');
-Route::livewire('/courses', 'pages::courses')->name('courses');
-Route::livewire('/administration', 'pages::administration')->name('administration');
-Route::livewire('/team', 'pages::team-members')->name('team');
-Route::livewire('/vacancies', 'pages::vacancies')->name('vacancies');
-Route::livewire('/tenders', 'pages::tenders')->name('tenders');
-Route::livewire('/past-papers', 'pages::past-papers')->name('past.papers');
-Route::livewire('/gallery', 'pages::gallery')->name('gallery');
-Route::livewire('/news', 'pages::news')->name('news');
-Route::livewire('/create-success-story', 'pages::success-stories-create')->name('create.success.story');
-Route::livewire('/admissions', 'pages::admissions')->name('admissions');
-Route::livewire('/admissions/complete', 'pages::admission-complete')->name('admissions.complete');
+    // Home route
+    Route::livewire('/', 'pages::home')->name('home');
+
+    // Other routes
+    Route::livewire('/about', 'pages::about')->name('about');
+    Route::livewire('/contact', 'pages::contact')->name('contact');
+    Route::livewire('/departments', 'pages::departments')->name('departments');
+    Route::livewire('/department/{slug}', 'pages::department')->name('academic.department');
+    Route::livewire('/service/{slug}', 'pages::service-department')->name('non.academic.department');
+    Route::livewire('/staff-members', 'pages::staff-members')->name('staff.members');
+    Route::livewire('/success-stories', 'pages::success-stories')->name('success.stories');
+    Route::livewire('/terms-and-conditions', 'pages::terms-and-conditions')->name('terms.conditions');
+    Route::livewire('/privacy-policy', 'pages::privacy-policy')->name('privacy.policy');
+    Route::livewire('/principal-office', 'pages::principal-office')->name('principal.office');
+    Route::livewire('/deputy-principal-administration', 'pages::deputy-principal-administration')->name('deputy.admin');
+    Route::livewire('/deputy-principal-academics', 'pages::deputy-principal-academics')->name('deputy.academics');
+    Route::livewire('/downloads', 'pages::downloads')->name('downloads');
+    Route::livewire('/courses', 'pages::courses')->name('courses');
+    Route::livewire('/administration', 'pages::administration')->name('administration');
+    Route::livewire('/team', 'pages::team-members')->name('team');
+    Route::livewire('/vacancies', 'pages::vacancies')->name('vacancies');
+    Route::livewire('/tenders', 'pages::tenders')->name('tenders');
+    Route::livewire('/past-papers', 'pages::past-papers')->name('past.papers');
+    Route::livewire('/gallery', 'pages::gallery')->name('gallery');
+    Route::livewire('/news', 'pages::news')->name('news');
+    Route::livewire('/create-success-story', 'pages::success-stories-create')->name('create.success.story');
+    Route::livewire('/admissions', 'pages::admissions')->name('admissions');
+    Route::livewire('/admissions/complete', 'pages::admission-complete')->name('admissions.complete');
+
+});

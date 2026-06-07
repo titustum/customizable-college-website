@@ -12,7 +12,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug');
+            $table->unique(['institution_id', 'slug']);
             $table->text('description')->nullable();
             $table->timestamps();
         });

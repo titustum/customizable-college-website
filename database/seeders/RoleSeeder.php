@@ -13,62 +13,64 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'Principal',
                 'level' => 1,
-                'description' => 'Institution head with full authority',
+                'display_order' => 1,
             ],
             [
                 'name' => 'Deputy Principal',
                 'level' => 2,
-                'description' => 'Assists principal in academic and administration oversight',
+                'display_order' => 2,
             ],
             [
                 'name' => 'Registrar',
                 'level' => 3,
-                'description' => 'Manages admissions, records and examinations',
+                'display_order' => 3,
             ],
             [
                 'name' => 'Dean of Students',
                 'level' => 3,
-                'description' => 'Handles institutional finances and budgeting',
+                'display_order' => 4,
             ],
             [
                 'name' => 'Finance Officer',
                 'level' => 3,
-                'description' => 'Handles institutional finances and budgeting',
+                'display_order' => 5,
             ],
             [
                 'name' => 'Procurement Officer',
                 'level' => 3,
-                'description' => 'Handles procurement and supplies',
+                'display_order' => 6,
             ],
             [
                 'name' => 'HOD',
                 'level' => 4,
-                'description' => 'Heads academic departments',
+                'display_order' => 7,
             ],
             [
                 'name' => 'HOS',
                 'level' => 4,
-                'description' => 'Heads sections within departments or programs',
+                'display_order' => 8,
             ],
             [
                 'name' => 'Trainer',
                 'level' => 5,
-                'description' => 'Delivers teaching and training to students',
+                'display_order' => 9,
             ],
             [
                 'name' => 'Support Staff',
                 'level' => 6,
-                'description' => 'Non-academic operational support staff',
+                'display_order' => 10,
             ],
         ];
 
         foreach ($roles as $role) {
             Role::updateOrCreate(
-                ['name' => $role['name']],
                 [
                     'institution_id' => 1,
+                    'name' => $role['name'],
+                ],
+                [
                     'level' => $role['level'],
-                    'description' => $role['description'],
+                    'display_order' => $role['display_order'],
                 ]
             );
         }

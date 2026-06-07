@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\BelongsToInstitution;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class DepartmentTeamMember extends Pivot
 {
+    use BelongsToInstitution;
+
     protected $table = 'department_team_member';
 
     protected $fillable = [

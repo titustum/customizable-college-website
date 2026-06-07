@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\PageVisit;
+use App\Support\InstitutionContext;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,8 +23,14 @@ class TrackPageVisits
             return $next($request);
         }
 
+        // Skip if no institution context is available
+        if (! InstitutionContext::id()) {
+            return $next($request);
+        }
+
         // Log the page visit
         PageVisit::create([
+            'institution_id' => InstitutionContext::id(),
             'url' => '/'.ltrim($request->path(), '/'), // ensure leading slash
             'full_url' => $request->fullUrl(),
             'referer' => $request->header('referer'),

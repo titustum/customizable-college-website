@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('institutions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('logo')->nullable();
             $table->string('principal_name')->nullable();
             $table->string('principal_photo')->nullable(); // image path

@@ -23,6 +23,7 @@ class User extends Authenticatable implements FilamentUser
         'email',
         'password',
         'role',
+        'institution_id',
     ];
 
     /**
@@ -51,5 +52,10 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->role === 'admin';
+    }
+
+    public function institution()
+    {
+        return $this->belongsTo(Institution::class);
     }
 }

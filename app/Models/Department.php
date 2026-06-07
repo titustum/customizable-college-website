@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Traits\BelongsToInstitution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Department extends Model
 {
-    use HasFactory;
+    use BelongsToInstitution, HasFactory, SoftDeletes;
 
     protected $fillable = [
         'institution_id',
@@ -41,18 +43,26 @@ class Department extends Model
 
     public function teamMembers()
     {
-        return $this->belongsToMany(TeamMember::class)
+        return $this->belongsToMany(TeamMember::class, 'department_team_member')
             ->withPivot('role_id', 'custom_title')
             ->withTimestamps();
     }
 
-    // Automatically generate slug from name when creating or updating
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($department) {
-            $department->slug = Str::slug($department->name);
+            $slug = Str::slug($department->name);
+
+            $count = static::withoutGlobalScopes()
+                ->where('institution_id', $department->institution_id)
+                ->where('slug', 'LIKE', "{$slug}%")
+                ->count();
+
+            $department->slug = $count > 0
+                ? "{$slug}-".($count + 1)
+                : $slug;
         });
     }
 }

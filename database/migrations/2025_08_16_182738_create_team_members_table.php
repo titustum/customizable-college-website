@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('team_members', function (Blueprint $table) {
             $table->id();
             $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
-            $table->string('email')->unique()->nullable(); // email e.g.
+            $table->string('email')->nullable(); // email e.g.
+            $table->unique(['institution_id', 'email']);
             $table->string('phone')->nullable(); // phone number e.g. +254712345678
             $table->string('name'); // fullname e.g. James Kariuki
             $table->string('photo')->nullable(); // photo path e.g. team_members/james_kariuki.jpg

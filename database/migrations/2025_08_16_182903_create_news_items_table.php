@@ -13,7 +13,8 @@ return new class extends Migration
             $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->foreignId('news_category_id')->constrained()->onDelete('cascade');
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('slug');
+            $table->unique(['institution_id', 'slug']);
             $table->text('excerpt')->nullable();
             $table->longText('content')->nullable();
             $table->string('image')->nullable();

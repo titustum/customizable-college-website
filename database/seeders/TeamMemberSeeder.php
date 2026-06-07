@@ -493,10 +493,28 @@ class TeamMemberSeeder extends Seeder
         ];
 
         foreach ($teamMembers as $member) {
-            DB::table('team_members')->insert(array_merge(
-                ['institution_id' => 1],
-                $member
-            ));
+            $teamMemberId = DB::table('team_members')->insertGetId([
+                'institution_id' => 1,
+                'email' => $member['email'],
+                'phone' => $member['phone'] ?? null,
+                'name' => $member['name'],
+                'photo' => $member['photo'] ?? null,
+                'is_active' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            if ($member['department_id']) {
+                DB::table('department_team_member')->insert([
+                    'institution_id' => 1,
+                    'department_id' => $member['department_id'],
+                    'team_member_id' => $teamMemberId,
+                    'role_id' => $member['role_id'],
+                    'custom_title' => $member['section_assigned'] ?? null,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
     }
 }

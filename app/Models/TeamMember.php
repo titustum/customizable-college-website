@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\BelongsToInstitution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TeamMember extends Model
 {
-    use HasFactory;
+    use BelongsToInstitution, HasFactory, SoftDeletes;
 
     protected $fillable = [
         'institution_id',
@@ -20,7 +22,7 @@ class TeamMember extends Model
 
     public function departments()
     {
-        return $this->belongsToMany(Department::class)
+        return $this->belongsToMany(Department::class, 'department_team_member')
             ->withPivot('role_id', 'custom_title')
             ->withTimestamps();
     }

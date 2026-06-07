@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('name'); // name of the department e.g. Cosmetology, ICT, Agriculture etc.
-            $table->string('slug')->unique(); // e.g. cosmetology, ict, agriculture etc.
+            $table->string('slug'); // e.g. cosmetology, ict, agriculture etc.
+            $table->unique(['institution_id', 'slug']);
             $table->string('photo')->nullable(); // captivating pic of students of departments doing somethin; will be displayed on landing page.
             $table->string('short_description')->nullable(); // short captivating desc that will be loaded in landing page e.g. Master the art and science of Beauty Therapy and Hairdressing with our amazing programs.
             $table->text('full_description')->nullable(); // The description that will be displayed on single page when user selects to view that department

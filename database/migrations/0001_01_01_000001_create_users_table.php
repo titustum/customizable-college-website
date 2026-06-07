@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('role')->default('user'); // 'user' or 'admin'
             $table->foreignId('institution_id')
-                    ->nullable()
-                    ->constrained()
-                    ->nullOnDelete();
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
