@@ -1,8 +1,6 @@
 <?php
 
 use Livewire\Component;
-use Livewire\Attributes\Title;
-use Livewire\Attributes\Layout;
 use App\Models\Department;
 use App\Models\SuccessStory;
 use App\Models\Partner;
@@ -10,17 +8,20 @@ use App\Models\HeroSlide;
 use App\Models\Institution;
 use Illuminate\Support\Str;
 
-new
-#[Title('Welcome to Our College')]
-#[Layout('layouts::app')]
-class extends Component {
+new class extends Component {
+
+    public $institution;
+
+    public function mount(){
+        $this->institution = Institution::first() ?? (object) ['name' => 'Our College', 'phone' => ''];
+    }
 
     public function with()
     {
-        $institution = Institution::first() ?? (object) ['name' => 'Our College', 'phone' => ''];
+
 
         return [
-            'institution' => $institution ?? (object)[
+            'institution' => $this->institution ?? (object)[
                 'name'=>'Tetu TVC',
                 'established_year'=>now()->subYears(3),
                 'phone'=>0712345676
@@ -34,6 +35,19 @@ class extends Component {
             'heroSlides'=> HeroSlide::all(),
         ];
     }
+
+    // with view function
+    public function render()
+    {
+
+        // dd($this->institution);
+
+        return $this->view()
+            ->title("Welcome to ".$this->institution->name);
+    }
+
+
+
 };
 ?>
 

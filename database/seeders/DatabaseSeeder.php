@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Web Admin',
             'email' => 'admin@mail.com',
             'role' => 'admin',
+            'institution_id'=>1
         ]);
 
         // Seed data
