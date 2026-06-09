@@ -28,13 +28,9 @@ class TeamMembersTable
                     ->searchable(),
                 TextColumn::make('photo')
                     ->searchable(),
-                TextColumn::make('roles')
-                    ->label('Roles')
-                    ->formatStateUsing(function ($record) {
-                        return $record->roles
-                            ->pluck('name')
-                            ->implode(' | ');
-                    }),
+                TextColumn::make('roles.name')
+                    ->badge()
+                    ->separator(' | '),
                 IconColumn::make('is_active')
                     ->boolean(),
                 TextColumn::make('created_at')

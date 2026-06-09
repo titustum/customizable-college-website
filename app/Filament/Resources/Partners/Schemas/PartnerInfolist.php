@@ -6,6 +6,7 @@ use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class PartnerInfolist
 {
@@ -13,19 +14,22 @@ class PartnerInfolist
     {
         return $schema
             ->components([
-
                 Section::make('Partner Details')
                     ->columns(2)
-                    ->columnSpan('full')
+                    ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedHandshake)
                     ->schema([
                         TextEntry::make('name'),
-                        ImageEntry::make('logo')->disk('public'),
-                        TextEntry::make('website'),
+                        ImageEntry::make('logo')
+                            ->disk('public'),
+                        TextEntry::make('website')
+                            ->placeholder('-'),
                         TextEntry::make('created_at')
-                            ->dateTime(),
+                            ->dateTime()
+                            ->placeholder('-'),
                         TextEntry::make('updated_at')
-                            ->dateTime(),
-
+                            ->dateTime()
+                            ->placeholder('-'),
                     ]),
             ]);
     }

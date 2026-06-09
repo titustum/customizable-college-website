@@ -6,6 +6,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class ApplicationForm
 {
@@ -13,10 +14,10 @@ class ApplicationForm
     {
         return $schema
             ->components([
-
                 Section::make('Applicant Information')
                     ->columns(2)
                     ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedUser)
                     ->schema([
                         TextInput::make('full_name')
                             ->required(),
@@ -34,9 +35,9 @@ class ApplicationForm
                             ]),
                         TextInput::make('id_number')
                             ->required(),
-                        TextInput::make('course_id')
+                        Select::make('course_id')
                             ->required()
-                            ->numeric(),
+                            ->relationship('course', 'name'),
                         TextInput::make('start_term')
                             ->required(),
                         TextInput::make('high_school')

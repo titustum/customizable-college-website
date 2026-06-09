@@ -6,6 +6,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class ContactForm
 {
@@ -13,12 +14,11 @@ class ContactForm
     {
         return $schema
             ->components([
-
                 Section::make('Contact Information')
                     ->columns(2)
-                    ->columnSpan('full')
+                    ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedEnvelope)
                     ->schema([
-
                         TextInput::make('name')
                             ->required(),
                         TextInput::make('email')

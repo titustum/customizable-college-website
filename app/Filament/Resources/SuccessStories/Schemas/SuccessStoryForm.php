@@ -6,8 +6,10 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class SuccessStoryForm
 {
@@ -18,6 +20,7 @@ class SuccessStoryForm
                 Section::make('Success Story Details')
                     ->columns(2)
                     ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedStar)
                     ->schema([
                         Select::make('department_id')
                             ->required()
@@ -44,13 +47,8 @@ class SuccessStoryForm
                             ->required()
                             ->numeric()
                             ->default(5),
-                        Select::make('is_approved')
-                            ->required()
-                            ->options([
-                                1 => 'Approved',
-                                0 => 'Not Approved',
-                            ])
-                            ->default(0),
+                        Toggle::make('is_approved')
+                            ->required(),
                     ]),
             ]);
     }

@@ -6,6 +6,7 @@ use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class DepartmentInfolist
 {
@@ -13,23 +14,27 @@ class DepartmentInfolist
     {
         return $schema
             ->components([
-
                 Section::make('Department Details')
                     ->columns(2)
-                    ->columnSpan('full')
+                    ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedBuildingOffice)
                     ->schema([
-
                         TextEntry::make('name'),
                         TextEntry::make('slug'),
-                        ImageEntry::make('photo')->disk('public'),
-                        TextEntry::make('short_description')->columnSpanFull(),
-                        TextEntry::make('full_description')->columnSpanFull(),
-                        ImageEntry::make('banner_photo')->disk('public'),
+                        ImageEntry::make('photo')
+                            ->disk('public'),
+                        TextEntry::make('short_description')
+                            ->columnSpanFull(),
+                        TextEntry::make('full_description')
+                            ->columnSpanFull(),
+                        ImageEntry::make('banner_photo')
+                            ->disk('public'),
                         TextEntry::make('created_at')
-                            ->dateTime(),
+                            ->dateTime()
+                            ->placeholder('-'),
                         TextEntry::make('updated_at')
-                            ->dateTime(),
-
+                            ->dateTime()
+                            ->placeholder('-'),
                     ]),
             ]);
     }

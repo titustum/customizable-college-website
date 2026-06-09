@@ -29,19 +29,6 @@ class InstitutionSettingForm
                             TextInput::make('motto')
                                 ->maxLength(100)
                                 ->placeholder('e.g. Skills for Life'),
-
-                            TextInput::make('principal_name')
-                                ->label("Principal's Name"),
-
-                            FileUpload::make('principal_photo')
-                                ->label("Principal's Photo")
-                                ->image()
-                                ->avatar()
-                                ->imageEditor()
-                                ->disk('public')
-                                ->directory('principals')
-                                ->previewable()
-                                ->maxSize(2048),
                         ]),
 
                     Section::make('Messages')

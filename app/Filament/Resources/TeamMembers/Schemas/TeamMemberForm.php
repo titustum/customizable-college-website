@@ -8,7 +8,9 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class TeamMemberForm
 {
@@ -16,6 +18,11 @@ class TeamMemberForm
     {
         return $schema
             ->components([
+                Section::make('Team member details')
+                    ->columnSpanFull()
+                    ->columns(2)
+                    ->icon(Heroicon::OutlinedUser)
+                    ->schema([
                 Select::make('department_id')
                     ->label('Department')
                     ->options(fn () => Department::pluck('name', 'id')),
@@ -37,6 +44,7 @@ class TeamMemberForm
                     ->required(),
                 Toggle::make('is_active')
                     ->required(),
+                    ])
             ]);
     }
 }

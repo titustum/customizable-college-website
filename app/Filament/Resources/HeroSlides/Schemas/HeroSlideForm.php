@@ -6,6 +6,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class HeroSlideForm
 {
@@ -16,6 +17,7 @@ class HeroSlideForm
                 Section::make('Hero Slide Details')
                     ->columns(2)
                     ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedPhoto)
                     ->schema([
                         FileUpload::make('image')
                             ->image()

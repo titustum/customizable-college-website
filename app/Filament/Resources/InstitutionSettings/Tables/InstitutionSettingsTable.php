@@ -17,10 +17,6 @@ class InstitutionSettingsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('principal_name')
-                    ->searchable(),
-                TextColumn::make('principal_photo')
-                    ->searchable(),
                 TextColumn::make('motto')
                     ->searchable(),
                 TextColumn::make('primary_color')

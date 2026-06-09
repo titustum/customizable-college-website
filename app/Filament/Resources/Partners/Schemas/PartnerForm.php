@@ -6,6 +6,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class PartnerForm
 {
@@ -13,10 +14,10 @@ class PartnerForm
     {
         return $schema
             ->components([
-
                 Section::make('Partner Details')
                     ->columns(2)
-                    ->columnSpan('full')
+                    ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedHandshake)
                     ->schema([
                         TextInput::make('name')
                             ->required(),
@@ -26,7 +27,6 @@ class PartnerForm
                             ->directory('partners')
                             ->required(),
                         TextInput::make('website'),
-
                     ]),
             ]);
     }

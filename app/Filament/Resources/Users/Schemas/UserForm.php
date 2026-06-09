@@ -6,6 +6,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class UserForm
 {
@@ -16,6 +17,7 @@ class UserForm
                 Section::make('User Details')
                     ->columns(2)
                     ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedUserCircle)
                     ->schema([
                         TextInput::make('name')
                             ->required(),

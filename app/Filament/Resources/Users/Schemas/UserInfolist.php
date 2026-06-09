@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Users\Schemas;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 
 class UserInfolist
 {
@@ -15,19 +16,22 @@ class UserInfolist
                 Section::make('User Details')
                     ->columns(2)
                     ->columnSpanFull()
+                    ->icon(Heroicon::OutlinedUserCircle)
                     ->schema([
                         TextEntry::make('name'),
                         TextEntry::make('email')
                             ->label('Email address'),
                         TextEntry::make('role'),
                         TextEntry::make('email_verified_at')
-                            ->dateTime(),
+                            ->dateTime()
+                            ->placeholder('-'),
                         TextEntry::make('created_at')
-                            ->dateTime(),
+                            ->dateTime()
+                            ->placeholder('-'),
                         TextEntry::make('updated_at')
-                            ->dateTime(),
+                            ->dateTime()
+                            ->placeholder('-'),
                     ]),
-
             ]);
     }
 }
