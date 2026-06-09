@@ -36,6 +36,32 @@ class TeamMember extends Model
             ->withTimestamps();
     }
 
+    public function principal()
+    {
+        return $this->belongsToMany(
+            TeamMember::class,
+            'department_team_member'
+        )
+            ->withPivot(['role_id', 'custom_title'])
+            ->wherePivot(
+                'role_id',
+                Role::where('slug', 'principal')->value('id')
+            );
+    }
+
+    public function deputyPrincipal()
+    {
+        return $this->belongsToMany(
+            TeamMember::class,
+            'department_team_member'
+        )
+            ->withPivot(['role_id', 'custom_title'])
+            ->wherePivot(
+                'role_id',
+                Role::where('slug', 'deputy_principal')->value('id')
+            );
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'department_team_member')

@@ -185,7 +185,8 @@ PAGE WRAPPER
 
                             <blockquote class="text-base sm:text-lg text-gray-600 leading-relaxed relative z-10">
 
-                                {{ $coordinator->welcome_message ?? 'Our department is committed to nurturing talent,
+                                {{ $department->leader_message ?? 'Our department is committed to
+                                nurturing talent,
                                 inspiring
                                 innovation, and preparing students with the practical skills needed to thrive in today’s
                                 dynamic hospitality and professional industries. We welcome you to be part of this
@@ -261,7 +262,7 @@ PAGE WRAPPER
                             </h3>
                             <p class="text-orange-600 text-xs font-semibold mb-2">
                                 {{ $member->assignments->firstWhere('department_id', $department->id)?->custom_title
-                                ?? $member->assignments->firstWhere('department_id', $department->id)->name }}
+                                ?? $member->assignments->firstWhere('department_id', $department->id)->role->name }}
                             </p>
                         </div>
                     </div>

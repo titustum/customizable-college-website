@@ -311,8 +311,9 @@ PAGE WRAPPER
 
                             <blockquote class="text-base sm:text-lg text-gray-600 leading-relaxed relative z-10">
 
-                                {{ $hod->welcome_message ?? 'Our department is committed to nurturing talent, inspiring
-                                innovation, and preparing students with the practical skills needed to thrive in today’s
+                                {{ $department->leader_message ?? 'Our department is committed to nurturing talent,
+                                inspiring innovation, and preparing students with the practical skills needed to thrive
+                                in today’s
                                 dynamic hospitality and professional industries. We welcome you to be part of this
                                 transformative journey.' }}
 
@@ -328,7 +329,10 @@ PAGE WRAPPER
                             </h3>
 
                             <p class="text-amber-600 font-semibold mt-1 text-sm sm:text-base">
-                                {{ $hod->role->name ?? 'Trainer' }}
+                                {{ $hod->roles
+                                ->firstWhere('pivot.department_id', $department->id)
+                                ?->name ?? 'Trainer' }}
+                                {{ $department->name }}
                             </p>
 
                         </div>
@@ -462,9 +466,13 @@ PAGE WRAPPER
                             </div>
                             <h3 class="font-semibold text-gray-900 text-sm leading-tight mb-1">{{ $trainer->name }}
                             </h3>
-                            <p class="text-orange-600 text-xs font-semibold mb-2">{{ $trainer->roles
-                                ->firstWhere('pivot.department_id', $department->id)
-                                ?->name ?? 'No role' }}
+                            <p class="text-orange-600 text-xs font-semibold mb-2">
+
+                                {{ $trainer->assignments->firstWhere('department_id', $department->id)?->custom_title
+                                ?? $trainer->assignments->firstWhere('department_id', $department->id)->role->name
+
+                                }}
+
                             </p>
                         </div>
                     </div>

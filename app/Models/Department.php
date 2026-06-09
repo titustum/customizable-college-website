@@ -34,14 +34,12 @@ class Department extends Model
 
     public function hod()
     {
-        return $this->belongsToMany(TeamMember::class)
-            ->whereHas('roles', fn ($q) => $q->where('slug', 'hod'));
-    }
-
-    public function hos()
-    {
-        return $this->belongsToMany(TeamMember::class)
-            ->whereHas('roles', fn ($q) => $q->where('slug', 'hos'));
+        return $this->belongsToMany(
+            TeamMember::class,
+            'department_team_member'
+        )
+            ->withPivot(['role_id', 'custom_title'])
+            ->wherePivot('role_id', Role::where('slug', 'hod')->value('id'));
     }
 
     public function coordinator()

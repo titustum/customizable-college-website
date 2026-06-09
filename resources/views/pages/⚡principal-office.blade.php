@@ -22,22 +22,20 @@ class extends Component
     public $yearEstablished;
 
 
-    // institution
-    public $institution;
+    // institution setting
+    public $setting;
 
     public function mount(): void
     {
         // No caching — fetch directly from the database
-        $this->principal = TeamMember::with('role')
-            ->whereHas('role', function ($query) {
-                $query->where('name', 'Principal');
-            })
-            ->first();
+        $this->principal = TeamMember::whereHas('roles', fn ($q) =>
+                                $q->where('slug', 'principal')
+                            )->first();
 
         $this->academicDepartmentsList = Department::all();
 
         // College stats and information
-        $this->collegeOverview = "$this->institution->name is a leading institution committed to providing high-quality technical and vocational education and training. We equip our students with practical skills and knowledge that are highly relevant to the demands of the modern workforce and contribute to national development.";
+        $this->collegeOverview = "$this->setting->name is a leading institution committed to providing high-quality technical and vocational education and training. We equip our students with practical skills and knowledge that are highly relevant to the demands of the modern workforce and contribute to national development.";
 
         $this->ourValues = [
             'Excellence' => 'Striving for the highest standards in education and training',
@@ -53,8 +51,8 @@ class extends Component
             'Successful accreditation by relevant TVET bodies for all our technical programs',
             'Strategic partnerships with over 25 industry leaders ensuring internship placements for all students',
             '92% graduate employability rate in technical fields within six months of graduation',
-            'National champions in 3 categories at the Kenya Music and Drama Festivals 2024',
-            'Attained National TVET Excellence Award for Best Technical College in 2024',
+            'National champions in 3 categories at the Kenya Music and Drama Festivals 2025',
+            'Attained National TVET Excellence Award for Best Technical College in 2025',
         ];
 
     }
@@ -71,9 +69,10 @@ class extends Component
             <div class="flex flex-col md:flex-row">
                 @if ($principal)
                 <div class="md:w-1/3 lg:w-1/4">
-                    <div class="relative h-full min-h-[300px] md:min-h-[400px] bg-gray-200 flex items-center justify-center">
-                        @if ($institution->principal_photo)
-                        <img src="{{ asset('storage/'.$institution->principal_photo) }}" alt="{{ $principal->name }}"
+                    <div
+                        class="relative h-full min-h-[300px] md:min-h-[400px] bg-gray-200 flex items-center justify-center">
+                        @if ($principal->photo)
+                        <img src="{{ asset('storage/'.$principal->photo) }}" alt="{{ $principal->name }}"
                             class="object-cover w-full h-full">
                         @else
                         <div class="text-center">
@@ -84,22 +83,22 @@ class extends Component
                         <div
                             class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent md:hidden">
                             <h2 class="text-2xl font-bold text-white">{{ $principal->name }}</h2>
-                            <p class="text-lg text-gray-200">Principal, {{ $institution->name }}</p>
+                            <p class="text-lg text-gray-200">Principal, {{ $setting->name }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="p-8 md:w-2/3 lg:w-3/4">
                     <div class="hidden md:block">
                         <h2 class="mb-2 text-3xl font-bold text-gray-800">{{ $principal->name }}</h2>
-                        <p class="mb-2 text-lg text-gray-600">Principal, {{ $institution->name }}</p>
+                        <p class="mb-2 text-lg text-gray-600">Principal, {{ $setting->name }}</p>
                         @if ($principal->qualification)
                         <p class="mb-4 italic text-gray-600">{{ $principal->qualifications }}</p>
                         @endif
                     </div>
 
-                    @if ($institution->welcome_message)
+                    @if ($setting->welcome_message)
                     <div class="mb-6 prose text-gray-700 max-w-none">
-                        <p>{{ $institution->welcome_message }}</p>
+                        <p>{{ $setting->welcome_message }}</p>
                     </div>
                     @endif
 
@@ -176,7 +175,7 @@ class extends Component
         @if ($academicDepartmentsList->isNotEmpty())
         <section class="py-12 mb-12 bg-white rounded-lg shadow-md">
             <div class="px-8">
-                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Departments</h2>
+                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Administrative Units</h2>
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($academicDepartmentsList as $department)
                     <div
@@ -272,7 +271,8 @@ class extends Component
             </h2>
             <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto leading-relaxed" data-aos="fade-up"
                 data-aos-delay="200">
-                Take the first step toward your future career. Apply now for our upcoming intake and join our community of successful graduates.
+                Take the first step toward your future career. Apply now for our upcoming intake and join our community
+                of successful graduates.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
                 <a href="{{ route('admissions') }}"
