@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('title'); // e.g. "ICT Lecturer"
             $table->text('description')->nullable(); // Full job description
-            $table->string('reference_number'); // e.g. TTVCT/HR/2025/002
-            $table->unique(['institution_id', 'reference_number']);
+            $table->string('reference_number')->unique(); // e.g. TTVCT/HR/2025/002
             $table->foreignId('department_id')->constrained()->onDelete('cascade');
             $table->date('published_at')->nullable();
             $table->date('application_deadline');

@@ -11,8 +11,6 @@ class RoleInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('institution_id')
-                    ->numeric(),
                 TextEntry::make('name'),
                 TextEntry::make('level')
                     ->numeric(),

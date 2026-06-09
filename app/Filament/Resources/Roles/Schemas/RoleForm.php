@@ -11,9 +11,6 @@ class RoleForm
     {
         return $schema
             ->components([
-                TextInput::make('institution_id')
-                    ->required()
-                    ->numeric(),
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('level')

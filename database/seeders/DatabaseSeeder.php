@@ -12,17 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create a default user
         User::factory()->create([
             'name' => 'Web Admin',
             'email' => 'admin@mail.com',
             'role' => 'admin',
-            'institution_id'=>1
         ]);
 
-        // Seed data
         $this->call([
-            InstitutionSeeder::class,
+            InstitutionSettingSeeder::class,
             RoleSeeder::class,
             DepartmentSeeder::class,
             TeamMemberSeeder::class,

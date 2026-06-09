@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('success_stories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->foreignId('department_id')->constrained()->cascadeOnDelete();
             $table->string('name'); // name of the student
             $table->string('photo')->nullable(); // captivating pic of the student

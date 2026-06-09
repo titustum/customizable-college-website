@@ -21,7 +21,6 @@ class NewsSeeder extends Seeder
         $categoryIds = [];
         foreach ($categories as $category) {
             $categoryIds[] = DB::table('news_categories')->insertGetId([
-                'institution_id' => 1,
                 'name' => $category['name'],
                 'slug' => Str::slug($category['name']),
                 'description' => $category['description'],
@@ -67,7 +66,6 @@ class NewsSeeder extends Seeder
 
         foreach ($newsItems as $index => $item) {
             DB::table('news_items')->insert([
-                'institution_id' => 1,
                 'news_category_id' => $categoryIds[$index % count($categoryIds)],
                 'title' => $item['title'],
                 'slug' => Str::slug($item['title']),

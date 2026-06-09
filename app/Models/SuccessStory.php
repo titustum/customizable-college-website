@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use App\Models\Traits\BelongsToInstitution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SuccessStory extends Model
 {
-    use BelongsToInstitution, HasFactory;
+    use HasFactory;
 
-    protected $fillable = [
-        'institution_id', 'name', 'department_id', 'photo', 'course', 'year',
+    protected $fillable = ['name', 'department_id', 'photo', 'course', 'year',
         'occupation', 'company', 'statement', 'rating',
         'is_approved',
     ];

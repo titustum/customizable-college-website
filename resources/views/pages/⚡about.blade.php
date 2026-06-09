@@ -3,7 +3,7 @@
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
-use App\Models\Institution;
+use App\Models\InstitutionSetting;
 
 new
 #[Title("About Us")]
@@ -12,7 +12,7 @@ class extends Component
 {
     public function with()
     {
-        $institution = Institution::first() ?? (object) ['name' => 'Our College', 'motto' => 'Excellence in Technical Education', 'vision' => 'To be a center of excellence in technical and vocational education.', 'mission' => 'To provide quality technical education.', 'established_year' => '2019'];
+        $institution = InstitutionSetting::first() ?? (object) ['name' => 'Our College', 'motto' => 'Excellence in Technical Education', 'vision' => 'To be a center of excellence in technical and vocational education.', 'mission' => 'To provide quality technical education.', 'established_year' => '2019'];
 
         return [
             'institution' => $institution,

@@ -6,20 +6,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Institution extends Model
+class InstitutionSetting extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'institution_settings';
+
+    public $incrementing = false;
+
     protected $fillable = [
+        'id',
         'name',
         'slug',
         'logo',
         'principal_name',
         'principal_photo',
         'welcome_message',
-        'about_us',         // new
-        'primary_color',    // new
-        'primary_font',    // new
+        'about_us',
+        'primary_color',
+        'primary_font',
         'motto',
         'vision',
         'mission',
@@ -59,40 +64,5 @@ class Institution extends Model
         }
 
         return "$r, $g, $b";
-    }
-
-    public function departments()
-    {
-        return $this->hasMany(Department::class);
-    }
-
-    public function newsCategories()
-    {
-        return $this->hasMany(NewsCategory::class);
-    }
-
-    public function teamMembers()
-    {
-        return $this->hasMany(TeamMember::class);
-    }
-
-    public function courses()
-    {
-        return $this->hasMany(Course::class);
-    }
-
-    public function tenders()
-    {
-        return $this->hasMany(Tender::class);
-    }
-
-    public function vacancies()
-    {
-        return $this->hasMany(Vacancy::class);
-    }
-
-    public function pageVisits()
-    {
-        return $this->hasMany(PageVisit::class);
     }
 }

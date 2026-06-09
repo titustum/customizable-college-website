@@ -19,9 +19,6 @@ class TeamMembersTable
     {
         return $table
             ->columns([
-                TextColumn::make('institution_id')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),

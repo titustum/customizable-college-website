@@ -13,8 +13,6 @@ class TeamMemberInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('institution_id')
-                    ->numeric(),
                 TextEntry::make('email')
                     ->label('Email address')
                     ->placeholder('-'),

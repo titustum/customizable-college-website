@@ -81,10 +81,7 @@ class CourseSeeder extends Seeder
         ];
 
         foreach ($courses as $course) {
-            DB::table('courses')->insert(array_merge(
-                ['institution_id' => 1],
-                $course
-            ));
+            DB::table('courses')->insert($course);
         }
     }
 }

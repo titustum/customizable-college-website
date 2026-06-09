@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('tenders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('title'); // e.g. "Supply of ICT Equipment"
             $table->text('description')->nullable(); // Tender details
-            $table->string('reference_number'); // e.g. TTVCT/ICT/2025/001
-            $table->unique(['institution_id', 'reference_number']);
+            $table->string('reference_number')->unique(); // e.g. TTVCT/ICT/2025/001
             $table->date('opening_date')->nullable(); // When it becomes active
             $table->date('closing_date'); // Deadline
             $table->string('attachment_path')->nullable(); // PDF/Document link

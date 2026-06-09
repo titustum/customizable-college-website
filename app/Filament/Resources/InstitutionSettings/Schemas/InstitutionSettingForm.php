@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Institutions\Schemas;
+namespace App\Filament\Resources\InstitutionSettings\Schemas;
 
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
@@ -10,7 +10,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
-class InstitutionForm
+class InstitutionSettingForm
 {
     public static function configure(Schema $schema): Schema
     {
@@ -33,7 +33,6 @@ class InstitutionForm
                             TextInput::make('principal_name')
                                 ->label("Principal's Name"),
 
-                            // principal photo
                             FileUpload::make('principal_photo')
                                 ->label("Principal's Photo")
                                 ->image()
@@ -91,7 +90,6 @@ class InstitutionForm
                                 ->searchable()
                                 ->placeholder('Choose primary font'),
 
-                            // logo
                             FileUpload::make('logo')
                                 ->label('Institution Logo')
                                 ->image()
@@ -116,14 +114,12 @@ class InstitutionForm
                                 ->email()
                                 ->placeholder('info@institution.ac.ke'),
 
-                            // address
                             Textarea::make('address')
                                 ->rows(3)
                                 ->label('Physical Address')
                                 ->columnSpanFull()
                                 ->placeholder('Enter address i.e. PO Box 123 - 10100, Nairobi'),
 
-                            // latitude and longitude
                             TextInput::make('latitude')
                                 ->label('Latitude')
                                 ->placeholder('-1.2921'),

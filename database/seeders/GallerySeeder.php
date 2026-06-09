@@ -39,7 +39,6 @@ class GallerySeeder extends Seeder
 
         foreach ($galleries as $gallery) {
             $galleryId = DB::table('galleries')->insertGetId([
-                'institution_id' => 1,
                 'name' => $gallery['name'],
                 'description' => $gallery['description'],
                 'image' => $gallery['image'],
@@ -70,7 +69,6 @@ class GallerySeeder extends Seeder
 
             foreach ($items as $item) {
                 DB::table('gallery_items')->insert([
-                    'institution_id' => 1,
                     'gallery_id' => $galleryId,
                     'name' => $item['name'],
                     'category' => $item['category'],

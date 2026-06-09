@@ -15,9 +15,6 @@ class RolesTable
     {
         return $table
             ->columns([
-                TextColumn::make('institution_id')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('level')

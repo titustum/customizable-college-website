@@ -5,15 +5,15 @@ use App\Models\Department;
 use App\Models\SuccessStory;
 use App\Models\Partner;
 use App\Models\HeroSlide;
-use App\Models\Institution;
+use App\Models\InstitutionSetting;
 use Illuminate\Support\Str;
 
 new class extends Component {
 
-    public $institution;
+    public $setting;
 
     public function mount(){
-        $this->institution = Institution::first() ?? (object) ['name' => 'Our College', 'phone' => ''];
+        $this->setting = InstitutionSetting::first() ?? (object) ['name' => 'Our College', 'phone' => ''];
     }
 
     public function with()
@@ -21,7 +21,7 @@ new class extends Component {
 
 
         return [
-            'institution' => $this->institution ?? (object)[
+            'institution' => $this->setting ?? (object)[
                 'name'=>'Tetu TVC',
                 'established_year'=>now()->subYears(3),
                 'phone'=>0712345676
@@ -40,10 +40,10 @@ new class extends Component {
     public function render()
     {
 
-        // dd($this->institution);
+        // dd($this->setting);
 
         return $this->view()
-            ->title("Welcome to ".$this->institution->name);
+            ->title("Welcome to ". $this->setting->name);
     }
 
 
@@ -337,12 +337,12 @@ new class extends Component {
                 {{-- Image --}}
                 <div data-aos="fade-up" class="relative">
                     <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                        <img src="{{ asset('images/gate.jpg') }}" alt="{{ $institution->name }} History"
+                        <img src="{{ asset('images/gate.jpg') }}" alt="{{ $setting->name }} History"
                             class="object-cover w-full h-full">
                     </div>
                     {{-- Decorative badge --}}
                     <div class="absolute -bottom-4 -right-4 bg-primary text-white px-6 py-4 rounded-xl shadow-lg">
-                        <div class="text-3xl font-bold">{{ $institution->established_year ?? '2020' }}</div>
+                        <div class="text-3xl font-bold">{{ $setting->established_year ?? '2020' }}</div>
                         <div class="text-xs font-semibold uppercase tracking-wider">Established</div>
                     </div>
                 </div>
@@ -353,9 +353,9 @@ new class extends Component {
                         class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Our
                         History</span>
                     <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">Building the Future Since {{
-                        $institution->established_year ?? '2020' }}</h2>
+                        $setting->established_year ?? '2020' }}</h2>
                     <p class="text-gray-600 text-base leading-relaxed mb-6">
-                        {{ $institution->history ?? 'Tetu Technical and Vocational College has been at the forefront of
+                        {{ $setting->history ?? 'Tetu Technical and Vocational College has been at the forefront of
                         providing quality technical and vocational education in Nyeri County. Our institution is
                         dedicated to equipping students with practical skills that meet industry demands.' }}
                     </p>
@@ -732,7 +732,7 @@ new class extends Component {
             <p class="text-gray-400 text-base mb-8 max-w-xl mx-auto leading-relaxed" data-aos="fade-up"
                 data-aos-delay="200">
                 Join thousands of students who have transformed their lives through quality education at {{
-                $institution->name }}.
+                $setting->name }}.
             </p>
             <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
                 <a href="{{ route('admissions') }}"
@@ -750,7 +750,7 @@ new class extends Component {
     <!-- WhatsApp Chat Button -->
     <div class="fixed z-50 bottom-5 right-5 sm:bottom-6 sm:right-6">
 
-        <a href="https://wa.me/{{ $institution->phone }}" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/{{ $setting->phone }}" target="_blank" rel="noopener noreferrer"
             aria-label="Chat on WhatsApp" class="group relative flex items-center justify-center sm:justify-start gap-2
               w-14 h-14 sm:w-auto sm:h-auto sm:px-4 sm:py-3
               bg-green-600 hover:bg-green-700

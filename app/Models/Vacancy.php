@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Traits\BelongsToInstitution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Vacancy extends Model
 {
-    use BelongsToInstitution, HasFactory;
+    use HasFactory;
 
     protected $fillable = [
-        'institution_id',
         'title',
         'description',
         'reference_number',

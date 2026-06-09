@@ -4,7 +4,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Contact;
-use App\Models\Institution;
+use App\Models\InstitutionSetting;
 
 new
 #[Title('Contact Us')]
@@ -20,7 +20,7 @@ class extends Component
 
     public function with()
     {
-        $institution = Institution::first() ?? (object) [
+        $institution = InstitutionSetting::first() ?? (object) [
             'name' => 'Our College',
             'address' => 'Address not available',
             'phone' => 'Phone not available',

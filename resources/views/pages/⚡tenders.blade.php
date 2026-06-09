@@ -4,7 +4,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Tender;
-use App\Models\Institution;
+use App\Models\InstitutionSetting;
 
 new
 #[Title("Tenders")]
@@ -16,7 +16,7 @@ class extends Component
 
     public function with()
     {
-        $institution = Institution::first() ?? (object) ['name' => 'Our College'];
+        $institution = InstitutionSetting::first() ?? (object) ['name' => 'Our College'];
 
         $tenders = Tender::query()
             ->when($this->selectedStatus !== 'all', function ($query) {

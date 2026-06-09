@@ -494,7 +494,6 @@ class TeamMemberSeeder extends Seeder
 
         foreach ($teamMembers as $member) {
             $teamMemberId = DB::table('team_members')->insertGetId([
-                'institution_id' => 1,
                 'email' => $member['email'],
                 'phone' => $member['phone'] ?? null,
                 'name' => $member['name'],
@@ -506,7 +505,6 @@ class TeamMemberSeeder extends Seeder
 
             if ($member['department_id']) {
                 DB::table('department_team_member')->insert([
-                    'institution_id' => 1,
                     'department_id' => $member['department_id'],
                     'team_member_id' => $teamMemberId,
                     'role_id' => $member['role_id'],

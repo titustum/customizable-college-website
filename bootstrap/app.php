@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\SetInstitutionContext;
 use App\Http\Middleware\TrackPageVisits;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -14,7 +13,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->append(TrackPageVisits::class);
-        $middleware->append(SetInstitutionContext::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

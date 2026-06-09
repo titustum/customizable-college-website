@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Traits\BelongsToInstitution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PageVisit extends Model
 {
-    use BelongsToInstitution, HasFactory;
+    use HasFactory;
 
-    public $timestamps = false; // We’re using `visited_at` instead of created_at
+    public $timestamps = false;
 
     protected $fillable = [
-        'institution_id',
         'url',
         'full_url',
         'referer',
@@ -22,7 +20,6 @@ class PageVisit extends Model
         'visited_at',
     ];
 
-    // casts
     protected $casts = [
         'visited_at' => 'datetime',
         'ip' => 'string',

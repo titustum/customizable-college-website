@@ -5,7 +5,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\PastPaper;
-use App\Models\Institution;
+use App\Models\InstitutionSetting;
 
 new
 #[Title("Past Papers")]
@@ -19,7 +19,7 @@ class extends Component
 
     public function with()
     {
-        $institution = Institution::first() ?? (object) ['name' => 'Our College'];
+        $institution = InstitutionSetting::first() ?? (object) ['name' => 'Our College'];
 
         $papers = PastPaper::query()
             ->when($this->search, function ($query) {

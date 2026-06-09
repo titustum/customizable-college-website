@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Traits\BelongsToInstitution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,10 +9,9 @@ use Illuminate\Support\Str;
 
 class Department extends Model
 {
-    use BelongsToInstitution, HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'institution_id',
         'name',
         'slug',
         'photo',
@@ -23,6 +21,15 @@ class Department extends Model
         'type',
         'is_active',
     ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function hod()
     {
@@ -41,7 +48,6 @@ class Department extends Model
                 $q->whereIn('name', ['HOS', 'Section Head']);
             });
     }
-
 
     public function trainers()
     {
@@ -68,10 +74,7 @@ class Department extends Model
         static::creating(function ($department) {
             $slug = Str::slug($department->name);
 
-            $count = static::withoutGlobalScopes()
-                ->where('institution_id', $department->institution_id)
-                ->where('slug', 'LIKE', "{$slug}%")
-                ->count();
+            $count = static::where('slug', 'LIKE', "{$slug}%")->count();
 
             $department->slug = $count > 0
                 ? "{$slug}-".($count + 1)

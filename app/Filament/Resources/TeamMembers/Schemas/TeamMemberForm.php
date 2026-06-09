@@ -2,11 +2,10 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Schema;
 
 class TeamMemberForm
@@ -15,9 +14,6 @@ class TeamMemberForm
     {
         return $schema
             ->components([
-                TextInput::make('institution_id')
-                    ->required()
-                    ->numeric(),
                 TextInput::make('email')
                     ->label('Email address')
                     ->email(),
@@ -31,7 +27,6 @@ class TeamMemberForm
                     ->image()
                     ->avatar(),
 
-                // ✅ ROLES (IMPORTANT ADDITION)
                 Select::make('roles')
                     ->label('Roles')
                     ->multiple()
@@ -39,11 +34,6 @@ class TeamMemberForm
                     ->preload()
                     ->searchable()
                     ->required(),
-
-                // CheckboxList::make('roles')
-                //     ->relationship('roles', 'name')
-                //     ->columns(3)
-                //     ->columnSpanFull(),
 
                 Toggle::make('is_active')
                     ->required(),

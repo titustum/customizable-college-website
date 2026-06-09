@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('hero_slides', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('institution_id')->constrained()->cascadeOnDelete();
             $table->string('image');
             $table->string('title')->nullable();
             $table->string('subtitle')->nullable();

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" style="
-    --primary-color: {{ $institution->primary_color ?? '#FF5722' }};
-    --primary-color-rgb: {{ $institution->primary_color_rgb ?? '255,87,34' }};
+    --primary-color: {{ $setting->primary_color ?? '#FF5722' }};
+    --primary-color-rgb: {{ $setting->primary_color_rgb ?? '255,87,34' }};
     --primary-font: 'Plus Jakarta Sans', sans-serif, 'Inter', sans-serif;
 ">
 
@@ -11,7 +11,7 @@
     <title>{{ $title ?? 'Default Title' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
-        content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+        content="{{ $setting->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <link rel="canonical" href="https://www.tetutvc.ac.ke" />
 
     <!-- Fonts -->
@@ -24,24 +24,24 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="shortcut icon" href="{{ asset('storage/'. $institution->logo) }}" type="image/jpeg">
+    <link rel="shortcut icon" href="{{ asset('storage/'. $setting->logo) }}" type="image/jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.tetutvc.ac.ke/">
-    <meta property="og:title" content="{{ $institution->name }} | Quality Education in Kenya">
+    <meta property="og:title" content="{{ $setting->name }} | Quality Education in Kenya">
     <meta property="og:description"
-        content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-    <meta property="og:image" content="{{ asset('storage/'.$institution->logo) }}">
+        content="{{ $setting->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <meta property="og:image" content="{{ asset('storage/'.$setting->logo) }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.tetutvc.ac.ke/">
-    <meta property="twitter:title" content="{{ $institution->name }} | Quality Education in Kenya">
+    <meta property="twitter:title" content="{{ $setting->name }} | Quality Education in Kenya">
     <meta property="twitter:description"
-        content="{{ $institution->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-    <meta property="twitter:image" content="{{ asset('storage/'.$institution->logo) }}">
+        content="{{ $setting->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <meta property="twitter:image" content="{{ asset('storage/'.$setting->logo) }}">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
@@ -114,7 +114,7 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3 flex-shrink-0">
-                    <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo" class="h-10 w-auto object-contain">
+                    <img src="{{ asset('storage/'.$setting->logo) }}" alt="Logo" class="h-10 w-auto object-contain">
                     <div class="leading-tight">
                         <div class="font-righteous font-bold text-gray-900 text-lg leading-none">TETU TVC</div>
                         <div class="text-xs text-gray-500 tracking-wide">Skills for Industrial Growth</div>
@@ -357,11 +357,11 @@
                 <!-- Brand -->
                 <div data-aos="fade-up">
                     <div class="flex items-center gap-2.5 mb-4">
-                        <img src="{{ asset('storage/'.$institution->logo) }}" alt="Logo"
+                        <img src="{{ asset('storage/'.$setting->logo) }}" alt="Logo"
                             class="h-10 w-auto object-contain brightness-0 invert opacity-90">
-                        <span class="font-righteous text-xl text-white/90">{{ $institution->name }}</span>
+                        <span class="font-righteous text-xl text-white/90">{{ $setting->name }}</span>
                     </div>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-5">{{ $institution->name }} is committed to
+                    <p class="text-sm text-gray-400 leading-relaxed mb-5">{{ $setting->name }} is committed to
                         providing quality education and training to empower students for successful careers.</p>
                     <a href="{{ route('about') }}"
                         class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-orange-300 transition-colors">
@@ -406,24 +406,24 @@
                             <span
                                 class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 mt-0.5 text-xs"><i
                                     class="fas fa-map-marker-alt"></i></span>
-                            {{ $institution->address }}
+                            {{ $setting->address }}
                         </li>
                         <li>
-                            <a href="tel:{{ $institution->phone }}"
+                            <a href="tel:{{ $setting->phone }}"
                                 class="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
                                 <span
                                     class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><i
                                         class="fas fa-phone"></i></span>
-                                {{ $institution->phone }}
+                                {{ $setting->phone }}
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:{{ $institution->email }}"
+                            <a href="mailto:{{ $setting->email }}"
                                 class="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
                                 <span
                                     class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><i
                                         class="fas fa-envelope"></i></span>
-                                {{ $institution->email }}
+                                {{ $setting->email }}
                             </a>
                         </li>
                     </ul>
@@ -451,7 +451,7 @@
                             class="fab fa-instagram"></i></a>
                 </div>
                 <p class="text-xs text-gray-500 text-center">
-                    © {{ date('Y') }} {{ $institution->name }}. Crafted by
+                    © {{ date('Y') }} {{ $setting->name }}. Crafted by
                     <a href="http://github.com/titustum"
                         class="text-blue-400 hover:text-blue-300 hover:underline transition-colors">Titus Tum</a>.
                 </p>

@@ -4,7 +4,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Download;
-use App\Models\Institution;
+use App\Models\InstitutionSetting;
 
 new
 #[Title("Downloads")]
@@ -16,7 +16,7 @@ class extends Component
 
     public function with()
     {
-        $institution = Institution::first() ?? (object) ['name' => 'Our College'];
+        $institution = InstitutionSetting::first() ?? (object) ['name' => 'Our College'];
 
         $downloads = Download::when($this->selectedCategory !== 'all', function ($query) {
             $query->where('category', $this->selectedCategory);

@@ -4,7 +4,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Application;
-use App\Models\Institution;
+use App\Models\InstitutionSetting;
 
 new
 #[Title('Application Received')]
@@ -16,7 +16,7 @@ class extends Component
 
     public function mount($id = null)
     {
-        $this->institution = Institution::first() ?? (object) ['name' => 'Our College'];
+        $this->institution = InstitutionSetting::first() ?? (object) ['name' => 'Our College'];
 
         if ($id) {
             $this->application = Application::find($id);

@@ -4,7 +4,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Models\Vacancy;
-use App\Models\Institution;
+use App\Models\InstitutionSetting;
 use App\Models\Department;
 
 new
@@ -17,7 +17,7 @@ class extends Component
 
     public function with()
     {
-        $institution = Institution::first() ?? (object) ['name' => 'Our College'];
+        $institution = InstitutionSetting::first() ?? (object) ['name' => 'Our College'];
 
         $vacancies = Vacancy::query()
             ->with('department')
