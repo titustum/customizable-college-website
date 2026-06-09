@@ -18,17 +18,28 @@ class TeamMember extends Model
         'is_active',
     ];
 
+    public function assignmentFor($departmentId)
+    {
+        return $this->assignments
+            ->firstWhere('department_id', $departmentId);
+    }
+
+    public function assignments()
+    {
+        return $this->hasMany(DepartmentAssignment::class);
+    }
+
     public function departments()
     {
         return $this->belongsToMany(Department::class, 'department_team_member')
-            ->withPivot('role_id', 'custom_title')
+            ->withPivot('role_id')
             ->withTimestamps();
     }
 
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'department_team_member')
-            ->withPivot('department_id', 'custom_title')
+            ->withPivot(['department_id'])
             ->withTimestamps();
     }
 

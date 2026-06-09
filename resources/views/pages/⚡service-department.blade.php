@@ -8,38 +8,17 @@ use App\Models\TeamMember;
 new class extends Component
 {
     public $department;
-    public $departments = [];
-    public $successStories = [];
-    public $facilityPics = [];
-    public $hos = null;
-    public $graduationRate = null;
+    public $coordinator;
+    public $teamMembers;
+    public $successStories;
 
 
     public function mount($slug)
     {
 
-        $this->department = Department::with([
-            'courses',
-            'teamMembers.roles',
-        ])
-        ->withCount([
-            'courses',
-            'teamMembers',
-        ])
-        ->where('slug', $slug)
-        ->where('type', 'section')
-        ->firstOrFail();
+        $this->department = Department::where('slug', $slug)
+                            ->withCount('teamMembers')->firstOrFail();
 
-        /*
-        |--------------------------------------------------------------------------
-        | Other Section Departments (lightweight query)
-        |--------------------------------------------------------------------------
-        */
-
-        $this->departments = Department::where('type', 'section')
-            ->where('id', '!=', $this->department->id)
-            ->orderBy('name')
-            ->get();
 
         /*
         |--------------------------------------------------------------------------
@@ -58,9 +37,18 @@ new class extends Component
         |--------------------------------------------------------------------------
         */
 
-        $this->hos = $this->department->hos()->first();
+        $this->coordinator = $this->department
+                            ->coordinator()
+                            ->with('assignments.role', 'assignments.department')
+                            ->first();
 
-        // dd($this->hos);
+        // dd($this->coordinator);
+
+        $this->teamMembers = $this->department
+                            ->teamMembers()
+                            ->with('assignments.role', 'assignments.department')
+                            ->get();
+        // dd($this->teamMembers);
 
     }
 
@@ -132,7 +120,7 @@ PAGE WRAPPER
         {{-- ─────────────────────────────────────────────
         HOD WELCOME MESSAGE
         ──────────────────────────────────────────────── --}}
-        @if ($hos)
+        @if ($coordinator)
         <section class="py-14 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
 
             {{-- Background Accent --}}
@@ -151,12 +139,12 @@ PAGE WRAPPER
 
                         <div class="relative max-w-sm sm:max-w-md mx-auto">
 
-                            <img @if($hos->photo)
-                            src="{{ asset('storage/' . $hos->photo) }}"
+                            <img @if($coordinator->photo)
+                            src="{{ asset('storage/' . $coordinator->photo) }}"
                             @else
                             src="{{ asset('images/default-avatar.jpg') }}"
                             @endif
-                            alt="{{ $hos->name }}"
+                            alt="{{ $coordinator->name }}"
                             class="w-full h-[420px] sm:h-[500px] object-cover rounded-3xl shadow-2xl"
                             >
 
@@ -164,7 +152,10 @@ PAGE WRAPPER
                             <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
                                 <div class="bg-amber-500 text-white px-4 py-2 sm:px-5 rounded-full shadow-lg">
                                     <p class="text-[10px] sm:text-xs uppercase tracking-wider font-semibold">
-                                        Head of Department
+                                        {{ $department->name }}
+                                        {{ $coordinator->roles
+                                        ->firstWhere('pivot.department_id', $department->id)
+                                        ?->name ?? 'No role' }}
                                     </p>
                                 </div>
                             </div>
@@ -194,7 +185,8 @@ PAGE WRAPPER
 
                             <blockquote class="text-base sm:text-lg text-gray-600 leading-relaxed relative z-10">
 
-                                {{ $hos->welcome_message ?? 'Our department is committed to nurturing talent, inspiring
+                                {{ $coordinator->welcome_message ?? 'Our department is committed to nurturing talent,
+                                inspiring
                                 innovation, and preparing students with the practical skills needed to thrive in today’s
                                 dynamic hospitality and professional industries. We welcome you to be part of this
                                 transformative journey.' }}
@@ -207,11 +199,16 @@ PAGE WRAPPER
                         <div class="mt-8">
 
                             <h3 class="text-2xl font-bold text-gray-900">
-                                {{ $hos->name }}
+                                {{ $coordinator->name }}
                             </h3>
 
+
+                            @php
+                            $assignment = $coordinator->assignmentFor($department->id);
+                            @endphp
+
                             <p class="text-amber-600 font-semibold mt-1 text-sm sm:text-base">
-                                {{ $hos->role->name ?? 'Trainer' }}
+                                {{ $assignment?->custom_title ?? $assignment?->role?->name ?? 'No role' }}
                             </p>
 
                         </div>
@@ -227,6 +224,9 @@ PAGE WRAPPER
         {{-- ─────────────────────────────────────────────
         SUPPORT TEAM GRID
         ───────────────────────────────────────────────── --}}
+
+        @if($department->team_members_count > 1)
+
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
 
@@ -239,28 +239,29 @@ PAGE WRAPPER
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-7">
-                    @foreach ($department->teamMembers as $trainer)
+                    @foreach ($teamMembers as $member)
                     <div class="trainer-card group" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 4) * 60 }}">
                         {{-- Accent top bar --}}
                         <div class="h-1.5 bg-orange-600 group-hover:bg-orange-500 transition-colors"></div>
                         <div class="p-6 flex flex-col items-center text-center">
                             <div class="mb-4 relative">
-                                <img @if ($trainer->photo)
-                                src="{{ asset('storage/' . $trainer->photo) }}"
+                                <img @if ($member->photo)
+                                src="{{ asset('storage/' . $member->photo) }}"
                                 @else
                                 src="{{ asset('images/default-avatar.jpg') }}"
                                 @endif
-                                alt="{{ $trainer->name }}"
+                                alt="{{ $member->name }}"
                                 class="trainer-avatar">
-                                @if ($trainer->is_hod)
+                                @if ($member->is_hod)
                                 <span
                                     class="absolute -bottom-1 -right-1 bg-orange-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wide">HOD</span>
                                 @endif
                             </div>
-                            <h3 class="font-semibold text-gray-900 text-sm leading-tight mb-1">{{ $trainer->name }}
+                            <h3 class="font-semibold text-gray-900 text-sm leading-tight mb-1">{{ $member->name }}
                             </h3>
-                            <p class="text-orange-600 text-xs font-semibold mb-2">{{
-                                $trainer->roles->pluck('name')->join(', ') }}
+                            <p class="text-orange-600 text-xs font-semibold mb-2">
+                                {{ $member->assignments->firstWhere('department_id', $department->id)?->custom_title
+                                ?? $member->assignments->firstWhere('department_id', $department->id)->name }}
                             </p>
                         </div>
                     </div>
@@ -269,6 +270,8 @@ PAGE WRAPPER
 
             </div>
         </section>
+
+        @endif
 
         {{-- ─────────────────────────────────────────────
         SUCCESS STORIES CAROUSEL

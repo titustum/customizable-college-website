@@ -20,6 +20,7 @@ class Department extends Model
         'banner_photo',
         'type',
         'is_active',
+        'leader_message',
     ];
 
     protected $casts = [
@@ -34,25 +35,38 @@ class Department extends Model
     public function hod()
     {
         return $this->belongsToMany(TeamMember::class)
-            ->withPivot('role_id', 'custom_title')
-            ->whereHas('roles', function ($q) {
-                $q->where('name', 'HOD');
-            });
+            ->whereHas('roles', fn ($q) => $q->where('slug', 'hod'));
     }
 
     public function hos()
     {
+        return $this->belongsToMany(TeamMember::class)
+            ->whereHas('roles', fn ($q) => $q->where('slug', 'hos'));
+    }
+
+    public function coordinator()
+    {
+        return $this->belongsToMany(
+            TeamMember::class,
+            'department_team_member'
+        )
+            ->withPivot(['role_id', 'custom_title'])
+            ->wherePivot('role_id', Role::where('slug', 'coordinator')->value('id'));
+    }
+
+    public function coordinators()
+    {
         return $this->belongsToMany(TeamMember::class, 'department_team_member')
             ->withPivot(['role_id', 'custom_title'])
             ->whereHas('roles', function ($q) {
-                $q->whereIn('name', ['HOS', 'Section Head']);
+                $q->where('slug', 'coordinator');
             });
     }
 
     public function trainers()
     {
         return $this->teamMembers()
-            ->whereHas('roles', fn ($q) => $q->where('name', 'Trainer'));
+            ->whereHas('roles', fn ($q) => $q->where('slug', 'trainer'));
     }
 
     public function courses()
@@ -63,7 +77,7 @@ class Department extends Model
     public function teamMembers()
     {
         return $this->belongsToMany(TeamMember::class, 'department_team_member')
-            ->withPivot('role_id', 'custom_title')
+            ->withPivot('role_id')
             ->withTimestamps();
     }
 

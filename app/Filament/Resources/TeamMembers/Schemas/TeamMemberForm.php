@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\TeamMembers\Schemas;
 
+use App\Models\Department;
+use App\Models\Role;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -14,6 +16,9 @@ class TeamMemberForm
     {
         return $schema
             ->components([
+                Select::make('department_id')
+                    ->label('Department')
+                    ->options(fn () => Department::pluck('name', 'id')),
                 TextInput::make('email')
                     ->label('Email address')
                     ->email(),
@@ -26,15 +31,10 @@ class TeamMemberForm
                     ->directory('team_members')
                     ->image()
                     ->avatar(),
-
-                Select::make('roles')
-                    ->label('Roles')
-                    ->multiple()
-                    ->relationship('roles', 'name')
-                    ->preload()
-                    ->searchable()
+                Select::make('role_id')
+                    ->label('Role')
+                    ->options(Role::pluck('name', 'id'))
                     ->required(),
-
                 Toggle::make('is_active')
                     ->required(),
             ]);

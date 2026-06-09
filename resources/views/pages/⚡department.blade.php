@@ -103,10 +103,12 @@ PAGE WRAPPER
         <!-- Department Title Overlay -->
         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-12">
             <div class="container mx-auto">
-                <div class="inline-block px-4 py-1 mb-3 text-sm font-semibold text-white bg-orange-500 rounded-full">
+                <div
+                    class="inline-block px-4 py-1 tracking-widest mb-3 text-sm font-semibold text-white bg-orange-500 rounded-full">
                     Department
                 </div>
-                <h1 class="mb-2 text-3xl font-bold text-white md:text-5xl">{{ $department->name }}</h1>
+                <h1 class="hero-display mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl">{{ $department->name
+                    }}</h1>
                 <p class="max-w-3xl text-lg md:text-xl text-white/90">{{ $department->short_description }}</p>
             </div>
         </div>
@@ -426,6 +428,8 @@ PAGE WRAPPER
         {{-- ─────────────────────────────────────────────
         TRAINERS GRID
         ───────────────────────────────────────────────── --}}
+
+        @if($department->team_members_count > 1)
         <section class="py-20 bg-white">
             <div class="container mx-auto px-4">
 
@@ -458,8 +462,9 @@ PAGE WRAPPER
                             </div>
                             <h3 class="font-semibold text-gray-900 text-sm leading-tight mb-1">{{ $trainer->name }}
                             </h3>
-                            <p class="text-orange-600 text-xs font-semibold mb-2">{{
-                                $trainer->roles->pluck('name')->join(', ') }}
+                            <p class="text-orange-600 text-xs font-semibold mb-2">{{ $trainer->roles
+                                ->firstWhere('pivot.department_id', $department->id)
+                                ?->name ?? 'No role' }}
                             </p>
                         </div>
                     </div>
@@ -468,6 +473,7 @@ PAGE WRAPPER
 
             </div>
         </section>
+        @endif
 
         {{-- ─────────────────────────────────────────────
         SUCCESS STORIES CAROUSEL

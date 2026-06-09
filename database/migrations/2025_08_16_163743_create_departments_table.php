@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('banner_photo')->nullable(); // Banner pic that will be displayed on single page when user selects to view that department
             $table->string('type')->default('academic'); // academic (e.g. Cosmetology, ICT, Agriculture) or section (e.g. sports, clubs etc.)
             $table->boolean('is_active')->default(true);
+            $table->text('leader_message')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

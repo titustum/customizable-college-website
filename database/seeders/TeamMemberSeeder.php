@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -9,506 +11,587 @@ class TeamMemberSeeder extends Seeder
 {
     public function run(): void
     {
+        $roles = [
+            'principal' => Role::where('slug', 'principal')->value('id'),
+            'deputy_principal' => Role::where('slug', 'deputy-principal')->value('id'),
+            'registrar' => Role::where('slug', 'registrar')->value('id'),
+            'dean_of_students' => Role::where('slug', 'dean-of-students')->value('id'),
+            'finance_officer' => Role::where('slug', 'finance-officer')->value('id'),
+            'procurement_officer' => Role::where('slug', 'procurement-officer')->value('id'),
+            'hod' => Role::where('slug', 'hod')->value('id'),
+            'coordinator' => Role::where('slug', 'coordinator')->value('id'),
+            'trainer' => Role::where('slug', 'trainer')->value('id'),
+            'support_staff' => Role::where('slug', 'support-staff')->value('id'),
+            'coach' => Role::where('slug', 'coach')->value('id'),
+            'counsellor' => Role::where('slug', 'counsellor')->value('id'),
+        ];
+
+        $departments = [
+            'cosmetology' => Department::where('slug', 'cosmetology')->value('id'),
+            'hospitality' => Department::where('slug', 'hospitality')->value('id'),
+            'fashion' => Department::where('slug', 'fashion-and-textile')->value('id'),
+            'building' => Department::where('slug', 'building-and-civil')->value('id'),
+            'electrical' => Department::where('slug', 'electrical')->value('id'),
+            'ict' => Department::where('slug', 'ict')->value('id'),
+            'agriculture' => Department::where('slug', 'agriculture')->value('id'),
+            'mechanical' => Department::where('slug', 'mechanical')->value('id'),
+            'finance' => Department::where('slug', 'finance')->value('id'),
+            'student_affairs' => Department::where('slug', 'student-affairs')->value('id'),
+            'counselling' => Department::where('slug', 'guiding-and-counselling')->value('id'),
+            'ilo' => Department::where('slug', 'industrial-liaison-office-ilo')->value('id'),
+            'procurement' => Department::where('slug', 'procurement')->value('id'),
+            'sports' => Department::where('slug', 'sports')->value('id'),
+            'music_arts' => Department::where('slug', 'music-and-arts')->value('id'),
+            'library' => Department::where('slug', 'library')->value('id'),
+            'administration' => Department::where('slug', 'administration')->value('id'),
+            'odel' => Department::where('slug', 'odel')->value('id'),
+        ];
+
         $teamMembers = [
-            // Principal
-            [
-                'department_id' => null,
-                'role_id' => 1,
-                'section_assigned' => null,
-                'email' => 'principal@tetutvc.ac.ke',
-                'name' => 'Mr. David M. Kariuki',
-                'photo' => null,
-                'qualification' => '',
-                'phone' => '+254758660300',
-            ],
-            // Deputy Principals
-            [
-                'department_id' => null,
-                'role_id' => 2,
-                'section_assigned' => 'Administration',
-                'email' => 'deputy.admin@tetutvc.ac.ke',
-                'name' => 'Lydia Ndirangu',
-                'photo' => null,
-                'qualification' => '',
-                'phone' => '+254758660301',
-            ],
-            [
-                'department_id' => null,
-                'role_id' => 2,
-                'section_assigned' => 'Academics',
-                'email' => 'deputy.academics@tetutvc.ac.ke',
-                'name' => 'Joshua Mwangi',
-                'photo' => null,
-                'qualification' => '',
-                'phone' => '+254758660302',
-            ],
 
-            // =========================
-            // ADMINISTRATORS (NEW)
-            // =========================
+            // ─── Multi-Assignment People ───────────────────────────────────
 
             [
-                'department_id' => null,
-                'role_id' => 3,
-                'section_assigned' => 'Registrar Office',
-                'email' => 'registrar@tetutvc.ac.ke',
-                'name' => 'Kenneth Muriuki',
-                'phone' => '+254700000001',
-            ],
-            [
-                'department_id' => null,
-                'role_id' => 3,
-                'section_assigned' => 'Dean of Students',
-                'email' => 'dean.students@tetutvc.ac.ke',
-                'name' => 'Elly Mburu',
-                'phone' => '+254700000002',
-            ],
-            [
-                'department_id' => null,
-                'role_id' => 3,
-                'section_assigned' => 'Finance Office',
-                'email' => 'finance@tetutvc.ac.ke',
-                'name' => 'Kevin Wachira',
-                'phone' => '+254700000003',
-            ],
-            [
-                'department_id' => null,
-                'role_id' => 3,
-                'section_assigned' => 'Procurement Office',
-                'email' => 'procurement@tetutvc.ac.ke',
-                'name' => 'Cynthia Wanjiru',
-                'phone' => '+254700000004',
-            ],
-
-            // HODs - Academic Departments (8 departments)
-            [
-                'department_id' => 1, // Cosmetology
-                'role_id' => 7, // HOD
-                'section_assigned' => null,
-                'email' => 'hod.cosmetology@tetutvc.ac.ke',
-                'name' => 'Jacob Nyaga',
-                'photo' => null,
-                'phone' => '+254758660303',
-            ],
-            [
-                'department_id' => 2, // Hospitality
-                'role_id' => 3,
-                'section_assigned' => null,
-                'email' => 'hod.hospitality@tetutvc.ac.ke',
-                'name' => 'Lily Mugo',
-                'photo' => null,
-                'phone' => '+254758660304',
-            ],
-            [
-                'department_id' => 3, // Fashion and Textile
-                'role_id' => 3,
-                'section_assigned' => null,
-                'email' => 'hod.fashion@tetutvc.ac.ke',
-                'name' => 'Madam Jane',
-                'photo' => null,
-                'phone' => '+254758660305',
-            ],
-            [
-                'department_id' => 4, // Building and Civil
-                'role_id' => 3,
-                'section_assigned' => null,
-                'email' => 'hod.building@tetutvc.ac.ke',
-                'name' => 'Gideon Muraguri',
-                'photo' => null,
-                'phone' => '+254758660306',
-            ],
-            [
-                'department_id' => 5, // Electrical
-                'role_id' => 3,
-                'section_assigned' => null,
-                'email' => 'hod.electrical@tetutvc.ac.ke',
-                'name' => 'Mr. Josiah',
-                'photo' => null,
-                'phone' => '+254758660307',
-            ],
-            [
-                'department_id' => 6, // ICT
-                'role_id' => 3,
-                'section_assigned' => null,
-                'email' => 'hod.ict@tetutvc.ac.ke',
-                'name' => 'Ascar Jebet',
-                'photo' => null,
-                'phone' => '+254758660308',
-            ],
-            [
-                'department_id' => 7, // Agriculture
-                'role_id' => 3,
-                'section_assigned' => null,
-                'email' => 'hod.agriculture@tetutvc.ac.ke',
-                'name' => 'Anthony S.',
-                'photo' => null,
-                'phone' => '+254758660309',
-            ],
-            [
-                'department_id' => 8, // Mechanical
-                'role_id' => 3,
-                'section_assigned' => null,
-                'email' => 'hod.mechanical@tetutvc.ac.ke',
-                'name' => 'Mugure Ngigi',
-                'photo' => null,
-                'phone' => '+254758660310',
-            ],
-            // Section Leaders (HOS) / Coordinators - Non-Academic Departments (5 departments)
-            [
-                'department_id' => null,  // belongs to hospitality department
-                'role_id' => 3,
-                'section_assigned' => 'Guiding & Counselling',
-                'email' => 'hod.counselling@tetutvc.ac.ke',
-                'name' => 'Mrs. Grace Wanjiku',
-                'photo' => null,
-                'phone' => '+254758660321',
-            ],
-            [
-                'department_id' => 2, // //belongs to Hospitality department
-                'role_id' => 3,
-                'section_assigned' => 'Industrial Liaison Office (ILO)',
-                'email' => 'hos.ilo@tetutvc.ac.ke',
-                'name' => 'Joan Weru',
-                'photo' => null,
-                'phone' => '+254758660322',
-            ],
-            [
-                'department_id' => 7, // belongs to agric department
-                'role_id' => 8, // HOS
-                'section_assigned' => 'Sports',
-                'email' => 'hos.sports@tetutvc.ac.ke',
                 'name' => 'Dennis Njeru',
-                'photo' => null,
-                'phone' => '+254758660323',
-            ],
-            [
-                'department_id' => 6, // belongs to ict department
-                'role_id' => 3,
-                'section_assigned' => 'Music and Arts',
-                'email' => 'hos.musicarts@tetutvc.ac.ke',
-                'name' => 'Joseph Ambrose',
-                'photo' => null,
-                'phone' => '+254758660324',
-            ],
-
-            [
-                'department_id' => 3, // belongs to fashion department
-                'role_id' => 3,
-                'section_assigned' => 'Research & innovations',
-                'email' => 'hos.research@tetutvc.ac.ke',
-                'name' => 'Rose Kiarie',
-                'photo' => null,
-                'phone' => '+254758660324',
-            ],
-
-            // Trainers
-            [
-                'department_id' => 4, // Building and Civil
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'felix@tetutvc.ac.ke',
-                'name' => 'Felix Njeru',
-                'photo' => null,
-                'phone' => '+254758660311',
-            ],
-            [
-                'department_id' => 4,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'festus@tetutvc.ac.ke',
-                'name' => 'Festus Chesaro',
-                'photo' => null,
-                'qualification' => '',
-                'phone' => '+254758660312',
-            ],
-            [
-                'department_id' => 4,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'alphonse@tetutvc.ac.ke',
-                'name' => 'Alphonse Otieno',
-                'photo' => null,
-                'phone' => '+254758660313',
-            ],
-            [
-                'department_id' => 2, // Hospitality
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'lucy@tetutvc.ac.ke',
-                'name' => 'Madam Lucy O.',
-                'photo' => null,
-                'phone' => '+254758660314',
-            ],
-            [
-                'department_id' => 4,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'njeri@tetutvc.ac.ke',
-                'name' => 'Madam Njeri',
-                'photo' => null,
-                'phone' => '+254758660315',
-            ],
-            [
-                'department_id' => 3, // Fashion and Textile
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'faithfashion@tetutvc.ac.ke',
-                'name' => 'Madam Faith',
-                'photo' => null,
-                'phone' => '+254758660316',
-            ],
-            [
-                'department_id' => 1, // Cosmetology
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'peninah@tetutvc.ac.ke',
-                'name' => 'Madam Peninah',
-                'photo' => null,
-                'phone' => '+254758660401',
-            ],
-            [
-                'department_id' => 6, // ICT
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'lawrence@tetutvc.ac.ke',
-                'name' => 'Lawrence Mwaniki',
-                'photo' => null,
-                'phone' => '+254758660402',
-            ],
-            [
-                'department_id' => 6,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'titus@tetutvc.ac.ke',
-                'name' => 'Titus Tum',
-                'photo' => null,
-                'phone' => '+254758660403',
-            ],
-            [
-                'department_id' => 8, // Mechanical
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'evans@tetutvc.ac.ke',
-                'name' => 'Evans Odima',
-                'photo' => null,
-                'phone' => '+254758660404',
-            ],
-            [
-                'department_id' => 6,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'june@tetutvc.ac.ke',
-                'name' => 'June Njagi',
-                'photo' => null,
-                'phone' => '+254758660405',
-            ],
-            [
-                'department_id' => 2,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'mercy@tetutvc.ac.ke',
-                'name' => 'Madam Mercy',
-                'photo' => null,
-                'phone' => '+254758660406',
-            ],
-            [
-                'department_id' => 2,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'kioko@tetutvc.ac.ke',
-                'name' => 'Mr. Kioko',
-                'photo' => null,
-                'phone' => '+254758660407',
-            ],
-            [
-                'department_id' => 4,
-                'role_id' => 4,
-                'section_assigned' => null,
                 'email' => 'dennis@tetutvc.ac.ke',
-                'name' => 'Mr. Dennis',
+                'phone' => '+254758660323',
                 'photo' => null,
-                'phone' => '+254758660408',
+                'assignments' => [
+                    [
+                        'department_id' => $departments['agriculture'],
+                        'role_id' => $roles['trainer'],
+                    ],
+                    [
+                        'department_id' => $departments['sports'],
+                        'role_id' => $roles['coordinator'],
+                        'custom_title' => 'Sports Coordinator',
+                    ],
+                ],
             ],
+
             [
-                'department_id' => 3,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'kimathi@tetutvc.ac.ke',
-                'name' => 'Kimathi Mwiti',
-                'photo' => null,
-                'phone' => '+254758660409',
-            ],
-            [
-                'department_id' => 4,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'aminga@tetutvc.ac.ke',
-                'name' => "Mr. Aming'a",
-                'photo' => null,
-                'phone' => '+254758660410',
-            ],
-            [
-                'department_id' => 6,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'graceni@tetutvc.ac.ke',
-                'name' => 'Madam Grace N.',
-                'photo' => null,
-                'phone' => '+254758660411',
-            ],
-            [
-                'department_id' => 6,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'bilhah@tetutvc.ac.ke',
-                'name' => 'Madam Bilhah',
-                'photo' => null,
-                'phone' => '+254758660412',
-            ],
-            [
-                'department_id' => 6,
-                'role_id' => 4,
-                'section_assigned' => null,
+                'name' => 'Joseph Ambrose',
                 'email' => 'ambrose@tetutvc.ac.ke',
-                'name' => 'Mr. Ambrose',
-                'photo' => null,
                 'phone' => '+254758660413',
-            ],
-            [
-                'department_id' => 8,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'thomas@tetutvc.ac.ke',
-                'name' => 'Mr. Thomas',
                 'photo' => null,
-                'phone' => '+254758660414',
+                'assignments' => [
+                    [
+                        'department_id' => $departments['ict'],
+                        'role_id' => $roles['trainer'],
+                    ],
+                    [
+                        'department_id' => $departments['music_arts'],
+                        'role_id' => $roles['coordinator'],
+                        'custom_title' => 'Music and Arts',
+                    ],
+                    ['department_id' => $departments['counselling'], 'role_id' => $roles['counsellor']],
+                ],
             ],
+
+            // ─── Principal ─────────────────────────────────────────────────
+
             [
-                'department_id' => 2,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'evelynne@tetutvc.ac.ke',
-                'name' => 'Evelynne Donga',
+                'name' => 'Mr. David M. Kariuki',
+                'email' => 'principal@tetutvc.ac.ke',
+                'phone' => '+254758660300',
                 'photo' => null,
-                'phone' => '+254758660415',
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['principal']],
+                ],
             ],
+
+            // ─── Deputy Principals ─────────────────────────────────────────
+
             [
-                'department_id' => 1,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'fernice@tetutvc.ac.ke',
+                'name' => 'Lydia Ndirangu',
+                'email' => 'deputy.admin@tetutvc.ac.ke',
+                'phone' => '+254758660301',
+                'photo' => null,
+                'assignments' => [
+                   ['department_id' => $departments['administration'], 'role_id' => $roles['deputy_principal'], 'custom_title' => 'Administration'],
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer'] ],
+                ],
+            ],
+
+            [
+                'name' => 'Joshua Mwangi',
+                'email' => 'deputy.academics@tetutvc.ac.ke',
+                'phone' => '+254758660302',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['deputy_principal'], 'custom_title' => 'Academics'],
+                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer'] ],
+                ],
+            ],
+
+            // ─── Administrators ───────────────────────────────────────────
+
+            [
+                'name' => 'Kenneth Muriuki',
+                'email' => 'registrar@tetutvc.ac.ke',
+                'phone' => '+254700000001',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['registrar']],
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer'] ],
+                ],
+            ],
+
+            [
+                'name' => 'Elly Mburu',
+                'email' => 'dean.students@tetutvc.ac.ke',
+                'phone' => '+254700000002',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['dean_of_students']],
+                    ['department_id' => $departments['building'], 'role_id' => $roles['trainer'] ],
+                ],
+            ],
+
+            [
+                'name' => 'Kevin Wachira',
+                'email' => 'finance@tetutvc.ac.ke',
+                'phone' => '+254700000003',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['finance_officer']],
+                    ['department_id' => $departments['finance'], 'role_id' => $roles['coordinator'], 'custom_title'=>'Finance Officer' ],
+                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer'] ],
+                ],
+            ],
+
+            [
+                'name' => 'Cynthia Wanjiru',
+                'email' => 'procurement@tetutvc.ac.ke',
+                'phone' => '+254700000004',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['procurement_officer']],
+                ],
+            ],
+
+            // ─── HODs ─────────────────────────────────────────────────────
+
+            [
+                'name' => 'Jacob Nyaga',
+                'email' => 'hod.cosmetology@tetutvc.ac.ke',
+                'phone' => '+254758660303',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['cosmetology'], 'role_id' => $roles['hod']],
+                ],
+            ],
+
+            [
+                'name' => 'Lily Mugo',
+                'email' => 'hod.hospitality@tetutvc.ac.ke',
+                'phone' => '+254758660304',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['hod'] ],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Volleyball Coach'],
+
+                ],
+            ],
+
+            [
+                'name' => 'Madam Jane',
+                'email' => 'hod.fashion@tetutvc.ac.ke',
+                'phone' => '+254758660305',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['fashion'], 'role_id' => $roles['hod']],
+                ],
+            ],
+
+            [
+                'name' => 'Gideon Muraguri',
+                'email' => 'hod.building@tetutvc.ac.ke',
+                'phone' => '+254758660306',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['building'], 'role_id' => $roles['hod']],
+                ],
+            ],
+
+            [
+                'name' => 'Mr. Josiah',
+                'email' => 'hod.electrical@tetutvc.ac.ke',
+                'phone' => '+254758660307',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['electrical'], 'role_id' => $roles['hod']],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Volleyball Coach'],
+                ],
+            ],
+
+            [
+                'name' => 'Ascar Jebet',
+                'email' => 'hod.ict@tetutvc.ac.ke',
+                'phone' => '+254758660308',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['ict'], 'role_id' => $roles['hod']],
+                ],
+            ],
+
+            [
+                'name' => 'Anthony Kosgei',
+                'email' => 'hod.agriculture@tetutvc.ac.ke',
+                'phone' => '+254758660309',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['agriculture'], 'role_id' => $roles['hod']],
+                ],
+            ],
+
+            [
+                'name' => 'Mugure Ngigi',
+                'email' => 'hod.mechanical@tetutvc.ac.ke',
+                'phone' => '+254758660310',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['mechanical'], 'role_id' => $roles['hod']],
+                ],
+            ],
+
+            // ─── HOS (Section Heads) ─────────────────────────────────────
+
+            [
+                'name' => 'Patricia Wanjiru',
+                'email' => 'finance2@tetutvc.ac.ke',
+                'phone' => '+254758660320',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['finance'], 'role_id' => $roles['support_staff']],
+                ],
+            ],
+
+            [
+                'name' => 'Fredrick Kamau',
+                'email' => 'hos.counselling@tetutvc.ac.ke',
+                'phone' => '+254758660321',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['counselling'], 'role_id' => $roles['coordinator'], 'custom_title'=>'Student Counsellor'],
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Joan Weru',
+                'email' => 'hos.ilo@tetutvc.ac.ke',
+                'phone' => '+254758660322',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['ilo'], 'role_id' => $roles['coordinator']],
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'MC Odhis Oloo',
+                'email' => 'hos.procurement@tetutvc.ac.ke',
+                'phone' => '+254758660325',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['procurement'], 'role_id' => $roles['support_staff']],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Athletics Coach'],
+                ],
+            ],
+
+
+            // ─── Coordinators ─────────────────────────────────────────────
+
+            [
+                'name' => 'Rose Kiarie',
+                'email' => 'coord.research@tetutvc.ac.ke',
+                'phone' => '+254758660327',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['coordinator'], 'custom_title' => 'Research & Innovations'],
+                    ['department_id' => $departments['fashion'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            // ─── Trainers ─────────────────────────────────────────────────
+
+            [
+                'name' => 'Madam Peninah',
+                'email' => 'peninah@tetutvc.ac.ke',
+                'phone' => '+254758660401',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['cosmetology'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
                 'name' => 'Fernice Gichevu',
-                'photo' => null,
+                'email' => 'fernice@tetutvc.ac.ke',
                 'phone' => '+254758660416',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['cosmetology'], 'role_id' => $roles['trainer']],
+                ],
             ],
+
             [
-                'department_id' => 1,
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'monica@tetutvc.ac.ke',
                 'name' => 'Madam Monica',
-                'photo' => null,
+                'email' => 'monica@tetutvc.ac.ke',
                 'phone' => '+254758660417',
-            ],
-            [
-                'department_id' => 5, // Electrical
-                'role_id' => 4,
-                'section_assigned' => null,
-                'email' => 'okacha@tetutvc.ac.ke',
-                'name' => 'Mr. Okacha',
                 'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['cosmetology'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Madam Lucy O.',
+                'email' => 'lucy@tetutvc.ac.ke',
+                'phone' => '+254758660314',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Madam Mercy',
+                'email' => 'mercy@tetutvc.ac.ke',
+                'phone' => '+254758660406',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Mr. Kioko',
+                'email' => 'kioko@tetutvc.ac.ke',
+                'phone' => '+254758660407',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Evelynne Donga',
+                'email' => 'evelynne@tetutvc.ac.ke',
+                'phone' => '+254758660415',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Madam Faith',
+                'email' => 'faithfashion@tetutvc.ac.ke',
+                'phone' => '+254758660316',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['fashion'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Kimathi Mwiti',
+                'email' => 'kimathi@tetutvc.ac.ke',
+                'phone' => '+254758660409',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['fashion'], 'role_id' => $roles['trainer']],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Rugby Coach'],
+
+                ],
+            ],
+
+            [
+                'name' => 'Felix Njeru',
+                'email' => 'felix@tetutvc.ac.ke',
+                'phone' => '+254758660311',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['building'], 'role_id' => $roles['trainer']],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Football Coach'],
+                ],
+            ],
+
+            [
+                'name' => 'Festus Chesaro',
+                'email' => 'festus@tetutvc.ac.ke',
+                'phone' => '+254758660312',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['building'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Madam Njeri',
+                'email' => 'njeri@tetutvc.ac.ke',
+                'phone' => '+254758660315',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['building'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Mr. Wairegi',
+                'email' => 'wairegi@tetutvc.ac.ke',
                 'phone' => '+254758660418',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['electrical'], 'role_id' => $roles['trainer']],
+                ],
             ],
 
-            // =========================
-            // SUPPORT STAFF
-            // =========================
+            [
+                'name' => 'Lawrence Mwaniki',
+                'email' => 'lawrence@tetutvc.ac.ke',
+                'phone' => '+254758660402',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer']],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Football Coach'],
+                ],
+            ],
 
             [
-                'department_id' => null,
-                'role_id' => 5,
-                'section_assigned' => 'Administration',
-                'email' => 'secretary@tetutvc.ac.ke',
+                'name' => 'Titus Tum',
+                'email' => 'titus@tetutvc.ac.ke',
+                'phone' => '+254758660403',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['odel'], 'role_id' => $roles['coordinator'], 'custom_title' => 'ODEL Coordinator'],
+                ],
+            ],
+
+            [
+                'name' => 'June Njagi',
+                'email' => 'june@tetutvc.ac.ke',
+                'phone' => '+254758660405',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Madam Grace N.',
+                'email' => 'graceni@tetutvc.ac.ke',
+                'phone' => '+254758660411',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Mr. Kibet',
+                'email' => 'kibet@tetutvc.ac.ke',
+                'phone' => '+254758660404',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['mechanical'], 'role_id' => $roles['trainer']],
+                ],
+            ],
+
+            [
+                'name' => 'Mr. Thomas',
+                'email' => 'thomas@tetutvc.ac.ke',
+                'phone' => '+254758660414',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['mechanical'], 'role_id' => $roles['trainer']],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Football Coach'],
+                ],
+            ],
+
+            // ─── Support Staff ────────────────────────────────────────────
+
+            [
                 'name' => 'Iddah Warui',
-                'photo' => null,
-                'qualification' => '',
+                'email' => 'secretary@tetutvc.ac.ke',
                 'phone' => '+254700000010',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['support_staff'], 'custom_title' => 'Secretary'],
+                ],
             ],
 
             [
-                'department_id' => null,
-                'role_id' => 5,
-                'section_assigned' => 'Library',
-                'email' => 'librarian@tetutvc.ac.ke',
                 'name' => 'John Nguma',
-                'photo' => null,
-                'qualification' => '',
+                'email' => 'librarian@tetutvc.ac.ke',
                 'phone' => '+254700000011',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['library'], 'role_id' => $roles['support_staff'], 'custom_title' => 'Librarian'],
+                ],
             ],
 
             [
-                'department_id' => null,
-                'role_id' => 5,
-                'section_assigned' => 'Transport',
-                'email' => 'driver@tetutvc.ac.ke',
                 'name' => 'George Mwangi',
-                'photo' => null,
-                'qualification' => '',
+                'email' => 'driver@tetutvc.ac.ke',
                 'phone' => '+254700000012',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['support_staff'], 'custom_title' => 'Driver'],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Volleyball Coach'],
+                ],
             ],
 
             [
-                'department_id' => null,
-                'role_id' => 5,
-                'section_assigned' => 'Maintenance',
-                'email' => 'grounds@tetutvc.ac.ke',
                 'name' => 'Wambugu Njoroge',
-                'photo' => null,
-                'qualification' => '',
+                'email' => 'grounds@tetutvc.ac.ke',
                 'phone' => '+254700000013',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['support_staff'], 'custom_title' => 'Maintenance'],
+                ],
             ],
 
             [
-                'department_id' => null,
-                'role_id' => 5,
-                'section_assigned' => 'Catering',
-                'email' => 'cook1@tetutvc.ac.ke',
                 'name' => 'Esther Wanjiku',
-                'photo' => null,
-                'qualification' => '',
+                'email' => 'cook1@tetutvc.ac.ke',
                 'phone' => '+254700000014',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['support_staff'], 'custom_title' => 'Catering'],
+                ],
             ],
 
             [
-                'department_id' => null,
-                'role_id' => 5,
-                'section_assigned' => 'Catering',
-                'email' => 'cook2@tetutvc.ac.ke',
                 'name' => 'Lucy Wairimu',
-                'photo' => null,
-                'qualification' => '',
+                'email' => 'cook2@tetutvc.ac.ke',
                 'phone' => '+254700000015',
+                'photo' => null,
+                'assignments' => [
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['support_staff'], 'custom_title' => 'Catering'],
+                ],
             ],
-
         ];
 
         foreach ($teamMembers as $member) {
             $teamMemberId = DB::table('team_members')->insertGetId([
-                'email' => $member['email'],
-                'phone' => $member['phone'] ?? null,
                 'name' => $member['name'],
-                'photo' => $member['photo'] ?? null,
+                'email' => $member['email'],
+                'phone' => $member['phone'],
+                'photo' => $member['photo'],
                 'is_active' => true,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
 
-            if ($member['department_id']) {
+            foreach ($member['assignments'] as $assignment) {
                 DB::table('department_team_member')->insert([
-                    'department_id' => $member['department_id'],
+                    'department_id' => $assignment['department_id'],
                     'team_member_id' => $teamMemberId,
-                    'role_id' => $member['role_id'],
-                    'custom_title' => $member['section_assigned'] ?? null,
+                    'role_id' => $assignment['role_id'],
+                    'custom_title' => $assignment['custom_title'] ?? null,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);

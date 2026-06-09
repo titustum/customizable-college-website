@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
 
-class DepartmentTeamMember extends Pivot
+class DepartmentAssignment extends Model
 {
     protected $table = 'department_team_member';
 
@@ -14,6 +14,16 @@ class DepartmentTeamMember extends Pivot
         'role_id',
         'custom_title',
     ];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function teamMember()
+    {
+        return $this->belongsTo(TeamMember::class);
+    }
 
     public function role()
     {

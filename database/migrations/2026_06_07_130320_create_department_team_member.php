@@ -26,11 +26,7 @@ return new class extends Migration
             $table->string('custom_title')->nullable();
             // e.g. "Head Coach", "Finance Officer"
             $table->timestamps();
-            $table->unique([
-                'department_id',
-                'team_member_id',
-                'role_id',
-            ]);
+            $table->unique(['department_id', 'team_member_id', 'role_id']);
         });
     }
 
