@@ -18,7 +18,9 @@ class DepartmentAssignmentResource extends Resource
 {
     protected static ?string $model = DepartmentAssignment::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleGroup;
+
+    protected static ?string $navigationLabel = 'Assignments';
 
     protected static ?string $recordTitleAttribute = 'custom_title';
 

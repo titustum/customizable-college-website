@@ -20,7 +20,7 @@ class PastPaperResource extends Resource
 {
     protected static ?string $model = PastPaper::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPencilSquare;
 
     protected static ?string $recordTitleAttribute = 'title';
 
