@@ -12,16 +12,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
+        User::create([
             'name' => 'Web Admin',
             'email' => 'admin@mail.com',
             'role' => 'admin',
+            'password'=>'password'
         ]);
 
         $this->call([
             InstitutionSettingSeeder::class,
             RoleSeeder::class,
             DepartmentSeeder::class,
+            SuccessStorySeeder::class,
             TeamMemberSeeder::class,
             CourseSeeder::class,
             TenderSeeder::class,
