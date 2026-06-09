@@ -11,7 +11,7 @@
     <title>{{ $title ?? 'Default Title' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
-        content="{{ $setting->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+        content="{{ $setting->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <link rel="canonical" href="https://www.tetutvc.ac.ke" />
 
     <!-- Fonts -->
@@ -22,25 +22,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="shortcut icon" href="{{ asset('storage/'. $setting->logo) }}" type="image/jpeg">
+    <link rel="shortcut icon" @if ($setting->logo)
+    href="{{ asset('storage/'.$setting->logo) }}"
+    @else
+    href="{{ asset('images/logo.jpeg') }}"
+    @endif type="image/jpeg" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.tetutvc.ac.ke/">
-    <meta property="og:title" content="{{ $setting->name }} | Quality Education in Kenya">
+    <meta property="og:title" content="{{ $setting->name ?? 'Tetu TVC' }} | Quality Education in Kenya">
     <meta property="og:description"
-        content="{{ $setting->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+        content="{{ $setting->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <meta property="og:image" content="{{ asset('storage/'.$setting->logo) }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.tetutvc.ac.ke/">
-    <meta property="twitter:title" content="{{ $setting->name }} | Quality Education in Kenya">
+    <meta property="twitter:title" content="{{ $setting->name ?? 'Tetu TVC' }} | Quality Education in Kenya">
     <meta property="twitter:description"
-        content="{{ $setting->name }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+        content="{{ $setting->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <meta property="twitter:image" content="{{ asset('storage/'.$setting->logo) }}">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -114,9 +117,15 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3 flex-shrink-0">
-                    <img src="{{ asset('storage/'.$setting->logo) }}" alt="Logo" class="h-10 w-auto object-contain">
+                    <img @if ($setting->logo)
+                    src="{{ asset('storage/'.$setting->logo) }}"
+                    @else
+                    src="{{ asset('images/logo.jpeg') }}"
+                    @endif
+                    alt="Logo" class="h-10 w-auto object-contain">
                     <div class="leading-tight">
-                        <div class="font-righteous font-bold text-gray-900 text-lg leading-none">TETU TVC</div>
+                        <div class="font-righteous font-bold text-gray-900 text-lg uppercase leading-none">{{
+                            $setting->name ?? 'TETU TVC' }}</div>
                         <div class="text-xs text-gray-500 tracking-wide">Skills for Industrial Growth</div>
                     </div>
                 </a>

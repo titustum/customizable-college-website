@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('logo')->nullable();
-            $table->string('principal_name')->nullable();
-            $table->string('principal_photo')->nullable(); // image path
             $table->text('welcome_message')->nullable();
             $table->string('motto')->nullable();
             $table->text('vision')->nullable();

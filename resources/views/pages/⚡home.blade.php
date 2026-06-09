@@ -7,13 +7,18 @@ use App\Models\Partner;
 use App\Models\HeroSlide;
 use App\Models\InstitutionSetting;
 use Illuminate\Support\Str;
+use App\Models\TeamMember;
 
 new class extends Component {
 
     public $setting;
+    public $principal;
 
     public function mount(){
         $this->setting = InstitutionSetting::first() ?? (object) ['name' => 'Our College', 'phone' => ''];
+         $this->principal = TeamMember::whereHas('roles', fn ($q) =>
+                                $q->where('slug', 'principal')
+                            )->first();
     }
 
     public function with()
@@ -23,7 +28,7 @@ new class extends Component {
         return [
             'institution' => $this->setting ?? (object)[
                 'name'=>'Tetu TVC',
-                'established_year'=>now()->subYears(3),
+                'established_year'=>2019,
                 'phone'=>0712345676
             ],
             // 'departments' => Department::where('type', 'academic')->get(), //only academic departments for the homepage
@@ -33,6 +38,7 @@ new class extends Component {
                                             ->get(),
             'partners'=> Partner::all(),
             'heroSlides'=> HeroSlide::all(),
+
         ];
     }
 
@@ -271,8 +277,13 @@ new class extends Component {
                 <a href="{{ route('principal.office') }}" data-aos="fade-up-right" data-aos-delay="0"
                     class="group flex items-stretch gap-5 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-primary/40 transition-all">
                     <div class="w-20 rounded-xl overflow-hidden shrink-0">
-                        <img src="{{ asset('images/principal-tetu-tvc-2025-12345.jpg') }}" alt="Principal"
-                            class="object-cover w-full h-full">
+                        <img @if ($principal && $principal->photo)
+                        src="{{ Storage::url($principal->photo) }}"
+                        @else
+                        src="{{ asset('images/principal-tetu-tvc-2025-12345.jpg') }}"
+                        @endif
+                        alt="Principal"
+                        class="object-cover w-full h-full">
                     </div>
                     <div class="flex-grow min-w-0">
                         <h4

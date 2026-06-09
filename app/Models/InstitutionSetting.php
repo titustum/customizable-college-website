@@ -19,8 +19,6 @@ class InstitutionSetting extends Model
         'name',
         'slug',
         'logo',
-        'principal_name',
-        'principal_photo',
         'welcome_message',
         'about_us',
         'primary_color',

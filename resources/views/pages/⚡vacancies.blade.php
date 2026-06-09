@@ -32,12 +32,9 @@ class extends Component
             ->orderBy('application_deadline', 'asc')
             ->get();
 
-        $departments = Department::orderBy('name')->pluck('name', 'id')->toArray();
-
         return [
             'institution' => $institution,
             'vacancies' => $vacancies,
-            'departments' => $departments,
         ];
     }
 };
@@ -86,7 +83,7 @@ class extends Component
                     class="px-5 py-2 rounded-full font-semibold transition-all {{ $selectedDepartment === 'all' ? 'bg-primary text-white' : 'bg-white text-gray-700 border border-gray-200 hover:border-primary hover:text-primary' }}">
                     All Departments
                 </button>
-                @foreach($departments as $department)
+                @foreach($departments->where('type', 'academic') as $department)
                 <button wire:click="$set('selectedDepartment', {{ $department->id }})"
                     class="px-5 py-2 rounded-full font-semibold transition-all {{ $selectedDepartment == $department->id ? 'bg-primary text-white' : 'bg-white text-gray-700 border border-gray-200 hover:border-primary hover:text-primary' }}">
                     {{ $department->name }}

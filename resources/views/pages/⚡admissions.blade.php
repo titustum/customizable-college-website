@@ -242,9 +242,13 @@ class extends Component
             <div class="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/90"></div>
         </div>
         <div class="container relative z-10 px-4 mx-auto text-center">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-4" data-aos="fade-down">Admissions</span>
-            <h1 class="hero-display mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl" data-aos="fade-up">Apply to {{ $institution->name }}</h1>
-            <p class="max-w-2xl mx-auto text-lg text-gray-300 md:text-xl" data-aos="fade-up" data-aos-delay="100">Take the first step towards your future career. Complete your application in just a few minutes.</p>
+            <span
+                class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-4"
+                data-aos="fade-down">Admissions</span>
+            <h1 class="hero-display mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl" data-aos="fade-up">Apply
+                to {{ $setting->name }}</h1>
+            <p class="max-w-2xl mx-auto text-lg text-gray-300 md:text-xl" data-aos="fade-up" data-aos-delay="100">Take
+                the first step towards your future career. Complete your application in just a few minutes.</p>
         </div>
     </section>
 
@@ -569,17 +573,17 @@ class extends Component
                             <div class="text-center">
                                 <i class="fas fa-phone text-primary text-2xl mb-2"></i>
                                 <h4 class="font-semibold text-gray-800">Call Us</h4>
-                                <p class="text-gray-600 text-sm">{{ $institution->phone }}</p>
+                                <p class="text-gray-600 text-sm">{{ $setting->phone }}</p>
                             </div>
                             <div class="text-center">
                                 <i class="fas fa-envelope text-primary text-2xl mb-2"></i>
                                 <h4 class="font-semibold text-gray-800">Email Us</h4>
-                                <p class="text-gray-600 text-sm">{{ $institution->email }}</p>
+                                <p class="text-gray-600 text-sm">{{ $setting->email }}</p>
                             </div>
                             <div class="text-center">
                                 <i class="fas fa-map-marker-alt text-primary text-2xl mb-2"></i>
                                 <h4 class="font-semibold text-gray-800">Visit Us</h4>
-                                <p class="text-gray-600 text-sm">{{ $institution->name }}</p>
+                                <p class="text-gray-600 text-sm">{{ $setting->name }}</p>
                             </div>
                         </div>
                     </div>
