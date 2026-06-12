@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\InstitutionSettings\Schemas;
 
+use App\Enums\CollegeCategory;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -29,13 +30,7 @@ class InstitutionSettingForm
 
                             Select::make('category')
                                 ->label('College Category')
-                                ->options([
-                                    'vtc' => 'Vocational Training Center (VTC)',
-                                    'tvc' => 'Technical and Vocational College (TVC)',
-                                    'ttc' => 'Teachers Training College (TTC)',
-                                    'tti' => 'Technical Training Institute (TTI)',
-                                    'nnp' => 'National Polytechnics (NP)',
-                                ])
+                                ->options(CollegeCategory::options())
                                 ->default('tvc')
                                 ->required()
                         ]),

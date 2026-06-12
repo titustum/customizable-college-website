@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('category')->default('tvc');
             $table->string('logo')->nullable();
             $table->text('welcome_message')->nullable();
             $table->string('motto')->nullable();
