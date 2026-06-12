@@ -3,11 +3,14 @@
 namespace App\Filament\Resources\Departments\Schemas;
 
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select; 
+use Filament\Forms\Components\Toggle; 
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Support\Str;
 
 class DepartmentForm
 {
@@ -21,24 +24,64 @@ class DepartmentForm
                     ->icon(Heroicon::OutlinedBuildingOffice)
                     ->schema([
                         TextInput::make('name')
-                            ->required(),
-                        TextInput::make('slug')
-                            ->required(),
-                        FileUpload::make('photo')
-                            ->disk('public')
-                            ->directory('departments')
-                            ->image()
-                            ->required(),
-                        TextInput::make('short_description')
-                            ->required(),
-                        Textarea::make('full_description')
                             ->required()
-                            ->columnSpanFull(),
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn ($state, callable $set) => 
+                                $set('slug', Str::slug($state))
+                            ),
+
+                        TextInput::make('slug')
+                            ->required()
+                            ->unique(ignoreRecord: true),
+
+                    
+                        Select::make('type')
+							 ->options([
+									   'academic'=>'academic',
+									   'section'=>'section'
+							 ])
+                            ->required(),
+
+						TextInput::make('short_description')
+                            ->required(),
+
+                        RichEditor::make('full_description')
+                            ->required()
+                            ->columnSpanFull()
+                            ->toolbarButtons([
+                                'bold',
+                                'italic',
+                                'strike',
+                                'underline',
+                                'bulletList',
+                                'orderedList',
+                                'h2',
+                                'h3',
+                                'link',
+                                'blockquote',
+                                'redo',
+                                'undo',
+                            ]),
+
+						 FileUpload::make('photo')
+                            ->disk('public')
+                            ->directory('departments/photos')
+                            ->image()
+                            ->imageEditor()
+							 ->imageAspectRatio('4:3')
+							 ->automaticallyOpenImageEditorForAspectRatio()
+                            ->required(),
+
                         FileUpload::make('banner_photo')
                             ->disk('public')
-                            ->directory('departments')
+                            ->directory('departments/banners')
                             ->image()
+                            ->imageEditor()
+							 ->imageAspectRatio('16:9')
+							 ->automaticallyOpenImageEditorForAspectRatio()
                             ->required(),
+
+						Toggle::make('is_active'),
                     ]),
             ]);
     }

@@ -166,8 +166,8 @@
                             </svg></button>
                         <div class="dropdown-menu mega rounded-b-lg p-6">
                             @php
-                            $academicDepts = $departments->where('type', 'academic');
-                            $sectionDepts = $departments->where('type', 'section');
+                            $academicDepts = $departments->where('type', 'academic')->where('is_active', 'true');
+                            $sectionDepts = $departments->where('type', 'section')->where('is_active', 'true');
                             @endphp
                             <div class="grid grid-cols-2 gap-6">
                                 @if ($academicDepts->isNotEmpty())
@@ -294,10 +294,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                     </svg></summary>
                 <div class="ml-4 mt-1 border-l-2 border-orange-200 pl-3 space-y-2">
-                    @php
-                    $academicDepts = $departments->where('type', 'academic');
-                    $nonAcademicDepts = $departments->where('type', 'non-academic');
-                    @endphp
+                   
                     @if ($academicDepts->isNotEmpty())
                     <div class="text-xs font-bold uppercase text-orange-600 pt-1">Academic</div>
                     @foreach ($academicDepts as $dept)
@@ -305,9 +302,9 @@
                         }}</a>
                     @endforeach
                     @endif
-                    @if ($nonAcademicDepts->isNotEmpty())
+                    @if ($sectionDepts->isNotEmpty())
                     <div class="text-xs font-bold uppercase text-gray-500 pt-1">Support Offices</div>
-                    @foreach ($nonAcademicDepts as $dept)
+                    @foreach ($sectionDepts as $dept)
                     <a href="{{ route('non.academic.department', $dept->slug) }}" class="block py-1 text-sm">{{
                         $dept->name }}</a>
                     @endforeach

@@ -103,10 +103,10 @@ PAGE WRAPPER
                 <img src="{{ Storage::url($department->photo) }}" class="rounded-3xl shadow-xl" alt="Sports" />
 
                 <div>
-                    <h2 class="text-4xl font-bold mb-6">About the {{ $department->name }} Department</h2>
+                    <h2 class="text-4xl font-bold mb-6">About the {{ $department->name }} Section</h2>
 
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        {{ $department->full_description }}
+                    <p class="prose lg:prose-lg max-w-none text-gray-600 mb-6 leading-relaxed">
+                        {!! $department->full_description !!}
                     </p>
 
                 </div>

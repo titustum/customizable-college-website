@@ -28,10 +28,11 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+			->profile()
             ->colors([
                 'primary' => Color::Orange,
             ])
-            ->font('Inter')
+            ->font('Albert Sans')
             ->favicon(asset('images/logo.jpeg'))
             // ->brandLogo(asset('images/logo.jpeg'))
             ->brandName('Web Admin')

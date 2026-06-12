@@ -37,11 +37,8 @@ class TeamMemberForm
                     ->disk('public')
                     ->directory('team_members')
                     ->image()
-                    ->avatar(),
-                Select::make('role_id')
-                    ->label('Role')
-                    ->options(Role::pluck('name', 'id'))
-                    ->required(),
+					->imageEditor()
+                    ->avatar(), 
                 Toggle::make('is_active')
                     ->required(),
                     ])

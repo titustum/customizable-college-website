@@ -26,6 +26,7 @@ class DepartmentInfolist
                         TextEntry::make('short_description')
                             ->columnSpanFull(),
                         TextEntry::make('full_description')
+							 ->html()
                             ->columnSpanFull(),
                         ImageEntry::make('banner_photo')
                             ->disk('public'),

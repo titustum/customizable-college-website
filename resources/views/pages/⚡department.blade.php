@@ -182,7 +182,7 @@ PAGE WRAPPER
                         <div class="md:col-span-2">
 
                             <h2 class="mb-6 text-3xl font-bold">Department Overview</h2>
-                            <p class="mb-4 text-gray-600">{{ $department->full_description }}</p>
+                            <p class="mb-4 text-gray-600">{!! $department->full_description !!}</p>
 
                             <div class="grid grid-cols-1 gap-6 my-12 md:grid-cols-3">
                                 <div class="p-6 text-center rounded-lg bg-orange-50">
@@ -514,7 +514,13 @@ PAGE WRAPPER
                                     <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
                                         <div
                                             class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-orange-100">
-                                            <img src="{{ asset('storage/' . $story->photo) }}" alt="{{ $story->name }}"
+                                            <img 
+												@if($story->photo)
+												src="{{ asset('storage/' . $story->photo) }}"
+												@else
+												src="{{ asset('images/default-avatar.jpg') }}"
+												@endif
+												alt="{{ $story->name }}"
                                                 class="w-full h-full object-cover">
                                         </div>
                                         <div>
@@ -574,22 +580,28 @@ PAGE WRAPPER
         </section>
 
     </main>
+
+
+
+
+	<!-- js code -->
+	<script>
+	    document.addEventListener('DOMContentLoaded', function () {
+	            new Swiper('.swiper-container', {
+	                slidesPerView: 1,
+	                spaceBetween: 24,
+	                loop: true,
+	                autoplay: { delay: 5500, disableOnInteraction: false },
+	                grabCursor: true,
+	                pagination: { el: '.swiper-pagination', clickable: true },
+	                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+	                breakpoints: {
+	                    640: { slidesPerView: 2 },
+	                    1024: { slidesPerView: 3 },
+	                },
+	            });
+	        });
+	</script>
+	
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-            new Swiper('.swiper-container', {
-                slidesPerView: 1,
-                spaceBetween: 24,
-                loop: true,
-                autoplay: { delay: 5500, disableOnInteraction: false },
-                grabCursor: true,
-                pagination: { el: '.swiper-pagination', clickable: true },
-                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-                breakpoints: {
-                    640: { slidesPerView: 2 },
-                    1024: { slidesPerView: 3 },
-                },
-            });
-        });
-</script>

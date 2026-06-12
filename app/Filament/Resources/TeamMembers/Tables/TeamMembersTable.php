@@ -10,6 +10,7 @@ use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
@@ -19,14 +20,14 @@ class TeamMembersTable
     {
         return $table
             ->columns([
-                TextColumn::make('email')
+                ImageColumn::make('photo')
+                    ->disk('public'),
+				TextColumn::make('name')
+                    ->searchable(),
+				TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
                 TextColumn::make('phone')
-                    ->searchable(),
-                TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('photo')
                     ->searchable(),
                 TextColumn::make('roles.name')
                     ->badge()
