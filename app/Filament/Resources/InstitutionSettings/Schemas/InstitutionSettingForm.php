@@ -7,6 +7,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -26,18 +27,26 @@ class InstitutionSettingForm
                                 ->label('Institution Name')
                                 ->required(),
 
-                            TextInput::make('motto')
-                                ->maxLength(100)
-                                ->placeholder('e.g. Skills for Life'),
+                            Select::make('category')
+                                ->label('College Category')
+                                ->options([
+                                    'vtc' => 'Vocational Training Center (VTC)',
+                                    'tvc' => 'Technical and Vocational College (TVC)',
+                                    'ttc' => 'Teachers Training College (TTC)',
+                                    'tti' => 'Technical Training Institute (TTI)',
+                                    'nnp' => 'National Polytechnics (NP)',
+                                ])
+                                ->default('tvc')
+                                ->required()
                         ]),
 
                     Section::make('Messages')
                         ->description('Vision, Mission, Welcome note')
                         ->schema([
-                            Textarea::make('welcome_message')
+                            RichEditor::make('welcome_message')
                                 ->label('Welcome Message')
-                                ->columnSpanFull()
-                                ->rows(3),
+                                ->required()
+                                ->columnSpanFull(),
 
                             Textarea::make('motto')
                                 ->rows(3)
@@ -50,11 +59,23 @@ class InstitutionSettingForm
                             Textarea::make('mission')
                                 ->rows(3)
                                 ->columnSpanFull(),
-
-                            Textarea::make('about_us')
-                                ->label('About Us')
-                                ->rows(4)
-                                ->columnSpanFull(),
+                            RichEditor::make('about_us')
+                                ->required()
+                                ->columnSpanFull()
+                                ->toolbarButtons([
+                                    'bold',
+                                    'italic',
+                                    'strike',
+                                    'underline',
+                                    'bulletList',
+                                    'orderedList',
+                                    'h2',
+                                    'h3',
+                                    'link',
+                                    'blockquote',
+                                    'redo',
+                                    'undo',
+                                ]),
                         ]),
 
                     Section::make('Branding')

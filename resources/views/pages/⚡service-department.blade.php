@@ -100,12 +100,16 @@ PAGE WRAPPER
         <section class="py-20">
             <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
-                <img src="{{ Storage::url($department->photo) }}" class="rounded-3xl shadow-xl" alt="Sports" />
+                <div class="flex flex-col h-full">
+                    <img src="{{ Storage::url($department->photo) }}" class="rounded-3xl shadow-xl" alt="Sports" />
+                </div>
+
+
 
                 <div>
                     <h2 class="text-4xl font-bold mb-6">About the {{ $department->name }} Section</h2>
 
-                    <div class="prose lg:prose-lg max-w-none text-gray-600 mb-6 leading-relaxed">
+                    <div class="prose lg:prose-lg max-w-none text-gray-600 mb-6">
                         {!! $department->full_description !!}
                     </div>
 

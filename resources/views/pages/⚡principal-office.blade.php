@@ -68,7 +68,7 @@ class extends Component
         <section class="mb-12 overflow-hidden bg-white rounded-lg shadow-md">
             <div class="flex flex-col md:flex-row">
                 @if ($principal)
-                <div class="md:w-1/3 lg:w-1/4">
+                <div class="md:w-1/3 lg:w-1/4 shrink-0">
                     <div
                         class="relative h-full min-h-[300px] md:min-h-[400px] bg-gray-200 flex items-center justify-center">
                         @if ($principal->photo)
@@ -98,7 +98,7 @@ class extends Component
 
                     @if ($setting->welcome_message)
                     <div class="mb-6 prose text-gray-700 max-w-none">
-                        <p>{{ $setting->welcome_message }}</p>
+                        {!! $setting->welcome_message !!}
                     </div>
                     @endif
 
