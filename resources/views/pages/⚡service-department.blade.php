@@ -105,9 +105,9 @@ PAGE WRAPPER
                 <div>
                     <h2 class="text-4xl font-bold mb-6">About the {{ $department->name }} Section</h2>
 
-                    <p class="prose lg:prose-lg max-w-none text-gray-600 mb-6 leading-relaxed">
+                    <div class="prose lg:prose-lg max-w-none text-gray-600 mb-6 leading-relaxed">
                         {!! $department->full_description !!}
-                    </p>
+                    </div>
 
                 </div>
 

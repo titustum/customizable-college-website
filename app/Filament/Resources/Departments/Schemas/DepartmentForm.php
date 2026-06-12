@@ -5,8 +5,8 @@ namespace App\Filament\Resources\Departments\Schemas;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Select; 
-use Filament\Forms\Components\Toggle; 
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -26,7 +26,7 @@ class DepartmentForm
                         TextInput::make('name')
                             ->required()
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn ($state, callable $set) => 
+                            ->afterStateUpdated(fn ($state, callable $set) =>
                                 $set('slug', Str::slug($state))
                             ),
 
@@ -34,7 +34,7 @@ class DepartmentForm
                             ->required()
                             ->unique(ignoreRecord: true),
 
-                    
+
                         Select::make('type')
 							 ->options([
 									   'academic'=>'academic',
@@ -67,18 +67,22 @@ class DepartmentForm
                             ->disk('public')
                             ->directory('departments/photos')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                             ->imageEditor()
-							 ->imageAspectRatio('4:3')
-							 ->automaticallyOpenImageEditorForAspectRatio()
+                            ->imageAspectRatio('4:3')
+                            ->automaticallyCropImagesToAspectRatio()
+                            ->automaticallyResizeImagesMode('cover')
                             ->required(),
 
                         FileUpload::make('banner_photo')
                             ->disk('public')
                             ->directory('departments/banners')
                             ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                             ->imageEditor()
-							 ->imageAspectRatio('16:9')
-							 ->automaticallyOpenImageEditorForAspectRatio()
+                            ->imageAspectRatio('16:9')
+                            ->automaticallyCropImagesToAspectRatio()
+                            ->automaticallyResizeImagesMode('cover')
                             ->required(),
 
 						Toggle::make('is_active'),
