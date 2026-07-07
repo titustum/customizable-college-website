@@ -86,9 +86,6 @@ new class extends Component {
 
             <!-- Text content -->
             <div class="text-white" data-aos="fade-right" data-aos-duration="1000">
-                <div class="section-label text-orange-400" data-aos="fade-down" data-aos-delay="200">
-                    KNQA Accredited Institution
-                </div>
                 <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-none text-white mb-6"
                     data-aos="fade-up" data-aos-delay="300">
                     Build Your Skills.<br />

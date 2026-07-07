@@ -79,14 +79,14 @@ class extends Component
         }
 
         // Next two years
-        for ($i = 1; $i <= 2; $i++) {
-            foreach ($terms as $label => $month) {
-                $year = $currentDate->year + $i;
-                $termDate = Carbon::create($year, $month, 1);
-                $key = strtolower(substr($label, 0, 3)) . "_{$year}";
-                $termEntries[$termDate->timestamp] = [$key, "$label $year"];
-            }
-        }
+        // for ($i = 1; $i <= 2; $i++) {
+        //     foreach ($terms as $label => $month) {
+        //         $year = $currentDate->year + $i;
+        //         $termDate = Carbon::create($year, $month, 1);
+        //         $key = strtolower(substr($label, 0, 3)) . "_{$year}";
+        //         $termEntries[$termDate->timestamp] = [$key, "$label $year"];
+        //     }
+        // }
 
         ksort($termEntries); // Sort by timestamp
 
@@ -438,7 +438,7 @@ class extends Component
                                     <select wire:model.live="department_id"
                                         class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
                                         <option value="">Select a department</option>
-                                        @foreach ($departments as $department)
+                                        @foreach ($departments->where('type', 'academic') as $department)
                                         <option value="{{ $department->id }}">{{ $department->name }}</option>
                                         @endforeach
                                     </select>
