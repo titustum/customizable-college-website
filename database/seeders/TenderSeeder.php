@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class TenderSeeder extends Seeder
 {
@@ -26,7 +26,7 @@ class TenderSeeder extends Seeder
                 'opening_date' => Carbon::parse('26-05-2026'),
                 'closing_date' => Carbon::parse('09-06-2026'),
                 'status' => 'open',
-            ]
+            ],
         ];
 
         foreach ($tenders as $tender) {

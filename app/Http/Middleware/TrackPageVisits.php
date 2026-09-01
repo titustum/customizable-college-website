@@ -9,15 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TrackPageVisits
 {
+    private const EXCLUDED_EXTENSIONS = [
+        'js', 'css', 'png', 'jpg', 'jpeg', 'gif', 'svg', 'ico',
+        'woff', 'woff2', 'ttf', 'eot', 'otf', 'webp', 'avif', 'map',
+    ];
+
     public function handle(Request $request, Closure $next): Response
     {
-        if (
-            $request->is('admin*') ||
-            $request->ajax() ||
-            $request->is('api/*') ||
-            $request->is('login') ||
-            $request->method() !== 'GET'
-        ) {
+        if ($this->shouldExclude($request)) {
             return $next($request);
         }
 
@@ -31,5 +30,41 @@ class TrackPageVisits
         ]);
 
         return $next($request);
+    }
+
+    private function shouldExclude(Request $request): bool
+    {
+        if (
+            $request->is('admin*') ||
+            $request->ajax() ||
+            $request->is('api/*') ||
+            $request->is('login') ||
+            $request->method() !== 'GET'
+        ) {
+            return true;
+        }
+
+        $path = $request->path();
+
+        if (str_starts_with($path, 'livewire-')) {
+            return true;
+        }
+
+        if (str_starts_with($path, '.well-known')) {
+            return true;
+        }
+
+        if ($this->hasExcludedExtension($path)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function hasExcludedExtension(string $path): bool
+    {
+        $extension = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+
+        return in_array($extension, self::EXCLUDED_EXTENSIONS, true);
     }
 }

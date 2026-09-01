@@ -15,7 +15,9 @@ class WebVisitTrendChartWidget extends ChartWidget
     protected function getData(): array
     {
         // Fetch recent visits (last 30 days to limit data size)
-        $visits = PageVisit::where('visited_at', '>=', now()->subDays(30))->get();
+        $visits = PageVisit::excludeAssets()
+            ->where('visited_at', '>=', now()->subDays(30))
+            ->get();
 
         // Group visits by day (format: YYYY-MM-DD)
         $grouped = $visits->groupBy(function ($visit) {

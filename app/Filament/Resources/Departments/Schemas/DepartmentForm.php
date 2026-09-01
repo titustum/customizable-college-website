@@ -4,8 +4,8 @@ namespace App\Filament\Resources\Departments\Schemas;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -26,23 +26,21 @@ class DepartmentForm
                         TextInput::make('name')
                             ->required()
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn ($state, callable $set) =>
-                                $set('slug', Str::slug($state))
+                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))
                             ),
 
                         TextInput::make('slug')
                             ->required()
                             ->unique(ignoreRecord: true),
 
-
                         Select::make('type')
-							 ->options([
-									   'academic'=>'academic',
-									   'section'=>'section'
-							 ])
+                            ->options([
+                                'academic' => 'academic',
+                                'section' => 'section',
+                            ])
                             ->required(),
 
-						TextInput::make('short_description')
+                        TextInput::make('short_description')
                             ->required(),
 
                         RichEditor::make('full_description')
@@ -63,7 +61,7 @@ class DepartmentForm
                                 'undo',
                             ]),
 
-						 FileUpload::make('photo')
+                        FileUpload::make('photo')
                             ->disk('public')
                             ->directory('departments/photos')
                             ->image()
@@ -85,7 +83,7 @@ class DepartmentForm
                             ->automaticallyResizeImagesMode('cover')
                             ->required(),
 
-						Toggle::make('is_active'),
+                        Toggle::make('is_active'),
                     ]),
             ]);
     }

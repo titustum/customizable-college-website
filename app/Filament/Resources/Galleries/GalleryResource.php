@@ -22,7 +22,7 @@ class GalleryResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhoto;
 
-    protected static ?int $navigationSort = 10;
+    protected static ?int $navigationSort = 12;
 
     public static function form(Schema $schema): Schema
     {

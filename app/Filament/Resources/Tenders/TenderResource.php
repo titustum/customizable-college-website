@@ -24,6 +24,8 @@ class TenderResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static ?int $navigationSort = 17;
+
     public static function form(Schema $schema): Schema
     {
         return TenderForm::configure($schema);

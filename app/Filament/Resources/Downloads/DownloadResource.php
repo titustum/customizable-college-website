@@ -26,6 +26,8 @@ class DownloadResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    protected static ?int $navigationSort = 14;
+
     public static function form(Schema $schema): Schema
     {
         return DownloadForm::configure($schema);

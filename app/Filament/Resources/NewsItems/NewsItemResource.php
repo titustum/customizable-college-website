@@ -22,7 +22,7 @@ class NewsItemResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedNewspaper;
 
-    protected static ?int $navigationSort = 13;
+    protected static ?int $navigationSort = 8;
 
     public static function form(Schema $schema): Schema
     {

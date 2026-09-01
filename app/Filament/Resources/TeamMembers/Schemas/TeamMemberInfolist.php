@@ -42,7 +42,7 @@ class TeamMemberInfolist
                         TextEntry::make('deleted_at')
                             ->dateTime()
                             ->visible(fn (TeamMember $record): bool => $record->trashed()),
-                    ])
+                    ]),
             ]);
     }
 }

@@ -24,6 +24,8 @@ class DepartmentAssignmentResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'custom_title';
 
+    protected static ?int $navigationSort = 5;
+
     public static function form(Schema $schema): Schema
     {
         return DepartmentAssignmentForm::configure($schema);

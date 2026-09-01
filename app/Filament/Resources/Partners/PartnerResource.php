@@ -24,7 +24,7 @@ class PartnerResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?int $navigationSort = 9;
+    protected static ?int $navigationSort = 11;
 
     public static function form(Schema $schema): Schema
     {

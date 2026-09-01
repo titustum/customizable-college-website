@@ -24,6 +24,8 @@ class PastPaperResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    protected static ?int $navigationSort = 15;
+
     public static function form(Schema $schema): Schema
     {
         return PastPaperForm::configure($schema);

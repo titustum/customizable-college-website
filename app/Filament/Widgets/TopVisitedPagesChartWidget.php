@@ -2,8 +2,8 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\PageVisit;
 use Filament\Widgets\ChartWidget;
-use Illuminate\Support\Facades\DB;
 
 class TopVisitedPagesChartWidget extends ChartWidget
 {
@@ -13,15 +13,14 @@ class TopVisitedPagesChartWidget extends ChartWidget
 
     protected function getData(): array
     {
-        $visits = DB::table('page_visits')
-            ->select('url', DB::raw('COUNT(*) as count'))
-            ->where('url', 'not like', '/storage/%') // exclude image/media hits
+        $visits = PageVisit::query()
+            ->excludeAssets()
+            ->select('url')
+            ->selectRaw('COUNT(*) as count')
             ->groupBy('url')
             ->orderByDesc('count')
             ->limit(10)
             ->get();
-
-        // dd($visits->toArray());
 
         $labels = $visits->pluck('url')->toArray();
         $data = $visits->pluck('count')->toArray();

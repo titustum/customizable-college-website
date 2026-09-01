@@ -108,8 +108,8 @@ class TeamMemberSeeder extends Seeder
                 'phone' => '+254758660301',
                 'photo' => null,
                 'assignments' => [
-                   ['department_id' => $departments['administration'], 'role_id' => $roles['deputy_principal'], 'custom_title' => 'Administration'],
-                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer'] ],
+                    ['department_id' => $departments['administration'], 'role_id' => $roles['deputy_principal'], 'custom_title' => 'Administration'],
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
                 ],
             ],
 
@@ -120,7 +120,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['administration'], 'role_id' => $roles['deputy_principal'], 'custom_title' => 'Academics'],
-                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer'] ],
+                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer']],
                 ],
             ],
 
@@ -133,7 +133,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['administration'], 'role_id' => $roles['registrar']],
-                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer'] ],
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
                 ],
             ],
 
@@ -144,7 +144,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['administration'], 'role_id' => $roles['dean_of_students']],
-                    ['department_id' => $departments['building'], 'role_id' => $roles['trainer'] ],
+                    ['department_id' => $departments['building'], 'role_id' => $roles['trainer']],
                 ],
             ],
 
@@ -155,8 +155,8 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['administration'], 'role_id' => $roles['finance_officer']],
-                    ['department_id' => $departments['finance'], 'role_id' => $roles['coordinator'], 'custom_title'=>'Finance Officer' ],
-                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer'] ],
+                    ['department_id' => $departments['finance'], 'role_id' => $roles['coordinator'], 'custom_title' => 'Finance Officer'],
+                    ['department_id' => $departments['ict'], 'role_id' => $roles['trainer']],
                 ],
             ],
 
@@ -188,8 +188,8 @@ class TeamMemberSeeder extends Seeder
                 'phone' => '+254758660304',
                 'photo' => null,
                 'assignments' => [
-                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['hod'] ],
-                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Volleyball Coach'],
+                    ['department_id' => $departments['hospitality'], 'role_id' => $roles['hod']],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title' => 'Volleyball Coach'],
 
                 ],
             ],
@@ -221,7 +221,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['electrical'], 'role_id' => $roles['hod']],
-                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Volleyball Coach'],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title' => 'Volleyball Coach'],
                 ],
             ],
 
@@ -273,7 +273,7 @@ class TeamMemberSeeder extends Seeder
                 'phone' => '+254758660321',
                 'photo' => null,
                 'assignments' => [
-                    ['department_id' => $departments['counselling'], 'role_id' => $roles['coordinator'], 'custom_title'=>'Student Counsellor'],
+                    ['department_id' => $departments['counselling'], 'role_id' => $roles['coordinator'], 'custom_title' => 'Student Counsellor'],
                     ['department_id' => $departments['hospitality'], 'role_id' => $roles['trainer']],
                 ],
             ],
@@ -296,10 +296,9 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['procurement'], 'role_id' => $roles['support_staff']],
-                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Athletics Coach'],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title' => 'Athletics Coach'],
                 ],
             ],
-
 
             // ─── Coordinators ─────────────────────────────────────────────
 
@@ -403,7 +402,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['fashion'], 'role_id' => $roles['trainer']],
-                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Rugby Coach'],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title' => 'Rugby Coach'],
 
                 ],
             ],
@@ -415,7 +414,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['building'], 'role_id' => $roles['trainer']],
-                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Football Coach'],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title' => 'Football Coach'],
                 ],
             ],
 
@@ -456,7 +455,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['ict'], 'role_id' => $roles['trainer']],
-                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Football Coach'],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title' => 'Football Coach'],
                 ],
             ],
 
@@ -507,7 +506,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['mechanical'], 'role_id' => $roles['trainer']],
-                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Football Coach'],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title' => 'Football Coach'],
                 ],
             ],
 
@@ -540,7 +539,7 @@ class TeamMemberSeeder extends Seeder
                 'photo' => null,
                 'assignments' => [
                     ['department_id' => $departments['administration'], 'role_id' => $roles['support_staff'], 'custom_title' => 'Driver'],
-                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title'=>'Volleyball Coach'],
+                    ['department_id' => $departments['sports'], 'role_id' => $roles['coach'], 'custom_title' => 'Volleyball Coach'],
                 ],
             ],
 

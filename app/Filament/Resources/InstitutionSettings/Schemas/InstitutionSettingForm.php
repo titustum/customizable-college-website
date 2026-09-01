@@ -5,10 +5,10 @@ namespace App\Filament\Resources\InstitutionSettings\Schemas;
 use App\Enums\CollegeCategory;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\RichEditor;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -32,7 +32,7 @@ class InstitutionSettingForm
                                 ->label('College Category')
                                 ->options(CollegeCategory::options())
                                 ->default('tvc')
-                                ->required()
+                                ->required(),
                         ]),
 
                     Section::make('Messages')

@@ -12,7 +12,7 @@ enum CollegeCategory: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::VTC => 'Vocational Training Center (VTC)',
             self::TVC => 'Technical and Vocational College (TVC)',
             self::TTC => 'Technical Training College (TTC)',
