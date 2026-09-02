@@ -83,6 +83,7 @@
                 <div class="flex items-center gap-4 border-r border-gray-700 pr-5">
                     <a href="{{ route('tenders') }}" class="hover:text-orange-500 transition-colors">Tenders</a>
                     <a href="{{ route('vacancies') }}" class="hover:text-orange-500 transition-colors">Vacancies</a>
+                    <a href="{{ route('faqs') }}" class="hover:text-orange-500 transition-colors">FAQs</a>
                     <a href="#" class="hover:text-orange-500 transition-colors font-semibold text-orange-400">ODeL</a>
                 </div>
                 <div class="hidden sm:flex items-center gap-3">
@@ -330,6 +331,7 @@
                     <a href="{{ route('downloads') }}" class="block py-1 text-sm">Downloads</a>
                     <a href="{{ route('tenders') }}" class="block py-1 text-sm">Tenders</a>
                     <a href="{{ route('vacancies') }}" class="block py-1 text-sm">Vacancies</a>
+                    <a href="{{ route('faqs') }}" class="block py-1 text-sm">FAQs</a>
                     <a href="{{ route('past.papers') }}" class="block py-1 text-sm">Past Papers</a>
                 </div>
             </details>

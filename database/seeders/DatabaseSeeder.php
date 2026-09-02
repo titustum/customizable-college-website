@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             TenderSeeder::class,
             VacancySeeder::class,
+            ServiceCharterSeeder::class,
+            FaqSeeder::class,
         ]);
     }
 }

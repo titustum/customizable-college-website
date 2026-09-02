@@ -20,6 +20,7 @@ Route::livewire('/courses', 'pages::courses')->name('courses');
 Route::livewire('/administration', 'pages::administration')->name('administration');
 Route::livewire('/team', 'pages::team-members')->name('team');
 Route::livewire('/vacancies', 'pages::vacancies')->name('vacancies');
+Route::livewire('/faqs', 'pages::faqs')->name('faqs');
 Route::livewire('/tenders', 'pages::tenders')->name('tenders');
 Route::livewire('/past-papers', 'pages::past-papers')->name('past.papers');
 Route::livewire('/gallery', 'pages::gallery')->name('gallery');
