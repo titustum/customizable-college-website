@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Users\Schemas;
 
+use App\Enums\UserRole;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
@@ -26,12 +27,7 @@ class UserForm
                             ->email()
                             ->required(),
                         Select::make('role')
-                            ->options([
-                                'admin' => 'Admin',
-                                'webadmin' => 'Web Admin',
-                                'registrar' => 'Registrar',
-                                'user' => 'User',
-                            ])
+                            ->options(UserRole::options())
                             ->required(),
                         TextInput::make('password')
                             ->password()

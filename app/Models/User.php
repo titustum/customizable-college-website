@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserRole;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,6 +46,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => UserRole::class,
         ];
     }
 
@@ -55,17 +57,17 @@ class User extends Authenticatable implements FilamentUser
 
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->role === UserRole::Admin;
     }
 
     public function isWebAdmin(): bool
     {
-        return $this->role === 'webadmin';
+        return $this->role === UserRole::WebAdmin;
     }
 
     public function isRegistrar(): bool
     {
-        return $this->role === 'registrar';
+        return $this->role === UserRole::Registrar;
     }
 
     public function isAdministrator(): bool

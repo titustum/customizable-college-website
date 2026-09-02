@@ -21,6 +21,7 @@ class UsersTable
                     ->label('Email address')
                     ->searchable(),
                 TextColumn::make('role')
+                    ->badge()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
