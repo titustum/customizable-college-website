@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use LogicException;
 
 class InstitutionSetting extends Model
 {
@@ -36,6 +37,15 @@ class InstitutionSetting extends Model
         'longitude',
         'address',
     ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (InstitutionSetting $setting): void {
+            if (static::query()->exists()) {
+                throw new LogicException('Only one institution setting is allowed per institution.');
+            }
+        });
+    }
 
     public function getRouteKeyName(): string
     {

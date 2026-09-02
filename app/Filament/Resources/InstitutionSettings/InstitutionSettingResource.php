@@ -2,10 +2,7 @@
 
 namespace App\Filament\Resources\InstitutionSettings;
 
-use App\Filament\Resources\InstitutionSettings\Pages\CreateInstitutionSetting;
-use App\Filament\Resources\InstitutionSettings\Pages\EditInstitutionSetting;
-use App\Filament\Resources\InstitutionSettings\Pages\ListInstitutionSettings;
-use App\Filament\Resources\InstitutionSettings\Pages\ViewInstitutionSetting;
+use App\Filament\Resources\InstitutionSettings\Pages\ManageInstitutionSetting;
 use App\Filament\Resources\InstitutionSettings\Schemas\InstitutionSettingForm;
 use App\Filament\Resources\InstitutionSettings\Schemas\InstitutionSettingInfolist;
 use App\Filament\Resources\InstitutionSettings\Tables\InstitutionSettingsTable;
@@ -51,10 +48,7 @@ class InstitutionSettingResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ListInstitutionSettings::route('/'),
-            'create' => CreateInstitutionSetting::route('/create'),
-            'view' => ViewInstitutionSetting::route('/{record}'),
-            'edit' => EditInstitutionSetting::route('/{record}/edit'),
+            'index' => ManageInstitutionSetting::route('/'),
         ];
     }
 }

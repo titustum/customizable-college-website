@@ -11,7 +11,6 @@ class ServiceCharter extends Model
     use HasFactory;
 
     protected $fillable = [
-        'singleton_key',
         'title_en',
         'title_sw',
         'description_en',
@@ -42,8 +41,6 @@ class ServiceCharter extends Model
             if (static::query()->exists()) {
                 throw new LogicException('Only one service charter is allowed per institution.');
             }
-
-            $charter->singleton_key ??= 1;
         });
     }
 }
