@@ -28,6 +28,8 @@ class UserForm
                         Select::make('role')
                             ->options([
                                 'admin' => 'Admin',
+                                'webadmin' => 'Web Admin',
+                                'registrar' => 'Registrar',
                                 'user' => 'User',
                             ])
                             ->required(),
