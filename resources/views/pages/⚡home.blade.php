@@ -93,7 +93,7 @@ new class extends Component {
                 </h1>
                 <p class="text-gray-300 hidden md:block text-lg leading-relaxed mb-8 max-w-lg" data-aos="fade-up"
                     data-aos-delay="400">
-                    Tetu Technical and Vocational College offers world-class technical education designed to equip
+                    {{ $setting->name }} offers world-class technical education designed to equip
                     students with practical skills for today's economy. Located in Tetu Sub-County, Nyeri County.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="500">
@@ -363,9 +363,9 @@ new class extends Component {
                     <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">Building the Future Since {{
                         $setting->established_year ?? '2019' }}</h2>
                     <p class="text-gray-600 text-base leading-relaxed mb-6">
-                        {{ $setting->history ?? 'Tetu Technical and Vocational College has been at the forefront of
-                        providing quality technical and vocational education in Nyeri County. Our institution is
-                        dedicated to equipping students with practical skills that meet industry demands.' }}
+                        {{ $setting->history ?? $setting->name . ' has been at the forefront of providing quality
+                        technical and vocational education in Nyeri County. Our institution is dedicated to equipping
+                        students with practical skills that meet industry demands.' }}
                     </p>
                     <p class="text-gray-600 text-base leading-relaxed mb-8">
                         Through years of excellence, we have grown to become one of the leading TVET institutions in the

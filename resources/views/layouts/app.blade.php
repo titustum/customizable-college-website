@@ -366,7 +366,7 @@ $primaryColor = $setting->primary_color ?? '#f97316';
                     Now</a></div>
         </div>
         <div class="mt-auto p-5 border-t border-gray-100 text-xs text-gray-500">
-            <p class="text-center">Tetu TVC — Skills for the Future</p>
+            <p class="text-center">{{ $setting?->name ?? 'Tetu TVC' }} — Skills for the Future</p>
         </div>
     </div>
 
