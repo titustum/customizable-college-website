@@ -13,7 +13,7 @@ it('shows the default hero placeholder when no slides exist', function () {
 
     $this->get(route('home'))
         ->assertOk()
-        ->assertSee(asset('images/default-hero.webp'))
+        ->assertSee(asset('images/placeholders/slide-image-placeholder.webp'))
         ->assertDontSee('hero_slide_images/tetu-tvc-ict-practicals.jpg');
 });
 
@@ -27,7 +27,7 @@ it('shows the default hero placeholder for a slide without an image', function (
 
     $this->get(route('home'))
         ->assertOk()
-        ->assertSee(asset('images/default-hero.webp'));
+        ->assertSee(asset('images/placeholders/slide-image-placeholder.webp'));
 });
 
 it('shows the slide image when one is set', function () {

@@ -164,7 +164,7 @@ new class extends Component {
                                     @foreach($heroSlides as $slide)
 
                                     <div class="swiper-slide relative overflow-hidden">
-                                        <img src="{{ $slide->image ? Storage::url($slide->image) : asset('images/default-hero.webp') }}"
+                                        <img src="{{ $slide->image ? Storage::url($slide->image) : asset('images/placeholders/slide-image-placeholder.webp') }}"
                                             alt="{{ $slide->title ?? 'Hero Image' }}"
                                             class="w-full h-full object-cover">
 
@@ -193,7 +193,7 @@ new class extends Component {
                                     @else
 
                                     <div class="swiper-slide relative overflow-hidden">
-                                        <img src="{{ asset('images/default-hero.webp') }}" alt="Hero Image"
+                                        <img src="{{ asset('images/placeholders/slide-image-placeholder.webp') }}" alt="Hero Image"
                                             class="w-full h-full object-cover">
 
                                         <div
