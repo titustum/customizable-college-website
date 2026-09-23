@@ -18,7 +18,8 @@ class HeroSlideFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'image' => 'hero-slides/slide-1.jpg',
+            'title' => fake()->sentence(3),
         ];
     }
 }
