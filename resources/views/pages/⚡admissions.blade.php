@@ -583,17 +583,17 @@ class extends Component
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Need Help?</h3>
                         <div class="grid md:grid-cols-3 gap-6">
                             <div class="text-center">
-                                <x-ionicon-call class="text-primary text-2xl mb-2"/>
+                                <x-ionicon-call class="block mx-auto text-primary text-2xl mb-2"/>
                                 <h4 class="font-semibold text-gray-800">Call Us</h4>
                                 <p class="text-gray-600 text-sm">{{ $setting->phone }}</p>
                             </div>
                             <div class="text-center">
-                                <x-ionicon-mail class="text-primary text-2xl mb-2"/>
+                                <x-ionicon-mail class="block mx-auto text-primary text-2xl mb-2"/>
                                 <h4 class="font-semibold text-gray-800">Email Us</h4>
                                 <p class="text-gray-600 text-sm">{{ $setting->email }}</p>
                             </div>
                             <div class="text-center">
-                                <x-ionicon-location class="text-primary text-2xl mb-2"/>
+                                <x-ionicon-location class="block mx-auto text-primary text-2xl mb-2"/>
                                 <h4 class="font-semibold text-gray-800">Visit Us</h4>
                                 <p class="text-gray-600 text-sm">{{ $setting->name }}</p>
                             </div>

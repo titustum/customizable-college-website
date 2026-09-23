@@ -11,5 +11,6 @@ it('aligns the admission form label icons with their text', function () {
 
     $this->get(route('admissions'))
         ->assertOk()
-        ->assertSee('class="flex items-center text-sm font-semibold text-gray-700 mb-2"', false);
+        ->assertSee('class="flex items-center text-sm font-semibold text-gray-700 mb-2"', false)
+        ->assertSee('block mx-auto text-primary text-2xl mb-2"', false);
 });
