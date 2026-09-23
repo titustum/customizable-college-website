@@ -95,8 +95,8 @@ PAGE WRAPPER
     <header class="relative">
         <!-- Banner Image -->
         <div class="h-96 md:h-[500px] w-full overflow-hidden">
-            <img src="{{ Storage::url($department->banner_photo) }}" alt="{{ $department->name }} Banner"
-                class="object-cover w-full h-full">
+            <img src="{{ $department->banner_photo ? Storage::url($department->banner_photo) : asset('images/placeholders/department-banner-placeholder.webp') }}"
+                alt="{{ $department->name }} Banner" class="object-cover w-full h-full">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
         </div>
 
@@ -228,10 +228,9 @@ PAGE WRAPPER
                         </div>
 
                         <div>
-                            @if($department->photo)
-                            <img src="{{ asset('storage/' . $department->photo) }}" alt="{{ $department->name }} Photo"
+                            <img src="{{ $department->photo ? asset('storage/' . $department->photo) : asset('images/placeholders/department-placeholder.webp') }}"
+                                alt="{{ $department->name }} Photo"
                                 class="w-full mb-4 rounded-lg shadow-md">
-                            @endif
 
                             <div class="p-4 bg-orange-100 rounded-lg">
                                 <h3 class="mb-2 text-xl font-semibold text-orange-600">Quick Facts</h3>

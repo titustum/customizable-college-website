@@ -74,8 +74,8 @@ PAGE WRAPPER
     <header class="relative">
         <!-- Banner Image -->
         <div class="h-96 md:h-[500px] w-full overflow-hidden">
-            <img src="{{ Storage::url($department->banner_photo) }}" alt="{{ $department->name }} Banner"
-                class="object-cover w-full h-full">
+            <img src="{{ $department->banner_photo ? Storage::url($department->banner_photo) : asset('images/placeholders/department-banner-placeholder.webp') }}"
+                alt="{{ $department->name }} Banner" class="object-cover w-full h-full">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
         </div>
 
@@ -101,7 +101,8 @@ PAGE WRAPPER
             <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
                 <div class="flex flex-col h-full">
-                    <img src="{{ Storage::url($department->photo) }}" class="rounded-3xl shadow-xl" alt="Sports" />
+                    <img src="{{ $department->photo ? Storage::url($department->photo) : asset('images/placeholders/department-placeholder.webp') }}"
+                        class="rounded-3xl shadow-xl" alt="{{ $department->name }}" />
                 </div>
 
 
