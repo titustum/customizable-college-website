@@ -4,7 +4,6 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\TeamMember;
 use App\Models\Department;
-use App\Models\Course;
 
 new
 #[Title("Deputy Principal Academics")]
@@ -12,7 +11,6 @@ class extends Component
 {
     public $deputyAcademics;
     public $academicDepartmentsList = [];
-    public $coursesList = [];
     public $institution;
 
     public function mount(): void
@@ -30,7 +28,6 @@ class extends Component
             ->first();
 
         $this->academicDepartmentsList = Department::where('type', 'academic')->get();
-        $this->coursesList = Course::with('department')->take(6)->get();
     }
 }
 ?>
@@ -162,35 +159,6 @@ class extends Component
                         </div>
                     </div>
                     @endforeach
-                </div>
-            </div>
-        </section>
-        @endif
-
-        @if ($coursesList->isNotEmpty())
-        <section class="py-12 mb-12 bg-white rounded-lg shadow-md">
-            <div class="px-8">
-                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Featured Courses</h2>
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($coursesList as $course)
-                    <div
-                        class="p-6 transition-all duration-300 bg-white border border-gray-200 rounded-lg hover:shadow-md">
-                        <h4 class="mb-2 font-semibold text-gray-800">{{ $course->name }}</h4>
-                        @if ($course->department)
-                        <p class="mb-3 text-sm text-gray-600">{{ $course->department->name }}</p>
-                        @endif
-                        @if ($course->description)
-                        <p class="mb-4 text-sm text-gray-600">{{ Str::limit($course->description, 100) }}</p>
-                        @endif
-                        <a href="{{ route('courses') }}"
-                            class="text-sm font-medium text-primary hover:text-orange-600">View Course Details →</a>
-                    </div>
-                    @endforeach
-                </div>
-                <div class="mt-8 text-center">
-                    <a href="{{ route('courses') }}"
-                        class="inline-block px-6 py-3 font-bold text-white bg-primary rounded-lg hover:bg-orange-700">View
-                        All Courses</a>
                 </div>
             </div>
         </section>
