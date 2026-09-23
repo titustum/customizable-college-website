@@ -34,9 +34,9 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => InstitutionSetting::first()?->primary_color ?? Color::Orange,
             ])
             ->font(fn (): string => InstitutionSetting::first()?->primary_font ?? 'Albert Sans')
-            ->favicon(asset('images/logo.jpeg'))
-            // ->brandLogo(asset('images/logo.jpeg'))
-            ->brandName('Web Admin')
+            ->favicon(fn (): string => $this->institutionLogoUrl())
+            ->brandLogo(fn (): string => $this->institutionLogoUrl())
+            ->brandName(fn (): string => InstitutionSetting::first()?->name ?? 'Web Admin')
             // ->globalSearchKeyBindings(['ctrl+k', 'cmd+k'])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -63,5 +63,12 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    private function institutionLogoUrl(): string
+    {
+        $logo = InstitutionSetting::first()?->logo;
+
+        return asset($logo ? 'storage/'.$logo : 'images/logo.jpeg');
     }
 }
