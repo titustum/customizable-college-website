@@ -35,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->font(fn (): string => InstitutionSetting::first()?->primary_font ?? 'Albert Sans')
             ->favicon(fn (): string => $this->institutionLogoUrl())
-            ->brandLogo(fn (): string => $this->institutionLogoUrl())
+            // ->brandLogo(fn (): string => $this->institutionLogoUrl())
             ->brandName('Web Admin')
             // ->globalSearchKeyBindings(['ctrl+k', 'cmd+k'])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
