@@ -17,7 +17,6 @@
     --color-dark: #111111;
     --font-display: 'Playfair Display', serif;
     --font-body: 'Source Sans 3', sans-serif;
-
 }
 
 .font-righteous {
@@ -98,14 +97,14 @@ html {
 .label-pill {
     display: inline-block;
     padding: 0.5rem 1.25rem;
-    background: rgba(249, 115, 22, 0.25);
-    border: 1px solid rgba(249, 115, 22, 0.5);
+    background: color-mix(in srgb, var(--color-primary) 25%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #fb923c;
+    color: color-mix(in srgb, var(--color-primary) 62%, white);
     backdrop-filter: blur(4px);
 }
  #navbar.scrolled {
@@ -120,7 +119,7 @@ html {
      left: 0;
      min-width: 240px;
      background: white;
-     border-top: 3px solid #ea580c;
+     border-top: 3px solid var(--color-primary);
      box-shadow: 0 12px 40px rgba(0,0,0,0.13);
      z-index: 200;
      animation: fadeDown 0.18s ease;
@@ -148,7 +147,7 @@ html {
      left: 0;
      width: 0;
      height: 2px;
-     background: #ea580c;
+     background: var(--color-primary);
      transition: width 0.25s ease;
 }
  .nav-link:hover::after {
@@ -159,13 +158,13 @@ html {
 }
  .prog-card:hover {
      transform: translateY(-6px);
-     box-shadow: 0 20px 48px rgba(234,88,12,0.13);
+     box-shadow: 0 20px 48px color-mix(in srgb, var(--color-primary) 13%, transparent);
 }
  .stat-num {
      font-family: var(--font-display);
      font-size: clamp(2.5rem, 5vw, 4rem);
      line-height: 1;
-     color: #ea580c;
+     color: var(--color-primary);
 }
 /* LEFT SLIDING MOBILE DRAWER */
  .mobile-drawer {
@@ -207,7 +206,7 @@ html {
      font-weight: 700;
      letter-spacing: 0.12em;
      text-transform: uppercase;
-     color: #ea580c;
+     color: var(--color-primary);
      margin-bottom: 0.75rem;
 }
   .section-label::before {
@@ -215,7 +214,7 @@ html {
       display: block;
       width: 28px;
       height: 3px;
-      background: #ea580c;
+      background: var(--color-primary);
       border-radius: 2px;
 }
 
@@ -347,8 +346,8 @@ html {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle at 20% 50%, rgba(234, 88, 12, .15) 0%, transparent 60%),
-        radial-gradient(circle at 80% 50%, rgba(234, 88, 12, .08) 0%, transparent 50%);
+    background-image: radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--color-primary) 15%, transparent) 0%, transparent 60%),
+        radial-gradient(circle at 80% 50%, color-mix(in srgb, var(--color-primary) 8%, transparent) 0%, transparent 50%);
     pointer-events: none;
 }
 .cta-dots {

@@ -1,8 +1,31 @@
+@php
+$primaryFont = $setting->primary_font ?? 'Inter';
+$primaryColor = $setting->primary_color ?? '#f97316';
+@endphp
+
 <!DOCTYPE html>
 <html lang="en" style="
-    --primary-color: {{ $setting->primary_color ?? '#FF5722' }};
-    --primary-color-rgb: {{ $setting->primary_color_rgb ?? '255,87,34' }};
-    --primary-font: 'Plus Jakarta Sans', sans-serif, 'Inter', sans-serif;
+    --primary-color: {{ $primaryColor }};
+    --primary-color-rgb: {{ ($setting?->primary_color ? $setting?->primary_color_rgb : null) ?? '249,115,22' }};
+    --color-primary: var(--primary-color);
+
+    --primary-font: '{{ $primaryFont }}', sans-serif, 'Inter', sans-serif;
+    --font-body: '{{ $primaryFont }}', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: '{{ $primaryFont }}', ui-sans-serif, system-ui, sans-serif;
+
+    /* Accent scale derived from the primary color */
+    --color-orange-50: color-mix(in srgb, var(--primary-color) 6%, white);
+    --color-orange-100: color-mix(in srgb, var(--primary-color) 14%, white);
+    --color-orange-200: color-mix(in srgb, var(--primary-color) 25%, white);
+    --color-orange-300: color-mix(in srgb, var(--primary-color) 42%, white);
+    --color-orange-400: color-mix(in srgb, var(--primary-color) 62%, white);
+    --color-orange-500: color-mix(in srgb, var(--primary-color) 78%, white);
+    --color-orange-600: var(--primary-color);
+    --color-orange-700: color-mix(in srgb, var(--primary-color) 80%, black);
+    --color-orange-800: color-mix(in srgb, var(--primary-color) 62%, black);
+    --color-orange-900: color-mix(in srgb, var(--primary-color) 45%, black);
+    --color-orange-light: var(--color-orange-50);
+    --color-orange-brand: var(--primary-color);
 ">
 
 <head>
@@ -11,7 +34,7 @@
     <title>{{ $title ?? 'Default Title' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
-        content="{{ $setting->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+        content="{{ $setting?->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
     <link rel="canonical" href="https://www.tetutvc.ac.ke" />
 
     <!-- Fonts -->
@@ -20,10 +43,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family={{ urlencode($primaryFont) }}&display=swap" rel="stylesheet">
 
 
-    <link rel="shortcut icon" @if ($setting->logo)
-    href="{{ asset('storage/'.$setting->logo) }}"
+    <link rel="shortcut icon" @if ($setting?->logo)
+    href="{{ asset('storage/'.$setting?->logo) }}"
     @else
     href="{{ asset('images/logo.jpeg') }}"
     @endif type="image/jpeg" >
@@ -32,18 +56,18 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.tetutvc.ac.ke/">
-    <meta property="og:title" content="{{ $setting->name ?? 'Tetu TVC' }} | Quality Education in Kenya">
+    <meta property="og:title" content="{{ $setting?->name ?? 'Tetu TVC' }} | Quality Education in Kenya">
     <meta property="og:description"
-        content="{{ $setting->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-    <meta property="og:image" content="{{ asset('storage/'.$setting->logo) }}">
+        content="{{ $setting?->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <meta property="og:image" content="{{ asset('storage/'.$setting?->logo) }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.tetutvc.ac.ke/">
-    <meta property="twitter:title" content="{{ $setting->name ?? 'Tetu TVC' }} | Quality Education in Kenya">
+    <meta property="twitter:title" content="{{ $setting?->name ?? 'Tetu TVC' }} | Quality Education in Kenya">
     <meta property="twitter:description"
-        content="{{ $setting->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
-    <meta property="twitter:image" content="{{ asset('storage/'.$setting->logo) }}">
+        content="{{ $setting?->name ?? 'Tetu TVC' }} offers quality education in Cosmetology, Hospitality, Fashion, ICT, and Agriculture. Join us for a brighter future!">
+    <meta property="twitter:image" content="{{ asset('storage/'.$setting?->logo) }}">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
@@ -117,15 +141,15 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3 flex-shrink-0">
-                    <img @if ($setting->logo)
-                    src="{{ asset('storage/'.$setting->logo) }}"
+                    <img @if ($setting?->logo)
+                    src="{{ asset('storage/'.$setting?->logo) }}"
                     @else
                     src="{{ asset('images/logo.jpeg') }}"
                     @endif
                     alt="Logo" class="h-10 w-auto object-contain">
                     <div class="leading-tight">
                         <div class="font-righteous font-bold text-gray-900 text-lg uppercase leading-none">{{
-                            $setting->name ?? 'TETU TVC' }}</div>
+                            $setting?->name ?? 'TETU TVC' }}</div>
                         <div class="text-xs text-gray-500 tracking-wide">Skills for Industrial Growth</div>
                     </div>
                 </a>
@@ -364,15 +388,16 @@
                 <!-- Brand -->
                 <div data-aos="fade-up">
                     <div class="flex items-center gap-2.5 mb-4">
-                        <img src="{{ asset('storage/'.$setting->logo) }}" alt="Logo"
+                        <img src="{{ asset('storage/'.$setting?->logo) }}" alt="Logo"
                             class="h-10 w-auto object-contain brightness-0 invert opacity-90">
-                        <span class="font-righteous text-xl text-white/90">{{ $setting->name }}</span>
+                        <span class="font-righteous text-xl text-white/90">{{ $setting?->name }}</span>
                     </div>
-                    <p class="text-sm text-gray-400 leading-relaxed mb-5">{{ $setting->name }} is committed to
+                    <p class="text-sm text-gray-400 leading-relaxed mb-5">{{ $setting?->name }} is committed to
                         providing quality education and training to empower students for successful careers.</p>
                     <a href="{{ route('about') }}"
                         class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-orange-300 transition-colors">
-                        Learn More <x-ionicon-arrow-forward class="text-[10px]"/>
+                        Learn More
+                        <x-ionicon-arrow-forward class="text-[10px]" />
                     </a>
                 </div>
 
@@ -381,20 +406,34 @@
                     <h3 class="text-sm font-bold tracking-widest uppercase text-gray-400 mb-4">Quick Links</h3>
                     <ul class="space-y-2.5">
                         <li><a href="{{ route('courses') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Programs & Courses</a>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                                <x-ionicon-chevron-forward class="text-[9px] text-primary" /> Programs & Courses
+                            </a>
                         </li>
                         <li><a href="{{ route('admissions') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Admissions</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                                <x-ionicon-chevron-forward class="text-[9px] text-primary" /> Admissions
+                            </a></li>
                         <li><a href="{{ route('departments') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Departments</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                                <x-ionicon-chevron-forward class="text-[9px] text-primary" /> Departments
+                            </a></li>
                         <li><a href="{{ route('administration') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Administration</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                                <x-ionicon-chevron-forward class="text-[9px] text-primary" /> Administration
+                            </a></li>
                         <li><a href="{{ route('downloads') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Downloads</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                                <x-ionicon-chevron-forward class="text-[9px] text-primary" /> Downloads
+                            </a></li>
                         <li><a href="{{ route('tenders') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Tenders</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                                <x-ionicon-chevron-forward class="text-[9px] text-primary" /> Tenders
+                            </a></li>
                         <li><a href="{{ route('vacancies') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Vacancies</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                                <x-ionicon-chevron-forward class="text-[9px] text-primary" /> Vacancies
+                            </a></li>
                     </ul>
                 </div>
 
@@ -404,23 +443,29 @@
                     <ul class="space-y-3.5">
                         <li class="flex items-start gap-3 text-sm text-gray-400">
                             <span
-                                class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 mt-0.5 text-xs"><x-ionicon-location/></span>
-                            {{ $setting->address }}
+                                class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 mt-0.5 text-xs">
+                                <x-ionicon-location />
+                            </span>
+                            {{ $setting?->address }}
                         </li>
                         <li>
-                            <a href="tel:{{ $setting->phone }}"
+                            <a href="tel:{{ $setting?->phone }}"
                                 class="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
                                 <span
-                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><x-ionicon-call/></span>
-                                {{ $setting->phone }}
+                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs">
+                                    <x-ionicon-call />
+                                </span>
+                                {{ $setting?->phone }}
                             </a>
                         </li>
                         <li>
-                            <a href="mailto:{{ $setting->email }}"
+                            <a href="mailto:{{ $setting?->email }}"
                                 class="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
                                 <span
-                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><x-ionicon-mail/></span>
-                                {{ $setting->email }}
+                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs">
+                                    <x-ionicon-mail />
+                                </span>
+                                {{ $setting?->email }}
                             </a>
                         </li>
                     </ul>
@@ -435,16 +480,24 @@
                 class="max-w-7xl mx-auto px-4 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
                     <a href="#" aria-label="Facebook"
-                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><x-ionicon-logo-facebook/></a>
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs">
+                        <x-ionicon-logo-facebook />
+                    </a>
                     <a href="#" aria-label="TikTok"
-                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><x-ionicon-logo-tiktok/></a>
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs">
+                        <x-ionicon-logo-tiktok />
+                    </a>
                     <a href="#" aria-label="Twitter/X"
-                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><x-ionicon-logo-x/></a>
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs">
+                        <x-ionicon-logo-x />
+                    </a>
                     <a href="#" aria-label="Instagram"
-                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><x-ionicon-logo-instagram/></a>
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs">
+                        <x-ionicon-logo-instagram />
+                    </a>
                 </div>
                 <p class="text-xs text-gray-500 text-center">
-                    © {{ date('Y') }} {{ $setting->name }}. Crafted by
+                    © {{ date('Y') }} {{ $setting?->name }}. Crafted by
                     <a href="http://github.com/titustum"
                         class="text-blue-400 hover:text-blue-300 hover:underline transition-colors">Titus Tum</a>.
                 </p>
