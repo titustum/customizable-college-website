@@ -414,23 +414,25 @@ new class extends Component {
                     class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
 
                     {{-- IMAGE --}}
-                    <div class="relative aspect-[4/3] overflow-hidden">
+                    <a href="{{ route('academic.department', $department->slug) }}"
+                        class="relative block aspect-[4/3] overflow-hidden">
                         <img src="{{ $department->photo ? Storage::url($department->photo) : asset('images/placeholders/department-placeholder.webp') }}"
                             alt="{{ $department->name }}"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
 
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-
-                    </div>
+                    </a>
 
                     {{-- CONTENT --}}
                     <div class="p-4 sm:p-5 flex flex-col flex-grow">
 
                         {{-- Title --}}
-                        <h3
-                            class="text-sm sm:text-lg font-bold text-gray-900 group-hover:text-primary transition-colors leading-snug mb-2">
-                            {{ $department->name }}
-                        </h3>
+                        <a href="{{ route('academic.department', $department->slug) }}">
+                            <h3
+                                class="text-sm sm:text-lg font-bold text-gray-900 group-hover:text-primary transition-colors leading-snug mb-2">
+                                {{ $department->name }}
+                            </h3>
+                        </a>
 
                         {{-- Description (hidden on mobile) --}}
                         <p class="hidden sm:block text-gray-500 text-sm leading-relaxed mb-4 flex-grow">
@@ -441,7 +443,8 @@ new class extends Component {
                         <a href="{{ route('academic.department', $department->slug) }}"
                             class="mt-auto inline-flex items-center justify-between text-xs sm:text-sm font-semibold text-gray-700 hover:text-primary transition-colors">
 
-                            <span>View</span>
+                            <span class="hidden lg:inline">Explore Department</span>
+                            <span class="lg:hidden">View</span>
 
                             <span
                                 class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-all">
