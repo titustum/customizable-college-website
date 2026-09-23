@@ -16,7 +16,7 @@ class InstitutionSettingSeeder extends Seeder
             'primary_color' => '#FF5722',
             'primary_font' => 'Inter',
             'welcome_message' => 'It\'s my pleasure to welcome you to Tetu Technical and Vocational College. We are committed to providing quality programs, activities, and services that will enhance and enrich your academic and professional journey.',
-            'motto' => 'TVET skills for industrial growth.',
+            'motto' => 'Skills for Industrial Growth',
             'vision' => 'To be the premier technical and vocational institution for self and global development.',
             'mission' => 'To provide quality education and training.',
             'established_year' => 2019,

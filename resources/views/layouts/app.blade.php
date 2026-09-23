@@ -150,7 +150,7 @@ $primaryColor = $setting->primary_color ?? '#f97316';
                     <div class="leading-tight">
                         <div class="font-righteous font-bold text-gray-900 text-lg uppercase leading-none">{{
                             $setting?->name ?? 'TETU TVC' }}</div>
-                        <div class="text-xs text-gray-500 tracking-wide">Skills for Industrial Growth</div>
+                        <div class="text-xs text-gray-500 tracking-wide">{{ $setting?->motto ?? 'Skills for Industrial Growth' }}</div>
                     </div>
                 </a>
 

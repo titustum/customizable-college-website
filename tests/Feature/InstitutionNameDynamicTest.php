@@ -30,3 +30,17 @@ it('renders county and sub-county dynamically on the home page', function () {
         ->assertDontSee('Located in Tetu Sub-County, Nyeri County', false)
         ->assertSee('education in Bomet County.', false);
 });
+
+it('renders the college motto dynamically in the navigation', function () {
+    InstitutionSetting::create([
+        'id' => 1,
+        'name' => 'Green Valley Technical College',
+        'slug' => 'green-valley',
+        'motto' => 'Excellence in Every Skill',
+    ]);
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('Excellence in Every Skill')
+        ->assertDontSee('Skills for Industrial Growth');
+});
