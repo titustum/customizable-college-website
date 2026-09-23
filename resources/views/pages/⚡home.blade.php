@@ -94,7 +94,7 @@ new class extends Component {
                 <p class="text-gray-300 hidden md:block text-lg leading-relaxed mb-8 max-w-lg" data-aos="fade-up"
                     data-aos-delay="400">
                     {{ $setting->name }} offers world-class technical education designed to equip
-                    students with practical skills for today's economy. Located in Tetu Sub-County, Nyeri County.
+                    students with practical skills for today's economy. Located in {{ $setting->sub_county ?? 'Tetu' }} Sub-County, {{ $setting->county ?? 'Nyeri' }} County.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="500">
                     <a href="{{ route('admissions') }}"
@@ -364,8 +364,9 @@ new class extends Component {
                         $setting->established_year ?? '2019' }}</h2>
                     <p class="text-gray-600 text-base leading-relaxed mb-6">
                         {{ $setting->history ?? $setting->name . ' has been at the forefront of providing quality
-                        technical and vocational education in Nyeri County. Our institution is dedicated to equipping
-                        students with practical skills that meet industry demands.' }}
+                        technical and vocational education in ' . ($setting->county ?? 'Nyeri') . ' County. Our
+                        institution is dedicated to equipping students with practical skills that meet industry
+                        demands.' }}
                     </p>
                     <p class="text-gray-600 text-base leading-relaxed mb-8">
                         Through years of excellence, we have grown to become one of the leading TVET institutions in the

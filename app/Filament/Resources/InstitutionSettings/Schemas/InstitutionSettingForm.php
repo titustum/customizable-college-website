@@ -130,6 +130,14 @@ class InstitutionSettingForm
                                 ->columnSpanFull()
                                 ->placeholder('Enter address i.e. PO Box 123 - 10100, Nairobi'),
 
+                            TextInput::make('county')
+                                ->label('County')
+                                ->placeholder('Nyeri'),
+
+                            TextInput::make('sub_county')
+                                ->label('Sub-County')
+                                ->placeholder('Tetu'),
+
                             TextInput::make('latitude')
                                 ->label('Latitude')
                                 ->placeholder('-1.2921'),

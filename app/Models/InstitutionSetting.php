@@ -37,6 +37,8 @@ class InstitutionSetting extends Model
         'latitude',
         'longitude',
         'address',
+        'county',
+        'sub_county',
     ];
 
     protected static function booted(): void

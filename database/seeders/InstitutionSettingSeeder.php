@@ -25,6 +25,8 @@ class InstitutionSettingSeeder extends Seeder
             'email' => 'info@tetutvc.ac.ke',
             'phone' => '+254 700 000 000',
             'address' => 'Kenya',
+            'county' => 'Nyeri',
+            'sub_county' => 'Tetu',
             'latitude' => '-0.434',
             'longitude' => '36.917',
             'facebook' => 'https://facebook.com/TetuTechnicalVocationalCollege',
