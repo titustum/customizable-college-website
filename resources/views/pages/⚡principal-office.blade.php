@@ -3,7 +3,6 @@
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\TeamMember;
-use App\Models\Department;
 
 new
 #[Title('Principal\'s Office')]
@@ -13,7 +12,6 @@ class extends Component
     public $headsOfDepartments = [];
     public $collegeOverview;
     public $ourValues = [];
-    public $academicDepartmentsList = [];
     public $studentPopulation;
     public $keyAchievementsList = [];
     public $principalMessage;
@@ -31,8 +29,6 @@ class extends Component
         $this->principal = TeamMember::whereHas('roles', fn ($q) =>
                                 $q->where('slug', 'principal')
                             )->first();
-
-        $this->academicDepartmentsList = Department::all();
 
         // College stats and information
         $this->collegeOverview = "$this->setting->name is a leading institution committed to providing high-quality technical and vocational education and training. We equip our students with practical skills and knowledge that are highly relevant to the demands of the modern workforce and contribute to national development.";
@@ -164,60 +160,6 @@ class extends Component
                         class="p-6 transition-transform duration-300 transform bg-white border-l-4 border-primary rounded-md shadow-sm hover:-translate-y-1">
                         <h4 class="mb-2 text-lg font-semibold text-primary">{{ $value }}</h4>
                         <p class="text-sm text-gray-600">{{ $description }}</p>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-        @endif
-
-        <!-- Academic Departments Section - Enhanced with icons -->
-        @if ($academicDepartmentsList->isNotEmpty())
-        <section class="py-12 mb-12 bg-white rounded-lg shadow-md">
-            <div class="px-8">
-                <h2 class="mb-8 text-2xl font-bold text-center text-gray-800">Administrative Units</h2>
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    @foreach ($academicDepartmentsList as $department)
-                    <div
-                        class="p-6 transition-all duration-300 bg-white border-t-4 border-primary rounded-md shadow-sm hover:shadow-md group">
-                        <div class="flex items-start">
-                            <!-- Department icon would ideally come from DB, using placeholder here -->
-                            <div
-                                class="flex items-center justify-center w-12 h-12 mr-4 text-white bg-primary rounded-full">
-                                <!-- Default icon, ideally would be dynamic based on department type -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">{{ $department->name }}</h4>
-                                <p class="mt-1 text-sm text-gray-600">{{ $department->description ?? 'Explore the
-                                    programs offered within this department.' }}</p>
-
-                                <!-- Program count badge - if you have this data -->
-                                @if(isset($department->programs_count))
-                                <span
-                                    class="inline-block px-2 py-1 mt-2 text-xs text-primary bg-orange-100 rounded-full">
-                                    {{ $department->programs_count }} Programs
-                                </span>
-                                @endif
-
-                                <div class="mt-3">
-                                    <a href="{{ $department->type === 'academic' ? route('academic.department', $department->slug) : route('non.academic.department', $department->slug) }}"
-                                        class="inline-flex items-center text-sm font-medium text-primary transition-all duration-300 group-hover:text-primary">
-                                        Learn More
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     @endforeach
                 </div>

@@ -299,7 +299,7 @@ class extends Component
 
                                 <div class="grid gap-6 md:grid-cols-2">
                                     <div class="form-group">
-                                        <label for="full_name" class="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label for="full_name" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                             <x-ionicon-person class="mr-2 text-primary"/>Full Name *
                                         </label>
                                         <input type="text" id="full_name" wire:model.lazy="full_name" required
@@ -310,7 +310,7 @@ class extends Component
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label for="phone" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                             <x-ionicon-call class="mr-2 text-primary"/>Phone Number *
                                         </label>
                                         <input type="tel" id="phone" wire:model.lazy="phone" required
@@ -323,7 +323,7 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="alternative_phone"
-                                        class="block text-sm font-semibold text-gray-700 mb-2">
+                                        class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-call class="mr-2 text-gray-400"/>Alternative Phone Number
                                     </label>
                                     <input type="tel" id="alternative_phone" wire:model.lazy="alternative_phone"
@@ -335,7 +335,7 @@ class extends Component
 
                                 <div class="grid gap-6 md:grid-cols-2">
                                     <div class="form-group">
-                                        <label for="gender" class="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label for="gender" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                             <x-ionicon-male-female class="mr-2 text-primary"/>Gender *
                                         </label>
                                         <select id="gender" wire:model="gender" required
@@ -350,7 +350,7 @@ class extends Component
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="id_number" class="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label for="id_number" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                             <x-ionicon-id-card class="mr-2 text-primary"/>ID Number/Birth
                                             Certificate *
                                         </label>
@@ -377,7 +377,7 @@ class extends Component
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="high_school" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <label for="high_school" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-school class="mr-2 text-primary"/>High School Name *
                                     </label>
                                     <input type="text" id="high_school" wire:model.lazy="high_school" required
@@ -389,7 +389,7 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="high_school_grade"
-                                        class="block text-sm font-semibold text-gray-700 mb-2">
+                                        class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-medal class="mr-2 text-primary"/>High School Grade *
                                     </label>
                                     <input type="text" id="high_school_grade" wire:model.lazy="high_school_grade"
@@ -402,7 +402,7 @@ class extends Component
                                 <div class="grid gap-6 md:grid-cols-2">
                                     <div class="form-group">
                                         <label for="kcse_index_number"
-                                            class="block text-sm font-semibold text-gray-700 mb-2">
+                                            class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                             <x-ionicon-calculator class="mr-2 text-primary"/>KCSE Index Number *
                                         </label>
                                         <input type="text" id="kcse_index_number" wire:model.lazy="kcse_index_number"
@@ -413,7 +413,7 @@ class extends Component
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="kcse_year" class="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label for="kcse_year" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                             <x-ionicon-calendar class="mr-2 text-primary"/>KCSE Year *
                                         </label>
                                         <input type="number" id="kcse_year" wire:model.lazy="kcse_year" required
@@ -426,7 +426,7 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="nemis_upi_number"
-                                        class="block text-sm font-semibold text-gray-700 mb-2">
+                                        class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-finger-print class="mr-2 text-gray-400"/>NEMIS/UPI Number
                                     </label>
                                     <input type="text" id="nemis_upi_number" wire:model.lazy="nemis_upi_number"
@@ -443,7 +443,7 @@ class extends Component
                             <div class="space-y-6">
                                 <!-- Department Selection -->
                                 <div class="form-group">
-                                    <label for="departmentId" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <label for="departmentId" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-business class="mr-2 text-primary"/>Department *
                                     </label>
 
@@ -461,7 +461,7 @@ class extends Component
 
                                 <!-- Course Selection -->
                                 <div class="form-group">
-                                    <label for="courseId" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <label for="courseId" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-library class="mr-2 text-primary"/>Desired Course of Study *
                                     </label>
                                     <select id="courseId" wire:model="course_id" @if(is_null($department_id)) disabled
@@ -478,7 +478,7 @@ class extends Component
 
 
                                 <div class="form-group">
-                                    <label for="start_term" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <label for="start_term" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-calendar class="mr-2 text-primary"/>Intended Start Term *
                                     </label>
                                     <select id="start_term" wire:model="start_term" required
@@ -510,7 +510,7 @@ class extends Component
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="parent_name" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <label for="parent_name" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-person class="mr-2 text-primary"/>Parent/Guardian Name *
                                     </label>
                                     <input type="text" id="parent_name" wire:model.lazy="parent_name" required
@@ -521,7 +521,7 @@ class extends Component
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="parent_phone" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <label for="parent_phone" class="flex items-center text-sm font-semibold text-gray-700 mb-2">
                                         <x-ionicon-call class="mr-2 text-primary"/>Parent/Guardian Phone Number *
                                     </label>
                                     <input type="tel" id="parent_phone" wire:model.lazy="parent_phone" required
