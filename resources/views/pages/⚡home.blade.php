@@ -117,7 +117,7 @@ new class extends Component {
                     data-aos-delay="800">
                     <div class="flex items-center gap-2" data-aos="fade-right" data-aos-delay="900">
                         <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
-                            <i class="fas fa-users text-orange-500"></i>
+                            <x-ionicon-people class="text-orange-500"/>
                         </div>
                         <div>
                             <span class="block text-white font-bold">2000+</span>
@@ -126,7 +126,7 @@ new class extends Component {
                     </div>
                     <div class="flex items-center gap-2" data-aos="fade-right" data-aos-delay="1100">
                         <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
-                            <i class="fas fa-briefcase text-orange-500"></i>
+                            <x-ionicon-briefcase class="text-orange-500"/>
                         </div>
                         <div>
                             <span class="block text-white font-bold">85%+</span>
@@ -135,7 +135,7 @@ new class extends Component {
                     </div>
                     <div class="sm:flex hidden items-center gap-2" data-aos="fade-right" data-aos-delay="1200">
                         <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
-                            <i class="fas fa-star text-orange-500"></i>
+                            <x-ionicon-star class="text-orange-500"/>
                         </div>
                         <div>
                             <span class="block text-white font-bold">4.8/5</span>
@@ -290,7 +290,7 @@ new class extends Component {
                             College Principal</p>
                         <span
                             class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">Read
-                            More <i class="fas fa-arrow-right text-xs"></i></span>
+                            More <x-ionicon-arrow-forward class="text-xs"/></span>
                     </div>
                 </a>
 
@@ -308,7 +308,7 @@ new class extends Component {
                             and upcoming events</p>
                         <span
                             class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">Read
-                            More <i class="fas fa-arrow-right text-xs"></i></span>
+                            More <x-ionicon-arrow-forward class="text-xs"/></span>
                     </div>
                 </a>
 
@@ -326,7 +326,7 @@ new class extends Component {
                             campus life</p>
                         <span
                             class="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">View
-                            Gallery <i class="fas fa-arrow-right text-xs"></i></span>
+                            Gallery <x-ionicon-arrow-forward class="text-xs"/></span>
                     </div>
                 </a>
 
@@ -373,7 +373,7 @@ new class extends Component {
                     </p>
                     <a href="{{ route('about') }}"
                         class="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-primary rounded-lg shadow-lg hover:brightness-110 hover:shadow-xl transition-all">
-                        Learn More About Us <i class="fas fa-arrow-right text-xs"></i>
+                        Learn More About Us <x-ionicon-arrow-forward class="text-xs"/>
                     </a>
                 </div>
 
@@ -444,7 +444,7 @@ new class extends Component {
 
                             <span
                                 class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-all">
-                                <i class="fas fa-arrow-right text-[10px] sm:text-xs"></i>
+                                <x-ionicon-arrow-forward class="text-[10px] sm:text-xs"/>
                             </span>
                         </a>
 
@@ -458,7 +458,7 @@ new class extends Component {
             <div class="mt-10 text-center" data-aos="fade-up">
                 <a href="{{ route('departments') }}"
                     class="inline-flex items-center gap-2 px-7 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
-                    View All Departments <i class="fas fa-arrow-right text-xs"></i>
+                    View All Departments <x-ionicon-arrow-forward class="text-xs"/>
                 </a>
             </div>
 
@@ -503,17 +503,13 @@ new class extends Component {
                                 of professionalism, transparency, and accountability.
                             </p>
                             <ul class="space-y-3 mb-6">
-                                <li class="flex items-start gap-3"><i
-                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                <li class="flex items-start gap-3"><x-ionicon-checkmark-circle class="text-primary mt-1"/><span
                                         class="text-gray-600">Quality technical and vocational education</span></li>
-                                <li class="flex items-start gap-3"><i
-                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                <li class="flex items-start gap-3"><x-ionicon-checkmark-circle class="text-primary mt-1"/><span
                                         class="text-gray-600">Timely response to inquiries</span></li>
-                                <li class="flex items-start gap-3"><i
-                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                <li class="flex items-start gap-3"><x-ionicon-checkmark-circle class="text-primary mt-1"/><span
                                         class="text-gray-600">Transparent admission processes</span></li>
-                                <li class="flex items-start gap-3"><i
-                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                <li class="flex items-start gap-3"><x-ionicon-checkmark-circle class="text-primary mt-1"/><span
                                         class="text-gray-600">Regular progress reports</span></li>
                             </ul>
                         </div>
@@ -525,17 +521,13 @@ new class extends Component {
                                 uwajibikaji.
                             </p>
                             <ul class="space-y-3 mb-6">
-                                <li class="flex items-start gap-3"><i
-                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                <li class="flex items-start gap-3"><x-ionicon-checkmark-circle class="text-primary mt-1"/><span
                                         class="text-gray-600">Elimu ya kiwandani na ufundi bora</span></li>
-                                <li class="flex items-start gap-3"><i
-                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                <li class="flex items-start gap-3"><x-ionicon-checkmark-circle class="text-primary mt-1"/><span
                                         class="text-gray-600">Majibu ya haraka kwa maswali</span></li>
-                                <li class="flex items-start gap-3"><i
-                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                <li class="flex items-start gap-3"><x-ionicon-checkmark-circle class="text-primary mt-1"/><span
                                         class="text-gray-600">Mchakato wa usajili wa uwazi</span></li>
-                                <li class="flex items-start gap-3"><i
-                                        class="fas fa-check-circle text-primary mt-1"></i><span
+                                <li class="flex items-start gap-3"><x-ionicon-checkmark-circle class="text-primary mt-1"/><span
                                         class="text-gray-600">Ripoti za kawaida za maendeleo</span></li>
                             </ul>
                         </div>
@@ -544,11 +536,11 @@ new class extends Component {
                     <div class="flex items-center gap-4">
                         <a href="#"
                             class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg font-semibold hover:brightness-110 transition-all">
-                            <i class="fas fa-download text-sm"></i> Download
+                            <x-ionicon-download class="text-sm"/> Download
                         </a>
                         <button
                             class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-all">
-                            <i class="fas fa-play text-sm"></i> Play Audio
+                            <x-ionicon-play class="text-sm"/> Play Audio
                         </button>
                     </div>
                 </div>
@@ -595,16 +587,16 @@ new class extends Component {
                     {{-- Stars --}}
                     <div class="flex justify-center gap-0.5 mb-3 text-primary text-sm">
                         @for ($i = 0; $i < $story->rating; $i++)
-                            <i class="fas fa-star"></i>
+                            <x-ionicon-star/>
                             @endfor
                             @for ($i = 0; $i < 5 - $story->rating; $i++)
-                                <i class="far fa-star text-gray-200"></i>
+                                <x-ionicon-star-outline class="text-gray-200"/>
                                 @endfor
                     </div>
 
                     {{-- Quote --}}
                     <div class="flex-grow">
-                        <i class="fas fa-quote-left text-primary/20 text-3xl mb-2 block"></i>
+                        <x-ionicon-chatbubble-ellipses class="text-primary/20 text-3xl mb-2 block"/>
                         <p class="text-gray-600 text-sm leading-relaxed">{{ $story->statement }}</p>
                     </div>
 
@@ -625,7 +617,7 @@ new class extends Component {
             <div class="mt-10 text-center" data-aos="fade-up">
                 <a href="{{ route('success.stories') }}"
                     class="inline-flex items-center gap-2 px-8 py-3 font-semibold text-white bg-primary rounded-full shadow-lg shadow-primary/20 hover:brightness-110 hover:shadow-xl transition-all">
-                    View All Success Stories <i class="fas fa-arrow-right text-xs"></i>
+                    View All Success Stories <x-ionicon-arrow-forward class="text-xs"/>
                 </a>
             </div>
 
@@ -633,16 +625,16 @@ new class extends Component {
             {{-- Stats strip --}}
             <div class="mt-16 grid gap-6 grid-cols-2 lg:grid-cols-4">
                 @foreach([
-                ['target' => 92, 'suffix' => '%', 'label' => 'Graduation Rate', 'icon' => 'fa-graduation-cap'],
-                ['target' => 85, 'suffix' => '%', 'label' => 'Job Placement', 'icon' => 'fa-briefcase'],
-                ['target' => 78, 'suffix' => '%', 'label' => 'Industry Partners', 'icon' => 'fa-handshake'],
-                ['target' => 120, 'suffix' => '+', 'label' => 'Certifications', 'icon' => 'fa-award'],
+                ['target' => 92, 'suffix' => '%', 'label' => 'Graduation Rate', 'icon' => 'school'],
+                ['target' => 85, 'suffix' => '%', 'label' => 'Job Placement', 'icon' => 'briefcase'],
+                ['target' => 78, 'suffix' => '%', 'label' => 'Industry Partners', 'icon' => 'hand-right'],
+                ['target' => 120, 'suffix' => '+', 'label' => 'Certifications', 'icon' => 'medal'],
                 ] as $stat)
                 <div data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}" data-aos-anchor-placement="top-bottom"
                     class="flex flex-col sm:flex-row items-center sm:items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow transition-all text-center sm:text-left">
                     <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0 mx-auto sm:mx-0"
                         data-aos="zoom-in" data-aos-delay="{{ $loop->index * 100 + 200 }}">
-                        <i class="fas {{ $stat['icon'] }} text-white text-lg"></i>
+                        @svg('ionicon-'.$stat['icon'], 'text-white text-lg')
                     </div>
                     <div>
                         <div class="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-none">
@@ -745,11 +737,11 @@ new class extends Component {
             <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
                 <a href="{{ route('admissions') }}"
                     class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
-                    Apply Now <i class="fas fa-arrow-right text-xs"></i>
+                    Apply Now <x-ionicon-arrow-forward class="text-xs"/>
                 </a>
                 <a href="{{ route('contact') }}"
                     class="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
-                    <i class="fas fa-envelope text-xs"></i> Contact Us
+                    <x-ionicon-mail class="text-xs"/> Contact Us
                 </a>
             </div>
         </div>
@@ -775,7 +767,7 @@ new class extends Component {
             </span>
 
             <!-- Icon -->
-            <i class="fab fa-whatsapp text-xl sm:text-2xl"></i>
+            <x-ionicon-logo-whatsapp class="text-xl sm:text-2xl"/>
 
             <!-- Label (desktop only, smooth reveal) -->
             <span

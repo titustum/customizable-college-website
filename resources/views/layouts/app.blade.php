@@ -22,7 +22,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="shortcut icon" @if ($setting->logo)
     href="{{ asset('storage/'.$setting->logo) }}"
     @else
@@ -373,7 +372,7 @@
                         providing quality education and training to empower students for successful careers.</p>
                     <a href="{{ route('about') }}"
                         class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-orange-300 transition-colors">
-                        Learn More <i class="fas fa-arrow-right text-[10px]"></i>
+                        Learn More <x-ionicon-arrow-forward class="text-[10px]"/>
                     </a>
                 </div>
 
@@ -382,27 +381,20 @@
                     <h3 class="text-sm font-bold tracking-widest uppercase text-gray-400 mb-4">Quick Links</h3>
                     <ul class="space-y-2.5">
                         <li><a href="{{ route('courses') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
-                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Programs & Courses</a>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Programs & Courses</a>
                         </li>
                         <li><a href="{{ route('admissions') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
-                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Admissions</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Admissions</a></li>
                         <li><a href="{{ route('departments') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
-                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Departments</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Departments</a></li>
                         <li><a href="{{ route('administration') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
-                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Administration</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Administration</a></li>
                         <li><a href="{{ route('downloads') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
-                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Downloads</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Downloads</a></li>
                         <li><a href="{{ route('tenders') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
-                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Tenders</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Tenders</a></li>
                         <li><a href="{{ route('vacancies') }}"
-                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><i
-                                    class="fas fa-chevron-right text-[9px] text-primary"></i> Vacancies</a></li>
+                                class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"><x-ionicon-chevron-forward class="text-[9px] text-primary"/> Vacancies</a></li>
                     </ul>
                 </div>
 
@@ -412,16 +404,14 @@
                     <ul class="space-y-3.5">
                         <li class="flex items-start gap-3 text-sm text-gray-400">
                             <span
-                                class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 mt-0.5 text-xs"><i
-                                    class="fas fa-map-marker-alt"></i></span>
+                                class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 mt-0.5 text-xs"><x-ionicon-location/></span>
                             {{ $setting->address }}
                         </li>
                         <li>
                             <a href="tel:{{ $setting->phone }}"
                                 class="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
                                 <span
-                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><i
-                                        class="fas fa-phone"></i></span>
+                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><x-ionicon-call/></span>
                                 {{ $setting->phone }}
                             </a>
                         </li>
@@ -429,8 +419,7 @@
                             <a href="mailto:{{ $setting->email }}"
                                 class="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors">
                                 <span
-                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><i
-                                        class="fas fa-envelope"></i></span>
+                                    class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-primary shrink-0 text-xs"><x-ionicon-mail/></span>
                                 {{ $setting->email }}
                             </a>
                         </li>
@@ -446,17 +435,13 @@
                 class="max-w-7xl mx-auto px-4 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
                     <a href="#" aria-label="Facebook"
-                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><i
-                            class="fab fa-facebook-f"></i></a>
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><x-ionicon-logo-facebook/></a>
                     <a href="#" aria-label="TikTok"
-                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><i
-                            class="fab fa-tiktok"></i></a>
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><x-ionicon-logo-tiktok/></a>
                     <a href="#" aria-label="Twitter/X"
-                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><i
-                            class="fab fa-x-twitter"></i></a>
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><x-ionicon-logo-x/></a>
                     <a href="#" aria-label="Instagram"
-                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><i
-                            class="fab fa-instagram"></i></a>
+                        class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 text-gray-400 hover:bg-primary hover:text-white transition-all text-xs"><x-ionicon-logo-instagram/></a>
                 </div>
                 <p class="text-xs text-gray-500 text-center">
                     © {{ date('Y') }} {{ $setting->name }}. Crafted by

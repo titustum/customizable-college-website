@@ -137,7 +137,7 @@ class extends Component
             @if($departments->flatMap->courses->isEmpty())
             <div class="text-center py-16">
                 <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-search text-gray-400 text-xl"></i>
+                    <x-ionicon-search class="text-gray-400 text-xl"/>
                 </div>
                 <h3 class="text-xl font-semibold text-gray-800 mb-2">No Courses Found</h3>
                 <p class="text-gray-500">Try adjusting your search or filter criteria.</p>
@@ -159,10 +159,10 @@ class extends Component
             </p>
             <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
                 <a href="{{ route('admissions') }}" class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
-                    Apply Now <i class="fas fa-arrow-right text-xs"></i>
+                    Apply Now <x-ionicon-arrow-forward class="text-xs"/>
                 </a>
                 <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
-                    <i class="fas fa-envelope text-xs"></i> Contact Us
+                    <x-ionicon-mail class="text-xs"/> Contact Us
                 </a>
             </div>
         </div>

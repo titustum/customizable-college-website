@@ -272,7 +272,7 @@ class extends Component
                 @if (session()->has('message'))
                 <div
                     class="bg-green-50 border border-green-200 text-green-800 px-6 py-4 rounded-xl mb-8 flex items-center">
-                    <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i>
+                    <x-ionicon-checkmark-circle class="text-green-500 mr-3 text-xl"/>
                     <div>
                         <h4 class="font-semibold">Application Submitted Successfully!</h4>
                         <p class="text-sm">{{ session('message') }}</p>
@@ -291,7 +291,7 @@ class extends Component
                                 <div class="text-center mb-8">
                                     <div
                                         class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-user text-primary text-2xl"></i>
+                                        <x-ionicon-person class="text-primary text-2xl"/>
                                     </div>
                                     <h2 class="text-2xl font-bold text-gray-800">Personal Information</h2>
                                     <p class="text-gray-600">Tell us about yourself</p>
@@ -300,7 +300,7 @@ class extends Component
                                 <div class="grid gap-6 md:grid-cols-2">
                                     <div class="form-group">
                                         <label for="full_name" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-user mr-2 text-primary"></i>Full Name *
+                                            <x-ionicon-person class="mr-2 text-primary"/>Full Name *
                                         </label>
                                         <input type="text" id="full_name" wire:model.lazy="full_name" required
                                             placeholder="Enter your full name"
@@ -311,7 +311,7 @@ class extends Component
 
                                     <div class="form-group">
                                         <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-phone mr-2 text-primary"></i>Phone Number *
+                                            <x-ionicon-call class="mr-2 text-primary"/>Phone Number *
                                         </label>
                                         <input type="tel" id="phone" wire:model.lazy="phone" required
                                             placeholder="0712345678"
@@ -324,7 +324,7 @@ class extends Component
                                 <div class="form-group">
                                     <label for="alternative_phone"
                                         class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-phone-alt mr-2 text-gray-400"></i>Alternative Phone Number
+                                        <x-ionicon-call class="mr-2 text-gray-400"/>Alternative Phone Number
                                     </label>
                                     <input type="tel" id="alternative_phone" wire:model.lazy="alternative_phone"
                                         placeholder="Optional alternative number"
@@ -336,7 +336,7 @@ class extends Component
                                 <div class="grid gap-6 md:grid-cols-2">
                                     <div class="form-group">
                                         <label for="gender" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-venus-mars mr-2 text-primary"></i>Gender *
+                                            <x-ionicon-male-female class="mr-2 text-primary"/>Gender *
                                         </label>
                                         <select id="gender" wire:model="gender" required
                                             class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
@@ -351,7 +351,7 @@ class extends Component
 
                                     <div class="form-group">
                                         <label for="id_number" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-id-card mr-2 text-primary"></i>ID Number/Birth
+                                            <x-ionicon-id-card class="mr-2 text-primary"/>ID Number/Birth
                                             Certificate *
                                         </label>
                                         <input type="text" id="id_number" wire:model.lazy="id_number" required
@@ -370,7 +370,7 @@ class extends Component
                                 <div class="text-center mb-8">
                                     <div
                                         class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-graduation-cap text-primary text-2xl"></i>
+                                        <x-ionicon-school class="text-primary text-2xl"/>
                                     </div>
                                     <h2 class="text-2xl font-bold text-gray-800">Academic Background</h2>
                                     <p class="text-gray-600">Your educational history</p>
@@ -378,7 +378,7 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="high_school" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-school mr-2 text-primary"></i>High School Name *
+                                        <x-ionicon-school class="mr-2 text-primary"/>High School Name *
                                     </label>
                                     <input type="text" id="high_school" wire:model.lazy="high_school" required
                                         placeholder="Enter your high school name"
@@ -390,7 +390,7 @@ class extends Component
                                 <div class="form-group">
                                     <label for="high_school_grade"
                                         class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-award mr-2 text-primary"></i>High School Grade *
+                                        <x-ionicon-medal class="mr-2 text-primary"/>High School Grade *
                                     </label>
                                     <input type="text" id="high_school_grade" wire:model.lazy="high_school_grade"
                                         required placeholder="e.g., C+, B-, A"
@@ -403,7 +403,7 @@ class extends Component
                                     <div class="form-group">
                                         <label for="kcse_index_number"
                                             class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-hashtag mr-2 text-primary"></i>KCSE Index Number *
+                                            <x-ionicon-calculator class="mr-2 text-primary"/>KCSE Index Number *
                                         </label>
                                         <input type="text" id="kcse_index_number" wire:model.lazy="kcse_index_number"
                                             required placeholder="Enter KCSE index number"
@@ -414,7 +414,7 @@ class extends Component
 
                                     <div class="form-group">
                                         <label for="kcse_year" class="block text-sm font-semibold text-gray-700 mb-2">
-                                            <i class="fas fa-calendar mr-2 text-primary"></i>KCSE Year *
+                                            <x-ionicon-calendar class="mr-2 text-primary"/>KCSE Year *
                                         </label>
                                         <input type="number" id="kcse_year" wire:model.lazy="kcse_year" required
                                             placeholder="{{ date('Y') }}" min="1990" max="{{ date('Y') }}"
@@ -427,7 +427,7 @@ class extends Component
                                 <div class="form-group">
                                     <label for="nemis_upi_number"
                                         class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-fingerprint mr-2 text-gray-400"></i>NEMIS/UPI Number
+                                        <x-ionicon-finger-print class="mr-2 text-gray-400"/>NEMIS/UPI Number
                                     </label>
                                     <input type="text" id="nemis_upi_number" wire:model.lazy="nemis_upi_number"
                                         placeholder="Optional - if available"
@@ -444,7 +444,7 @@ class extends Component
                                 <!-- Department Selection -->
                                 <div class="form-group">
                                     <label for="departmentId" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-building mr-2 text-primary"></i>Department *
+                                        <x-ionicon-business class="mr-2 text-primary"/>Department *
                                     </label>
 
                                     <select wire:model.live="department_id"
@@ -462,7 +462,7 @@ class extends Component
                                 <!-- Course Selection -->
                                 <div class="form-group">
                                     <label for="courseId" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-book-open mr-2 text-primary"></i>Desired Course of Study *
+                                        <x-ionicon-library class="mr-2 text-primary"/>Desired Course of Study *
                                     </label>
                                     <select id="courseId" wire:model="course_id" @if(is_null($department_id)) disabled
                                         @endif required
@@ -479,7 +479,7 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="start_term" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-calendar-alt mr-2 text-primary"></i>Intended Start Term *
+                                        <x-ionicon-calendar class="mr-2 text-primary"/>Intended Start Term *
                                     </label>
                                     <select id="start_term" wire:model="start_term" required
                                         class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
@@ -503,7 +503,7 @@ class extends Component
                                 <div class="text-center mb-8">
                                     <div
                                         class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <i class="fas fa-users mr-2 text-primary text-2xl"></i>
+                                        <x-ionicon-people class="mr-2 text-primary text-2xl"/>
                                     </div>
                                     <h2 class="text-2xl font-bold text-gray-800">Parent/Guardian Information</h2>
                                     <p class="text-gray-600">Emergency contact details</p>
@@ -511,7 +511,7 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="parent_name" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-user-tie mr-2 text-primary"></i>Parent/Guardian Name *
+                                        <x-ionicon-person class="mr-2 text-primary"/>Parent/Guardian Name *
                                     </label>
                                     <input type="text" id="parent_name" wire:model.lazy="parent_name" required
                                         placeholder="Enter parent/guardian full name"
@@ -522,7 +522,7 @@ class extends Component
 
                                 <div class="form-group">
                                     <label for="parent_phone" class="block text-sm font-semibold text-gray-700 mb-2">
-                                        <i class="fas fa-phone mr-2 text-primary"></i>Parent/Guardian Phone Number *
+                                        <x-ionicon-call class="mr-2 text-primary"/>Parent/Guardian Phone Number *
                                     </label>
                                     <input type="tel" id="parent_phone" wire:model.lazy="parent_phone" required
                                         placeholder="0712345678"
@@ -556,7 +556,7 @@ class extends Component
                                 @if ($currentStep > 1)
                                 <button type="button" wire:click="previousStep"
                                     class="flex items-center px-6 py-3 text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors">
-                                    <i class="fas fa-arrow-left mr-2"></i>Previous
+                                    <x-ionicon-arrow-back class="mr-2"/>Previous
                                 </button>
                                 @else
                                 <div></div>
@@ -564,12 +564,12 @@ class extends Component
 
                                 @if ($currentStep < $totalSteps) <button type="button" wire:click="nextStep"
                                     class="flex items-center px-6 py-3 text-white bg-primary rounded-xl hover:opacity-80 transition-colors">
-                                    Next<i class="fas fa-arrow-right ml-2"></i>
+                                    Next<x-ionicon-arrow-forward class="ml-2"/>
                                     </button>
                                     @else
                                     <button type="submit"
                                         class="flex items-center px-8 py-3 text-white bg-primary rounded-xl hover:opacity-80 transition-colors font-semibold">
-                                        <i class="fas fa-paper-plane mr-2"></i>Submit Application
+                                        <x-ionicon-paper-plane class="mr-2"/>Submit Application
                                     </button>
                                     @endif
                             </div>
@@ -583,17 +583,17 @@ class extends Component
                         <h3 class="text-xl font-bold text-gray-800 mb-4">Need Help?</h3>
                         <div class="grid md:grid-cols-3 gap-6">
                             <div class="text-center">
-                                <i class="fas fa-phone text-primary text-2xl mb-2"></i>
+                                <x-ionicon-call class="text-primary text-2xl mb-2"/>
                                 <h4 class="font-semibold text-gray-800">Call Us</h4>
                                 <p class="text-gray-600 text-sm">{{ $setting->phone }}</p>
                             </div>
                             <div class="text-center">
-                                <i class="fas fa-envelope text-primary text-2xl mb-2"></i>
+                                <x-ionicon-mail class="text-primary text-2xl mb-2"/>
                                 <h4 class="font-semibold text-gray-800">Email Us</h4>
                                 <p class="text-gray-600 text-sm">{{ $setting->email }}</p>
                             </div>
                             <div class="text-center">
-                                <i class="fas fa-map-marker-alt text-primary text-2xl mb-2"></i>
+                                <x-ionicon-location class="text-primary text-2xl mb-2"/>
                                 <h4 class="font-semibold text-gray-800">Visit Us</h4>
                                 <p class="text-gray-600 text-sm">{{ $setting->name }}</p>
                             </div>

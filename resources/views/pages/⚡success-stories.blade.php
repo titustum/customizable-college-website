@@ -49,7 +49,7 @@ class extends Component
             <div class="text-center mb-12">
                 <a href="{{ route('create.success.story') }}"
                     class="inline-block px-6 py-3 text-white bg-orange-600 hover:bg-orange-700 font-semibold rounded-lg shadow-lg transition duration-300">
-                    <i class="fas fa-plus-circle mr-2"></i> Share Your Story
+                    <x-ionicon-add-circle class="mr-2"/> Share Your Story
                 </a>
             </div>
 
@@ -73,7 +73,7 @@ class extends Component
                                     <!-- Achievement Badge -->
                                     <div
                                         class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
-                                        <i class="fas fa-graduation-cap text-white text-xs"></i>
+                                        <x-ionicon-school class="text-white text-xs"/>
                                     </div>
                                 </div>
                             </div>
@@ -90,12 +90,12 @@ class extends Component
                                 <div class="flex justify-center mt-3 mb-4 text-orange-400">
                                     {{-- Full stars --}}
                                     @for ($i = 0; $i < $story->rating; $i++)
-                                        <i class="fas fa-star text-sm"></i>
+                                        <x-ionicon-star class="text-sm"/>
                                         @endfor
 
                                         {{-- Empty stars --}}
                                         @for ($i = 0; $i < 5 - $story->rating; $i++)
-                                            <i class="far fa-star text-sm text-gray-300"></i>
+                                            <x-ionicon-star-outline class="text-sm text-gray-300"/>
                                             @endfor
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ class extends Component
                 <div class="group" data-aos="fade-up" data-aos-delay="100">
                     <div
                         class="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-                        <i class="fas fa-graduation-cap text-orange-600 text-2xl"></i>
+                        <x-ionicon-school class="text-orange-600 text-2xl"/>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-800 mb-2">{{ $successStories->count() }}+</h3>
                     <p class="text-gray-600">Success Stories</p>
@@ -161,7 +161,7 @@ class extends Component
                 <div class="group" data-aos="fade-up" data-aos-delay="200">
                     <div
                         class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                        <i class="fas fa-briefcase text-green-600 text-2xl"></i>
+                        <x-ionicon-briefcase class="text-green-600 text-2xl"/>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-800 mb-2">95%</h3>
                     <p class="text-gray-600">Employment Rate</p>
@@ -170,7 +170,7 @@ class extends Component
                 <div class="group" data-aos="fade-up" data-aos-delay="300">
                     <div
                         class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                        <i class="fas fa-building text-blue-600 text-2xl"></i>
+                        <x-ionicon-business class="text-blue-600 text-2xl"/>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-800 mb-2">200+</h3>
                     <p class="text-gray-600">Partner Companies</p>
@@ -179,7 +179,7 @@ class extends Component
                 <div class="group" data-aos="fade-up" data-aos-delay="400">
                     <div
                         class="w-16 h-16 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center group-hover:bg-purple-200 transition-colors">
-                        <i class="fas fa-award text-purple-600 text-2xl"></i>
+                        <x-ionicon-medal class="text-purple-600 text-2xl"/>
                     </div>
                     <h3 class="text-3xl font-bold text-gray-800 mb-2">50+</h3>
                     <p class="text-gray-600">Industry Awards</p>

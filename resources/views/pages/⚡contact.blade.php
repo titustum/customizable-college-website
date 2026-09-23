@@ -148,22 +148,22 @@ class extends Component
               <a href="{{ $institution->facebook }}"
                 class="flex items-center justify-center p-2 text-gray-500 transition duration-300 bg-gray-100 rounded-full hover:bg-primary hover:text-white"
                 target="_blank">
-                <i class="fab fa-facebook-f text-lg"></i>
+                <x-ionicon-logo-facebook class="text-lg"/>
               </a>
               <a href="{{ $institution->twitter ?? '#' }}"
                 class="flex items-center justify-center p-2 text-gray-500 transition duration-300 bg-gray-100 rounded-full hover:bg-primary hover:text-white"
                 target="_blank">
-                <i class="fab fa-x-twitter text-lg"></i> {{-- Use 'fa-twitter' for old icon --}}
+                <x-ionicon-logo-x class="text-lg"/>
               </a>
               <a href="{{ $institution->instagram ?? '#' }}"
                 class="flex items-center justify-center p-2 text-gray-500 transition duration-300 bg-gray-100 rounded-full hover:bg-primary hover:text-white"
                 target="_blank">
-                <i class="fab fa-instagram text-lg"></i>
+                <x-ionicon-logo-instagram class="text-lg"/>
               </a>
               <a href="{{ $institution->linkedin ?? '#' }}"
                 class="flex items-center justify-center p-2 text-gray-500 transition duration-300 bg-gray-100 rounded-full hover:bg-primary hover:text-white"
                 target="_blank">
-                <i class="fab fa-linkedin-in text-lg"></i>
+                <x-ionicon-logo-linkedin class="text-lg"/>
               </a>
             </div>
 
@@ -358,7 +358,7 @@ class extends Component
     <a href="https://wa.me/{{ $institution->phone }}" target="_blank" rel="noopener noreferrer"
       class="flex items-center space-x-2 px-4 py-3 text-white bg-green-800 rounded-full shadow-lg hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2">
       <!-- WhatsApp Icon (SVG) -->
-      <i class="fab fa-whatsapp fa-2x"></i>
+      <x-ionicon-logo-whatsapp class="text-3xl"/>
       Chat
     </a>
   </div>

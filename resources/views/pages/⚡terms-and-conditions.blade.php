@@ -35,7 +35,7 @@ class extends Component
             <div class="space-y-10 text-gray-800 leading-relaxed">
                 <div>
                     <h3 class="text-xl font-semibold text-black mb-2">
-                        <i class="fas fa-info-circle mr-2 text-black"></i>1. Accuracy of Information
+                        <x-ionicon-information-circle class="mr-2 text-black"/>1. Accuracy of Information
                     </h3>
                     <p>Applicants must ensure that all details provided in the application form are complete and
                         accurate.
@@ -45,7 +45,7 @@ class extends Component
 
                 <div>
                     <h3 class="text-xl font-semibold text-black mb-2">
-                        <i class="fas fa-book mr-2 text-black"></i>2. Course Availability
+                        <x-ionicon-book class="mr-2 text-black"/>2. Course Availability
                     </h3>
                     <p>Courses are offered based on availability and demand. The college reserves the right to modify,
                         suspend, or cancel any course or program without prior notice.</p>
@@ -53,7 +53,7 @@ class extends Component
 
                 <div>
                     <h3 class="text-xl font-semibold text-black mb-2">
-                        <i class="fas fa-check-circle mr-2 text-black"></i>3. Admission Requirements
+                        <x-ionicon-checkmark-circle class="mr-2 text-black"/>3. Admission Requirements
                     </h3>
                     <p>Admission into a program is conditional upon meeting all entry requirements. These may include
                         academic
@@ -62,7 +62,7 @@ class extends Component
 
                 <div>
                     <h3 class="text-xl font-semibold text-black mb-2">
-                        <i class="fas fa-calendar-alt mr-2 text-black"></i>4. Term Selection
+                        <x-ionicon-calendar class="mr-2 text-black"/>4. Term Selection
                     </h3>
                     <p>Applicants must choose a valid and available intake term. Term availability may change depending
                         on
@@ -71,7 +71,7 @@ class extends Component
 
                 <div>
                     <h3 class="text-xl font-semibold text-black mb-2">
-                        <i class="fas fa-money-check-alt mr-2 text-black"></i>5. Fee Payment
+                        <x-ionicon-card class="mr-2 text-black"/>5. Fee Payment
                     </h3>
                     <p>All admitted students are required to pay the necessary fees by the stated deadlines. Failure to
                         do so
@@ -80,7 +80,7 @@ class extends Component
 
                 <div>
                     <h3 class="text-xl font-semibold text-black mb-2">
-                        <i class="fas fa-user-shield mr-2 text-black"></i>6. Privacy and Data Protection
+                        <x-ionicon-shield-checkmark class="mr-2 text-black"/>6. Privacy and Data Protection
                     </h3>
                     <p>All personal data collected during the application process will be used solely for admissions
                         processing and institutional communication. We are committed to safeguarding your data in
@@ -90,7 +90,7 @@ class extends Component
 
                 <div>
                     <h3 class="text-xl font-semibold text-black mb-2">
-                        <i class="fas fa-handshake mr-2 text-black"></i>7. Consent
+                        <x-ionicon-hand-right class="mr-2 text-black"/>7. Consent
                     </h3>
                     <p>By submitting your application, you agree to abide by the rules, regulations, and policies of
                         Tetu
@@ -101,7 +101,7 @@ class extends Component
 
                 <div>
                     <h3 class="text-xl font-semibold text-black mb-2">
-                        <i class="fas fa-sync-alt mr-2 text-black"></i>8. Policy Changes
+                        <x-ionicon-sync class="mr-2 text-black"/>8. Policy Changes
                     </h3>
                     <p>The college reserves the right to update or revise these terms and conditions at any time.
                         Changes will

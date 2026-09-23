@@ -358,11 +358,11 @@ PAGE WRAPPER
                 <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
                     <a href="{{ route('admissions') }}"
                         class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
-                        Apply Now <i class="fas fa-arrow-right text-xs"></i>
+                        Apply Now <x-ionicon-arrow-forward class="text-xs"/>
                     </a>
                     <a href="{{ route('contact') }}"
                         class="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
-                        <i class="fas fa-envelope text-xs"></i> Contact Us
+                        <x-ionicon-mail class="text-xs"/> Contact Us
                     </a>
                 </div>
             </div>

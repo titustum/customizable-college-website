@@ -208,7 +208,7 @@ class extends Component
             <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
                 <a href="{{ route('contact') }}"
                     class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
-                    Contact HR <i class="fas fa-arrow-right text-xs"></i>
+                    Contact HR <x-ionicon-arrow-forward class="text-xs"/>
                 </a>
             </div>
         </div>

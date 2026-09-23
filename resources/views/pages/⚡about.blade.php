@@ -17,16 +17,16 @@ class extends Component
         return [
             'institution' => $institution,
             'stats' => [
-                ['value' => '500', 'suffix' => '+', 'label' => 'Students Enrolled', 'icon' => 'fa-user-graduate'],
-                ['value' => '15', 'suffix' => '+', 'label' => 'Technical Programs', 'icon' => 'fa-book'],
-                ['value' => '30', 'suffix' => '+', 'label' => 'Qualified Instructors', 'icon' => 'fa-chalkboard-teacher'],
-                ['value' => '85', 'suffix' => '%', 'label' => 'Graduate Employment', 'icon' => 'fa-briefcase'],
+                ['value' => '500', 'suffix' => '+', 'label' => 'Students Enrolled', 'icon' => 'school'],
+                ['value' => '15', 'suffix' => '+', 'label' => 'Technical Programs', 'icon' => 'book'],
+                ['value' => '30', 'suffix' => '+', 'label' => 'Qualified Instructors', 'icon' => 'easel'],
+                ['value' => '85', 'suffix' => '%', 'label' => 'Graduate Employment', 'icon' => 'briefcase'],
             ],
             'values' => [
-                ['title' => 'Excellence', 'desc' => 'Pursuing the highest standards in all our academic and operational activities.', 'icon' => 'fa-check-circle'],
-                ['title' => 'Integrity', 'desc' => 'Upholding honesty, transparency and ethical conduct in all our actions.', 'icon' => 'fa-user-shield'],
-                ['title' => 'Innovation', 'desc' => 'Embracing creativity and forward-thinking approaches to educational challenges.', 'icon' => 'fa-lightbulb'],
-                ['title' => 'Inclusivity', 'desc' => 'Fostering a diverse and inclusive environment where all individuals can thrive.', 'icon' => 'fa-globe-africa'],
+                ['title' => 'Excellence', 'desc' => 'Pursuing the highest standards in all our academic and operational activities.', 'icon' => 'checkmark-circle'],
+                ['title' => 'Integrity', 'desc' => 'Upholding honesty, transparency and ethical conduct in all our actions.', 'icon' => 'shield-checkmark'],
+                ['title' => 'Innovation', 'desc' => 'Embracing creativity and forward-thinking approaches to educational challenges.', 'icon' => 'bulb'],
+                ['title' => 'Inclusivity', 'desc' => 'Fostering a diverse and inclusive environment where all individuals can thrive.', 'icon' => 'earth'],
             ],
             'timeline' => [
                 ['year' => 'March 2019', 'title' => 'Establishment', 'desc' => 'Establishment of ' . ($institution->name ?? 'Our Institution') . ' through collaboration between the National Government and Tetu NG CDF.'],
@@ -35,9 +35,9 @@ class extends Component
                 ['year' => 'Present Day', 'title' => 'Continued Excellence', 'desc' => 'Continuing our mission of community engagement, environmental initiatives, and developing industry-aligned technical education.'],
             ],
             'impact' => [
-                ['title' => 'Economic Development', 'desc' => 'Providing employment opportunities for local professionals and sourcing produce from local farmers to support the community economy.', 'icon' => 'fa-chart-line'],
-                ['title' => 'Environmental Initiatives', 'desc' => 'Promoting sustainable practices through tree seedling distribution and educational programs on environmental conservation.', 'icon' => 'fa-leaf'],
-                ['title' => 'Agricultural Innovation', 'desc' => 'Encouraging avocado farming and other agricultural practices to enhance food security and create sustainable livelihoods.', 'icon' => 'fa-seedling'],
+                ['title' => 'Economic Development', 'desc' => 'Providing employment opportunities for local professionals and sourcing produce from local farmers to support the community economy.', 'icon' => 'trending-up'],
+                ['title' => 'Environmental Initiatives', 'desc' => 'Promoting sustainable practices through tree seedling distribution and educational programs on environmental conservation.', 'icon' => 'leaf'],
+                ['title' => 'Agricultural Innovation', 'desc' => 'Encouraging avocado farming and other agricultural practices to enhance food security and create sustainable livelihoods.', 'icon' => 'nutrition'],
             ],
         ];
     }
@@ -113,7 +113,7 @@ class extends Component
                 @foreach($values as $index => $value)
                 <div data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" class="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 p-6 text-center">
                     <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i class="fas {{ $value['icon'] }} text-primary text-xl group-hover:text-white transition-all duration-300"></i>
+                        @svg('ionicon-'.$value['icon'], 'text-primary text-xl group-hover:text-white transition-all duration-300')
                     </div>
                     <h3 class="text-lg font-bold text-gray-900 mb-2">{{ $value['title'] }}</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">{{ $value['desc'] }}</p>
@@ -130,7 +130,7 @@ class extends Component
                 @foreach($stats as $index => $stat)
                 <div data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" class="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow transition-all">
                     <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shrink-0">
-                        <i class="fas {{ $stat['icon'] }} text-white text-lg"></i>
+                        @svg('ionicon-'.$stat['icon'], 'text-white text-lg')
                     </div>
                     <div>
                         <div class="text-3xl font-extrabold text-gray-900 leading-none">
@@ -200,7 +200,7 @@ class extends Component
                     <div class="h-2 bg-primary group-hover:h-3 transition-all duration-300"></div>
                     <div class="p-6">
                         <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                            <i class="fas {{ $item['icon'] }} text-primary text-xl group-hover:text-white transition-all duration-300"></i>
+                            @svg('ionicon-'.$item['icon'], 'text-primary text-xl group-hover:text-white transition-all duration-300')
                         </div>
                         <h3 class="text-lg font-bold text-gray-900 mb-3">{{ $item['title'] }}</h3>
                         <p class="text-gray-500 text-sm leading-relaxed">{{ $item['desc'] }}</p>
@@ -225,10 +225,10 @@ class extends Component
             </p>
             <div class="flex flex-wrap items-center justify-center gap-4" data-aos="zoom-in" data-aos-delay="300">
                 <a href="{{ route('admissions') }}" class="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all">
-                    Apply Now <i class="fas fa-arrow-right text-xs"></i>
+                    Apply Now <x-ionicon-arrow-forward class="text-xs"/>
                 </a>
                 <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 border border-white/20 text-white font-semibold rounded-full hover:bg-white/20 transition-all">
-                    <i class="fas fa-envelope text-xs"></i> Contact Us
+                    <x-ionicon-mail class="text-xs"/> Contact Us
                 </a>
             </div>
         </div>
