@@ -56,46 +56,58 @@ class extends Component
 
 
     public function getStartTermOptions(): array
-    {
-        $currentDate = Carbon::now();
-        $options = [];
-        $terms = [
-            'January' => 1,
-            'May' => 5,
-            'September' => 9
-        ];
+	{
+	    $currentDate = Carbon::now();
 
-        $termEntries = [];
+	    $terms = [
+	        'January' => 1,
+	        'May' => 5,
+	        'September' => 9,
+	    ];
 
-        // Current & upcoming terms
-        foreach ($terms as $label => $month) {
-            $year = ($currentDate->month <= $month) ? $currentDate->year : $currentDate->year + 1;
-            $termDate = Carbon::create($year, $month, 1);
+	    $termEntries = [];
 
-            if ($currentDate->lte($termDate)) {
-                $key = strtolower(substr($label, 0, 3)) . "_{$year}";
-                $termEntries[$termDate->timestamp] = [$key, "$label $year"];
-            }
-        }
+	    foreach ($terms as $label => $month) {
 
-        // Next two years
-        // for ($i = 1; $i <= 2; $i++) {
-        //     foreach ($terms as $label => $month) {
-        //         $year = $currentDate->year + $i;
-        //         $termDate = Carbon::create($year, $month, 1);
-        //         $key = strtolower(substr($label, 0, 3)) . "_{$year}";
-        //         $termEntries[$termDate->timestamp] = [$key, "$label $year"];
-        //     }
-        // }
+	        // Current year first
+	        $termDate = Carbon::create(
+	            $currentDate->year,
+	            $month,
+	            1
+	        );
 
-        ksort($termEntries); // Sort by timestamp
+	        // Intake is available until the end of its month
+	        $termEndDate = $termDate->copy()->endOfMonth();
 
-        foreach ($termEntries as [$key, $label]) {
-            $options[$key] = $label;
-        }
+	        // If this year's intake has already closed,
+	        // use next year's intake.
+	        if ($currentDate->gt($termEndDate)) {
+	            $termDate->addYear();
+	        }
 
-        return $options;
-    }
+	        $key = strtolower(substr($label, 0, 3)) . "_{$termDate->year}";
+
+	        $termEntries[] = [
+	            'date' => $termDate,
+	            'key' => $key,
+	            'label' => "{$label} {$termDate->year}",
+	        ];
+	    }
+
+	    // Sort by actual intake date
+	    usort($termEntries, function ($a, $b) {
+	        return $a['date']->timestamp <=> $b['date']->timestamp;
+	    });
+
+	    // Convert to the format required by your select
+	    $options = [];
+
+	    foreach ($termEntries as $entry) {
+	        $options[$entry['key']] = $entry['label'];
+	    }
+
+	    return $options;
+	}
 
     public function nextStep()
     {
