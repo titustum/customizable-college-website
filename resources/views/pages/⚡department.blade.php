@@ -254,7 +254,7 @@ PAGE WRAPPER
         <section class="py-14 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
 
             {{-- Background Accent --}}
-            <div class="absolute top-0 left-0 w-52 sm:w-72 h-52 sm:h-72 bg-amber-100 rounded-full blur-3xl opacity-30">
+            <div class="absolute top-0 left-0 w-52 sm:w-72 h-52 sm:h-72 bg-primary/10 rounded-full blur-3xl opacity-30">
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
@@ -265,7 +265,7 @@ PAGE WRAPPER
                     <div class="relative order-1">
 
                         {{-- Glow --}}
-                        <div class="absolute -inset-3 sm:-inset-4 bg-amber-500/10 rounded-3xl blur-xl"></div>
+                        <div class="absolute -inset-3 sm:-inset-4 bg-primary/10 rounded-3xl blur-xl"></div>
 
                         <div class="relative max-w-sm sm:max-w-md mx-auto">
 
@@ -280,7 +280,7 @@ PAGE WRAPPER
 
                             {{-- Floating Badge --}}
                             <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6">
-                                <div class="bg-amber-500 text-white px-4 py-2 sm:px-5 rounded-full shadow-lg">
+                                <div class="bg-primary text-white px-4 py-2 sm:px-5 rounded-full shadow-lg">
                                     <p class="text-[10px] sm:text-xs uppercase tracking-wider font-semibold">
                                         Head of Department
                                     </p>
@@ -293,7 +293,7 @@ PAGE WRAPPER
                     {{-- HOD Content --}}
                     <div class="order-2 text-center lg:text-left">
 
-                        <span class="text-amber-600 font-semibold uppercase tracking-wider text-sm">
+                        <span class="text-primary font-semibold uppercase tracking-wider text-sm">
                             Message from the HOD
                         </span>
 
@@ -306,7 +306,7 @@ PAGE WRAPPER
 
                             {{-- Quote Mark --}}
                             <div
-                                class="absolute -top-4 sm:-top-5 left-5 sm:left-6 text-5xl sm:text-6xl text-amber-200 font-serif leading-none">
+                                class="absolute -top-4 sm:-top-5 left-5 sm:left-6 text-5xl sm:text-6xl text-primary/40 font-serif leading-none">
                                 “
                             </div>
 
@@ -329,7 +329,7 @@ PAGE WRAPPER
                                 {{ $hod->name }}
                             </h3>
 
-                            <p class="text-amber-600 font-semibold mt-1 text-sm sm:text-base">
+                            <p class="text-primary font-semibold mt-1 text-sm sm:text-base">
                                 {{ $hod->roles
                                 ->firstWhere('pivot.department_id', $department->id)
                                 ?->name ?? 'Trainer' }}
