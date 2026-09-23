@@ -28,7 +28,7 @@ it('falls back to the default logo when the institution has none', function () {
         ->assertSee(asset('images/logo.jpeg'));
 });
 
-it('uses the institution name as the admin panel brand name', function () {
+it('keeps the admin panel brand name as Web Admin', function () {
     InstitutionSetting::create([
         'id' => 1,
         'name' => 'Green Valley Technical College',
@@ -37,7 +37,8 @@ it('uses the institution name as the admin panel brand name', function () {
 
     $this->get(route('filament.admin.auth.login'))
         ->assertOk()
-        ->assertSee('Green Valley Technical College');
+        ->assertSee('Web Admin')
+        ->assertDontSee('Green Valley Technical College');
 });
 
 it('falls back to the default admin panel brand name when no institution exists', function () {
