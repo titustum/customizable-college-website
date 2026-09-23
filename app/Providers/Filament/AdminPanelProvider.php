@@ -33,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors(fn (): array => [
                 'primary' => InstitutionSetting::first()?->primary_color ?? Color::Orange,
             ])
-            ->font('Albert Sans')
+            ->font(fn (): string => InstitutionSetting::first()?->primary_font ?? 'Albert Sans')
             ->favicon(asset('images/logo.jpeg'))
             // ->brandLogo(asset('images/logo.jpeg'))
             ->brandName('Web Admin')
