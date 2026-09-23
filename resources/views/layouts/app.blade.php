@@ -389,7 +389,7 @@ $primaryColor = $setting->primary_color ?? '#f97316';
                 <div data-aos="fade-up">
                     <div class="flex items-center gap-2.5 mb-4">
                         <img src="{{ asset('storage/'.$setting?->logo) }}" alt="Logo"
-                            class="h-10 w-auto object-contain brightness-0 invert opacity-90">
+                            class="h-10 w-auto object-contain opacity-80">
                         <span class="font-righteous text-xl text-white/90">{{ $setting?->name }}</span>
                     </div>
                     <p class="text-sm text-gray-400 leading-relaxed mb-5">{{ $setting?->name }} is committed to
