@@ -33,6 +33,13 @@ class InstitutionSettingForm
                                 ->options(CollegeCategory::options())
                                 ->default('tvc')
                                 ->required(),
+
+                            TextInput::make('established_year')
+                                ->label('Year Established')
+                                ->numeric()
+                                ->minValue(1900)
+                                ->maxValue(2100)
+                                ->placeholder('2020'),
                         ]),
 
                     Section::make('Messages')

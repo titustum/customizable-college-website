@@ -27,6 +27,7 @@ class InstitutionSetting extends Model
         'motto',
         'vision',
         'mission',
+        'established_year',
         'phone',
         'email',
         'facebook',

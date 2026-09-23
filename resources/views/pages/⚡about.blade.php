@@ -56,7 +56,7 @@ class extends Component
         <div class="container relative z-10 px-4 mx-auto text-center">
             <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-4" data-aos="fade-down">About Us</span>
             <h1 class="hero-display mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl" data-aos="fade-up">{{ $institution->name }}</h1>
-            <p class="max-w-2xl mx-auto text-lg text-gray-300 md:text-xl" data-aos="fade-up" data-aos-delay="100">Empowering futures through technical education excellence since 2019</p>
+            <p class="max-w-2xl mx-auto text-lg text-gray-300 md:text-xl" data-aos="fade-up" data-aos-delay="100">Empowering futures through technical education excellence since {{ $institution->established_year ?? '2019' }}</p>
         </div>
     </section>
 

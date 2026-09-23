@@ -19,6 +19,7 @@ class InstitutionSettingSeeder extends Seeder
             'motto' => 'TVET skills for industrial growth.',
             'vision' => 'To be the premier technical and vocational institution for self and global development.',
             'mission' => 'To provide quality education and training.',
+            'established_year' => 2019,
             'about_us' => 'To confer holistic technical training through research, innovation and consultancy for sustainable development.',
             'logo' => '',
             'email' => 'info@tetutvc.ac.ke',

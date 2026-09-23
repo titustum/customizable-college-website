@@ -350,7 +350,7 @@ new class extends Component {
                     </div>
                     {{-- Decorative badge --}}
                     <div class="absolute -bottom-4 -right-4 bg-primary text-white px-6 py-4 rounded-xl shadow-lg">
-                        <div class="text-3xl font-bold">{{ $setting->established_year ?? '2020' }}</div>
+                        <div class="text-3xl font-bold">{{ $setting->established_year ?? '2019' }}</div>
                         <div class="text-xs font-semibold uppercase tracking-wider">Established</div>
                     </div>
                 </div>
@@ -361,7 +361,7 @@ new class extends Component {
                         class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-3">Our
                         History</span>
                     <h2 class="text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4">Building the Future Since {{
-                        $setting->established_year ?? '2020' }}</h2>
+                        $setting->established_year ?? '2019' }}</h2>
                     <p class="text-gray-600 text-base leading-relaxed mb-6">
                         {{ $setting->history ?? 'Tetu Technical and Vocational College has been at the forefront of
                         providing quality technical and vocational education in Nyeri County. Our institution is
